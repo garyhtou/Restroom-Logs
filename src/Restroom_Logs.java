@@ -36,7 +36,7 @@ public class Restroom_Logs {
 				use DO_NOTHING_ON_CLOSE this way the program can't be closed when you hit the closed button.
 					Maybe type in a special barcode to close program??
 			
-			
+			asdfasdfasdf
 	*/
 	
 	
