@@ -8,7 +8,7 @@ STATUS: Barely Started
 
 
 
-public class Restroom_Logs {
+public class Restroom_Logs_Notes {
 	/*
 	--== IDEA ==--
 			Use a Raspberry Pi with Raspbian to program a Bathroom log using barcodes.
