@@ -19,5 +19,20 @@ public class Restroom_Logs_Program extends JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
         */
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+		
+	}
+	
+	
+	public static void AddingBarcodes() {
+		
+		
+		
+	}
 
 }
