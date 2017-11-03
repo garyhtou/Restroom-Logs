@@ -52,13 +52,13 @@ public class Restroom_Logs_Notes {
 				
 	--== CHANGE LOG ==--
 			11/2:
-				Started planning how barcode scanning should work. --Gary
+				Started planning how barcode scanning should work.
 				
 				Found option for making multiple barcodes: https://www.tec-it.com/en/software/barcode-software/office/excel/Default.aspx 
-				Con - need to type in every single name for each student and add-in requires payment for full licence but does have free trial option --Michael
-				
-				Maybe we can use some kinda java program to create a PDF of barcodes.
-					https://examples.javacodegeeks.com/core-java/itext-barcode-example/
+				Con - need to type in every single name for each student and add-in requires payment for full licence but does have free trial option 
+				 or this webpage: https://www.ruggedtabletpc.com/barcode-generator --Michael
+		
+		
 		
 		
 	--== TODO ==--
