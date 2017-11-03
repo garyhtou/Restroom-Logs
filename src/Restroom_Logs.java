@@ -1,42 +1,66 @@
 
+/*
+INFOMATION:
+
+This is a project by Gary and Michael.
+STATUS: Barely Started
+ */
+
+
 
 public class Restroom_Logs {
 	/*
-	What language? 
-			If using raspberry pi, use Raspbian, code in python 
-			Arduino, c++? 
-			 
-			Signing out: 
-			Use Camera for Barcode Scanner to read barcode. 
-			Save barcode #, sign out time, add one to # of people signed out 
-			 
-			Signing in/additional sign out: 
-			Use Camera for Barcode Scanner to read barcode. 
-			If barcode matches one of the signed out, 
-			Save sign in time, subtract one from # of people signed out 
-			Else  
-			If(Check if # of signed out is less than max) { 
-			Save barcode #, sign out time, add one to # of people signed out 
-			Else 
-			Print("too many people signed out") 
-			 
-			 
-			Reset: 
-			Reset at the end of every period 
-			 
-			Max of 5 mins: 
-			If time exceeds 5 mins, turn on a led and print name and current time since sign out on screen. 
+	--== IDEA ==--
+			Use a Raspberry Pi with Raspbian to program a Bathroom log using barcodes.
 			
+			Language: Java
+				We must figure out how to run java in Raspbian.
+				
+			Sign in/out method:
+				Use barcode or allow students to type name?
+					Find barcode scanner
+					Which barcode should we use? I THINK WE SHOULD USE CODE128
+					Code128 uses ASCII up to 128 Chars. i think, please double check
+						https://www.scandit.com/types-barcodes-choosing-right-barcode/
+						Make sure our barcode scanner can read that type of barcode
+	
+			Features:
+				Reset sign out list at the end of every period.
+				If time exceeds 5 mins, turn on a led and print name and current time since sign out on screen. 
+				
 			
+	--== HOW ==--
+			use java swing for graphics
+				java swing will also allow us to prevent the program from closing.
+					use DO_NOTHING_ON_CLOSE this way the program can't be closed when you hit the closed button.
+						Maybe type in a special barcode to close program??
+			use multiple dimension arrays to keep track of Name, In, Out
+				
+				
+	--== SUPPLIES NEEDED ==--
+			Barcode scanner
+			Raspberry Pi
+				Micro SD
+			Monitor
+			Keyboard
+			Mice
 			
-			
-			
-			
-			use java swing
-				use DO_NOTHING_ON_CLOSE this way the program can't be closed when you hit the closed button.
-					Maybe type in a special barcode to close program??
-			
-			asdfasdfasdf
+			One printed barcode per student
+				Need to write a program to create this doc.
+				
+				
+				
+	--== CHANGE LOG ==--
+			11/2:
+				Started planning how barcode scanning should work.
+		
+		
+		
+		
+	--== TODO ==--
+			11/2:
+				Basically everything :)
+		
 	*/
 	
 	
