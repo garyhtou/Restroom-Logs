@@ -53,6 +53,9 @@ public class Restroom_Logs_Notes {
 	--== CHANGE LOG ==--
 			11/2:
 				Started planning how barcode scanning should work.
+				
+				Found option for making multiple barcodes: https://www.tec-it.com/en/software/barcode-software/office/excel/Default.aspx 
+				Con - need to type in every single name for each student and add-in requires payment for full licence but does have free trial option --Michael
 		
 		
 		
