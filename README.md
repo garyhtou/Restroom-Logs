@@ -1,3 +1,0 @@
-# SchoolProjects
-
-School Projects
