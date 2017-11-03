@@ -63,8 +63,9 @@ public class Restroom_Logs_Notes {
 		
 	--== TODO ==--
 			11/2:
-				Basically everything :)
-		
+				Barcode (using code128)
+					Get a list of names, somehow format the names (one name per cell in A column).
+					PRINT!
 	*/
 	
 	
