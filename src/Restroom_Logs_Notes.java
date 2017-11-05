@@ -63,9 +63,24 @@ public class Restroom_Logs_Notes {
 		
 	--== TODO ==--
 			11/2:
-				Basically everything :)
-		
-	*/
+				Barcode (using code128)
+					Get a list of names, somehow format the names (one name per cell in A column).
+					PRINT!
+	
+			11/2:
+				NVM, TOO HARD: Find a way to change name and icon of java process (What shows up in Task Manager), default process name is the name of the JVM.  Might have to change the name of the JVM or use a Java executable wrapper.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 */
 	
 	
 	
