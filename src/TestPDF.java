@@ -15,9 +15,11 @@ public class TestPDF {
 		String string = "FirstNameLastName";
 		//creates document and assigned it a name
 		Document document = new Document();
+		
 		try {
 			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/testPDF.pdf"));
+			PdfWriter writerCopy =PdfWriter.getInstance(document, new FileOutputStream("data/testPDFCopy.pdf"));
 			//needs to open the document
 			document.open();
 			//Adds a new paragraph to the pdf
@@ -51,6 +53,8 @@ public class TestPDF {
 		
 			//has to end by closing the document
 			document.close();
+			
+			writerCopy.close();
 			writer.close();
 		}
 		//Error stuff so the code doesn't break
