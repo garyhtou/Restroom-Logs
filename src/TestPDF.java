@@ -17,7 +17,7 @@ public class TestPDF {
 		Document document = new Document();
 		try {
 			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
-			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("testPDF.pdf"));
+			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/testPDF.pdf"));
 			//needs to open the document
 			document.open();
 			//Adds a new paragraph to the pdf
