@@ -3,6 +3,9 @@ import java.util.*;
 import javax.swing.*;  
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
@@ -50,27 +53,88 @@ public class Restroom_Logs_Program extends JFrame {
     	
     	//MENUBAR
         JMenuBar menubar = new JMenuBar();
+        
+        //ICONS
         ImageIcon exitIcon = new ImageIcon("images\\exit.png");
+        ImageIcon viewIcon = new ImageIcon("images\\view.png");
+        ImageIcon logsIcon = new ImageIcon("images\\logs.png");
         
         //MENU
         JMenu file = new JMenu("File"); //New dropdown
         file.setMnemonic(KeyEvent.VK_F); //Short cut for "File" drop down
+        JMenu data = new JMenu("Data"); //New dropdown
+        data.setMnemonic(KeyEvent.VK_D); //Short cut for "File" drop down
         
-        //MUNU ITEM
+        //MENU ITEM
         //exit
-        JMenuItem exitMenuItem = new JMenuItem("Exit", exitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
-        exitMenuItem.setMnemonic(KeyEvent.VK_E); //short cut for exit
-        exitMenuItem.setToolTipText("Exit application");
-        exitMenuItem.addActionListener((ActionEvent event) -> { //When clicked, exit
+        JMenuItem fileExit = new JMenuItem("Exit", exitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
+        fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
+        fileExit.setToolTipText("Exit application");
+        fileExit.addActionListener((ActionEvent event) -> { //When clicked, exit
             System.exit(0);
         });
+        //view entries
+        JMenuItem dataView = new JMenuItem("View Entries", viewIcon);
+        dataView.setMnemonic(KeyEvent.VK_K);
+        dataView.setToolTipText("View Sign in/out");
+        dataView.addActionListener((ActionEvent event) -> {
+        	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
+        	//SHOW VIEW PDF
+        });
+        //log .txt
+        JMenuItem dataLogs = new JMenuItem("Logs", logsIcon);
+        dataLogs.setMnemonic(KeyEvent.VK_K);
+        dataLogs.setToolTipText("View logs");
+        dataLogs.addActionListener((ActionEvent event) -> {
+        	//SHOW VIEW .TXT FILE
+        	//https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        	
+        	//PROBELM: doesn't auto wrap
+        	String fileContent;
+			//try {
+				//fileContent = new Scanner(new File("filename")).useDelimiter("\\Z").next();
+	        	//JOptionPane.showMessageDialog(dataLogs, fileContent);
+				fileContent = "heyyy";
+				
+				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+				double screenWidth = screenSize.getWidth();
+				double screenHeight = screenSize.getHeight();
+				JOptionPane.showMessageDialog(dataLogs, screenWidth + " " + screenHeight);
+				
+				int displayWidth = (int) (screenWidth/15);
+				int displayHeight = (int) (screenHeight/20);
+				
+				JTextArea textArea = new JTextArea(displayHeight, displayWidth);
+			      textArea.setText(fileContent);
+			      textArea.setEditable(false);
+			      
+			      // wrap a scrollpane around it
+			      JScrollPane scrollPane = new JScrollPane(textArea);
+			      
+			      // display them in a message dialog
+			      JOptionPane.showMessageDialog(dataLogs, scrollPane);
+				
+				
+			/*} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(dataLogs,
+					    "Can not open file.", //message
+					    "Log File Error", //title
+					    JOptionPane.ERROR_MESSAGE);
+			}*/
+        });
+        //DISPLAY, backwards
+        //file
+        file.add(fileExit); //adds the exit menuitem to the "file" menu
         
-
-        //DISPLAY
-        file.add(exitMenuItem); //adds the exit menuitem to the "file" menu
-
         menubar.add(file); //adds the file menu to the menubar
-
+        //data
+        data.add(dataView);
+        data.add(dataLogs);
+        
+        menubar.add(data);
+        
+        
         setJMenuBar(menubar); //displays menubar
     }
     
