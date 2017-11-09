@@ -55,9 +55,9 @@ public class Restroom_Logs_Program extends JFrame {
         JMenuBar menubar = new JMenuBar();
         
         //ICONS
-        ImageIcon exitIcon = new ImageIcon("images\\exit.png");
-        ImageIcon viewIcon = new ImageIcon("images\\view.png");
-        ImageIcon logsIcon = new ImageIcon("images\\logs.png");
+        ImageIcon exitIcon = new ImageIcon("images/exit.png");
+        ImageIcon viewIcon = new ImageIcon("images/view.png");
+        ImageIcon logsIcon = new ImageIcon("images/logs.png");
         
         //MENU
         JMenu file = new JMenu("File"); //New dropdown
@@ -91,10 +91,9 @@ public class Restroom_Logs_Program extends JFrame {
         	
         	//PROBELM: doesn't auto wrap
         	String fileContent;
-			//try {
-				//fileContent = new Scanner(new File("filename")).useDelimiter("\\Z").next();
-	        	//JOptionPane.showMessageDialog(dataLogs, fileContent);
-				fileContent = "heyyy";
+			try {
+				fileContent = new Scanner(new File("data\\Logs.txt")).useDelimiter("\\Z").next();
+	        	JOptionPane.showMessageDialog(dataLogs, fileContent);
 				
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 				double screenWidth = screenSize.getWidth();
@@ -115,13 +114,13 @@ public class Restroom_Logs_Program extends JFrame {
 			      JOptionPane.showMessageDialog(dataLogs, scrollPane);
 				
 				
-			/*} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(dataLogs,
 					    "Can not open file.", //message
 					    "Log File Error", //title
 					    JOptionPane.ERROR_MESSAGE);
-			}*/
+			}
         });
         //DISPLAY, backwards
         //file
