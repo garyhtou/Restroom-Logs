@@ -13,7 +13,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDF {
+public class Back_End {
 
 	public static boolean createViewPDF;
 
@@ -90,6 +90,23 @@ public class PDF {
 		    error = true;
 		}
 		return error;
+	}
+	
+	public static void initStartUp() { //create blank PDF and Logs.txt for when the program initially starts up
+		Document document = new Document();
+		try {
+			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
+			document.open();
+			document.close();
+			writer.close();
+		}
+		catch(DocumentException e) {
+			e.printStackTrace();
+		}
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

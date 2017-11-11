@@ -12,16 +12,16 @@ import java.lang.Thread;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
-public class Restroom_Logs_Program extends JFrame  implements Runnable {
+public class Front_End extends JFrame {
 	
-	public void threading() {
-		Thread thread1 = new Thread();
-		thread1.start();
-		thread1.run();
-	}
+    public static void main(String[] args) {
+    	//do not call method here. only use for testing
+    	createWindow();
+    }
 	
 	
-	public Restroom_Logs_Program() { //this is a constructor, it calls a method to give the window settings
+	
+	public Front_End() { //this is a constructor, it calls a method to give the window settings
 
         initUI();
     }
@@ -89,8 +89,8 @@ public class Restroom_Logs_Program extends JFrame  implements Runnable {
         dataView.addActionListener((ActionEvent event) -> {
         	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
         	//SHOW VIEW PDF
-        	if(PDF.createViewPDF) {
-        		PDF.createViewPDF();
+        	if(Back_End.createViewPDF) {
+        		Back_End.createViewPDF();
         	}
         	else {
         		JOptionPane.showMessageDialog(dataView,
@@ -180,39 +180,27 @@ public class Restroom_Logs_Program extends JFrame  implements Runnable {
         
     }
 
-    public static void main(String[] args) { //Creates the window and makes it visible
-
-        /*
-        https://stackoverflow.com/questions/22534356/java-awt-eventqueue-invokelater-explained
-        Most likely no need for EventQueue.invokeLater()
-        	EventQueue.invokeLater() Allows the gui and calculations to be performed on different tabs.
-        	This lets the GUI to be updated why it's calculating
-        	
-        	"We create an instance of our code example and make it visible on the screen.
-        	The invokeLater() method places the application on the Swing Event Queue.
-        	It is used to ensure that all UI updates are concurrency-safe.
-        	In other words, it is to prevent GUI from hanging in certain situations."
-        	
-        
-        EventQueue.invokeLater(() -> {
-        	Restroom_Logs_Program ex = new Restroom_Logs_Program();
-            ex.setVisible(true);
-        });
-        */
-    	
-    	
+    
+    public static void createWindow() {
     	EventQueue.invokeLater(() -> {
-        	Restroom_Logs_Program window = new Restroom_Logs_Program();
+        	Front_End window = new Front_End();
             window.setVisible(true);
         });
-        
     }
 
 
-	@Override
-	public void run() {
+
+	public static void createSplashScreenInitStartUp() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	public static void createSplashScreen() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
