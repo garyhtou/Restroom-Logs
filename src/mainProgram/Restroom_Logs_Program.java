@@ -1,3 +1,5 @@
+package mainProgram;
+
 
 import java.util.*;
 import javax.swing.*;  
@@ -6,10 +8,17 @@ import java.awt.event.*;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.Thread;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
-public class Restroom_Logs_Program extends JFrame {
+public class Restroom_Logs_Program extends JFrame  implements Runnable {
+	
+	public void threading() {
+		Thread thread1 = new Thread();
+		thread1.start();
+		thread1.run();
+	}
 	
 	
 	public Restroom_Logs_Program() { //this is a constructor, it calls a method to give the window settings
@@ -80,6 +89,16 @@ public class Restroom_Logs_Program extends JFrame {
         dataView.addActionListener((ActionEvent event) -> {
         	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
         	//SHOW VIEW PDF
+        	if(PDF.createViewPDF) {
+        		PDF.createViewPDF();
+        	}
+        	else {
+        		JOptionPane.showMessageDialog(dataView,
+					    "Can not create ViewLogPDF for viewing.", //message
+					    "ViewLogPDF File Error", //title
+					    JOptionPane.ERROR_MESSAGE);
+        	}
+        	
         });
         //log .txt
         JMenuItem dataLogs = new JMenuItem("Logs", logsIcon);
@@ -117,7 +136,7 @@ public class Restroom_Logs_Program extends JFrame {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(dataLogs,
-					    "Can not open file.", //message
+					    "Can not open Log file.", //message
 					    "Log File Error", //title
 					    JOptionPane.ERROR_MESSAGE);
 			}
@@ -188,5 +207,12 @@ public class Restroom_Logs_Program extends JFrame {
         });
         
     }
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
