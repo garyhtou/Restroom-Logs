@@ -38,7 +38,7 @@ public class Front_End extends JFrame {
     	JButton quitButton = new JButton("Quit"); //creates button named "Quit"
     	quitButton.setToolTipText("Click this button to quit the program"); //Adds a ToolTipText, this is like hovering of a link, it gives you info
     	
-        quitButton.addActionListener((ActionEvent event) -> { //event listener, if clicked, system.exit(0);
+        quitButton.addActionListener((ActionEvent quitButtonEvent) -> { //event listener, if clicked, system.exit(0);
             System.exit(0);
         });
 
@@ -46,7 +46,7 @@ public class Front_End extends JFrame {
         
         
         //WINDOW SETTINGS
-        setTitle("Simple example");
+        setTitle("Restroom Logs");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
         setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
@@ -76,14 +76,14 @@ public class Front_End extends JFrame {
         JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
         fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
         fileExit.setToolTipText("Exit application");
-        fileExit.addActionListener((ActionEvent event) -> { //When clicked, exit
+        fileExit.addActionListener((ActionEvent existButtonEvent) -> { //When clicked, exit
             System.exit(0);
         });
         //view entries
         JMenuItem dataView = new JMenuItem("View Entries", dataViewIcon);
         dataView.setMnemonic(KeyEvent.VK_K);
         dataView.setToolTipText("View Sign in/out");
-        dataView.addActionListener((ActionEvent event) -> {
+        dataView.addActionListener((ActionEvent dataViewButtonEvent) -> {
         	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
         	//SHOW VIEW PDF
         	/*if(Back_End.createViewPDF()) {
@@ -101,7 +101,7 @@ public class Front_End extends JFrame {
         JMenuItem dataLogs = new JMenuItem("Logs", dataLogsIcon);
         dataLogs.setMnemonic(KeyEvent.VK_K);
         dataLogs.setToolTipText("View logs");
-        dataLogs.addActionListener((ActionEvent event) -> {
+        dataLogs.addActionListener((ActionEvent dataLogsButtonEvent) -> {
         	//SHOW VIEW .TXT FILE
         	//https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
         	
@@ -146,7 +146,7 @@ public class Front_End extends JFrame {
         JMenuItem filePreferences = new JMenuItem("Preferences", filePreferencesIcon);
         filePreferences.setMnemonic(KeyEvent.VK_P);
         filePreferences.setToolTipText("Preferences");
-        filePreferences.addActionListener((ActionEvent event) -> { 
+        filePreferences.addActionListener((ActionEvent filePreferencesButonEvent) -> { 
     		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			double screenWidth = screenSize.getWidth();
 			double screenHeight = screenSize.getHeight();
@@ -179,7 +179,7 @@ public class Front_End extends JFrame {
 	    		panel1.add(preferencesGeneralTitle);
 
     		JComponent panel2 = new JPanel();
-    		panel2.setLayout(new BoxLayout(panel2, BoxLayout.PAGE_AXIS));
+    		panel2.setLayout(new GridLayout(5, 1));
     		tabbedPane.addTab("Logs", icon2, panel2, "Logs Preferences");
     		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
     		//TITLE
@@ -191,12 +191,19 @@ public class Front_End extends JFrame {
 	    		//CONTENT
 	    		preferencesLogsTitle.setText("Logs");
 	    		panel2.add(preferencesLogsTitle);
-	    	JTextArea preferencesLogsClear = new JTextArea();
-	    	preferencesLogsClear.setOpaque(false);
-	    	preferencesLogsClear.setEditable(false);
+	    	JTextArea preferencesLogsClearText = new JTextArea();
+	    	preferencesLogsClearText.setOpaque(false);
+	    	preferencesLogsClearText.setEditable(false);
 	    	//CONTENT
-	    	preferencesLogsClear.setText("Clear PDF Log file");
-	    	panel2.add(preferencesLogsClear);
+	    	preferencesLogsClearText.setText("Clear PDF Log file");
+	    	panel2.add(preferencesLogsClearText);
+	    	
+	    	JButton preferencesLogsClearButton = new JButton("Clear PDF"); //creates button named "Quit"
+	    	preferencesLogsClearButton.setToolTipText("Caution, this will clear all student entry and exit logs"); //Adds a ToolTipText, this is like hovering of a link, it gives you info
+	    	preferencesLogsClearButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> { //event listener, if clicked, system.exit(0);
+	           	Back_End.initStartUp();
+	        });
+	    	panel2.add(preferencesLogsClearButton);
     		//Clear logs (run initStartUp for back_end)
     		
     		JComponent panel3 = new JPanel();
@@ -308,7 +315,7 @@ public class Front_End extends JFrame {
 
 
 	public static void createSplashScreen() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	

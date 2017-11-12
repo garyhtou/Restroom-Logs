@@ -39,6 +39,10 @@ public class Back_End {
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
 			document.open();
+			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
+			document.add(new Paragraph(""));
+			document.add(new Paragraph("This table shows student name with entry and exit time"));
+			document.add(new Paragraph(""));
 			document.close();
 			writer.close();
 		}
@@ -78,8 +82,6 @@ public class Back_End {
 	}
 	
 	public static void updatePDF(/*String firstName, String lastName, int timeOut, int timeIn*/) { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
-		String string = "FirstNameLastName";
-		//creates document and assigned it a name
 		Document document = new Document();
 		
 		try {
@@ -89,9 +91,10 @@ public class Back_End {
 			//needs to open the document
 			document.open();
 			//Adds a new paragraph to the pdf
-			document.add(new Paragraph("This is a test of adding a new pharagraph"));
-			document.add(new Paragraph("Hello"));
-			document.add(new Paragraph(string));
+			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
+			document.add(new Paragraph(""));
+			document.add(new Paragraph("This table shows student name with entry and exit time"));
+			document.add(new Paragraph(""));
 			//created a new table with 3 columns to add to the pdf
 			PdfPTable table= new PdfPTable(3);
 			//sets the width percentage

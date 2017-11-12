@@ -7,7 +7,7 @@ public class MAIN {
 		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
 		boolean ranBefore = true; /*GRAB INFO FROM FILE*/
 		
-		if(ranBefore){
+		if(!ranBefore){
 			initStartUp();
 		}
 		//START UP AS NORMAL
@@ -17,7 +17,15 @@ public class MAIN {
 	}
 	
 	public static void startUp() {
-		Front_End.createSplashScreen(); //just do display, nothing happens in background
+		//SPLASH
+		Front_End.createSplashScreen();
+		//WAIT 3 SECS
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		//START PROGRAM
 		Front_End.createWindow();
 		
 	}
