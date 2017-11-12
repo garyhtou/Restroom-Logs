@@ -1,0 +1,6 @@
+Restroom Logs Email Settings - DO NOT TOUCH THIS FILE
+----------
+mailFromAdress = something@gmail.com
+messageTemplate = <html><center<h1>Restroom Log PDF</h1><hr><p><br>Attached is and PDF and text file containing the logs</p><br><br><br><p>Developed by Gary Tou and Michael Schwamborn</p></html>
+
+^ TODO: find how to attach file with java

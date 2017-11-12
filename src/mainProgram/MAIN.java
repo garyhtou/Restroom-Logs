@@ -4,13 +4,18 @@ public class MAIN {
 	//DO THREADS IN HERE
 	
 	public static void main(String[] args) {
-		if(/*program has never started up before[maybe store this info in a .txt file]*/false){
+		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
+		boolean ranBefore = true; /*GRAB INFO FROM FILE*/
+		
+		if(ranBefore){
 			initStartUp();
 		}
+		//START UP AS NORMAL
 		else {
 			startUp();
 		}
 	}
+	
 	public static void startUp() {
 		Front_End.createSplashScreen(); //just do display, nothing happens in background
 		Front_End.createWindow();

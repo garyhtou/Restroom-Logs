@@ -1,20 +1,75 @@
 package mainProgram;
 
-import com.itextpdf.text.*;
 
+import java.io.*;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import org.apache.commons.io.*;
+import java.util.Scanner;
+
+import org.apache.commons.io.*; //used to copy PDF
 
 //http://www.java2s.com/Code/Jar/i/Downloaditext502jar.htm
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class Back_End {
+import interfaces.iRL; //import interface
 
+public class Back_End {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void initStartUp() { //create blank PDF and Logs.txt for when the program initially starts up
+		//Create PDF
+		Document document = new Document();
+		try {
+			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
+			document.open();
+			document.close();
+			writer.close();
+		}
+		catch(DocumentException e) {
+			e.printStackTrace();
+		}
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		//Create text file
+		try {
+			File file = new File("data\\\\Logs.txt");
+			file.createNewFile();
+		}
+		catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static boolean createViewPDF;
 
 	public static void main(String[] args) {
@@ -92,21 +147,61 @@ public class Back_End {
 		return error;
 	}
 	
-	public static void initStartUp() { //create blank PDF and Logs.txt for when the program initially starts up
-		Document document = new Document();
-		try {
-			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
-			document.open();
-			document.close();
-			writer.close();
-		}
-		catch(DocumentException e) {
-			e.printStackTrace();
-		}
-		catch(FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	public static void updateLogs(String firstName, String lastName, int time, String action /*action = in or out*/) {
+		iRL.checkTime(firstName, lastName, time, action);
+		String data = "";
 		
+		
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		try {
+
+			
+
+			File file = new File("data\\\\Logs.txt");
+			
+			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
+			/*// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}*/
+
+			// true = append file
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+
+			bw.write(data);
+
+			System.out.println("Done");
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (bw != null)
+					bw.close();
+
+				if (fw != null)
+					fw.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+		}
+			
+			
+			
+			
 	}
+	
+
+		
 
 }
