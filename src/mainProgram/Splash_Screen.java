@@ -9,6 +9,11 @@ public class Splash_Screen extends JFrame {
 	    	//do not call method here. only use for testing
 	    	createWindow();
 	    }
+	   public static void init() {
+		   createWindow();
+	   }
+	   
+	   
 	   public static void createWindow() {
 	    	EventQueue.invokeLater(() -> {
 	        	Splash_Screen window = new Splash_Screen();
@@ -42,6 +47,8 @@ public class Splash_Screen extends JFrame {
 	        //WINDOW SETTINGS
 	        setTitle("Restroom Logs Splash");
 	        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+	        //setSize(400, 300);
+	        pack();
 	        //setUndecorated(true);
 	        setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
 	        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
