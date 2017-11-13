@@ -1,5 +1,4 @@
 
-/*
 INFOMATION:
 
 This is a project by Gary and Michael.
@@ -7,8 +6,6 @@ STATUS: Barely Started
 
 
 
-public class Restroom_Logs_Notes {
-	/*
 	--== IDEA ==--
 			Use a Raspberry Pi with Raspbian to program a Bathroom log using barcodes.
 			
@@ -77,9 +74,4 @@ public class Restroom_Logs_Notes {
 	
 	
 	
-	
-	
-	 */
-	
-	//test
 	
