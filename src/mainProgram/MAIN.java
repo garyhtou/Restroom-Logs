@@ -26,8 +26,9 @@ public class MAIN {
 			e.printStackTrace();
 		}
 		//START PROGRAM
-		Front_End.createWindow();
-		
+		if(/*SPLASH IS STILL OPEN*/true) {
+			Front_End.createWindow();
+		}
 	}
 	
 	

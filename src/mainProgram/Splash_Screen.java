@@ -24,6 +24,8 @@ public class Splash_Screen extends JFrame {
 	        initUI();
 	    }
 	    private void initUI() { //window settings
+	    	JFrame window = new JFrame();
+	    	
 	    	JPanel panel = new JPanel();
 	    	
 	    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
@@ -33,25 +35,24 @@ public class Splash_Screen extends JFrame {
 	        setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
 
 	    	
-	    	//BUTTON
-	    	JButton quitButton = new JButton("Quit"); //creates button named "Quit"
-	    	quitButton.setToolTipText("Click this button to quit the program"); //Adds a ToolTipText, this is like hovering of a link, it gives you info
-	    	
-	        quitButton.addActionListener((ActionEvent quitButtonEvent) -> { //event listener, if clicked, system.exit(0);
-	            System.exit(0);
-	        });
-
-	        panel.add(quitButton); //The child components (buttons) need to be placed into containers. 
+	        JLabel label = new JLabel("Hello World");
+	        window.getContentPane().add(label);
+	        
+	        //Title
+	        JTextArea Title = new JTextArea("Restroom Logs");
+	        panel.add(Title);
+	        
+	        window.getContentPane().add(panel);
 	        
 	        
 	        //WINDOW SETTINGS
-	        setTitle("Restroom Logs Splash");
-	        //setExtendedState(JFrame.MAXIMIZED_BOTH);
-	        //setSize(400, 300);
-	        pack();
-	        //setUndecorated(true);
-	        setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
-	        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+	        window.setTitle("Restroom Logs Splash");
+	        //window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	        //window.setSize(400, 300);
+	        window.pack();
+	        //window.setUndecorated(true);
+	        window.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
+	        //window.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	    }
 
 }
