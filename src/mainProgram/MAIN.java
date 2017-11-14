@@ -19,16 +19,6 @@ public class MAIN {
 	public static void startUp() {
 		//SPLASH
 		Front_End.createSplashScreen();
-		//WAIT 3 SECS
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		//START PROGRAM
-		if(/*SPLASH IS STILL OPEN*/true) {
-			Front_End.createWindow();
-		}
 	}
 	
 	

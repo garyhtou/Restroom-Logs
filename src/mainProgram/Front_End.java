@@ -53,9 +53,11 @@ public class Front_End extends JFrame {
         //WINDOW SETTINGS
         setTitle("Restroom Logs");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setResizable(false);
         setUndecorated(true);
         setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setAlwaysOnTop(true);
     }
     
     

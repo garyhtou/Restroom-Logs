@@ -3,6 +3,7 @@ package mainProgram;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 public class Splash_Screen extends JFrame {
 	   public static void main(String[] args) {
@@ -24,36 +25,60 @@ public class Splash_Screen extends JFrame {
 	        initUI();
 	    }
 	    private void initUI() { //window settings
-	    	JFrame window = new JFrame();
+	    	//Look and Feel
+	    	try {
+		        // Set cross-platform Java L&F (also called "Metal")
+		        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			    } 
+			    catch (UnsupportedLookAndFeelException e) {
+			    	System.out.println("Look and Feel Error");
+			    }
+			    catch (ClassNotFoundException e) {
+			    	System.out.println("Look and Feel Error");
+			    }
+			    catch (InstantiationException e) {
+			    	System.out.println("Look and Feel Error");
+			    }
+			    catch (IllegalAccessException e) {
+			    	System.out.println("Look and Feel Error");
+			    }
 	    	
+	    	//Frame and Panel
+	    	JFrame window = new JFrame("Restroom Logs Splash");
 	    	JPanel panel = new JPanel();
+	    	panel.setLayout(new BorderLayout());
+	    	window.add(panel);
 	    	
 	    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
-	    	
 	    	ImageIcon webIcon = new ImageIcon("images\\ProgramIcon.png"); //create and icon with the image, "web.png" should be in the root of the project
-
 	        setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
 
-	    	
-	        JLabel label = new JLabel("Hello World");
-	        window.getContentPane().add(label);
 	        
 	        //Title
 	        JTextArea Title = new JTextArea("Restroom Logs");
-	        panel.add(Title);
-	        
-	        //window.getContentPane().add(panel);
-	        window.add(panel);
-	        
+	        Title.setLocation(200, 150);
+	        panel.add(Title, BorderLayout.CENTER);
+
+	        System.out.println(Title.getFont());
 	        
 	        //WINDOW SETTINGS
 	        window.setTitle("Restroom Logs Splash");
-	        //window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	        //window.setSize(400, 300);
-	        window.pack();
+	        window.setSize(400, 300);
+	        window.setResizable(false);
+	        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	        //window.pack();
 	        //window.setUndecorated(true);
-	        window.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
-	        //window.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+	        window.setVisible(true);
+	        
+	        //wait 3 secs and createWindow
+	        try {
+				Thread.sleep(3000);
+				Front_End.createWindow();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	        finally {
+	        	window.dispose();
+	        }
 	    }
-
 }
