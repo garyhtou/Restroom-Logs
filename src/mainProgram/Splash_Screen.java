@@ -42,7 +42,8 @@ public class Splash_Screen extends JFrame {
 	        JTextArea Title = new JTextArea("Restroom Logs");
 	        panel.add(Title);
 	        
-	        window.getContentPane().add(panel);
+	        //window.getContentPane().add(panel);
+	        window.add(panel);
 	        
 	        
 	        //WINDOW SETTINGS
