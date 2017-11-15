@@ -4,5 +4,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="libraries/itext-5.0.2.jar"/>
 	<classpathentry kind="lib" path="libraries/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="libraries/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libraries/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libraries/hsqldb.jar"/>
+	<classpathentry kind="lib" path="libraries/jackcess-2.1.6.jar"/>
+	<classpathentry kind="lib" path="libraries/ucanaccess-4.0.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
