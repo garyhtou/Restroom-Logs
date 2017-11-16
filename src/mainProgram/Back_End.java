@@ -8,7 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.*;
 import java.util.Scanner;
+import net.ucanaccess.*;
 
 import org.apache.commons.io.*; //used to copy PDF
 
@@ -76,9 +78,11 @@ public class Back_End {
 	
 	public static boolean createViewPDF;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		//only call a method here for testing, making to remove it after testing
-		updatePDF();
+//		updatePDF();
+		getDBData();
+		
 	}
 	
 	public static void updatePDF(/*String firstName, String lastName, int timeOut, int timeIn*/) { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
@@ -204,7 +208,38 @@ public class Back_End {
 			
 	}
 	
+	public static void getDBData() throws SQLException, ClassNotFoundException {
+		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
+			Connection conn=DriverManager.getConnection(
+		        "jdbc:ucanaccess:\\data\\TestDB.accdb");
+			 System.out.println("1");
+
+		Statement s;
+		 System.out.println("1");
+
+			s = conn.createStatement();
+			 System.out.println("1");
+
+		ResultSet rs;
+		 System.out.println("1");
+
+			rs = s.executeQuery("SELECT [FirstName] FROM [Test]");
+			 System.out.println("1");
+
+			 System.out.println(rs.getString(1));
+			 System.out.println("1");
+
+		while (rs.next()) {
+		    System.out.println(rs.getString(1));
+			 System.out.println("1");
+
+		}
 		
+		    
+		
+	
+	}
 
 }
+
