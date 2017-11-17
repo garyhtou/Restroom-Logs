@@ -89,7 +89,7 @@ public class Front_End extends JFrame {
 
 
 	public static void createSplashScreenInitStartUp() {
-		// TODO Auto-generated method stub
+		// TODO don't use this method, pass a boolean when calling createSplashScreen;
 		
 	}
 
