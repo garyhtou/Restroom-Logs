@@ -44,10 +44,11 @@ public class Splash_Screen extends JFrame {
 			    }
 	    	
 	    	//Frame and Panel
-	    	JFrame window = new JFrame("Restroom Logs Splash");
+	    	//JFrame window = new JFrame("Restroom Logs Splash");
 	    	JPanel panel = new JPanel();
 	    	panel.setLayout(new BorderLayout());
-	    	window.add(panel);
+	    	panel.setVisible(true);
+	    	add(panel);
 	    	
 	    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
 	    	ImageIcon webIcon = new ImageIcon("images\\ProgramIcon.png"); //create and icon with the image, "web.png" should be in the root of the project
@@ -57,28 +58,31 @@ public class Splash_Screen extends JFrame {
 	        //Title
 	        JTextArea Title = new JTextArea("Restroom Logs");
 	        Title.setLocation(200, 150);
+	        Title.setVisible(true);
 	        panel.add(Title, BorderLayout.CENTER);
 
 	        System.out.println(Title.getFont());
 	        
 	        //WINDOW SETTINGS
-	        window.setTitle("Restroom Logs Splash");
-	        window.setSize(400, 300);
-	        window.setResizable(false);
-	        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	        setTitle("Restroom Logs Splash");
+	        setSize(400, 300);
+	        setResizable(false);
+	        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        //window.pack();
 	        //window.setUndecorated(true);
-	        window.setVisible(true);
+	        setVisible(true);
 	        
 	        //wait 3 secs and createWindow
 	        try {
 				Thread.sleep(3000);
-				Front_End.createWindow();
+				//Front_End.createWindow();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 	        finally {
-	        	window.dispose();
+	        	//window.setVisible(false);
+	        	//window.dispose();
+	        	
 	        }
 	    }
 }
