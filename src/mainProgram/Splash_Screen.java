@@ -6,6 +6,7 @@ import javax.swing.*;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 public class Splash_Screen extends JFrame {
+	//TODO: MAKE SPLASH SCRREN OPEN IN CENTER TO SCREEN, NOT TOP LEFT
 	   public static void main(String[] args) {
 	    	//do not call method here. only use for testing
 	    	createWindow();
