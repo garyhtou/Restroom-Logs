@@ -73,7 +73,12 @@ STATUS: Barely Started
 	https://sourceforge.net/p/ucanaccess/discussion/help/thread/e32c2e04/
 	
 	
-	
+	Manifest:
+		Manifest-Version: 1.0
+		SplashScreen-Image: assets/RestroomLogsSplashscreen.png
+		Main-Class: mainProgram.MAIN
+		X-COMMENT: must leave a new line at the very end
+				
 	
 	
 	

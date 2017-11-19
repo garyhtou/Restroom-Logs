@@ -1,3 +1,8 @@
+/**
+ * @author Gary Tou
+ * @author Michael Schwamborn
+ */
+
 package mainProgram;
 
 public class MAIN {
@@ -13,7 +18,11 @@ public class MAIN {
 	}
 	
 	public static void startUp() {
-		Front_End.createSplashScreen(ranBefore);
+			//https://www.java-forums.org/awt-swing/29971-splashscreen-getsplashscreen-returned-null.html
+		//Front_End.createSplashScreen(ranBefore);
+		//String args[] = {"-splash:assets/RestroomLogsSplashscreen.png"};
+		SplashScreenManager.main(null);
+		//Front_End.createWindow();
 	}
 	
 

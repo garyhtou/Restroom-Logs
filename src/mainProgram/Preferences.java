@@ -47,6 +47,7 @@ public class Preferences {
     		//CONTENT
     		preferencesGeneralTitle.setText("General");
     		panel1.add(preferencesGeneralTitle);
+    		//TODO: add time zone change for logs (Back_End.updateLogs)
 
 		JComponent panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(5, 1));
@@ -74,7 +75,7 @@ public class Preferences {
            	
     		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
     		if(choice == JOptionPane.YES_OPTION) {
-    			Back_End.initStartUp();
+    			Back_End.createPDF();
     			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
     		}
         });

@@ -57,7 +57,7 @@ public class Front_End extends JFrame {
         setUndecorated(true);
         setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true); //DO NOT USE THIS, THIS WILL PREVENT DIALOG FROM TOPPING THIS
     }
     
     

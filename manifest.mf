@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+SplashScreen-Image: assets/RestroomLogsSplashscreen.png
+Main-Class: mainProject.MAIN
+X-COMMENT: must leave a new line at the very end
