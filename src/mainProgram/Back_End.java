@@ -227,27 +227,26 @@ public class Back_End {
 		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
 			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess:\\data\\TestDB.accdb");
-			 System.out.println("1");
+		        "jdbc:ucanaccess://data/TestDB.accdb");
 
 		Statement s;
-		 System.out.println("1");
+		 
 
 			s = conn.createStatement();
-			 System.out.println("1");
 
 		ResultSet rs;
-		 System.out.println("1");
 
-			rs = s.executeQuery("SELECT [FirstName] FROM [Test]");
-			 System.out.println("1");
-
+			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [Test]");
+			rs.next();
 			 System.out.println(rs.getString(1));
-			 System.out.println("1");
+			 System.out.println(rs.getString(2));
+			    System.out.println(rs.getString(3));
 
 		while (rs.next()) {
 		    System.out.println(rs.getString(1));
-			 System.out.println("1");
+		    System.out.println(rs.getString(2));
+		    System.out.println(rs.getString(3));
+		    
 
 		}
 
