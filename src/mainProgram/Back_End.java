@@ -57,7 +57,7 @@ public class Back_End {
 		
 		//Create text file
 		try {
-			File file = new File("data\\\\Logs.txt");
+			File file = new File("data\\Logs.txt");
 			file.createNewFile();
 		}
 		catch (IOException e) {

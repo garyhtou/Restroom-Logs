@@ -14,7 +14,7 @@ public class Preferences {
 		preferences();
 	}
 	public static void preferences() {
-		ImageIcon filePreferencesIcon = new ImageIcon("images/preferences.png");
+		ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -26,11 +26,11 @@ public class Preferences {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		//tabbedPane.setPreferredSize(new Dimension(displayWidth, displayHeight));
 		
-		ImageIcon icon1 = new ImageIcon("images/noIcon.png");
-		ImageIcon icon2 = new ImageIcon("images/noIcon.png");
-		ImageIcon icon3 = new ImageIcon("images/noIcon.png");
-		ImageIcon icon4 = new ImageIcon("images/noIcon.png");
-		ImageIcon icon5 = new ImageIcon("images/noIcon.png");
+		ImageIcon icon1 = new ImageIcon("assets/images/noIcon.png");
+		ImageIcon icon2 = new ImageIcon("assets/images/noIcon.png");
+		ImageIcon icon3 = new ImageIcon("assets/images/noIcon.png");
+		ImageIcon icon4 = new ImageIcon("assets/images/noIcon.png");
+		ImageIcon icon5 = new ImageIcon("assets/images/noIcon.png");
 		
 		Font f = tabbedPane.getFont();
 		Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);

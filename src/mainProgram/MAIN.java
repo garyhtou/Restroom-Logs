@@ -3,9 +3,11 @@ package mainProgram;
 public class MAIN {
 	//DO THREADS IN HERE
 	
+	static boolean ranBefore = true;
+	
 	public static void main(String[] args) {
 		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
-		boolean ranBefore = true; /*GRAB INFO FROM FILE*/
+		ranBefore = true; /*GRAB INFO FROM FILE*/
 		
 		if(!ranBefore){
 			initStartUp();
@@ -17,15 +19,14 @@ public class MAIN {
 	}
 	
 	public static void startUp() {
-		//SPLASH
-		Front_End.createSplashScreen();
+		Front_End.createSplashScreen(ranBefore);
 	}
 	
 	
 	
 	
 	public static void initStartUp() { //while on splashscreen, do init start up
-		Front_End.createSplashScreenInitStartUp();
+		Front_End.createSplashScreen(ranBefore);
 		Back_End.initStartUp();
 		Front_End.createWindow();
 		

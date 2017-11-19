@@ -34,7 +34,7 @@ public class Front_End extends JFrame {
     	
     	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
     	
-    	ImageIcon webIcon = new ImageIcon("images\\ProgramIcon.png"); //create and icon with the image, "web.png" should be in the root of the project
+    	ImageIcon webIcon = new ImageIcon("assets\\images\\RestroomLogsLOGO.png"); //create and icon with the image, "web.png" should be in the root of the project
 
         setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
 
@@ -56,7 +56,7 @@ public class Front_End extends JFrame {
         setResizable(false);
         setUndecorated(true);
         setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
     }
     
@@ -84,19 +84,8 @@ public class Front_End extends JFrame {
         
     }
 
-
-
-
-
-	public static void createSplashScreenInitStartUp() {
-		// TODO don't use this method, pass a boolean when calling createSplashScreen;
-		
-	}
-
-
-
-	public static void createSplashScreen() {
-		Splash_Screen.init();
+	public static void createSplashScreen(boolean ranBefore) {
+		SplashScreenManager.init(ranBefore);
 	}
 	
 	
