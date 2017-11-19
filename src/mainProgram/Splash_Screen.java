@@ -52,7 +52,7 @@ public class Splash_Screen extends JFrame {
 	    	add(panel);
 	    	
 	    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
-	    	ImageIcon webIcon = new ImageIcon("images\\ProgramIcon.png"); //create and icon with the image, "web.png" should be in the root of the project
+	    	ImageIcon webIcon = new ImageIcon("assets\\images\\RestromLogsLOGO.png"); //create and icon with the image, "web.png" should be in the root of the project
 	        setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
 
 	        

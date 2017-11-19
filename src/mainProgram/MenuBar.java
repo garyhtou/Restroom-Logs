@@ -30,10 +30,10 @@ public class MenuBar {
         JMenuBar menubar = new JMenuBar();
         
         //ICONS
-        ImageIcon fileExitIcon = new ImageIcon("images/exit.png");
-        ImageIcon dataViewIcon = new ImageIcon("images/view.png");
-        ImageIcon dataLogsIcon = new ImageIcon("images/logs.png");
-        ImageIcon filePreferencesIcon = new ImageIcon("images/preferences.png");
+        ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
+        ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
+        ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
+        ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
         
         //MENU
         JMenu file = new JMenu("File"); //New dropdown
