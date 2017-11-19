@@ -6,7 +6,6 @@ package mainProgram;
  */
 
 import java.awt.*;
-
 import org.apache.commons.lang.time.StopWatch;
 
 public class SplashScreenManager {
