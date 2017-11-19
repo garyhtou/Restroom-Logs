@@ -117,7 +117,7 @@ public class Back_End {
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
 
 //UDPATE PDF, call createViewPDF for viewpdf
-	public static void updatePDF(/*String firstName, String lastName, int timeOut, int timeIn*/) { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
+	public static void updatePDF(/*String firstName, String lastName, int timeOut, int timeIn*/) throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
 		Document document = new Document();
 		
 		try {
@@ -139,19 +139,50 @@ public class Back_End {
 			table.setSpacingBefore(1f);
 			table.setSpacingAfter(11f);
 			//width for each column
-			float[] columnWidth= {3f,0.5f,2f};
+			float[] columnWidth= {0.5f,2f,2f};
 			table.setWidths(columnWidth);
 			//sets variables for each cell
-			PdfPCell c1=new PdfPCell(new Paragraph("Column1"));
-			PdfPCell c2=new PdfPCell(new Paragraph("Column2"));
-			PdfPCell c3=new PdfPCell(new Paragraph("Column3"));
+			PdfPCell c1=new PdfPCell(new Paragraph("Student ID"));
+			c1.setBackgroundColor(BaseColor.GRAY);
+			PdfPCell c2=new PdfPCell(new Paragraph("First Name"));
+			c2.setBackgroundColor(BaseColor.GRAY);
+			PdfPCell c3=new PdfPCell(new Paragraph("Last Name"));
+			c3.setBackgroundColor(BaseColor.GRAY);
 			table.addCell(c1);
 			table.addCell(c2);
 			table.addCell(c3);
 			//every 3 cells is a new row
-			table.addCell("1");
-			table.addCell("2");
-			table.addCell("3");
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection(
+		        "jdbc:ucanaccess://data/TestDB.accdb");
+
+		Statement s;
+		 
+
+			s = conn.createStatement();
+
+		ResultSet rs;
+
+			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [Test]");
+			rs.next();
+			table.addCell(rs.getString(1));
+			table.addCell(rs.getString(2));
+			table.addCell(rs.getString(3));
+			while (rs.next()) {
+				table.addCell(rs.getString(1));
+				table.addCell(rs.getString(2));
+				table.addCell(rs.getString(3));
+			    
+			    
+	
+			}
+			
+			
+			for(int i=0;i<3;i++) {
+			
+			}
+			
 			//adds the table on to the document
 			document.add(table);
 
@@ -222,8 +253,9 @@ public class Back_End {
 			
 			
 	}
-//GET DATA BASE INFO
-	public static void getDBData() throws SQLException, ClassNotFoundException {
+//GET DATA BASE INFO *NOT IN USE*
+	public static String getDBData(int column, boolean repeat) throws SQLException, ClassNotFoundException {
+		String data = "";
 		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
 			Connection conn=DriverManager.getConnection(
@@ -238,25 +270,31 @@ public class Back_End {
 
 			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [Test]");
 			rs.next();
-			 System.out.println(rs.getString(1));
-			 System.out.println(rs.getString(2));
+			if(!repeat &&column>1) {
+				
+				 data = rs.getString(column).substring(5,rs.getString(column).indexOf("/")-1);
+				
+			}
+			if(column==1)
+				data = rs.getString(column);
+			
+		if(repeat) {
+			while (rs.next()) {
+			    data=rs.getString(1);
+			    System.out.println(rs.getString(2));
 			    System.out.println(rs.getString(3));
-
-		while (rs.next()) {
-		    System.out.println(rs.getString(1));
-		    System.out.println(rs.getString(2));
-		    System.out.println(rs.getString(3));
-		    
-
+			    
+	
+			}
 		}
-
+		return data;
 	}
 	
 	
 //MAIN METHOD
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		//only call a method here for testing, making to remove it after testing
-		//updatePDF();
+		updatePDF();
 		//getDBData();
 		//createLogs();
 		//updateLogs("call Back_End.updateLogs(\"YOUR MESSAGE\") to add to this log");
