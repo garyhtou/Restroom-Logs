@@ -18,6 +18,9 @@ public class Front_End_Content {
         
         
         Container pane = frame.getContentPane();
+        Color LAVENDER_GRAY = new Color(0xC5C6C7);
+        pane.setBackground(LAVENDER_GRAY);
+        //pane.setForeground(LAVENDER_GRAY);
 
         JButton button;
 	    pane.setLayout(new GridBagLayout());
