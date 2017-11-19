@@ -25,6 +25,7 @@ public class SplashScreenManager {
 		else {
 			ranBefore = false;
 		}
+		runSplash();
 	}
 
     
