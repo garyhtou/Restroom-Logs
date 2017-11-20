@@ -8,18 +8,21 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.Timer;
+import javax.swing.border.EtchedBorder;
+
+import interfaces.RL;
  
-public class Front_End_Content {
+public class Front_End_Content implements RL{
     public static void content() {
     	JFrame frame = new JFrame("GridBagLayoutDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
-        
+        //LAVENDER_GRAY
         
         Container pane = frame.getContentPane();
-        Color LAVENDER_GRAY = new Color(0xC5C6C7);
-        pane.setBackground(LAVENDER_GRAY);
+        //Color LAVENDER_GRAY = new Color(0xC5C6C7);
+        pane.setBackground(RL.color("ELECTRIC_BLUE"));
         //pane.setForeground(LAVENDER_GRAY);
 
         JButton button;
@@ -55,6 +58,7 @@ public class Front_End_Content {
 	    c.weightx = 0.5;
 	    c.gridx = 1;
 	    c.gridy = 0;
+	    stats.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 	    pane.add(stats, c);
 	 
 	    button = new JButton("Button 3");

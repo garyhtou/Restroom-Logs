@@ -4,7 +4,7 @@ echo Press a key to start the program. This will be removed in the actual progra
 pause
 echo Program has started
 @echo on
-java -splash:assets/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar
+java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar
 @echo off
 echo Program has been closed
 pause
