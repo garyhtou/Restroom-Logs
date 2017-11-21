@@ -11,7 +11,7 @@ import org.apache.commons.lang.time.StopWatch;
 public class SplashScreenManager {
 	public static void main(String[] args) {
 		runSplash();
-		SplashScreen.getSplashScreen();
+		//SplashScreen.getSplashScreen();
 	}
 	
 	static boolean ranBefore = true;
@@ -29,7 +29,7 @@ public class SplashScreenManager {
 
     
     public SplashScreenManager() {}
-    static void renderSplashFrame(Graphics2D graphic, String message) {
+    private static void renderSplashFrame(Graphics2D graphic, String message) {
     	Color LAVENDER_GRAY = new Color(0xC5C6C7); //custom color
     	
     	graphic.setComposite(AlphaComposite.Clear); //Comment out this line to see where it will paint over

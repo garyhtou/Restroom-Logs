@@ -65,6 +65,28 @@ public class MenuBar {
 					    "ViewLogPDF File Error", //title
 					    JOptionPane.ERROR_MESSAGE);
         	}*/
+        	Back_End.createViewPDF();
+        	//TODO: Use IcePDF to render the ViewPDF
+//        	try {
+        		//JPanle
+        		JPanel renderedViewPDF = new JPanel();
+        		
+        		//RENDER
+        		
+        		
+        		
+        		//added to a JDialog
+        		JOptionPane.showMessageDialog(dataView,
+					    renderedViewPDF, //message
+					    "Logs PDF", //title
+					    JOptionPane.INFORMATION_MESSAGE);
+//        	}
+//        	catch (//EXEPCTIONS){
+        	JOptionPane.showMessageDialog(dataView,
+				"Can not create ViewLogPDF for viewing.", //message
+				"ViewLogPDF File Error", //title
+				JOptionPane.ERROR_MESSAGE);
+//        	}
         	
         });
         //log .txt
