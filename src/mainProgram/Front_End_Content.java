@@ -79,7 +79,7 @@ public class Front_End_Content implements RL{
     	//-----------
     	JPanel scan = new JPanel();
     	scan.setOpaque(true);
-    	scan.setBackground(RL.color(4));
+    	scan.setBackground(RL.color(6));
     	//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
@@ -104,12 +104,13 @@ public class Front_End_Content implements RL{
     	message.add(messageTitle, BorderLayout.PAGE_START);
     	
     	JEditorPane messageContent = new JEditorPane();
+    	String url = "http://coding2kids.com";
     	try {
-    		messageContent.setPage("http://coding2kids.com/"); //HAS NO CSS
+    		messageContent.setPage(url); //HAS NO CSS
     	}
     	catch (IOException e) {
     		messageContent.setContentType("text/html");
-    	 	messageContent.setText("<html>Could not load message from http://coding2kids.com/>");
+    	 	messageContent.setText("<html>Could not load message from"+url);
     	}
     	messageContent.setEditable(false);
     	message.add(messageContent, BorderLayout.PAGE_END);
