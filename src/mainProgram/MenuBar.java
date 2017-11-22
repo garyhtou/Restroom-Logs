@@ -46,7 +46,7 @@ public class MenuBar {
         JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
         fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
         fileExit.setToolTipText("Exit application");
-        fileExit.addActionListener((ActionEvent existButtonEvent) -> { //When clicked, exit
+        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
             System.exit(0);
         });
         //view entries

@@ -13,6 +13,7 @@ import javax.swing.*;
  * • color(int);<br>
  * • colorHex(String);<br>
  * • colorHex(int);
+ * • JSplitPaneDividerLocation(JFrame frame, JSplitPane splitPane, double percentage)<br>
  * 
  * @author Gary
  */
@@ -117,8 +118,22 @@ public interface RL {
 		}
 	}
 	
-}
+	/**
+	 * An easy way to resize a JSplitPane by percentage
+	 * @param frame THe JFrame (the JFrame must be realized. In other words, visible)
+	 * @param splitPane The JSplitPane that you would like to resize
+	 * @param percentage percentage location of divider. Must be a double between 0 and 1
+	 * 
+	 * @see .setDividerLocation(double);
+	 * 
+	 * @author Gary
+	 */
+	public static void JSplitPaneDividerLocation(JFrame frame, JSplitPane splitPane, double percentage) {
+		frame.setVisible(true); //must be a "realized" frame (frame must be visible and packed)
+		splitPane.setDividerLocation(percentage);
+	}
 
+}//RL INTERFACE ENDING BRACE
 
 /**
  * Color Exceptions for when an invalid color name or int is entered

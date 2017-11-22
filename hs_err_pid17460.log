@@ -1,0 +1,6 @@
+JavaThread "AWT-Windows" daemon [_thread_in_native, id=17524, stack(0x000000001bec0000,0x000000001bfc0000)]
+  0x000000001b6bb800 JavaThread "AWT-Shutdown" [_thread_blocked, id=2156, stack(0x000000001bdc0000,0x000000001bec0000)]
+  0x000000001b6b7000 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=6392, stack(0x000000001bcc0000,0x000000001bdc0000)]
+  0x000000001b322800 JavaThread "Service Thread" daemon [_thread_blocked, id=9704, stack(0x000000001b6f0000,0x000000001b7f0000)]
+  0x00000000199a9000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=18156]
+=>  daemon [

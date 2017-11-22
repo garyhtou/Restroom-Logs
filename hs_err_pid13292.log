@@ -1,0 +1,69 @@
+J 1874 C1 java.awt.EventQueue$3.run()Ljava/lang/Void; (60 bytes) @ 0x0000000004a633cc [0x0000000004a631c0+0x20c]
+J 1873 C1 java.awt.EventQueue$3.run()Ljava/lang/Object; (5 bytes) @ 0x0000000004a727cc [0x0000000004a72740+0x8c]
+v  ~StubRoutines::call_stub
+J 1238  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x0000000004c8b0a6 [0x0000000004c8b040+0x66]
+
+
+j  java.awt.EventDispatchThread.pumpEventsForFilter(ILjava/awt/Conditional;Ljava/awt/EventFilter;)V+35
++11
++4
++3
++9
+
+
+
+    []0x00007ffe7e500000 - 0x00007ffe7e649000 	C:\WINDOWS\System32\ole32.dll
+0x00007ffe63ac0000 - 0x00007ffe63bde000 	C:\WINDOWS\system32\opengl32.dll
+0x00007ffe63f50000 - 0x00007ffe63f7c000 	C:\WINDOWS\SYSTEM32\GLU32.dll
+0x000000006ff00000 - 0x000000006ff47000 	C:\Program Files\Java\jre1.8.0_121\bin\fontmanager.dll
+0x0000000071310000 - 0x000000007132a000 	C:\Program Files\Java\jre1.8.0_121\bin\net.dll
+0x00007ffe7c890000 - 0x00007ffe7c8f6000 	C:\WINDOWS\system32\mswsock.dll
+0x00000000712f0000 - 0x0000000071301000 	C:\Program Files\Java\jre1.8.0_121\bin\nio.dll
+0x000000006feb0000 - 0x000000006fef2000 	C:\Program Files\Java\jre1.8.0_121\bin\t2k.dll
+0x00007ffe7c660000 - 0x00007ffe7c716000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x00007ffe7e2b0000 - 0x00007ffe7e2b8000 	C:\WINDOWS\System32\NSI.dll
+0x00007ffe7c620000 - 0x00007ffe7c659000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x0000000070a90000 - 0x0000000070ab6000 	C:\Program Files\Bonjour\mdnsNSP.dll
+0x00007ffe750e0000 - 0x00007ffe750ea000 	C:\Windows\System32\rasadhlp.dll
+0x00007ffe760c0000 - 0x00007ffe76130000 	C:\WINDOWS\System32\fwpuclnt.dll
+0x00007ffe7cb60000 - 0x00007ffe7cb85000 	C:\WINDOWS\SYSTEM32\bcrypt.dll
+0x00007ffe7e1e0000 - 0x00007ffe7e27e000 	C:\WINDOWS\System32\clbcatq.dll
+0x00007ffe78870000 - 0x00007ffe78a1b000 	C:\WINDOWS\SYSTEM32\WindowsCodecs.dll
+0x00007ffe6d490000 - 0x00007ffe6d4df000 	C:\WINDOWS\system32\dataexchange.dll
+0x00007ffe79da0000 - 0x00007ffe7a082000 	C:\WINDOWS\system32\d3d11.dll
+0x00007ffe7ab60000 - 0x00007ffe7aca2000 	C:\WINDOWS\system32\dcomp.dll
+0x00007ffe7be70000 - 0x00007ffe7bf1f000 	C:\WINDOWS\system32\dxgi.dll
+0x00007ffe7b600000 - 0x00007ffe7b77b000 	C:\WINDOWS\system32\twinapi.appcore.dll
+0x00007ffe7b570000 - 0x00007ffe7b590000 	C:\WINDOWS\system32\RMCLIENT.dll
+0x00007ffe737d0000 - 0x00007ffe73868000 	C:\WINDOWS\System32\TextInputFramework.dll
+0x00007ffe78440000 - 0x00007ffe7872e000 	C:\WINDOWS\System32\CoreUIComponents.dll
+0x00007ffe7aa80000 - 0x00007ffe7ab5d000 	C:\WINDOWS\System32\CoreMessaging.dll
+0x00007ffe7c140000 - 0x00007ffe7c171000 	C:\WINDOWS\SYSTEM32\ntmarta.dll
+0x00007ffe79410000 - 0x00007ffe79546000 	C:\WINDOWS\SYSTEM32\wintypes.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 
+java_command: mainProgram.Front_End_Content
+java_class_path (initial): C:\Users\Gary\git\SchoolProjects\bin;C:\Users\Gary\git\SchoolProjects\libraries\itext-5.0.2.jar;C:\Users\Gary\git\SchoolProjects\libraries\commons-io-2.6.jar;C:\Users\Gary\git\SchoolProjects\libraries\commons-lang-2.6.jar;C:\Users\Gary\git\SchoolProjects\libraries\commons-logging-1.1.1.jar;C:\Users\Gary\git\SchoolProjects\libraries\hsqldb.jar;C:\Users\Gary\git\SchoolProjects\libraries\jackcess-2.1.6.jar;C:\Users\Gary\git\SchoolProjects\libraries\ucanaccess-4.0.2.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+USERNAME=Gary
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Call to GetFileVersionInfo failed
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8296900k(1050540k free), swap 32095456k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.121-b13) for windows-amd64 JRE (1.8.0_121-b13), built on Dec 12 2016 18:21:36 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Nov 22 00:02:07 2017
+elapsed time: 2707 seconds (0d 0h 45m 7s)
+

@@ -22,11 +22,19 @@ public class Front_End_Content implements RL{
     	
     	//-----------
     	JPanel TitleBarAndScanAndMessage = new JPanel();
+    	TitleBarAndScanAndMessage.setLayout(new GridBagLayout());
     	MajorLeftAndRight.setLeftComponent(TitleBarAndScanAndMessage);
     	
     	//-----------
-    	JPanel TitleBar = new JPanel();
-    	TitleBarAndScanAndMessage.add(TitleBar, BorderLayout.PAGE_START);
+    	JPanel TitleBar = new JPanel(new BorderLayout());
+    	GridBagConstraints TitleBarConstraints = new GridBagConstraints();
+    	TitleBarConstraints.gridx = 1;
+    	TitleBarConstraints.gridy = 1;
+    	TitleBarConstraints.weightx = 1.0;
+    	TitleBarConstraints.weighty = 0.0;
+    	TitleBarConstraints.fill = GridBagConstraints.HORIZONTAL;
+    	TitleBarAndScanAndMessage.add(TitleBar, TitleBarConstraints);
+
     	//BANNER
     	JLabel banner = new JLabel();
 	    ImageIcon RestroomLogsLogoWideBanner = new ImageIcon("assets/logos/RestroomLogsWideBanner.png");
@@ -47,11 +55,12 @@ public class Front_End_Content implements RL{
 	    Image newimg = img.getScaledInstance( newWidth, newHeight,  java.awt.Image.SCALE_SMOOTH ) ;  
 	    ImageIcon RestroomLogsLogoWideBannerResized = new ImageIcon( newimg );
 	    banner.setIcon(RestroomLogsLogoWideBannerResized);
+	    //banner.setHorizontalAlignment(SwingConstants.LEFT);
 	    TitleBar.add(banner, BorderLayout.LINE_START);
 	    
 	    //TEST------
 	    banner.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-	    TitleBar.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+	    TitleBar.setBorder(BorderFactory.createLineBorder(RL.color(4)));
 	    
     	//STATS
     	String teacherName = "Mr. Sabo";
@@ -74,12 +83,18 @@ public class Front_End_Content implements RL{
     	
     	//-----------
     	JSplitPane ScanAndMessage = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    	TitleBarAndScanAndMessage.add(ScanAndMessage, BorderLayout.PAGE_END);
+    	GridBagConstraints ScanAndMessageConstraints = new GridBagConstraints();
+    	ScanAndMessageConstraints.gridx = 1;
+    	ScanAndMessageConstraints.gridy = 2;
+    	ScanAndMessageConstraints.weightx = 1.0;
+    	ScanAndMessageConstraints.weighty = 1.0;
+    	ScanAndMessageConstraints.fill = GridBagConstraints.BOTH;
+    	TitleBarAndScanAndMessage.add(ScanAndMessage, ScanAndMessageConstraints);
     	
     	//-----------
     	JPanel scan = new JPanel();
     	scan.setOpaque(true);
-    	scan.setBackground(RL.color(6));
+    	scan.setBackground(RL.color(4));
     	//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
@@ -104,7 +119,7 @@ public class Front_End_Content implements RL{
     	message.add(messageTitle, BorderLayout.PAGE_START);
     	
     	JEditorPane messageContent = new JEditorPane();
-    	String url = "http://coding2kids.com";
+    	String url = "http://rl.coding2kids.com";
     	try {
     		messageContent.setPage(url); //HAS NO CSS
     	}
@@ -114,9 +129,76 @@ public class Front_End_Content implements RL{
     	}
     	messageContent.setEditable(false);
     	message.add(messageContent, BorderLayout.PAGE_END);
-    	
-    	
     	ScanAndMessage.setBottomComponent(message);
+    	
+    	//----------------
+    	JPanel TableAndTableTitleAndTableClearButton = new JPanel(new GridBagLayout());
+    	MajorLeftAndRight.setRightComponent(TableAndTableTitleAndTableClearButton);
+    	
+    	//TITLE AND BUTTON
+    	JPanel TableTitleAndTableClearButton = new JPanel(new GridBagLayout());
+    	GridBagConstraints TableTitleAndTableClearButtonConstraints = new GridBagConstraints();
+    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL.color(4)));
+    	TableTitleAndTableClearButtonConstraints.gridx = 1;
+    	TableTitleAndTableClearButtonConstraints.gridy = 1;
+    	TableTitleAndTableClearButtonConstraints.weightx = 1.0;
+    	TableTitleAndTableClearButtonConstraints.weighty = 0.0;
+    	TableTitleAndTableClearButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+    	TableAndTableTitleAndTableClearButton.add(TableTitleAndTableClearButton, TableTitleAndTableClearButtonConstraints);
+    	
+    	//TABLE
+    	JScrollPane TableScroll = new JScrollPane();
+    	JTable Table = new JTable();
+    	//Table.IDKKKKK
+    	TableScroll.add(Table);
+    	GridBagConstraints TableScrollConstraints = new GridBagConstraints();
+    	TableScrollConstraints.gridx = 1;
+    	TableScrollConstraints.gridy = 2;
+    	TableScrollConstraints.weightx = 1.0;
+    	TableScrollConstraints.weighty = 1.0;
+    	TableScrollConstraints.fill = GridBagConstraints.BOTH;
+    	TableAndTableTitleAndTableClearButton.add(TableScroll, TableScrollConstraints);
+    	
+    	//TABLE TITLE
+    	JTextArea TableTitle = new JTextArea();
+    	TableTitle.setEditable(false);
+    	TableTitle.setText("Signed Out");
+    	Insets TableTitleMargin = new Insets(1, 1, 1, 1);
+    	TableTitle.setMargin(TableTitleMargin);
+    	GridBagConstraints TableTitleConstraints = new GridBagConstraints();
+    	TableTitleConstraints.gridx = 1;
+    	TableTitleConstraints.gridy = 1;
+    	TableTitleConstraints.weightx = 1.0;
+    	TableTitleConstraints.weighty = 0.0;
+    	//TableTitleConstraints.fill = GridBagConstraints.HORIZONTAL;
+    	TableTitleAndTableClearButton.add(TableTitle, TableTitleConstraints);
+    	
+    	//TABLE CLEAR BUTTON
+    	JButton TableClearButton = new JButton("Clear");
+    	Insets TableClearButtonMargin = new Insets(1, 1, 1, 1);
+    	TableClearButton.setMargin(TableClearButtonMargin);
+    	//LARGER PREFERRED SIZE
+    	Dimension TableClearButtonDimension = TableClearButton.getPreferredSize();
+    	double TableClearButtonDimensionHEIGHT = TableClearButtonDimension.getHeight() + 5;
+    	double TableClearButtonDimensionWIDTH = TableClearButtonDimension.getWidth() + 5;
+    	Dimension NEWTableClearButtonDimension = new Dimension((int)TableClearButtonDimensionWIDTH, (int)TableClearButtonDimensionHEIGHT);
+    	TableClearButton.setPreferredSize(NEWTableClearButtonDimension);
+    	//EVENT LISTENER
+    	TableClearButton.addActionListener((ActionEvent ClearButtonEvent) -> { //When clicked, exit
+            /*TODO:CLEAR!!!!*/
+        });
+    	GridBagConstraints TableClearButtonConstraints = new GridBagConstraints();
+    	TableClearButtonConstraints.gridx = 2;
+    	TableClearButtonConstraints.gridy = 1;
+    	TableClearButtonConstraints.weightx = 0.0;
+    	TableClearButtonConstraints.weighty = 0.0;
+    	//TableClearButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+    	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
+    	
+    	//MAJOR LEFT AND RIGHT DIVIDER LOCATION
+    	RL.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.75);
+    	
+    	
     	
     	return MajorLeftAndRight;
     }
@@ -127,9 +209,9 @@ public class Front_End_Content implements RL{
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	JFrame frame = new JFrame();
-                content(frame);
                 frame.setVisible(true);
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                content(frame);
                 
             }
         });
