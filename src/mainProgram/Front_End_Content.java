@@ -125,7 +125,7 @@ public class Front_End_Content implements RL{
     	}
     	catch (IOException e) {
     		messageContent.setContentType("text/html");
-    	 	messageContent.setText("<html>Could not load message from"+url);
+    	 	messageContent.setText("<html>Could not load message from "+url);
     	}
     	messageContent.setEditable(false);
     	message.add(messageContent, BorderLayout.PAGE_END);
