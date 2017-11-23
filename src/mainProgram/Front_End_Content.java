@@ -3,7 +3,11 @@ package mainProgram;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -83,6 +87,7 @@ public class Front_End_Content implements RL{
 	    stats.add(teacherName, BorderLayout.PAGE_START);
 	    
     	//TIME AND DATE
+	    //FIXME: PROBLEM, IT'S SLEEPING THE THREAD!!!
 	    Date date = new Date();
 	    SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
 	    String timeStamp = "Current Date: " + dateFormat.format(date);
@@ -134,8 +139,9 @@ public class Front_End_Content implements RL{
     	scanTitle.setFont(new Font("Serif", Font.BOLD, 12));
     	scan.add(scanTitle, BorderLayout.PAGE_START);
     	//SCAN FIELD
-    	JTextArea scanField = new JTextArea("");
+    	JTextField scanField = new JTextField("          ");
     	scanField.setEditable(true);
+    	scanField.setToolTipText("Scan your Student ID card");
     	scan.add(scanField, BorderLayout.CENTER);
     	ScanAndMessage.setTopComponent(scan);
     	
@@ -156,15 +162,33 @@ public class Front_End_Content implements RL{
     	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
-    	String url = "http://rl.coding2kids.com/logs/messages.html";
+
+		//messageContent.setPage(url); //HAS NO CSS
+    	String textFromUrl = "";
+    	URL url = null;
     	try {
-    		messageContent.setPage(url); //HAS NO CSS
+    		url = new URL("http://rl.coding2kids.com/logs/messages.html");
+    	} catch (MalformedURLException e1) {
+    		e1.printStackTrace();
     	}
-    	catch (IOException e) {
-    		messageContent.setContentType("text/html");
-    	 	messageContent.setText("<html>Could not load message from "+url);
-    	}
+	    try {
+	    	if(url !=null) {
+			    BufferedReader in = new BufferedReader(
+			    new InputStreamReader(
+			   	url.openStream()));
+				String inputLine;
+				while ((inputLine = in.readLine()) != null)
+			   		textFromUrl+=inputLine;
+				messageContent.setText(textFromUrl);
+			    in.close();
+	    	}
+	    }
+	    catch (IOException e) {
+	    	messageContent.setContentType("text/html");
+	     	messageContent.setText("<html>Could not load message from "+url);
+	    }
     	messageContent.setEditable(false);
+    	messageContent.setFont(new Font("Verdana", Font.PLAIN, teacherName.getFont().getSize()));
     	GridBagConstraints messageContentConstraints = new GridBagConstraints();
     	messageContentConstraints.gridx = 1;
     	messageContentConstraints.gridy = 2;
