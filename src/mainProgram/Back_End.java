@@ -230,6 +230,7 @@ public class Back_End {
 		catch (IOException e) {
 
 			e.printStackTrace();
+			
 
 		}
 		finally {
@@ -294,10 +295,10 @@ public class Back_End {
 //MAIN METHOD
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		//only call a method here for testing, making to remove it after testing
-		updatePDF();
+		//updatePDF();
 		//getDBData();
 		//createLogs();
-		//updateLogs("call Back_End.updateLogs(\"YOUR MESSAGE\") to add to this log");
+		updateLogs("hi");
 		
 		
 	}

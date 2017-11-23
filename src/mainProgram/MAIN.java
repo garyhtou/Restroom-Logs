@@ -22,8 +22,8 @@ public class MAIN {
 		//Front_End.createSplashScreen(ranBefore);
 		//String args[] = {"-splash:assets/RestroomLogsSplashscreen.png"};
 		//SplashScreenManager.main(null);
-		//SplashScreenManager.runSplash();
-		Front_End.createWindow();
+		SplashScreenManager.runSplash();
+		//Front_End.createWindow();
 	}
 	
 
