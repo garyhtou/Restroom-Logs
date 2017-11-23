@@ -15,6 +15,7 @@ import interfaces.RL;
  
 public class Front_End_Content implements RL{
     public static Object content(JFrame frame) {
+    	frame.setVisible(true);
     	Container pane = frame.getContentPane();
     	
     	JSplitPane MajorLeftAndRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -196,7 +197,7 @@ public class Front_End_Content implements RL{
     	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
     	
     	//MAJOR LEFT AND RIGHT DIVIDER LOCATION
-    	RL.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.75);
+    	RL.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
     	
     	
     	
@@ -209,7 +210,6 @@ public class Front_End_Content implements RL{
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	JFrame frame = new JFrame();
-                frame.setVisible(true);
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 content(frame);
                 

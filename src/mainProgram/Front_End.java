@@ -41,16 +41,10 @@ public class Front_End extends JFrame implements RL{
     }
     private static void initUI() { //window settings
     	JFrame frame = new JFrame();
-    	frame.setVisible(true);
-    	//MENU BAR
-    	frame.setJMenuBar(MenuBar.createMenuBar());
-
+    	
     	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
     	ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
     	frame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
-    	
-    	//CONTENT (adding content to JFrame)
-    	Front_End_Content.content(frame);
     	
         //WINDOW SETTINGS
     	frame.setTitle("Restroom Logs");
@@ -60,6 +54,13 @@ public class Front_End extends JFrame implements RL{
     	frame.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         //setAlwaysOnTop(true); //DO NOT USE THIS, THIS WILL PREVENT DIALOG FROM TOPPING THIS
+    	
+    	//MENU BAR
+    	frame.setJMenuBar(MenuBar.createMenuBar());
+    	
+    	//CONTENT (adding content to JFrame)
+    	Front_End_Content.content(frame);
+    	
     	frame.setVisible(true);
     }
 }
