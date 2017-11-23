@@ -27,7 +27,7 @@ public class Front_End_Content implements RL{
     	MajorLeftAndRight.setLeftComponent(TitleBarAndScanAndMessage);
     	
     	//-----------
-    	JPanel TitleBar = new JPanel(new BorderLayout());
+    	JPanel TitleBar = new JPanel(new GridBagLayout());
     	GridBagConstraints TitleBarConstraints = new GridBagConstraints();
     	TitleBarConstraints.gridx = 1;
     	TitleBarConstraints.gridy = 1;
@@ -57,30 +57,62 @@ public class Front_End_Content implements RL{
 	    ImageIcon RestroomLogsLogoWideBannerResized = new ImageIcon( newimg );
 	    banner.setIcon(RestroomLogsLogoWideBannerResized);
 	    //banner.setHorizontalAlignment(SwingConstants.LEFT);
-	    TitleBar.add(banner, BorderLayout.LINE_START);
+	    GridBagConstraints bannerConstraints = new GridBagConstraints();
+	    bannerConstraints.gridx = 1;
+	    bannerConstraints.gridy = 1;
+	    //bannerConstraints.weightx = 0.0;
+	    //bannerConstraints.weighty = 0.0;
+	    bannerConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+	    
+    	TitleBar.add(banner, bannerConstraints);
 	    
 	    //TEST------
 	    banner.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 	    TitleBar.setBorder(BorderFactory.createLineBorder(RL.color(4)));
 	    
     	//STATS
-    	String teacherName = "Mr. Sabo";
+	    JPanel stats = new JPanel(new BorderLayout());
+	    //TEACHER NAME
+	    JEditorPane teacherName = new JEditorPane();
+	    String teacherNameData = "Mr. Sabo";
+	    teacherName.setEditable(false);
+	    teacherName.setContentType("text/hteml");
+	    teacherName.setText(teacherNameData);
+	    teacherName.setFont(new Font("Verdana", Font.BOLD, teacherName.getFont().getSize()+20));
+	    teacherName.setForeground(RL.color("DARK_GUNMETAL"));
+	    stats.add(teacherName, BorderLayout.PAGE_START);
+	    
+    	//TIME AND DATE
 	    Date date = new Date();
 	    SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
 	    String timeStamp = "Current Date: " + dateFormat.format(date);
-	    JLabel stats = new JLabel("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
+	    JEditorPane timeAndDate = new JEditorPane();
+	    timeAndDate.setText("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
+	    timeAndDate.setContentType("text/html");
+	    timeAndDate.setEditable(false);
 		    ActionListener actionListener = new ActionListener() {
 		        public void actionPerformed(ActionEvent actionEvent) {
 		        	Date date = new Date();
 		            SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
 		            String timeStamp = "Current Date: " + dateFormat.format(date);
-		            stats.setText("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
+		            timeAndDate.setText("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
 		            //System.out.println(timeStamp);
 		        }
 		    };
 		Timer timer = new Timer(1000, actionListener);
 		timer.start();
-		TitleBar.add(stats, BorderLayout.LINE_END);
+		timeAndDate.setBorder(BorderFactory.createLineBorder(RL.color(4)));
+		stats.add(timeAndDate, BorderLayout.CENTER);
+		
+		//STATS
+	    GridBagConstraints statsConstraints = new GridBagConstraints();
+	    statsConstraints.gridx = 2;
+	    statsConstraints.gridy = 1;
+	    statsConstraints.weightx = 1.0;
+	    statsConstraints.weighty = 1.0;
+	    statsConstraints.fill = GridBagConstraints.BOTH;
+	    bannerConstraints.anchor = GridBagConstraints.CENTER;
+    	TitleBar.add(stats, statsConstraints);
     	
     	//-----------
     	JSplitPane ScanAndMessage = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -108,16 +140,20 @@ public class Front_End_Content implements RL{
     	ScanAndMessage.setTopComponent(scan);
     	
     	//-----------
-    	JPanel message = new JPanel();
+    	JPanel message = new JPanel(new GridBagLayout());
     	
     	JEditorPane messageTitle = new JEditorPane();
     	messageTitle.setContentType("text/html");
-    	messageTitle.setText("<html><h1>MESSAGES</h1></html>");
+    	messageTitle.setText("<html><center><h1>MESSAGES</h1></center></html>");
     	messageTitle.setEditable(false);
-    	//messageContent.setBackground(Color.WHITE);
-    	//Border b=new LineBorder(Color.black,1);
-    	//messageContent.setBorder(b);
-    	message.add(messageTitle, BorderLayout.PAGE_START);
+    	messageTitle.setBorder(BorderFactory.createLineBorder(RL.color(4)));
+    	GridBagConstraints messageTitleConstraints = new GridBagConstraints();
+    	messageTitleConstraints.gridx = 1;
+    	messageTitleConstraints.gridy = 1;
+    	messageTitleConstraints.weightx = 1.0;
+    	messageTitleConstraints.weighty = 0.0;
+    	messageTitleConstraints.fill = GridBagConstraints.BOTH;
+    	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
     	String url = "http://rl.coding2kids.com";
@@ -129,7 +165,14 @@ public class Front_End_Content implements RL{
     	 	messageContent.setText("<html>Could not load message from "+url);
     	}
     	messageContent.setEditable(false);
-    	message.add(messageContent, BorderLayout.PAGE_END);
+    	GridBagConstraints messageContentConstraints = new GridBagConstraints();
+    	messageContentConstraints.gridx = 1;
+    	messageContentConstraints.gridy = 2;
+    	messageContentConstraints.weightx = 1.0;
+    	messageContentConstraints.weighty = 0.5;
+    	messageContentConstraints.fill = GridBagConstraints.BOTH;
+    	message.add(messageContent, messageContentConstraints);
+    	
     	ScanAndMessage.setBottomComponent(message);
     	
     	//----------------
