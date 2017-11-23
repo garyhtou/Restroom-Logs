@@ -156,7 +156,7 @@ public class Front_End_Content implements RL{
     	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
-    	String url = "http://rl.coding2kids.com";
+    	String url = "http://rl.coding2kids.com/logs/messages.html";
     	try {
     		messageContent.setPage(url); //HAS NO CSS
     	}
