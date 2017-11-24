@@ -22,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.text.Document;
+
+import com.teamdev.jxdocument.*;
 
 public class MenuBar {
 	public static JMenuBar createMenuBar() { //JmenuBar = Menu Bar, JMenu = new dropdown, JMunuItem = item in a dropdown
@@ -57,37 +60,36 @@ public class MenuBar {
         	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
         	//SHOW VIEW PDF
         	/*if(Back_End.createViewPDF()) {
-        		Back_End.createViewPDF();
-        	}
-        	else {
         		JOptionPane.showMessageDialog(dataView,
 					    "Can not create ViewLogPDF for viewing.", //message
 					    "ViewLogPDF File Error", //title
 					    JOptionPane.ERROR_MESSAGE);
         	}*/
-        	Back_End.createViewPDF();
-        	//TODO: Use IcePDF to render the ViewPDF
-//        	try {
-        		//JPanle
-        		JPanel renderedViewPDF = new JPanel();
-        		
-        		//RENDER
-        		
-        		
-        		
-        		//added to a JDialog
-        		JOptionPane.showMessageDialog(dataView,
-					    renderedViewPDF, //message
-					    "Logs PDF", //title
-					    JOptionPane.INFORMATION_MESSAGE);
-//        	}
-//        	catch (//EXEPCTIONS){
-        	JOptionPane.showMessageDialog(dataView,
-				"Can not create ViewLogPDF for viewing.", //message
-				"ViewLogPDF File Error", //title
-				JOptionPane.ERROR_MESSAGE);
-//        	}
-        	
+        	//else {
+        		//FIXME: Use jxdocument to render the ViewPDF
+            	//try {
+            		//JPanel renderedViewPDF = new JPanel();
+            		
+            		//RENDER
+            		File pdf = new File("data/ViewLogsPDF.pdf");
+            		Document document = (Document) pdf;
+            		DocumentPresentation presentation= (DocumentPresentation) document;
+            		JComponent renderedViewPDF = presentation.getComponent();
+            		
+            		
+            		//added to a JDialog
+            		JOptionPane.showMessageDialog(dataView,
+            				renderedViewPDF, //message
+    					    "Logs PDF", //title
+    					    JOptionPane.INFORMATION_MESSAGE);
+            	//}
+            	//catch (){
+            	JOptionPane.showMessageDialog(dataView,
+    				"Can not open ViewLogPDF for viewing.", //message
+    				"ViewLogPDF File Error", //title
+    				JOptionPane.ERROR_MESSAGE);
+            	//}
+        	//}
         });
         //log .txt
         JMenuItem dataLogs = new JMenuItem("Logs", dataLogsIcon);
@@ -100,7 +102,7 @@ public class MenuBar {
         	//PROBELM: doesn't auto wrap
         	String fileContent;
 			try {
-				fileContent = new Scanner(new File("data\\Logs.txt")).useDelimiter("\\Z").next();
+				fileContent = new Scanner(new File("data/Logs.txt")).useDelimiter("\\Z").next();
 	        	//TEST: JOptionPane.showMessageDialog(dataLogs, fileContent);
 				
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

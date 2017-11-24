@@ -61,8 +61,8 @@ public class Back_End {
 	public static boolean createViewPDF() {
 		//copy PDF
 		boolean error = false; //flag boolean, if true, it will show a dialog
-		File source = new File("data\\LogsPDF.pdf");
-		File dest = new File("data\\ViewLogsPDF.pdf");
+		File source = new File("data/LogsPDF.pdf");
+		File dest = new File("data/ViewLogsPDF.pdf");
 		try {
 		    FileUtils.copyDirectory(source, dest);
 		} catch (IOException e) {
@@ -117,7 +117,7 @@ public class Back_End {
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
 
 //UDPATE PDF, call createViewPDF for viewpdf
-	public static void updatePDF(/*String firstName, String lastName, int timeOut, int timeIn*/) throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
+	public static void updatePDF(String data) throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
 		Document document = new Document();
 		
 		try {

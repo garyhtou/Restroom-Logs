@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.*;
 import java.awt.*;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 import javax.swing.*;
@@ -133,6 +134,7 @@ public interface RL {
 		splitPane.setDividerLocation(percentage);
 	}
 
+	
 }//RL INTERFACE ENDING BRACE
 
 /**

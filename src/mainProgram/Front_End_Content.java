@@ -3,11 +3,14 @@ package mainProgram;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -15,6 +18,7 @@ import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
 
+import interfaces.*;
 import interfaces.RL;
  
 public class Front_End_Content implements RL{
@@ -32,6 +36,8 @@ public class Front_End_Content implements RL{
     	
     	//-----------
     	JPanel TitleBar = new JPanel(new GridBagLayout());
+    	TitleBar.setOpaque(true);
+    	TitleBar.setBackground(Color.WHITE);
     	GridBagConstraints TitleBarConstraints = new GridBagConstraints();
     	TitleBarConstraints.gridx = 1;
     	TitleBarConstraints.gridy = 1;
@@ -64,14 +70,15 @@ public class Front_End_Content implements RL{
 	    GridBagConstraints bannerConstraints = new GridBagConstraints();
 	    bannerConstraints.gridx = 1;
 	    bannerConstraints.gridy = 1;
-	    //bannerConstraints.weightx = 0.0;
-	    //bannerConstraints.weighty = 0.0;
-	    bannerConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+	    bannerConstraints.weightx = 0.0;
+	    bannerConstraints.weighty = 1.0;
+	    bannerConstraints.anchor = GridBagConstraints.WEST;
+	    bannerConstraints.fill = GridBagConstraints.VERTICAL;
 	    
     	TitleBar.add(banner, bannerConstraints);
 	    
 	    //TEST------
-	    banner.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+	    banner.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
 	    TitleBar.setBorder(BorderFactory.createLineBorder(RL.color(4)));
 	    
     	//STATS
@@ -100,7 +107,7 @@ public class Front_End_Content implements RL{
 		        	Date date = new Date();
 		            SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
 		            String timeStamp = "Current Date: " + dateFormat.format(date);
-		            timeAndDate.setText("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
+		            timeAndDate.setText("<html><p>"+timeStamp+"<p></htlm>");
 		            //System.out.println(timeStamp);
 		        }
 		    };
@@ -115,8 +122,8 @@ public class Front_End_Content implements RL{
 	    statsConstraints.gridy = 1;
 	    statsConstraints.weightx = 1.0;
 	    statsConstraints.weighty = 1.0;
-	    statsConstraints.fill = GridBagConstraints.BOTH;
-	    bannerConstraints.anchor = GridBagConstraints.CENTER;
+	    statsConstraints.fill = GridBagConstraints.VERTICAL;
+	    statsConstraints.anchor = GridBagConstraints.WEST;
     	TitleBar.add(stats, statsConstraints);
     	
     	//-----------
@@ -132,18 +139,89 @@ public class Front_End_Content implements RL{
     	//-----------
     	JPanel scan = new JPanel();
     	scan.setOpaque(true);
-    	scan.setBackground(RL.color(4));
+    	scan.setBackground(RL.color(3));
     	//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
-    	scanTitle.setFont(new Font("Serif", Font.BOLD, 12));
+    	scanTitle.setFont(new Font("Serif", Font.BOLD, scanTitle.getFont().getSize() + 10));
     	scan.add(scanTitle, BorderLayout.PAGE_START);
     	//SCAN FIELD
-    	JTextField scanField = new JTextField("          ");
+    	//TODO: make typable from focused window
+    	JTextField scanField = new JTextField(10);
     	scanField.setEditable(true);
     	scanField.setToolTipText("Scan your Student ID card");
-    	scan.add(scanField, BorderLayout.CENTER);
+    	scan.add(scanField, BorderLayout.PAGE_END);
     	ScanAndMessage.setTopComponent(scan);
+    	
+    	//SCANNING
+    	//whole window
+    	MajorLeftAndRight.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent escan) {
+            	System.out.print(escan.getKeyChar());
+            	scanField.setText(scanField.getText() + escan.getKeyChar());
+            }
+        });
+    	//text field
+    	scanField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent escan) {
+            	String input = "";
+            	if(escan.getKeyChar() == KeyEvent.VK_ENTER) {
+            		//SCANING INFO-----------------------------------
+            		input = scanField.getText();
+            		EventQueue.invokeLater(() -> {
+            			scanField.setText("");
+                    });
+            		
+            		//TODO: ACCESS DATA BASE WITH INPUT STRING
+            		System.out.println(input);
+                	String FirstName = "";
+                	String LastName = "";
+                	
+                	//UDPATES!!1
+                	boolean NotSignOut = true; //CURRENTLY SIGNED OUT??
+                	if(NotSignOut) {
+                		String data = FirstName + " " + LastName + " Signed Out";
+                		Back_End.updateLogs(data);
+                		try {
+            				Back_End.updatePDF(data);
+            			} catch (ClassNotFoundException e) {
+            				e.printStackTrace();
+            			} catch (SQLException e) {
+            				e.printStackTrace();
+            			}
+                	}
+                	else {
+                		String data = FirstName + " " + LastName + " Signed In";
+                		Back_End.updateLogs(data);
+                		try {
+            				Back_End.updatePDF(data);
+            			} catch (ClassNotFoundException e) {
+            				e.printStackTrace();
+            			} catch (SQLException e) {
+            				e.printStackTrace();
+            			}
+                	}
+            	}
+            }
+        });
+    	
+    	
     	
     	//-----------
     	JPanel message = new JPanel(new GridBagLayout());
@@ -162,9 +240,14 @@ public class Front_End_Content implements RL{
     	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
-
-		//messageContent.setPage(url); //HAS NO CSS
-    	String textFromUrl = "";
+		try {
+	    	String url = "http://rl.coding2kids.com/logs/messages.html";
+			messageContent.setPage(url); //HAS NO CSS
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+    	/*String textFromUrl = "";
     	URL url = null;
     	try {
     		url = new URL("http://rl.coding2kids.com/logs/messages.html");
@@ -186,9 +269,10 @@ public class Front_End_Content implements RL{
 	    catch (IOException e) {
 	    	messageContent.setContentType("text/html");
 	     	messageContent.setText("<html>Could not load message from "+url);
-	    }
+	    }*/
     	messageContent.setEditable(false);
     	messageContent.setFont(new Font("Verdana", Font.PLAIN, teacherName.getFont().getSize()));
+    	messageContent.setContentType("text/html");
     	GridBagConstraints messageContentConstraints = new GridBagConstraints();
     	messageContentConstraints.gridx = 1;
     	messageContentConstraints.gridy = 2;
@@ -266,7 +350,13 @@ public class Front_End_Content implements RL{
     	//MAJOR LEFT AND RIGHT DIVIDER LOCATION
     	RL.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
     	
-    	
+    	ActionListener focusActionListener = new ActionListener() {
+	        public void actionPerformed(ActionEvent actionEvent) {
+	        	scanField.requestFocus();
+	        }
+	    };
+	    Timer scanFieldTimer = new Timer(1000, focusActionListener);
+	    scanFieldTimer.start();
     	
     	return MajorLeftAndRight;
     }

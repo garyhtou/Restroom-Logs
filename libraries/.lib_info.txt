@@ -1,0 +1,15 @@
+commons-io-2.6
+	copying PDFs
+
+itext-5.0.2
+	generating PDFs
+
+jxdocument-1.2
+	rendering PDFS
+
+ucanaccess-4.0.2
+commons-lang-2.6
+commons-logging-1.1.1
+hsqldb
+jackcess-2.1.6
+	accessing Microsoft Access data base
