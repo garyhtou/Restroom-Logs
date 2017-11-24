@@ -72,10 +72,10 @@ public class MenuBar {
             		
             		//RENDER
             		File pdf = new File("data/ViewLogsPDF.pdf");
-            		Document document = (Document) pdf;
-            		DocumentPresentation presentation= (DocumentPresentation) document;
+            		com.teamdev.jxdocument.Document document = new com.teamdev.jxdocument.Document(pdf);
+            		SinglePagePresentation presentation= new SinglePagePresentation(document);
+            		presentation.displayPage(0);
             		JComponent renderedViewPDF = presentation.getComponent();
-            		
             		
             		//added to a JDialog
             		JOptionPane.showMessageDialog(dataView,

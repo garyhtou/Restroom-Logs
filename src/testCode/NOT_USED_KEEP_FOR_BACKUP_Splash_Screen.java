@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
-public class NO_USED_KEEP_FOR_BACKUP_Splash_Screen extends JFrame {
+public class NOT_USED_KEEP_FOR_BACKUP_Splash_Screen extends JFrame {
 	//TODO: MAKE SPLASH SCRREN OPEN IN CENTER TO SCREEN, NOT TOP LEFT
 	   public static void main(String[] args) {
 	    	//do not call method here. only use for testing
@@ -18,11 +18,11 @@ public class NO_USED_KEEP_FOR_BACKUP_Splash_Screen extends JFrame {
 	   
 	   public static void createWindow() {
 	    	EventQueue.invokeLater(() -> {
-	        	NO_USED_KEEP_FOR_BACKUP_Splash_Screen window = new NO_USED_KEEP_FOR_BACKUP_Splash_Screen();
+	        	NOT_USED_KEEP_FOR_BACKUP_Splash_Screen window = new NOT_USED_KEEP_FOR_BACKUP_Splash_Screen();
 	            window.setVisible(true);
 	        });
 	    }
-		public NO_USED_KEEP_FOR_BACKUP_Splash_Screen() { //this is a constructor, it calls a method to give the window settings
+		public NOT_USED_KEEP_FOR_BACKUP_Splash_Screen() { //this is a constructor, it calls a method to give the window settings
 	        initUI();
 	    }
 	    private void initUI() { //window settings
