@@ -203,6 +203,12 @@ public class Back_End {
 		
 	}
 //UPDATE LOGS
+	/**
+	 * adds a String to the Logs file.<br>
+	 * <strong>Format:</strong> yyyy/mm/dd HH:mm:ss  |    STRING_HERE<br>
+	 * <strong> Format Example:</strong> 2017/11/23 16:55:32  |    Hello
+	 * @param data The String that will be added to the Logs File
+	 */
 	public static void updateLogs(String data) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
