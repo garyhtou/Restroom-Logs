@@ -9,6 +9,6 @@
 	<classpathentry exported="true" kind="lib" path="libraries/hsqldb.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/jackcess-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/ucanaccess-4.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gt/git/SchoolProjects/libraries/jxdocument-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libraries/jxdocument-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

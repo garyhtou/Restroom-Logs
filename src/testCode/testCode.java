@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
 
 public class testCode {
 	public static void main(String[] args) {
-		rendering_pdf();
+		test();
 	}
 	
 	/*
@@ -52,5 +52,9 @@ public class testCode {
 		frame.add(renderedViewPDF);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	public static void test() {
+		System.out.println("sdf");
 	}
 }
