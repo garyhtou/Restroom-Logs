@@ -10,7 +10,7 @@ import org.apache.commons.lang.time.StopWatch;
 
 public class SplashScreenManager {
 	public static void main(String[] args) {
-		runSplash();
+		init(false);
 		//SplashScreen.getSplashScreen();
 	}
 	
@@ -44,22 +44,21 @@ public class SplashScreenManager {
         }
     }
     
-    static final SplashScreen splash = SplashScreen.getSplashScreen();
-    static Graphics2D graphic = splash.createGraphics();
+    
     public static void runSplash() {
-    	//System.out.println(SplashScreen.getSplashScreen());
-    	
-    	
+    	SplashScreen splash = SplashScreen.getSplashScreen();
         if (splash == null) {
             System.out.println("SplashScreen.getSplashScreen() returned null");
             return;
         }
         
         
+        Graphics2D graphic = splash.createGraphics();
         if (graphic == null) {
             System.out.println("g is null");
             return;
         }
+        
         stopWatch.start();
 //STEPS ---------------------------------------
         if(ranBefore) {
@@ -69,8 +68,8 @@ public class SplashScreenManager {
         	//CHECK FOR UPDATES
         	//Call Action in another thread
         	
-
-        	waitThreeStart(); //makes sure you have been on start screen for 3 secs then run program
+        	//START PROGRAM
+        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
         }
 //STEP INIT -------------------------------------
         else { //INIT START UP, HAS NOT RAN BEFORE
@@ -91,34 +90,20 @@ public class SplashScreenManager {
         	Back_End.createPDF();
         	//Call Action in another thread
         	
-        	//STEP 4
-        	renderSplashFrame(graphic, "Creating CopyPDF Logs");
-        	splash.update();
-        	//Call Action in another thread
-        	if(Back_End.createViewPDF()) { //TODO: NEEDS TO BE CALLED IN ANOTHER THREAD, i think
-        		renderSplashFrame(graphic, "ERROR: can't create Copy Logs");
-            	splash.update();
-            	try {
-                    Thread.sleep(15000); //shows message for 15 secs
-                }
-                catch(InterruptedException e) {
-                }
-
-        	}
-        	
         	//STEP 5
         	renderSplashFrame(graphic, "Creating Logs");
         	splash.update();
-        	//TODO: check if data base exists
+        	Back_End.createLogs();
         	//Call Action in another thread
         	
-        	
-        	waitThreeStart();
+        	ranBefore = true; //TODO: Change in file
+        	//START PROGRAM
+        	waitThreeStart(splash, graphic);
         }
         splash.close();
     }
     
-    public static void waitThreeStart() {
+    public static void waitThreeStart(SplashScreen splash, Graphics2D graphic) {
     	stopWatch.suspend();
     	int stopWatchSec = Integer.parseInt(stopWatch.toString().substring(5, 7));
     	int stopWatchMill = Integer.parseInt(stopWatch.toString().substring(8, 11));

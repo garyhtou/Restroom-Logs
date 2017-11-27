@@ -12,18 +12,20 @@ public class MAIN {
 	
 	public static void main(String[] args) {
 		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
-		ranBefore = true; /*GRAB INFO FROM FILE*/
+		if(true /*RAN BEFORE*/ /*GRAB INFO FROM FILE*/) {
+			ranBefore = true; 
+		}
+		else {
+			ranBefore = false;
+		}
 		
 		startUp();
 	}
 	
 	public static void startUp() {
-			//https://www.java-forums.org/awt-swing/29971-splashscreen-getsplashscreen-returned-null.html
-		//Front_End.createSplashScreen(ranBefore);
-		//String args[] = {"-splash:assets/RestroomLogsSplashscreen.png"};
-		//SplashScreenManager.main(null);
-		SplashScreenManager.runSplash();
-		//Front_End.createWindow();
+		//-splash:assets/RestroomLogsSplashscreen.png"
+		
+		SplashScreenManager.init(ranBefore); //IF IT HAS RAN BEFORE
 	}
 	
 

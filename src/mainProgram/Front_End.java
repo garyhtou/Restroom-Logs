@@ -62,5 +62,7 @@ public class Front_End extends JFrame implements RL{
     	Front_End_Content.content(frame);
     	
     	frame.setVisible(true);
+    	frame.setAlwaysOnTop(true); //jumps to top
+    	frame.setAlwaysOnTop(false); //allows pop ups to show above frame
     }
 }
