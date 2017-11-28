@@ -347,10 +347,10 @@ public class Back_End extends PdfPageEventHelper {
 		//only call a method here for testing, making to remove it after testing
 		//updatePDF();
 		//getDBData();
-		createLogs();
+		//createLogs();
+		createPDF();
 		//updateLogs("hi");
 		
 		
 	}
 }
-
