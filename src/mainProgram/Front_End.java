@@ -18,11 +18,11 @@ import java.io.IOException;
 import java.lang.Thread;
 import java.text.SimpleDateFormat;
 
-import interfaces.RL;
+import interfaces.RL_Colors;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
-public class Front_End extends JFrame implements RL{
+public class Front_End extends JFrame implements RL_Colors{
 	
     public static void main(String[] args) {
     	//do not call method here. only use for testing

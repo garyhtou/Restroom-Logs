@@ -19,9 +19,11 @@ import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
 
 import interfaces.*;
-import interfaces.RL;
+import interfaces.RL_Colors;
+import interfaces.RL_Fonts;
+import interfaces.RL_General;
  
-public class Front_End_Content implements RL{
+public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
     public static Object content(JFrame frame) {
     	frame.setVisible(true);
     	Container pane = frame.getContentPane();
@@ -79,7 +81,7 @@ public class Front_End_Content implements RL{
 	    
 	    //TEST------
 	    banner.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
-	    TitleBar.setBorder(BorderFactory.createLineBorder(RL.color(4)));
+	    TitleBar.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
 	    
     	//STATS
 	    JPanel stats = new JPanel(new BorderLayout());
@@ -90,7 +92,8 @@ public class Front_End_Content implements RL{
 	    teacherName.setContentType("text/hteml");
 	    teacherName.setText(teacherNameData);
 	    teacherName.setFont(new Font("Verdana", Font.BOLD, teacherName.getFont().getSize()+20));
-	    teacherName.setForeground(RL.color("DARK_GUNMETAL"));
+	    //teacherName.setFont(RL_Fonts.statsTeacherNameDynamic(teacherName));
+	    teacherName.setForeground(RL_Colors.color("DARK_GUNMETAL"));
 	    stats.add(teacherName, BorderLayout.PAGE_START);
 	    
     	//TIME AND DATE
@@ -113,7 +116,7 @@ public class Front_End_Content implements RL{
 		    };
 		Timer timer = new Timer(1000, actionListener);
 		timer.start();
-		timeAndDate.setBorder(BorderFactory.createLineBorder(RL.color(4)));
+		timeAndDate.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
 		stats.add(timeAndDate, BorderLayout.CENTER);
 		
 		//STATS
@@ -139,7 +142,7 @@ public class Front_End_Content implements RL{
     	//-----------
     	JPanel scan = new JPanel();
     	scan.setOpaque(true);
-    	scan.setBackground(RL.color(3));
+    	scan.setBackground(RL_Colors.color(3));
     	//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
@@ -230,7 +233,7 @@ public class Front_End_Content implements RL{
     	messageTitle.setContentType("text/html");
     	messageTitle.setText("<html><center><h1>MESSAGES</h1></center></html>");
     	messageTitle.setEditable(false);
-    	messageTitle.setBorder(BorderFactory.createLineBorder(RL.color(4)));
+    	messageTitle.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
     	GridBagConstraints messageTitleConstraints = new GridBagConstraints();
     	messageTitleConstraints.gridx = 1;
     	messageTitleConstraints.gridy = 1;
@@ -290,7 +293,7 @@ public class Front_End_Content implements RL{
     	//TITLE AND BUTTON
     	JPanel TableTitleAndTableClearButton = new JPanel(new GridBagLayout());
     	GridBagConstraints TableTitleAndTableClearButtonConstraints = new GridBagConstraints();
-    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL.color(4)));
+    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL_Colors.color(4)));
     	TableTitleAndTableClearButtonConstraints.gridx = 1;
     	TableTitleAndTableClearButtonConstraints.gridy = 1;
     	TableTitleAndTableClearButtonConstraints.weightx = 1.0;
@@ -348,7 +351,7 @@ public class Front_End_Content implements RL{
     	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
     	
     	//MAJOR LEFT AND RIGHT DIVIDER LOCATION
-    	RL.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
+    	RL_General.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
     	
     	ActionListener focusActionListener = new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {

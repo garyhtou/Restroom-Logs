@@ -1,7 +1,10 @@
 package mainProgram;
 
 import java.util.*;
-import javax.swing.*;  
+import javax.swing.*;
+
+import interfaces.RL_Fonts;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -38,22 +41,14 @@ public class Preferences {
 		JComponent panel1 = new JPanel();
 		tabbedPane.addTab("General", icon1, panel1, "General Preferences"); //table title, tab icon, tab content, tab ToolTipText
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-		//TITLE
-    		JTextArea preferencesGeneralTitle = new JTextArea();
-    		//textArea Settings
-    		preferencesGeneralTitle.setFont(f2);
-    		preferencesGeneralTitle.setOpaque(false);
-    		preferencesGeneralTitle.setEditable(false);
-    		//CONTENT
-    		preferencesGeneralTitle.setText("General");
-    		panel1.add(preferencesGeneralTitle);
+		addTitle(panel1, "GENERAL");
     		//TODO: add time zone change for logs (Back_End.updateLogs)
 
 		JComponent panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(5, 1));
 		tabbedPane.addTab("Logs", icon2, panel2, "Logs Preferences");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-		//TITLE
+		/*//TITLE
     		JTextArea preferencesLogsTitle = new JTextArea();
     		//textArea Settings
     		preferencesLogsTitle.setFont(f2);
@@ -61,7 +56,9 @@ public class Preferences {
     		preferencesLogsTitle.setEditable(false);
     		//CONTENT
     		preferencesLogsTitle.setText("Logs");
-    		panel2.add(preferencesLogsTitle);
+    		panel2.add(preferencesLogsTitle);*/
+		addTitle(panel2, "LOGS");
+		
     	JTextArea preferencesLogsClearText = new JTextArea();
     	preferencesLogsClearText.setOpaque(false);
     	preferencesLogsClearText.setEditable(false);
@@ -85,30 +82,17 @@ public class Preferences {
 		JComponent panel3 = new JPanel();
 		tabbedPane.addTab("Email", icon3, panel3, "Email Preferences");
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
-		//TITLE
-    		JTextArea preferencesEmailTitle = new JTextArea();
-    		//textArea Settings
-    		preferencesEmailTitle.setFont(f2);
-    		preferencesEmailTitle.setOpaque(false);
-    		preferencesEmailTitle.setEditable(false);
-    		//CONTENT
-    		preferencesEmailTitle.setText("Email");
-    		panel3.add(preferencesEmailTitle);
+		addTitle(panel3, "General");
+		
 		//clear email history
 
 		JComponent panel4 = new JPanel();
 		panel4.setPreferredSize(new Dimension(410, 50));
 		tabbedPane.addTab("Wifi", icon4, panel4, "Wifi Infomation");
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
-		//TITLE
-    		JTextArea preferencesWifiTitle = new JTextArea();
-    		//textArea Settings
-    		preferencesWifiTitle.setFont(f2);
-    		preferencesWifiTitle.setOpaque(false);
-    		preferencesWifiTitle.setEditable(false);
-    		//CONTENT
-    		preferencesWifiTitle.setText("Wifi");
-    		panel4.add(preferencesWifiTitle);
+		addTitle(panel4, "General");
+		
+		
 		//using Ethernet
 		//turn on and off wifi (airplane mode), see all wifi info (MAC, IP4, IP6, etc.)
 		
@@ -116,15 +100,8 @@ public class Preferences {
 		panel5.setPreferredSize(new Dimension(410, 50));
 		tabbedPane.addTab("DataBase", icon5, panel5, "Student DataBase Configuration");
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_5);
-		//TITLE
-    		JTextArea preferencesDatabaseTitle = new JTextArea();
-    		//textArea Settings
-    		preferencesDatabaseTitle.setFont(f2);
-    		preferencesDatabaseTitle.setOpaque(false);
-    		preferencesDatabaseTitle.setEditable(false);
-    		//CONTENT
-    		preferencesDatabaseTitle.setText("DataBase");
-    		panel5.add(preferencesDatabaseTitle);
+		addTitle(panel5, "General");
+		
 		//insert database (either remote or file path to local)
 
 		JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
@@ -132,6 +109,21 @@ public class Preferences {
 
 	}
 	
-	
+	/**
+	 * 
+	 * @param addToComp JComponent
+	 * @param comp JTextArea
+	 * @param title String
+	 */
+	public static void addTitle(JComponent addToComp, String title) {
+		JTextArea textArea = new JTextArea();
+		//textArea Settings
+		textArea.setFont(RL_Fonts.preferencesTitle);
+		textArea.setOpaque(false);
+		textArea.setEditable(false);
+		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+		textArea.setText(title);
+		addToComp.add(textArea);
+	}
 
 }
