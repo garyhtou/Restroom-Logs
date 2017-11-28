@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +21,11 @@ import org.apache.commons.io.*; //used to copy PDF
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 
-public class Back_End {
+public class Back_End extends PdfPageEventHelper {
 	
 	
 	//FIXME: try using a .dbf instead of accdb
@@ -42,6 +44,7 @@ public class Back_End {
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
 			document.open();
+			addHeader(writer);
 			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
 			document.add(new Paragraph(""));
 			document.add(new Paragraph("This table shows student name with entry and exit time"));
@@ -113,6 +116,47 @@ public class Back_End {
 		
 	}
 	
+	/**
+	 * Adds a Headder to the PDF.<br>
+	 * <strong>Format:</strong> LOGO  Restoom Logs - PDF Logs<br>
+	 * 
+	 * @param writer The writer that os used to add the header to the PDF file.
+	 */
+	 private static void addHeader(PdfWriter writer){
+	        PdfPTable header = new PdfPTable(2);
+	        try {
+	            // set defaults
+	            header.setWidths(new int[]{2, 24});
+	            header.setTotalWidth(527);
+	            header.setLockedWidth(true);
+	            header.getDefaultCell().setFixedHeight(40);
+	            header.getDefaultCell().setBorder(Rectangle.BOTTOM);
+	            header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
+
+	            // add image
+	            Image logo = Image.getInstance(Back_End.class.getResource("/assets/logos/RestroomLogs.png"));
+	            header.addCell(logo);
+
+	            // add text
+	            PdfPCell text = new PdfPCell();
+	            text.setPaddingBottom(15);
+	            text.setPaddingLeft(10);
+	            text.setBorder(Rectangle.BOTTOM);
+	            text.setBorderColor(BaseColor.LIGHT_GRAY);
+	            text.addElement(new Phrase("Restroom Logs  - PDF Logs", new Font(Font.FontFamily.HELVETICA, 12)));
+	            text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
+	            header.addCell(text);
+
+	            // write content
+	            header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
+	        } catch(DocumentException de) {
+	            throw new ExceptionConverter(de);
+	        } catch (MalformedURLException e) {
+	            throw new ExceptionConverter(e);
+	        } catch (IOException e) {
+	            throw new ExceptionConverter(e);
+	        }
+	 }
 
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
 
@@ -303,8 +347,8 @@ public class Back_End {
 		//only call a method here for testing, making to remove it after testing
 		//updatePDF();
 		//getDBData();
-		//createLogs();
-		updateLogs("hi");
+		createLogs();
+		//updateLogs("hi");
 		
 		
 	}
