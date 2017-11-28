@@ -19,5 +19,6 @@
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/bcpkix-jdk15on.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/bcprov-ext-jdk15on.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/bcprov-jdk15on.jar"/>
+	<classpathentry kind="lib" path="assets"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -134,8 +134,8 @@ public class Back_End extends PdfPageEventHelper {
 	            header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
 
 	            // add image
-	            Image logo = Image.getInstance(Back_End.class.getResource("/assets/logos/RestroomLogs.png"));
-	            header.addCell(logo);
+	           /* Image logo = Image.getInstance(Back_End.class.getResource("/assets/logos/RestroomLogs.png"));
+	            header.addCell(logo);*/
 
 	            // add text
 	            PdfPCell text = new PdfPCell();
@@ -151,10 +151,6 @@ public class Back_End extends PdfPageEventHelper {
 	            header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
 	        } catch(DocumentException de) {
 	            throw new ExceptionConverter(de);
-	        } catch (MalformedURLException e) {
-	            throw new ExceptionConverter(e);
-	        } catch (IOException e) {
-	            throw new ExceptionConverter(e);
 	        }
 	 }
 
