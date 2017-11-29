@@ -43,6 +43,8 @@ public class Back_End extends PdfPageEventHelper {
 		Document document = new Document();
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
+			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+	        writer.setPageEvent(event);
 			document.open();
 			
 			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
@@ -331,8 +333,8 @@ public class Back_End extends PdfPageEventHelper {
 		//updatePDF();
 		//getDBData();
 		//createLogs();
-		//createPDF();
-		addHeader();
+		createPDF();
+		//addHeader();
 		//updateLogs("hi");
 		
 		
