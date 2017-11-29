@@ -44,7 +44,7 @@ public class Back_End extends PdfPageEventHelper {
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
 			document.open();
-			addHeader(writer);
+			
 			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
 			document.add(new Paragraph(""));
 			document.add(new Paragraph("This table shows student name with entry and exit time"));
@@ -121,37 +121,24 @@ public class Back_End extends PdfPageEventHelper {
 	 * <strong>Format:</strong> LOGO  Restoom Logs - PDF Logs<br>
 	 * 
 	 * @param writer The writer that os used to add the header to the PDF file.
+	 * @throws DocumentException 
+	 * @throws FileNotFoundException 
 	 */
-	 private static void addHeader(PdfWriter writer){
-	        PdfPTable header = new PdfPTable(2);
-	        try {
-	            // set defaults
-	            header.setWidths(new int[]{2, 24});
-	            header.setTotalWidth(527);
-	            header.setLockedWidth(true);
-	            header.getDefaultCell().setFixedHeight(40);
-	            header.getDefaultCell().setBorder(Rectangle.BOTTOM);
-	            header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
+	 private static void addHeader() throws DocumentException, FileNotFoundException{
+		// create document
+	        Document document = new Document(PageSize.A4, 36, 36, 90, 36);
+	        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("data/HeaderFooter.pdf"));
 
-	            // add image
-	           /* Image logo = Image.getInstance(Back_End.class.getResource("/assets/logos/RestroomLogs.png"));
-	            header.addCell(logo);*/
+	        // add header and footer
+	        HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+	        writer.setPageEvent(event);
 
-	            // add text
-	            PdfPCell text = new PdfPCell();
-	            text.setPaddingBottom(15);
-	            text.setPaddingLeft(10);
-	            text.setBorder(Rectangle.BOTTOM);
-	            text.setBorderColor(BaseColor.LIGHT_GRAY);
-	            text.addElement(new Phrase("Restroom Logs  - PDF Logs", new Font(Font.FontFamily.HELVETICA, 12)));
-	            text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
-	            header.addCell(text);
-
-	            // write content
-	            header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
-	        } catch(DocumentException de) {
-	            throw new ExceptionConverter(de);
-	        }
+	        // write to document
+	        document.open();
+	        document.add(new Paragraph("Adding a header to PDF Document using iText."));
+	        document.newPage();
+	        document.add(new Paragraph("Adding a footer to PDF Document using iText."));
+	        document.close();
 	 }
 
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
@@ -339,12 +326,13 @@ public class Back_End extends PdfPageEventHelper {
 	
 	
 //MAIN METHOD
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, FileNotFoundException, DocumentException {
 		//only call a method here for testing, making to remove it after testing
 		//updatePDF();
 		//getDBData();
 		//createLogs();
-		createPDF();
+		//createPDF();
+		addHeader();
 		//updateLogs("hi");
 		
 		

@@ -5,6 +5,8 @@ import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.PdfName;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HeaderFooterPageEvent extends PdfPageEventHelper {
 
@@ -15,7 +17,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
         t = writer.getDirectContent().createTemplate(30, 16);
         try {
             total = Image.getInstance(t);
-            writer.setTagged();
+           // writer.setTagged();
             total.setRole(PdfName.ARTIFACT);
         } catch (DocumentException de) {
             throw new ExceptionConverter(de);
@@ -38,10 +40,11 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             header.getDefaultCell().setFixedHeight(40);
             header.getDefaultCell().setBorder(Rectangle.BOTTOM);
             header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
-
+            //FIXME: Need to fix the image for the header, keeps returning a null
             // add image
-            Image logo = Image.getInstance(HeaderFooterPageEvent.class.getResource("/memorynotfound-logo.jpg"));
-            header.addCell(logo);
+           /* Image logo = Image.getInstance(HeaderFooterPageEvent.class.getResource("/assets/logos/ResstroomLogsLogo.png"));
+            header.addCell(logo);*/
+            header.addCell(" ");
 
             // add text
             PdfPCell text = new PdfPCell();
@@ -49,19 +52,22 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             text.setPaddingLeft(10);
             text.setBorder(Rectangle.BOTTOM);
             text.setBorderColor(BaseColor.LIGHT_GRAY);
-            text.addElement(new Phrase("iText PDF Header Footer Example", new Font(Font.FontFamily.HELVETICA, 12)));
-            text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyy");
+    		LocalDateTime now = LocalDateTime.now();
+    		String TimeAndData = dtf.format(now) ;
+            text.addElement(new Phrase("Restroom Logs", new Font(Font.FontFamily.HELVETICA, 12)));
+            text.addElement(new Phrase(TimeAndData, new Font(Font.FontFamily.HELVETICA, 8)));
             header.addCell(text);
 
             // write content
             header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
         } catch(DocumentException de) {
             throw new ExceptionConverter(de);
-        } catch (MalformedURLException e) {
+        } /*catch (MalformedURLException e) {
             throw new ExceptionConverter(e);
         } catch (IOException e) {
             throw new ExceptionConverter(e);
-        }
+        }*/
     }
 
     private void addFooter(PdfWriter writer){
@@ -75,8 +81,12 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             footer.getDefaultCell().setBorder(Rectangle.TOP);
             footer.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
 
-            // add copyright
-            footer.addCell(new Phrase("\u00A9 Memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+            // add footer text
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    		LocalDateTime now = LocalDateTime.now();
+    		String TimeAndData = dtf.format(now) ;
+    		
+            footer.addCell(new Phrase("Restroom Logs "+ TimeAndData , new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
 
             // add current page count
             footer.getDefaultCell().setHorizontalAlignment(Element.ALIGN_RIGHT);
