@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="libraries/itext-5.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-io-2.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-lang-2.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-logging-1.1.1.jar"/>
@@ -20,5 +19,9 @@
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/bcprov-ext-jdk15on.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/bcprov-jdk15on.jar"/>
 	<classpathentry kind="lib" path="assets"/>
+	<classpathentry exported="true" kind="lib" path="libraries/itext5-5.5.12/itext5-itext-pdfa-5.5.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="libraries/itext5-5.5.12/itext5-itext-xtra-5.5.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="libraries/itext5-5.5.12/itext5-itextpdf-5.5.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="libraries/itext5-5.5.12/itext5-xmlworker-5.5.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
