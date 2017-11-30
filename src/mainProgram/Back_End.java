@@ -25,6 +25,7 @@ import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 
+
 public class Back_End extends PdfPageEventHelper {
 	
 	
@@ -40,7 +41,7 @@ public class Back_End extends PdfPageEventHelper {
 //CREATE PDF FOR INIT
 	public static void createPDF() { //create blank PDF and Logs.txt for when the program initially starts up
 		//Create PDF
-		Document document = new Document();
+		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
 			HeaderFooterPageEvent event = new HeaderFooterPageEvent();

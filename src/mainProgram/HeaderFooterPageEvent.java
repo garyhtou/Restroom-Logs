@@ -42,13 +42,15 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
             //FIXME: Need to fix the image for the header, keeps returning a null
             // add image
-           /* Image logo = Image.getInstance(HeaderFooterPageEvent.class.getResource("/assets/logos/ResstroomLogsLogo.png"));
-            header.addCell(logo);*/
+            
+            Image logo = Image.getInstance( "/assets/logos/ResstroomLogsLogo.png");
+            header.addCell(logo);
             header.addCell(" ");
 
             // add text
             PdfPCell text = new PdfPCell();
             text.setPaddingBottom(15);
+            text.setPaddingTop(20);
             text.setPaddingLeft(10);
             text.setBorder(Rectangle.BOTTOM);
             text.setBorderColor(BaseColor.LIGHT_GRAY);
@@ -63,11 +65,11 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
         } catch(DocumentException de) {
             throw new ExceptionConverter(de);
-        } /*catch (MalformedURLException e) {
+        } catch (MalformedURLException e) {
             throw new ExceptionConverter(e);
         } catch (IOException e) {
             throw new ExceptionConverter(e);
-        }*/
+        }
     }
 
     private void addFooter(PdfWriter writer){
@@ -82,7 +84,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             footer.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
 
             // add footer text
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     		LocalDateTime now = LocalDateTime.now();
     		String TimeAndData = dtf.format(now) ;
     		
