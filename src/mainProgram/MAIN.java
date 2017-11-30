@@ -15,27 +15,27 @@ public class MAIN {
 	//DO THREADS IN HERE
 	static boolean ranBefore = false;
 	
-	BufferedReader br = new BufferedReader(new FileReader("config/DoNotTouch.txt"));
-	String line = br.readLine();
-    int lineNumber = 0;
-    while(line != null) {
-        lineNumber++;
-        int i = line.indexOf(date1);
-        if(i != -1) {
-            int s = i + date1.length();
-            int e = line.length();
-            System.out.println(date1 + " found in line " + lineNumber  + " at index " + i + ", extract text from " + s + " to " + e);
-            String extractedText = line.substring(s, e);
-            String[] extractedTextParts = extractedText.trim().split("\\s+");
-            for(String part : extractedTextParts) {
-                if(isTime(part)) {
-                    System.out.println("    '" + part + "'");   
-                }
-            }
-        }
-        line = br.readLine();
-    }
-    br.close();
+	int lineCounter = 0;
+	File file = new File("/config/DoNotTouch.txt");
+	BufferedReader br = new BufferedReader(new FileReader(file));  
+	String line = "";
+	while ((line = br.readLine()) != null) {  
+	   // process the line.  
+	   lineCounter++;
+
+	   switch(lineCounter){  
+	    case 2:
+	    	if(line.contains(""))
+	       break;  
+	    case 8:  
+	       \\ do your code for line no 8  
+	       break;  
+	    case 12:  
+	       \\ do your code for line no 12  
+	       break;  
+	   }  
+	}    
+	br.close(); 
 	
 	public static void main(String[] args) {
 		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
@@ -50,7 +50,7 @@ public class MAIN {
 	}
 	
 	public static void startUp() {
-		//-splash:assets/RestroomLogsSplashscreen.png"
+		//-splash:assets/logos/RestroomLogsSplashscreen.png"
 		
 		SplashScreenManager.init(ranBefore); //IF IT HAS RAN BEFORE
 	}
