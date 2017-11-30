@@ -12,40 +12,51 @@ import java.io.*;
 import org.apache.commons.io.*;
 
 public class MAIN {
-	//DO THREADS IN HERE
 	static boolean ranBefore = false;
+	//DO THREADS IN HERE
 	
-	int lineCounter = 0;
-	File file = new File("/config/DoNotTouch.txt");
-	BufferedReader br = new BufferedReader(new FileReader(file));  
-	String line = "";
-	while ((line = br.readLine()) != null) {  
-	   // process the line.  
-	   lineCounter++;
+	public static void checkRanBefore() {
+		try {
+		int lineCounter = 0;
+		File file = new File("/config/DoNotTouch.txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String line = "123";
+		while ((line = br.readLine()) != null) {  
+		   // process the line.  
+		   lineCounter++;
+		   System.out.println(lineCounter + " " + line);
 
-	   switch(lineCounter){  
-	    case 2:
-	    	if(line.contains(""))
-	       break;  
-	    case 8:  
-	       \\ do your code for line no 8  
-	       break;  
-	    case 12:  
-	       \\ do your code for line no 12  
-	       break;  
-	   }  
-	}    
-	br.close(); 
+		   switch(lineCounter){  
+		    case 2:
+		    	if(line.contains("ranBefore = ")) {
+		    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
+		    		if(lineSub.equalsIgnoreCase("false")){
+		    			ranBefore = false;
+		    		}
+		    		else if(lineSub.equalsIgnoreCase("true")) {
+		    			ranBefore = true;
+		    		}
+		    		else {
+		    			Back_End.updateLogsERROR("ranBefore non-valid boolean at  /config/DoNotTouch.txt");
+		    		}
+		    	}
+		    	break;  
+		    case 8:  
+		    	break;
+		    case 12:  
+		    	break;
+		   }
+		}    
+		br.close(); 
+		}
+		catch (IOException e) {
+			Back_End.updateLogsERROR("Not able to read file at  /config/DoNotTouch.txt");
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) {
-		//NEVER HAS RAN BEFORE. info maybe store this info in a .txt file
-		if(true /*RAN BEFORE*/ /*GRAB INFO FROM FILE*/) {
-			ranBefore = true; 
-		}
-		else {
-			ranBefore = false;
-		}
-		
+		checkRanBefore();
 		startUp();
 	}
 	

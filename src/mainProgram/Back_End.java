@@ -290,6 +290,54 @@ public class Back_End extends PdfPageEventHelper {
 			
 			
 	}
+	//UPDATE LOGS WITH AN ERROR STATMENT
+	public static void updateLogsERROR(String ERRORdata) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+
+		String TimeAndData = "***** " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
+
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		try {
+			File file = new File("data\\Logs.txt");
+			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			// true = append file, append means to add, false = overwrite
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+
+			bw.write(TimeAndData);
+
+		}
+		catch (IOException e) {
+
+			e.printStackTrace();
+			
+
+		}
+		finally {
+
+			try {
+
+				if (bw != null)
+					bw.close();
+
+				if (fw != null)
+					fw.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+		}
+	}
 //GET DATA BASE INFO *NOT IN USE*
 	public static String getDBData(int column, boolean repeat) throws SQLException, ClassNotFoundException {
 		String data = "";
