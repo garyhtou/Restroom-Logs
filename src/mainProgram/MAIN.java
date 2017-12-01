@@ -30,6 +30,9 @@ public class MAIN {
 		    case 2:
 		    	if(line.contains("ranBefore = ")) {
 		    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
+		    		Back_End.updateLogsStartUp("ranBefore found");
+		    		Back_End.updateLogsStartUp("ranBefore = " + line);
+		    		Back_End.updateLogsStartUp("ranBefore is now set to: " + lineSub);
 		    		if(lineSub.equalsIgnoreCase("false")){
 		    			ranBefore = false;
 		    		}
@@ -56,13 +59,13 @@ public class MAIN {
 	}
 	
 	public static void main(String[] args) {
+		Back_End.updateLogsStartUp("");
 		checkRanBefore();
 		startUp();
 	}
 	
 	public static void startUp() {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png"
-		
 		SplashScreenManager.init(ranBefore); //IF IT HAS RAN BEFORE
 	}
 	

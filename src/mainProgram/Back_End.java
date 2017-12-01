@@ -234,7 +234,53 @@ public class Back_End extends PdfPageEventHelper {
 	}
 //UPDATE LOGS
 	/**
-	 * adds a String to the Logs file.<br>
+	 * Writes a String to the log file, should normally be called by other functions.
+	 * @param data
+	 */
+	public static void writeToLogs(String data) {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		try {
+			File file = new File("data\\Logs.txt");
+			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			// true = append file, append means to add, false = overwrite
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+
+			bw.write(data);
+
+		}
+		catch (IOException e) {
+
+			e.printStackTrace();
+			
+
+		}
+		finally {
+
+			try {
+
+				if (bw != null)
+					bw.close();
+
+				if (fw != null)
+					fw.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+		}
+	}
+	/**
+	 * adds a String to the Logs file as a Normal Message.<br>
 	 * <strong>Format:</strong> yyyy/mm/dd HH:mm:ss  |    STRING_HERE<br>
 	 * <strong> Format Example:</strong> 2017/11/23 16:55:32  |    Hello
 	 * @param data The String that will be added to the Logs File
@@ -244,99 +290,34 @@ public class Back_End extends PdfPageEventHelper {
 		LocalDateTime now = LocalDateTime.now();
 
 		String TimeAndData = dtf.format(now) + "  |  " + data + "\n";
-
-		BufferedWriter bw = null;
-		FileWriter fw = null;
-
-		try {
-			File file = new File("data\\Logs.txt");
-			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
-			// if file doesnt exists, then create it
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-
-			// true = append file, append means to add, false = overwrite
-			fw = new FileWriter(file.getAbsoluteFile(), true);
-			bw = new BufferedWriter(fw);
-
-			bw.write(TimeAndData);
-
-		}
-		catch (IOException e) {
-
-			e.printStackTrace();
-			
-
-		}
-		finally {
-
-			try {
-
-				if (bw != null)
-					bw.close();
-
-				if (fw != null)
-					fw.close();
-
-			} catch (IOException ex) {
-
-				ex.printStackTrace();
-
-			}
-		}
-			
-			
-			
-			
+		writeToLogs(TimeAndData);
 	}
-	//UPDATE LOGS WITH AN ERROR STATMENT
+	
+	/**
+	 * adds a String to the Logs file as a Start Up.<br>
+	 * @param data The String that will be added to the Logs File
+	 */
+	final static String StartUpPriority = "***"; //Out of 5
+	public static void updateLogsStartUp(String StartUpData) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		
+		String TimeAndStartUpData = StartUpPriority + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
+		writeToLogs(TimeAndStartUpData);
+	}
+	
+	/**
+	 * adds a String to the Logs file as an Error Message.<br>
+	 * @param data The String that will be added to the Logs File
+	 */
+	final static String ErrorPriority = "***"; //Out of 5
 	public static void updateLogsERROR(String ERRORdata) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = "***** " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
+		String TimeAndData = ErrorPriority + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
 
-		BufferedWriter bw = null;
-		FileWriter fw = null;
-
-		try {
-			File file = new File("data\\Logs.txt");
-			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
-			// if file doesnt exists, then create it
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-
-			// true = append file, append means to add, false = overwrite
-			fw = new FileWriter(file.getAbsoluteFile(), true);
-			bw = new BufferedWriter(fw);
-
-			bw.write(TimeAndData);
-
-		}
-		catch (IOException e) {
-
-			e.printStackTrace();
-			
-
-		}
-		finally {
-
-			try {
-
-				if (bw != null)
-					bw.close();
-
-				if (fw != null)
-					fw.close();
-
-			} catch (IOException ex) {
-
-				ex.printStackTrace();
-
-			}
-		}
+		writeToLogs(TimeAndData);
 	}
 //GET DATA BASE INFO *NOT IN USE*
 	public static String getDBData(int column, boolean repeat) throws SQLException, ClassNotFoundException {
