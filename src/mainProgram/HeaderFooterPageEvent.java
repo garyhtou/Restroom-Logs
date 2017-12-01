@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HeaderFooterPageEvent extends PdfPageEventHelper {
-
+	 public static final String IMG1 = "assets/logos/RestroomLogsLogo.png";
     private PdfTemplate t;
     private Image total;
 
@@ -30,6 +30,15 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
         addFooter(writer);
     }
 
+    
+    public static PdfPCell createImageCell(String path) throws DocumentException, IOException {
+        Image img = Image.getInstance(path);
+        PdfPCell cell = new PdfPCell(img, true);
+        cell.setPaddingTop(25);
+        //FIXME: get rid of border
+        cell.setBorderColor(null);
+        return cell;
+    }
     private void addHeader(PdfWriter writer){
         PdfPTable header = new PdfPTable(2);
         try {
@@ -42,9 +51,12 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
             //FIXME: Need to fix the image for the header, keeps returning a null
             // add image
+       
             
-            Image logo = Image.getInstance( "/assets/logos/ResstroomLogsLogo.png");
-            header.addCell(logo);
+            //Image logo = Image.getInstance( "\\assets\\logos\\RestroomLogsLogo.png");
+           // Image logo = Image.getInstance(getClass().getClassLoader().getResource("MyImage.jpg"));
+           // header.addCell(logo);
+            header.addCell(createImageCell(IMG1));
             header.addCell(" ");
 
             // add text

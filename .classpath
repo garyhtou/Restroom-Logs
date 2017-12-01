@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="assets"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-io-2.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-lang-2.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/commons-logging-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libraries/hsqldb.jar"></classpathentry>
+	<classpathentry exported="true" kind="lib" path="libraries/hsqldb.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/jackcess-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/ucanaccess-4.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/jxdocument-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-awt-util.jar"/>
-	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-dom.jar"></classpathentry>
+	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-dom.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-svg-dom.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-svggen.jar"/>
 	<classpathentry exported="true" kind="lib" path="libraries/icepdf/batik-util.jar"/>
