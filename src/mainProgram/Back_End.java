@@ -47,11 +47,12 @@ public class Back_End extends PdfPageEventHelper {
 			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
 	        writer.setPageEvent(event);
 			document.open();
-			
-			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
+			// The random space is needed because it PDF wont write if there isn't anything in the document
+			document.add(new Paragraph(" "));
+			/*document.add(new Paragraph("Restroom Logs  - PDF Logs"));
 			document.add(new Paragraph(""));
 			document.add(new Paragraph("This table shows student name with entry and exit time"));
-			document.add(new Paragraph(""));
+			document.add(new Paragraph(""));*/
 			document.close();
 			writer.close();
 		}
@@ -119,48 +120,28 @@ public class Back_End extends PdfPageEventHelper {
 		
 	}
 	
-	/**
-	 * Adds a Headder to the PDF.<br>
-	 * <strong>Format:</strong> LOGO  Restoom Logs - PDF Logs<br>
-	 * 
-	 * @param writer The writer that os used to add the header to the PDF file.
-	 * @throws DocumentException 
-	 * @throws FileNotFoundException 
-	 */
-	 private static void addHeader() throws DocumentException, FileNotFoundException{
-		// create document
-	        Document document = new Document(PageSize.A4, 36, 36, 90, 36);
-	        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("data/HeaderFooter.pdf"));
 
-	        // add header and footer
-	        HeaderFooterPageEvent event = new HeaderFooterPageEvent();
-	        writer.setPageEvent(event);
-
-	        // write to document
-	        document.open();
-	        document.add(new Paragraph("Adding a header to PDF Document using iText."));
-	        document.newPage();
-	        document.add(new Paragraph("Adding a footer to PDF Document using iText."));
-	        document.close();
-	 }
 
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
 
 //UDPATE PDF, call createViewPDF for viewpdf
-	public static void updatePDF(String data) throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
-		Document document = new Document();
+	public static void updatePDF() throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
+		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 		
 		try {
 			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
 			PdfWriter writerCopy =PdfWriter.getInstance(document, new FileOutputStream("data/ViewLogsPDF.pdf"));
+			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+	        writer.setPageEvent(event);
+	        writerCopy.setPageEvent(event);
 			//needs to open the document
 			document.open();
 			//Adds a new paragraph to the pdf
-			document.add(new Paragraph("Restroom Logs  - PDF Logs"));
+			/*document.add(new Paragraph("Restroom Logs  - PDF Logs"));
 			document.add(new Paragraph(""));
-			document.add(new Paragraph("This table shows student name with entry and exit time"));
-			document.add(new Paragraph(""));
+			document.add(new Paragraph("This table shows student name with entry and exit time"));*/
+			document.add(new Paragraph(" "));
 			//created a new table with 3 columns to add to the pdf
 			PdfPTable table= new PdfPTable(3);
 			//sets the width percentage
@@ -360,10 +341,10 @@ public class Back_End extends PdfPageEventHelper {
 //MAIN METHOD
 	public static void main(String[] args) throws SQLException, ClassNotFoundException, FileNotFoundException, DocumentException {
 		//only call a method here for testing, making to remove it after testing
-		//updatePDF();
+		updatePDF();
 		//getDBData();
 		//createLogs();
-		createPDF();
+		//createPDF();
 		//addHeader();
 		//updateLogs("hi");
 		
