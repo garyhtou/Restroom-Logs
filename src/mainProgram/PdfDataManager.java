@@ -26,7 +26,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 
 
-public class Back_End extends PdfPageEventHelper {
+public class PdfDataManager extends PdfPageEventHelper {
 	
 //GET DATA BASE INFO *NOT IN USE*
 	public static String getDBData(int column, boolean repeat) throws SQLException, ClassNotFoundException {
