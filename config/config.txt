@@ -1,0 +1,3 @@
+Restroom Logs Config - DO NOT TOUCH THIS FILE
+----------
+wifi = on
