@@ -29,24 +29,20 @@ public class Preferences {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		//tabbedPane.setPreferredSize(new Dimension(displayWidth, displayHeight));
 		
-		ImageIcon icon1 = new ImageIcon("assets/images/noIcon.png");
-		ImageIcon icon2 = new ImageIcon("assets/images/noIcon.png");
-		ImageIcon icon3 = new ImageIcon("assets/images/noIcon.png");
-		ImageIcon icon4 = new ImageIcon("assets/images/noIcon.png");
-		ImageIcon icon5 = new ImageIcon("assets/images/noIcon.png");
+		ImageIcon blankIcon = new ImageIcon("assets/images/noIcon.png");
 		
 		Font f = tabbedPane.getFont();
 		Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
 		
 		JComponent panel1 = new JPanel();
-		tabbedPane.addTab("General", icon1, panel1, "General Preferences"); //table title, tab icon, tab content, tab ToolTipText
+		tabbedPane.addTab("General", blankIcon, panel1, "General Preferences"); //table title, tab icon, tab content, tab ToolTipText
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 		addTitle(panel1, "GENERAL");
     		//TODO: add time zone change for logs (Back_End.updateLogs)
 
 		JComponent panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(5, 1));
-		tabbedPane.addTab("Logs", icon2, panel2, "Logs Preferences");
+		tabbedPane.addTab("Logs", blankIcon, panel2, "Logs Preferences");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 		/*//TITLE
     		JTextArea preferencesLogsTitle = new JTextArea();
@@ -80,7 +76,7 @@ public class Preferences {
 		//Clear logs (run initStartUp for back_end)
 		
 		JComponent panel3 = new JPanel();
-		tabbedPane.addTab("Email", icon3, panel3, "Email Preferences");
+		tabbedPane.addTab("Email", blankIcon, panel3, "Email Preferences");
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
 		addTitle(panel3, "General");
 		
@@ -88,7 +84,7 @@ public class Preferences {
 
 		JComponent panel4 = new JPanel();
 		panel4.setPreferredSize(new Dimension(410, 50));
-		tabbedPane.addTab("Wifi", icon4, panel4, "Wifi Infomation");
+		tabbedPane.addTab("Wifi", blankIcon, panel4, "Wifi Infomation");
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 		addTitle(panel4, "General");
 		
@@ -98,7 +94,7 @@ public class Preferences {
 		
 		JComponent panel5 = new JPanel();
 		panel5.setPreferredSize(new Dimension(410, 50));
-		tabbedPane.addTab("DataBase", icon5, panel5, "Student DataBase Configuration");
+		tabbedPane.addTab("DataBase", blankIcon, panel5, "Student DataBase Configuration");
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_5);
 		addTitle(panel5, "General");
 		
