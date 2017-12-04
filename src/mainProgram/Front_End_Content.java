@@ -200,9 +200,9 @@ public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
                 	boolean NotSignOut = true; //CURRENTLY SIGNED OUT??
                 	if(NotSignOut) {
                 		String data = FirstName + " " + LastName + " Signed Out";
-                		Back_End.updateLogs(data);
+                		logs.updateLogs(data);
                 		try {
-            				Back_End.updatePDF(data);
+                			logs.updatePDF(/*data*/);
             			} catch (ClassNotFoundException e) {
             				e.printStackTrace();
             			} catch (SQLException e) {
@@ -211,9 +211,9 @@ public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
                 	}
                 	else {
                 		String data = FirstName + " " + LastName + " Signed In";
-                		Back_End.updateLogs(data);
+                		logs.updateLogs(data);
                 		try {
-            				Back_End.updatePDF(data);
+                			logs.updatePDF(/*data*/);
             			} catch (ClassNotFoundException e) {
             				e.printStackTrace();
             			} catch (SQLException e) {

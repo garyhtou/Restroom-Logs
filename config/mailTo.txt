@@ -1,5 +1,5 @@
 Restroom Logs Email Settings - DO NOT TOUCH THIS FILE
 ----------
-recentMailToAdresses: ["email@gmail.com", "hotdogs@outlook.com", "multithreading@intelvsamd.gov"]
-
-^we need a library in java to check if its real email address once entered by user
+recentMailToAdresses1 = email@gmail.com
+recentMailToAdresses2 = hotdogs@outlook.com
+recentMailToAdresses3 = multithreading@intelvsamd.gov

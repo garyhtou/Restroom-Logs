@@ -30,9 +30,9 @@ public class MAIN {
 		    case 2:
 		    	if(line.contains("ranBefore = ")) {
 		    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
-		    		Back_End.updateLogsStartUp("ranBefore found");
-		    		Back_End.updateLogsStartUp("ranBefore = " + line);
-		    		Back_End.updateLogsStartUp("ranBefore is now set to: " + lineSub);
+		    		logs.updateLogsStartUp("ranBefore found");
+		    		logs.updateLogsStartUp("ranBefore = " + line);
+		    		logs.updateLogsStartUp("ranBefore is now set to: " + lineSub);
 		    		if(lineSub.equalsIgnoreCase("false")){
 		    			ranBefore = false;
 		    		}
@@ -40,7 +40,7 @@ public class MAIN {
 		    			ranBefore = true;
 		    		}
 		    		else {
-		    			Back_End.updateLogsERROR("ranBefore non-valid boolean at  /config/DoNotTouch.txt");
+		    			logs.updateLogsERROR("ranBefore non-valid boolean at  /config/DoNotTouch.txt");
 		    		}
 		    	}
 		    	break;  
@@ -53,13 +53,13 @@ public class MAIN {
 		br.close(); 
 		}
 		catch (IOException e) {
-			Back_End.updateLogsERROR("Not able to read file at  /config/DoNotTouch.txt");
+			logs.updateLogsERROR("Not able to read file at  /config/DoNotTouch.txt");
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
-		Back_End.updateLogsStartUp("");
+		logs.updateLogsStartUp("");
 		checkRanBefore();
 		startUp();
 	}
