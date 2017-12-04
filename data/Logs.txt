@@ -2,3 +2,8 @@
 	File created on 2017/11/28 10:50:27
 
 ***** 2017/11/30 14:01:16  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+***2017/12/04 13:44:32  |  Start Up  |  
+***2017/12/04 13:44:33  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+***2017/12/04 13:44:33  |  Start Up  |  Starting Program
+***2017/12/04 13:44:33  |  Start Up  |  Starting Splash Screen
+***2017/12/04 13:44:33  |  ERROR  |  SplashScreen.getSplashScreen() returned null

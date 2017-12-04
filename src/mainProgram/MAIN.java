@@ -6,6 +6,7 @@
 package mainProgram;
 
 import java.io.*;
+import java.sql.SQLException;
 
 //import java.nio.file.*;
 
@@ -58,7 +59,7 @@ public class MAIN {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		logs.updateLogsStartUp("");
 		checkRanBefore();
 		startUp();

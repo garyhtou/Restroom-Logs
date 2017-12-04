@@ -116,7 +116,7 @@ public class logs {
 //FOLLOWING METHODS ARE FOR UPDATING PDF OR LOG-----------------------------
 
 //UDPATE PDF, call createViewPDF for viewpdf
-	public static void updatePDF() throws ClassNotFoundException, SQLException { //Michael, you will need to learn how to edit cells that have already been added, ask me why at school.
+	public static void updatePDF() throws ClassNotFoundException, SQLException { 
 		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 		
 		try {
@@ -166,7 +166,7 @@ public class logs {
 
 		ResultSet rs;
 
-			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [Test]");
+			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [SIDTest]");
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
