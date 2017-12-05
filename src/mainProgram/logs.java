@@ -141,11 +141,7 @@ public class logs {
 			table.setSpacingBefore(1f);
 			table.setSpacingAfter(11f);
 			//width for each column
-<<<<<<< HEAD
-			float[] columnWidth= {2f,2f,0.5f,0.5f};
-=======
 			float[] columnWidth= {1f,1f,2f,0.5f};
->>>>>>> branch 'master' of https://github.com/garytou2/SchoolProjects.git
 			table.setWidths(columnWidth);
 			//sets variables for each cell
 			PdfPCell c1=new PdfPCell(new Paragraph("First Name"));
@@ -153,11 +149,6 @@ public class logs {
 			PdfPCell c2=new PdfPCell(new Paragraph("Last Name"));
 			c2.setBackgroundColor(BaseColor.GRAY);
 			PdfPCell c3=new PdfPCell(new Paragraph("Time Out"));
-<<<<<<< HEAD
-			c3.setBackgroundColor(BaseColor.GRAY);
-			PdfPCell c4=new PdfPCell(new Paragraph("Time In"));
-=======
->>>>>>> branch 'master' of https://github.com/garytou2/SchoolProjects.git
 			c3.setBackgroundColor(BaseColor.GRAY);
 			PdfPCell c4=new PdfPCell(new Paragraph("Time In"));
 			c4.setBackgroundColor(BaseColor.GRAY);
@@ -178,11 +169,7 @@ public class logs {
 
 		ResultSet rs;
 
-<<<<<<< HEAD
-			rs = s.executeQuery("SELECT FirstName, LastName, TimeIn, TimeOut FROM [PdfLogs]");
-=======
-			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
->>>>>>> branch 'master' of https://github.com/garytou2/SchoolProjects.git
+		rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
