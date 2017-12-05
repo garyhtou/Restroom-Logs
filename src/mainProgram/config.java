@@ -39,6 +39,7 @@ public class config {
 			}
 		}
 		catch (IOException e) {
+			logs.updateLogsERROR("Error while pulling for information from config");
 			e.printStackTrace();
 		}
 		return null;
@@ -74,9 +75,9 @@ public class config {
 			}
 		}
 		catch (IOException e) {
+			logs.updateLogsERROR("Error while writing information to config");
 			e.printStackTrace();
 		}
 		return true;
 	}
-
 }

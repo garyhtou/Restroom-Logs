@@ -69,6 +69,7 @@ public class Preferences {
     		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
     		if(choice == JOptionPane.YES_OPTION) {
     			logs.createPDF();
+    			logs.updateLogsSystem("LogsPDF Cleared");
     			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
     		}
         });

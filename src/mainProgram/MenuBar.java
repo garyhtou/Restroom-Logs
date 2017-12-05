@@ -50,6 +50,8 @@ public class MenuBar {
         fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
         fileExit.setToolTipText("Exit application");
         fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
+        	logs.updateLogsSystem("EXIT");
+        	logs.writeToLogs("----------");
             System.exit(0);
         });
         //view entries
@@ -57,6 +59,7 @@ public class MenuBar {
         dataView.setMnemonic(KeyEvent.VK_K);
         dataView.setToolTipText("View Sign in/out");
         dataView.addActionListener((ActionEvent dataViewButtonEvent) -> {
+        	logs.updateLogs("ViewLogsPDF Opened");
         	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
         	//SHOW VIEW PDF
         	/*if(Back_End.createViewPDF()) {
@@ -84,7 +87,8 @@ public class MenuBar {
     					    JOptionPane.INFORMATION_MESSAGE);
             	//}
             	//catch (){
-            	JOptionPane.showMessageDialog(dataView,
+            		logs.updateLogsERROR("Error while opening ViewLogPDF");
+            		JOptionPane.showMessageDialog(dataView,
     				"Can not open ViewLogPDF for viewing.", //message
     				"ViewLogPDF File Error", //title
     				JOptionPane.ERROR_MESSAGE);
@@ -96,10 +100,7 @@ public class MenuBar {
         dataLogs.setMnemonic(KeyEvent.VK_K);
         dataLogs.setToolTipText("View logs");
         dataLogs.addActionListener((ActionEvent dataLogsButtonEvent) -> {
-        	//SHOW VIEW .TXT FILE
-        	//https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-        	
-        	//PROBELM: doesn't auto wrap
+        	logs.updateLogs("Logs.txt Opened");
         	String fileContent;
 			try {
 				fileContent = new Scanner(new File("data/Logs.txt")).useDelimiter("\\Z").next();
@@ -129,6 +130,7 @@ public class MenuBar {
 				
 				
 			} catch (FileNotFoundException e) {
+				logs.updateLogs("Logs.txt Closed");
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(dataLogs,
 					    "Can not open Log file.", //message
@@ -141,6 +143,7 @@ public class MenuBar {
         filePreferences.setMnemonic(KeyEvent.VK_P);
         filePreferences.setToolTipText("Preferences");
         filePreferences.addActionListener((ActionEvent filePreferencesButonEvent) -> { 
+        	logs.updateLogs("Preferences Opened");
     		Preferences.preferences();
         });
         

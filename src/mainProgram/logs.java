@@ -308,11 +308,12 @@ public class logs {
 	 * <strong> Format Example:</strong> 2017/11/23 16:55:32  |    Hello
 	 * @param data The String that will be added to the Logs File
 	 */
+	final static String updateLogsPriority = "     ";
 	public static void updateLogs(String data) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = "     " + dtf.format(now) + "  |  " + data + "\n";
+		String TimeAndData = updateLogsPriority + " " + dtf.format(now) + "  |  " + data + "\n";
 		writeToLogs(TimeAndData);
 	}
 	
@@ -339,6 +340,20 @@ public class logs {
 		LocalDateTime now = LocalDateTime.now();
 
 		String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
+
+		writeToLogs(TimeAndData);
+	}
+	
+	/**
+	 * adds a String to the Logs file as an Regular Message.<br>
+	 * @param data The String that will be added to the Logs File
+	 */
+	final static String SystemPriority = "*****"; //Out of 5
+	public static void updateLogsSystem(String SystemData) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+
+		String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
 
 		writeToLogs(TimeAndData);
 	}
