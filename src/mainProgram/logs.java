@@ -134,25 +134,28 @@ public class logs {
 			document.add(new Paragraph("This table shows student name with entry and exit time"));*/
 			document.add(new Paragraph(" "));
 			//created a new table with 3 columns to add to the pdf
-			PdfPTable table= new PdfPTable(3);
+			PdfPTable table= new PdfPTable(4);
 			//sets the width percentage
 			table.setWidthPercentage(105);
 			//padding
 			table.setSpacingBefore(1f);
 			table.setSpacingAfter(11f);
 			//width for each column
-			float[] columnWidth= {0.5f,2f,2f};
+			float[] columnWidth= {2f,2f,0.5f,0.5f};
 			table.setWidths(columnWidth);
 			//sets variables for each cell
-			PdfPCell c1=new PdfPCell(new Paragraph("Student ID"));
+			PdfPCell c1=new PdfPCell(new Paragraph("First Name"));
 			c1.setBackgroundColor(BaseColor.GRAY);
-			PdfPCell c2=new PdfPCell(new Paragraph("First Name"));
+			PdfPCell c2=new PdfPCell(new Paragraph("Last Name"));
 			c2.setBackgroundColor(BaseColor.GRAY);
-			PdfPCell c3=new PdfPCell(new Paragraph("Last Name"));
+			PdfPCell c3=new PdfPCell(new Paragraph("Time Out"));
+			c3.setBackgroundColor(BaseColor.GRAY);
+			PdfPCell c4=new PdfPCell(new Paragraph("Time In"));
 			c3.setBackgroundColor(BaseColor.GRAY);
 			table.addCell(c1);
 			table.addCell(c2);
 			table.addCell(c3);
+			table.addCell(c4);
 			//every 3 cells is a new row
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
@@ -166,15 +169,17 @@ public class logs {
 
 		ResultSet rs;
 
-			rs = s.executeQuery("SELECT StudentId, FirstName, LastName FROM [SIDTest]");
+			rs = s.executeQuery("SELECT FirstName, LastName, TimeIn, TimeOut FROM [PdfLogs]");
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
 			table.addCell(rs.getString(3));
+			table.addCell(rs.getString(4));
 			while (rs.next()) {
 				table.addCell(rs.getString(1));
 				table.addCell(rs.getString(2));
 				table.addCell(rs.getString(3));
+				table.addCell(rs.getString(4));
 			    
 			    
 	
@@ -261,7 +266,7 @@ public class logs {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = dtf.format(now) + "  |  " + data + "\n";
+		String TimeAndData = "     " + dtf.format(now) + "  |  " + data + "\n";
 		writeToLogs(TimeAndData);
 	}
 	
@@ -269,12 +274,12 @@ public class logs {
 	 * adds a String to the Logs file as a Start Up.<br>
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String StartUpPriority = "***"; //Out of 5
+	final static String StartUpPriority = "**   "; //Out of 5
 	public static void updateLogsStartUp(String StartUpData) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		
-		String TimeAndStartUpData = StartUpPriority + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
+		String TimeAndStartUpData = StartUpPriority + " " + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
 		writeToLogs(TimeAndStartUpData);
 	}
 	
@@ -282,12 +287,12 @@ public class logs {
 	 * adds a String to the Logs file as an Error Message.<br>
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String ErrorPriority = "***"; //Out of 5
+	final static String ErrorPriority = "*****"; //Out of 5
 	public static void updateLogsERROR(String ERRORdata) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = ErrorPriority + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
+		String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
 
 		writeToLogs(TimeAndData);
 	}

@@ -158,7 +158,7 @@ public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
     	
     	//SCANNING
     	//whole window
-    	MajorLeftAndRight.addKeyListener(new KeyListener() {
+    	/*MajorLeftAndRight.addKeyListener(new KeyListener() {
 
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -171,7 +171,7 @@ public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
             	System.out.print(escan.getKeyChar());
             	scanField.setText(scanField.getText() + escan.getKeyChar());
             }
-        });
+        });*/
     	//text field
     	scanField.addKeyListener(new KeyListener() {
 
@@ -192,6 +192,7 @@ public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
                     });
             		
             		//TODO: ACCESS DATA BASE WITH INPUT STRING
+            		
             		System.out.println(input);
                 	String FirstName = "";
                 	String LastName = "";
