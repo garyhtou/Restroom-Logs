@@ -60,9 +60,10 @@ public class MAIN {
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		logs.updateLogsStartUp("");
+		/*logs.updateLogsStartUp("");
 		checkRanBefore();
-		startUp();
+		startUp();*/
+		logs.updatePDF();
 	}
 	
 	public static void startUp() {
