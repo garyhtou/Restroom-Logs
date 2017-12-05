@@ -60,9 +60,17 @@ public class MAIN {
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+<<<<<<< HEAD
 		logs.updateLogsStartUp("Starting Program");
+=======
+		/*logs.updateLogsStartUp("");
+>>>>>>> branch 'master' of https://github.com/garytou2/SchoolProjects.git
 		checkRanBefore();
+<<<<<<< HEAD
 		startUp();
+=======
+		startUp();*/
+>>>>>>> branch 'master' of https://github.com/garytou2/SchoolProjects.git
 		logs.updatePDF();
 	}
 	
