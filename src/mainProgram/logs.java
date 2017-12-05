@@ -141,7 +141,7 @@ public class logs {
 			table.setSpacingBefore(1f);
 			table.setSpacingAfter(11f);
 			//width for each column
-			float[] columnWidth= {2f,2f,0.5f,0.5f};
+			float[] columnWidth= {1f,1f,2f,0.5f};
 			table.setWidths(columnWidth);
 			//sets variables for each cell
 			PdfPCell c1=new PdfPCell(new Paragraph("First Name"));
@@ -151,7 +151,7 @@ public class logs {
 			PdfPCell c3=new PdfPCell(new Paragraph("Time Out"));
 			c3.setBackgroundColor(BaseColor.GRAY);
 			PdfPCell c4=new PdfPCell(new Paragraph("Time In"));
-			c3.setBackgroundColor(BaseColor.GRAY);
+			c4.setBackgroundColor(BaseColor.GRAY);
 			table.addCell(c1);
 			table.addCell(c2);
 			table.addCell(c3);
@@ -169,7 +169,7 @@ public class logs {
 
 		ResultSet rs;
 
-			rs = s.executeQuery("SELECT FirstName, LastName, TimeIn, TimeOut FROM [PdfLogs]");
+			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
@@ -207,6 +207,52 @@ public class logs {
 		catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	public static void addLogInfoToDB() throws ClassNotFoundException, SQLException {
+	Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
+		
+	
+			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
+			
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection(
+		        "jdbc:ucanaccess://data/TestDB.accdb");
+
+		Statement s;
+		 
+
+			s = conn.createStatement();
+
+		ResultSet rs;
+
+			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
+			rs.next();
+			rs.getString(1);
+			rs.getString(2);
+			rs.getString(3);
+			rs.getString(4);
+			
+			while (rs.next()) {
+				rs.getString(1);
+				rs.getString(2);
+				rs.getString(3);
+				rs.getString(4);
+			}
+			    
+			    
+	
+			
+			
+			
+			
+			
+			
+			//adds the table on to the document
+			
+		
+		//Error stuff so the code doesn't break
 		
 	}
 //UPDATE LOGS
