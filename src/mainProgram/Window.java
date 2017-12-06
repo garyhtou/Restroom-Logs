@@ -22,7 +22,7 @@ import interfaces.RL_Colors;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
-public class Front_End extends JFrame implements RL_Colors{
+public class Window extends JFrame implements RL_Colors{
 	
     public static void main(String[] args) {
     	//do not call method here. only use for testing
@@ -36,7 +36,7 @@ public class Front_End extends JFrame implements RL_Colors{
     
     
     
-	private Front_End() { //this is a constructor, it calls a method to give the window settings
+	private Window() { //this is a constructor, it calls a method to give the window settings
         initUI();
     }
     private static void initUI() { //window settings
@@ -59,7 +59,7 @@ public class Front_End extends JFrame implements RL_Colors{
     	frame.setJMenuBar(MenuBar.createMenuBar());
     	
     	//CONTENT (adding content to JFrame)
-    	Front_End_Content.content(frame);
+    	Window_Content.content(frame);
     	
     	frame.setVisible(true);
     	frame.setAlwaysOnTop(true); //jumps to top
