@@ -23,7 +23,7 @@ import interfaces.RL_Colors;
 import interfaces.RL_Fonts;
 import interfaces.RL_General;
  
-public class Front_End_Content implements RL_Colors, RL_Fonts, RL_General{
+public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     public static Object content(JFrame frame) {
     	frame.setVisible(true);
     	Container pane = frame.getContentPane();

@@ -139,7 +139,7 @@ public class SplashScreenManager {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-    	Front_End.createWindow(); //TODO: NEEDS TO BE CALLED IN ANOTHER THREAD, i think
+    	Window.createWindow(); //TODO: NEEDS TO BE CALLED IN ANOTHER THREAD, i think
     	
     }
 }
