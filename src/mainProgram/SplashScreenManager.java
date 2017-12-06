@@ -80,6 +80,17 @@ public class SplashScreenManager {
         }
 //STEP INIT -------------------------------------
         else { //INIT START UP, HAS NOT RAN BEFORE
+        logs.
+
+        //STEP 0
+        logs.createLogs();
+        	renderSplashFrame(graphic, "Creating Logs");
+        	logs.updateLogsStartUp("Creating Logs");
+        	splash.update();
+        	Thread.sleep(10);
+        	//Call Action in another thread
+        	
+
         	//STEP 1
         	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
         	logs.updateLogsStartUp("NOTICE: Program hasn't ran before!");
@@ -98,13 +109,6 @@ public class SplashScreenManager {
         	logs.updateLogsStartUp("Creating PDF Logs");
         	splash.update();
         	logs.createPDF();
-        	//Call Action in another thread
-        	
-        	//STEP 5
-        	renderSplashFrame(graphic, "Creating Logs");
-        	logs.updateLogsStartUp("Creating Logs");
-        	splash.update();
-        	//Logs have already been create, this is for display onlyu :)
         	//Call Action in another thread
         	
         	ranBefore = true; //TODO: Change in file
