@@ -8,6 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class config {
+	//The following are universal constants
+	public static String StudentDBPath  = "data/TestDB.accdb";
+	public static String PdfLogPath  = "data/LogsPDF.pdf";
+	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
+	public static String DBTableName  = "TestDB";
+	public static String LogsPath  = "data\\Logs.txt";
+	public static String ConfigFilePath  = "/config/DoNotTouch.txt";
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
