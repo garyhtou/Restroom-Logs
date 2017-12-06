@@ -15,6 +15,7 @@ public class config {
 	public static String DBTableName  = "TestDB";
 	public static String LogsPath  = "data\\Logs.txt";
 	public static String ConfigFilePath  = "/config/DoNotTouch.txt";
+	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
 	
 
 	public static void main(String[] args) {

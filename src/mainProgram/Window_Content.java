@@ -1,4 +1,4 @@
-ackage mainProgram;
+package mainProgram;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +24,7 @@ import interfaces.RL_Fonts;
 import interfaces.RL_General;
  
 public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
+	static String WebisteBaseUrl = config.WebsiteBaseURL;
     public static Object content(JFrame frame) {
     	frame.setVisible(true);
     	Container pane = frame.getContentPane();
@@ -244,7 +245,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	
     	JEditorPane messageContent = new JEditorPane();
 		try {
-	    	String url = "http://rl.coding2kids.com/logs/messages.html";
+	    	String url = WebisteBaseUrl+"logs/messages.html";
 			messageContent.setPage(url); //HAS NO CSS
 		} catch (IOException e) {
 			e.printStackTrace();
