@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class config {
 	//The following are universal constants
@@ -13,10 +14,10 @@ public class config {
 	public static String PdfLogPath  = "data/LogsPDF.pdf";
 	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";
-	public static String LogsPath  = "data\\Logs.txt";
+	public static String LogsPath  = "data/Logs.txt";
 	public static String ConfigFilePath  = "/config/DoNotTouch.txt";
 	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
-	
+	public static boolean ranBefore = true;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -88,5 +89,52 @@ public class config {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	public static void checkRanBefore() {
+		
+		try {
+		int lineCounter = 0;
+		File file = new File(ConfigFilePath);
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String line = "123";
+		while ((line = br.readLine()) != null) {  
+		   // process the line.  
+		   lineCounter++;
+		   System.out.println(lineCounter + " " + line);
+
+		   switch(lineCounter){  
+		    case 2:
+		    	if(line.contains("ranBefore = ")) {
+		    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
+		    		logs.updateLogsStartUp("ranBefore found");
+		    		logs.updateLogsStartUp("Config.txt ranBefore = " + line);
+		    		if(lineSub.equalsIgnoreCase("false")){
+		    			ranBefore = false;
+		    		}
+		    		else if(lineSub.equalsIgnoreCase("true")) {
+		    			ranBefore = true;
+		    		}
+		    		else {
+		    			logs.updateLogsERROR("ranBefore non-valid boolean (" + lineSub + ") at" + ConfigFilePath);
+		    			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+		    			ranBefore = true;
+		    		}
+		    		logs.updateLogsStartUp("ranBefore is now set to: " + ranBefore);
+		    	}
+		    	break;  
+		    case 8:  
+		    	break;
+		    case 12:  
+		    	break;
+		   }
+		}    
+		br.close(); 
+		}
+		catch (IOException e) {
+			logs.updateLogsERROR("Not able to read file at  "+ConfigFilePath);
+			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+			ranBefore = true;
+			e.printStackTrace();
+		}
 	}
 }

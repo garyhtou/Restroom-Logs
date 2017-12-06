@@ -1,10 +1,5 @@
 package mainProgram;
 
-/*
- * @author: Achintha Gunasekara
- * @date: 14.09.2015
- */
-
 import java.awt.*;
 import org.apache.commons.lang.time.StopWatch;
 
@@ -14,17 +9,16 @@ public class SplashScreenManager {
 		//SplashScreen.getSplashScreen();
 	}
 	
-	static boolean ranBefore = true;
 	static StopWatch stopWatch = new StopWatch();
 	
 	public static void init(boolean ranBeforeInput) {
 		logs.updateLogsStartUp("Starting Program");
 		logs.updateLogsStartUp("Starting Splash Screen");
 		if(ranBeforeInput) {
-			ranBefore = true;
+			config.ranBefore = true;
 		}
 		else {
-			ranBefore = false;
+			config.ranBefore = false;
 		}
 		runSplash();
 	}
@@ -38,7 +32,7 @@ public class SplashScreenManager {
         graphic.fillRect(170,140,250,40); //120, 140, 200, 40
         graphic.setPaintMode();
         graphic.setColor(LAVENDER_GRAY);
-        if(ranBefore) {
+        if(config.ranBefore) {
         	graphic.drawString(message+"...", 200, 165);
         }
         else {
@@ -65,7 +59,7 @@ public class SplashScreenManager {
         
         stopWatch.start();
 //STEPS ---------------------------------------
-        if(ranBefore) {
+        if(config.ranBefore) {
         	//Step 1
         	renderSplashFrame(graphic, "Checking for updates");
         	logs.updateLogsStartUp("Checking for updates");
@@ -80,17 +74,6 @@ public class SplashScreenManager {
         }
 //STEP INIT -------------------------------------
         else { //INIT START UP, HAS NOT RAN BEFORE
-        logs.
-
-        //STEP 0
-        logs.createLogs();
-        	renderSplashFrame(graphic, "Creating Logs");
-        	logs.updateLogsStartUp("Creating Logs");
-        	splash.update();
-        	Thread.sleep(10);
-        	//Call Action in another thread
-        	
-
         	//STEP 1
         	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
         	logs.updateLogsStartUp("NOTICE: Program hasn't ran before!");
@@ -111,7 +94,7 @@ public class SplashScreenManager {
         	logs.createPDF();
         	//Call Action in another thread
         	
-        	ranBefore = true; //TODO: Change in file
+        	config.ranBefore = true; //TODO: Change in file
         	//START PROGRAM
         	logs.updateLogsStartUp("Opening Window");
         	waitThreeStart(splash, graphic);
