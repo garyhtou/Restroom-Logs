@@ -27,10 +27,13 @@ import javax.swing.text.Document;
 import com.teamdev.jxdocument.*;
 
 public class MenuBar {
+	static String LogsPath = config.LogsPath;
 	public static JMenuBar createMenuBar() { //JmenuBar = Menu Bar, JMenu = new dropdown, JMunuItem = item in a dropdown
     	
     	//MENUBAR
         JMenuBar menubar = new JMenuBar();
+        //LOG FILE
+        
         
         //ICONS
         ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
@@ -103,7 +106,7 @@ public class MenuBar {
         	logs.updateLogs("Logs.txt Opened");
         	String fileContent;
 			try {
-				fileContent = new Scanner(new File("data/Logs.txt")).useDelimiter("\\Z").next();
+				fileContent = new Scanner(new File(LogsPath)).useDelimiter("\\Z").next();
 	        	//TEST: JOptionPane.showMessageDialog(dataLogs, fileContent);
 				
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

@@ -27,6 +27,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class logs {
 
+	static String DBPath = config.StudentDBPath; 
+	static String PdfLogPath = config.PdfLogPath; 
+	static String PdfLogViewPath = config.PdfLogViewPath; 
+	static String DBTableName = config.DBTableName; 
+	static String LogsPath = config.LogsPath; 
 //FOLLOWING 3 METHODS ARE FOR INIT FOR CLEARING LOGS----------------
 	
 //CREATE PDF FOR INIT
@@ -34,7 +39,7 @@ public class logs {
 		//Create PDF
 		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 		try {
-			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
+			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream(PdfLogPath));
 			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
 	        writer.setPageEvent(event);
 			document.open();
@@ -59,8 +64,8 @@ public class logs {
 	public static boolean createViewPDF() {
 		//copy PDF
 		boolean error = false; //flag boolean, if true, it will show a dialog
-		File source = new File("data/LogsPDF.pdf");
-		File dest = new File("data/ViewLogsPDF.pdf");
+		File source = new File(PdfLogPath);
+		File dest = new File(PdfLogViewPath);
 		try {
 		    FileUtils.copyDirectory(source, dest);
 		} catch (IOException e) {
@@ -78,7 +83,7 @@ public class logs {
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 			LocalDateTime now = LocalDateTime.now();
 
-			File file = new File("data\\Logs.txt");
+			File file = new File(LogsPath);
 			file.createNewFile();
 			fw = new FileWriter(file.getAbsoluteFile(), false);
 			bw = new BufferedWriter(fw);
@@ -121,8 +126,8 @@ public class logs {
 		
 		try {
 			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
-			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream("data/LogsPDF.pdf"));
-			PdfWriter writerCopy =PdfWriter.getInstance(document, new FileOutputStream("data/ViewLogsPDF.pdf"));
+			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream(PdfLogPath));
+			PdfWriter writerCopy =PdfWriter.getInstance(document, new FileOutputStream(PdfLogViewPath));
 			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
 	        writer.setPageEvent(event);
 	        writerCopy.setPageEvent(event);
@@ -160,7 +165,7 @@ public class logs {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
 			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://data/TestDB.accdb");
+		        "jdbc:ucanaccess://"+DBPath);
 
 		Statement s;
 		 
@@ -169,17 +174,16 @@ public class logs {
 
 		ResultSet rs;
 
-		rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
+		rs = s.executeQuery("SELECT FirstName, LastName FROM ["+DBTableName+"]");
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
 			table.addCell(rs.getString(3));
-			table.addCell(rs.getString(4));
 			while (rs.next()) {
 				table.addCell(rs.getString(1));
 				table.addCell(rs.getString(2));
 				table.addCell(rs.getString(3));
-				table.addCell(rs.getString(4));
+				
 			    
 			    
 	
@@ -255,7 +259,13 @@ public class logs {
 		//Error stuff so the code doesn't break
 		
 	}
-//UPDATE LOGS
+
+	public static String getFirstName(String sid) {
+		return sid;
+		
+	}
+	
+	//UPDATE LOGS
 	/**
 	 * Writes a String to the log file, should normally be called by other functions.
 	 * @param data
@@ -265,7 +275,7 @@ public class logs {
 		FileWriter fw = null;
 
 		try {
-			File file = new File("data\\Logs.txt");
+			File file = new File(LogsPath);
 			//FILE SHOULD ALREADY EXIST THROUGH initStartUp
 			// if file doesnt exists, then create it
 			if (!file.exists()) {

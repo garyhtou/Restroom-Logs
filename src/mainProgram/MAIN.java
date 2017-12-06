@@ -14,12 +14,13 @@ import org.apache.commons.io.*;
 
 public class MAIN {
 	static boolean ranBefore = false;
+	static String ConfigFilePath = config.ConfigFilePath;
 	//DO THREADS IN HERE
 	
 	public static void checkRanBefore() {
 		try {
 		int lineCounter = 0;
-		File file = new File("/config/DoNotTouch.txt");
+		File file = new File(ConfigFilePath);
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line = "123";
 		while ((line = br.readLine()) != null) {  
@@ -41,7 +42,7 @@ public class MAIN {
 		    			ranBefore = true;
 		    		}
 		    		else {
-		    			logs.updateLogsERROR("ranBefore non-valid boolean at  /config/DoNotTouch.txt");
+		    			logs.updateLogsERROR("ranBefore non-valid boolean at  "+ConfigFilePath);
 		    		}
 		    	}
 		    	break;  
@@ -54,7 +55,7 @@ public class MAIN {
 		br.close(); 
 		}
 		catch (IOException e) {
-			logs.updateLogsERROR("Not able to read file at  /config/DoNotTouch.txt");
+			logs.updateLogsERROR("Not able to read file at  "+ConfigFilePath);
 			e.printStackTrace();
 		}
 	}
@@ -63,7 +64,7 @@ public class MAIN {
 		//logs.updateLogsStartUp("Starting Program");
 		//checkRanBefore();
 		//startUp();
-		//logs.addLogInfoToDB("jjj","kkkk","12345");
+		logs.createPDF();
 	}
 	
 	public static void startUp() {
