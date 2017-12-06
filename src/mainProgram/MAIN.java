@@ -60,13 +60,15 @@ public class MAIN {
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		logs.updateLogsStartUp("");
-		checkRanBefore();
-		startUp();
+		//logs.updateLogsStartUp("Starting Program");
+		//checkRanBefore();
+		//startUp();
+		//logs.addLogInfoToDB("jjj","kkkk","12345");
 	}
 	
 	public static void startUp() {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png"
+		logs.updateLogsStartUp("\n\n\n----------");
 		SplashScreenManager.init(ranBefore); //IF IT HAS RAN BEFORE
 	}
 	

@@ -69,6 +69,7 @@ public class Preferences {
     		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
     		if(choice == JOptionPane.YES_OPTION) {
     			logs.createPDF();
+    			logs.updateLogsSystem("LogsPDF Cleared");
     			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
     		}
         });
@@ -95,11 +96,20 @@ public class Preferences {
 		JComponent panel5 = new JPanel();
 		panel5.setPreferredSize(new Dimension(410, 50));
 		tabbedPane.addTab("DataBase", blankIcon, panel5, "Student DataBase Configuration");
-		tabbedPane.setMnemonicAt(3, KeyEvent.VK_5);
+		tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
 		addTitle(panel5, "General");
 		
 		//insert database (either remote or file path to local)
-
+		
+		//TEST COMP
+		JComponent panel6 = new JPanel();
+		panel5.setPreferredSize(new Dimension(410, 50));
+		tabbedPane.addTab("TEST", blankIcon, panel6, "TESTTESTTEST");
+		tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
+		addTitle(panel6, "TEST");
+		
+		
+		
 		JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
 		
 

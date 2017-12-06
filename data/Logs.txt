@@ -7,3 +7,121 @@
 ***2017/12/04 13:44:33  |  Start Up  |  Starting Program
 ***2017/12/04 13:44:33  |  Start Up  |  Starting Splash Screen
 ***2017/12/04 13:44:33  |  ERROR  |  SplashScreen.getSplashScreen() returned null
+**    2017/12/05 10:55:15  |  Start Up  |  Starting Program
+***** 2017/12/05 10:55:15  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 10:55:15  |  Start Up  |  
+
+
+----------
+**    2017/12/05 10:55:15  |  Start Up  |  Starting Program
+**    2017/12/05 10:55:15  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 10:55:15  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 10:55:15  |  Start Up  |  Checking database
+**    2017/12/05 10:55:15  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 10:55:16  |  Start Up  |  Creating Logs
+**    2017/12/05 10:55:16  |  Start Up  |  Opening Window
+**    2017/12/05 10:55:19  |  Start Up  |  Start Up Complete
+
+-----
+
+
+**    2017/12/05 13:40:41  |  Start Up  |  Starting Program
+***** 2017/12/05 13:40:41  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 13:40:41  |  Start Up  |  
+
+
+----------
+**    2017/12/05 13:40:41  |  Start Up  |  Starting Program
+**    2017/12/05 13:40:41  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 13:40:41  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 13:40:41  |  Start Up  |  Checking database
+**    2017/12/05 13:40:41  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 13:40:42  |  Start Up  |  Creating Logs
+**    2017/12/05 13:40:42  |  Start Up  |  Opening Window
+**    2017/12/05 13:40:45  |  Start Up  |  Start Up Complete
+
+-----
+
+
+**    2017/12/05 13:47:07  |  Start Up  |  Starting Program
+***** 2017/12/05 13:47:07  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 13:47:07  |  Start Up  |  
+
+
+----------
+**    2017/12/05 13:47:07  |  Start Up  |  Starting Program
+**    2017/12/05 13:47:07  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 13:47:07  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 13:47:07  |  Start Up  |  Checking database
+**    2017/12/05 13:47:07  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 13:47:08  |  Start Up  |  Creating Logs
+**    2017/12/05 13:47:08  |  Start Up  |  Opening Window
+**    2017/12/05 13:47:11  |  Start Up  |  Start Up Complete
+
+-----
+
+
+     2017/12/05 13:47:30  |    Signed Out
+     2017/12/05 13:47:43  |    Signed Out
+     2017/12/05 13:48:05  |    Signed Out
+***** 2017/12/05 13:50:53  |  System  |  EXIT
+**    2017/12/05 13:50:55  |  Start Up  |  Starting Program
+***** 2017/12/05 13:50:55  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 13:50:55  |  Start Up  |  
+
+
+----------
+**    2017/12/05 13:50:55  |  Start Up  |  Starting Program
+**    2017/12/05 13:50:55  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 13:50:55  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 13:50:55  |  Start Up  |  Checking database
+**    2017/12/05 13:50:55  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 13:50:56  |  Start Up  |  Creating Logs
+**    2017/12/05 13:50:56  |  Start Up  |  Opening Window
+**    2017/12/05 13:50:59  |  Start Up  |  Start Up Complete
+
+-----
+
+
+***** 2017/12/05 13:51:02  |  System  |  EXIT
+----------
+**    2017/12/05 13:58:22  |  Start Up  |  Starting Program
+***** 2017/12/05 13:58:22  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 13:58:22  |  Start Up  |  
+
+
+----------
+**    2017/12/05 13:58:22  |  Start Up  |  Starting Program
+**    2017/12/05 13:58:22  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 13:58:22  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 13:58:22  |  Start Up  |  Checking database
+**    2017/12/05 13:58:22  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 13:58:23  |  Start Up  |  Creating Logs
+**    2017/12/05 13:58:23  |  Start Up  |  Opening Window
+**    2017/12/05 13:58:26  |  Start Up  |  Start Up Complete
+
+-----
+
+
+     2017/12/05 13:59:57  |  ViewLogsPDF Opened
+     2017/12/05 14:00:23  |  Preferences Opened
+     2017/12/05 14:01:28  |  Logs.txt Opened
+***** 2017/12/05 14:02:31  |  System  |  EXIT
+----------**    2017/12/05 14:03:07  |  Start Up  |  Starting Program
+***** 2017/12/05 14:03:07  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
+**    2017/12/05 14:03:07  |  Start Up  |  
+
+
+----------
+**    2017/12/05 14:03:07  |  Start Up  |  Starting Program
+**    2017/12/05 14:03:07  |  Start Up  |  Starting Splash Screen
+**    2017/12/05 14:03:07  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/05 14:03:07  |  Start Up  |  Checking database
+**    2017/12/05 14:03:07  |  Start Up  |  Creating PDF Logs
+**    2017/12/05 14:03:08  |  Start Up  |  Creating Logs
+**    2017/12/05 14:03:08  |  Start Up  |  Opening Window
+**    2017/12/05 14:03:11  |  Start Up  |  Start Up Complete
+
+-----
+
+

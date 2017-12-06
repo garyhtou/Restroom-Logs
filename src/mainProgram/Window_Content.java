@@ -1,4 +1,4 @@
-package mainProgram;
+ackage mainProgram;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
