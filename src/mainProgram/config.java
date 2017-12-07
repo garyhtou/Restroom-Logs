@@ -15,9 +15,13 @@ public class config {
 	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";
 	public static String LogsPath  = "data/Logs.txt";
-	public static String ConfigFilePath  = "/config/DoNotTouch.txt";
+	public static String ConfigFilePath  = "config/DoNotTouch.txt";
 	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
-	public static boolean ranBefore = true;
+	final static String SystemPriority = "**** "; //Out of 5
+	final static String ErrorPriority = "*****"; //Out of 5
+	final static String StartUpPriority = "**   "; //Out of 5
+	final static String updateLogsPriority = "     "; //Out of 5
+	public static boolean ranBefore = true;;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -90,6 +94,9 @@ public class config {
 		}
 		return true;
 	}
+	/**
+	 * Checks if program has ranBefore
+	 */
 	public static void checkRanBefore() {
 		
 		try {
@@ -100,19 +107,26 @@ public class config {
 		while ((line = br.readLine()) != null) {  
 		   // process the line.  
 		   lineCounter++;
-		   System.out.println(lineCounter + " " + line);
+		   //System.out.println(lineCounter + " " + line);
 
 		   switch(lineCounter){  
-		    case 2:
+		    case 3: //on 3rd line
 		    	if(line.contains("ranBefore = ")) {
 		    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
-		    		logs.updateLogsStartUp("ranBefore found");
-		    		logs.updateLogsStartUp("Config.txt ranBefore = " + line);
 		    		if(lineSub.equalsIgnoreCase("false")){
 		    			ranBefore = false;
+		    			logs.createLogs();
+		    			logs.updateLogsStartUp("\n\n\n----------");
+			    		logs.updateLogsStartUp("ranBefore found");
+			    		logs.updateLogsStartUp("Config.txt ranBefore = " + line);
+			    		//TODO, CHANGE FALSE TO TRUE
+		    			
 		    		}
 		    		else if(lineSub.equalsIgnoreCase("true")) {
 		    			ranBefore = true;
+		    			logs.updateLogsStartUp("\n\n\n----------");
+			    		logs.updateLogsStartUp("ranBefore found");
+			    		logs.updateLogsStartUp("Config.txt ranBefore = " + line);
 		    		}
 		    		else {
 		    			logs.updateLogsERROR("ranBefore non-valid boolean (" + lineSub + ") at" + ConfigFilePath);
@@ -121,10 +135,6 @@ public class config {
 		    		}
 		    		logs.updateLogsStartUp("ranBefore is now set to: " + ranBefore);
 		    	}
-		    	break;  
-		    case 8:  
-		    	break;
-		    case 12:  
 		    	break;
 		   }
 		}    

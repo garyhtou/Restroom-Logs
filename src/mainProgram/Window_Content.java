@@ -191,36 +191,50 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             		EventQueue.invokeLater(() -> {
             			scanField.setText("");
                     });
+            		if(pullStudentName.containsOnlyNumbers(input)) {
+            			int intInput = Integer.parseInt(input);
+            			
+            			pullStudentName names = new pullStudentName(intInput);
+                		
+                		System.out.println(intInput);
+                    	String FirstName = names.getFirstName();
+                    	String LastName = names.getLastName();
+                    	
+                    	if((FirstName != null) && (LastName != null)) {
+                    		//UDPATES!!1
+                        	boolean NotSignOut = true; //CURRENTLY SIGNED OUT??
+                        	if(NotSignOut) {
+                        		String data = FirstName + " " + LastName + " Signed Out";
+                        		logs.updateLogs(data);
+                        		try {
+                        			logs.updatePDF(/*data*/);
+                    			} catch (ClassNotFoundException e) {
+                    				e.printStackTrace();
+                    			} catch (SQLException e) {
+                    				e.printStackTrace();
+                    			}
+                        	}
+                        	else {
+                        		String data = FirstName + " " + LastName + " Signed In";
+                        		logs.updateLogs(data);
+                        		try {
+                        			logs.updatePDF(/*data*/);
+                    			} catch (ClassNotFoundException e) {
+                    				e.printStackTrace();
+                    			} catch (SQLException e) {
+                    				e.printStackTrace();
+                    			}
+                        	}
+                    	}
+            		}
+            		else {
+            			logs.updateLogs(input + " Is not an integer");
+            			
+            			JTextArea onlyInts = new JTextArea("Please only enter numbers");
+            			JOptionPane.showMessageDialog(null, onlyInts, "Scan Error", JOptionPane.INFORMATION_MESSAGE);
+            			
+            		}
             		
-            		//TODO: ACCESS DATA BASE WITH INPUT STRING
-            		System.out.println(input);
-                	String FirstName = "";
-                	String LastName = "";
-                	
-                	//UDPATES!!1
-                	boolean NotSignOut = true; //CURRENTLY SIGNED OUT??
-                	if(NotSignOut) {
-                		String data = FirstName + " " + LastName + " Signed Out";
-                		logs.updateLogs(data);
-                		try {
-                			logs.updatePDF(/*data*/);
-            			} catch (ClassNotFoundException e) {
-            				e.printStackTrace();
-            			} catch (SQLException e) {
-            				e.printStackTrace();
-            			}
-                	}
-                	else {
-                		String data = FirstName + " " + LastName + " Signed In";
-                		logs.updateLogs(data);
-                		try {
-                			logs.updatePDF(/*data*/);
-            			} catch (ClassNotFoundException e) {
-            				e.printStackTrace();
-            			} catch (SQLException e) {
-            				e.printStackTrace();
-            			}
-                	}
             	}
             }
         });

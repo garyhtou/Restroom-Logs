@@ -23,12 +23,6 @@ public class MAIN {
 	
 	public static void startUp() {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png"
-		if(config.ranBefore) {
-			logs.updateLogsStartUp("\n\n\n----------");
-		}
-		else {
-			logs.createLogs();
-		}
 		SplashScreenManager.init(config.ranBefore); //IF IT HAS RAN BEFORE
 	}
 	
