@@ -45,7 +45,7 @@ public class pullStudentName {
 			LastName = rs.getString(3);
 
 		} catch (SQLException | ClassNotFoundException e) {
-			logs.updateLogsERROR("Couldnt not access database at  " + config.StudentDBPath +".  Returning null");
+			logs.updateLogsERROR("Could not access database at  " + config.StudentDBPath +".  Returning null");
 			e.printStackTrace();
 		}
 	}

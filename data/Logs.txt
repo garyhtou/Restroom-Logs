@@ -27,4 +27,34 @@
 **    2017/12/07 00:14:29  |  Start Up  |  Start Up Complete
 -----
 ***** 2017/12/07 00:14:33  |  System  |  EXIT
+----------**    2017/12/07 10:33:30  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:33:30  |  Start Up  |  ranBefore found
+**    2017/12/07 10:33:30  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:33:30  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:33:30  |  Start Up  |  Starting Program
+**    2017/12/07 10:33:30  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 10:33:30  |  Start Up  |  Checking for updates
+**    2017/12/07 10:33:30  |  Start Up  |  Opening Window
+**    2017/12/07 10:33:34  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/07 10:34:44  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 10:38:29  |  Logs.txt Opened
+***** 2017/12/07 10:38:33  |  System  |  EXIT
+----------**    2017/12/07 10:44:03  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:44:03  |  Start Up  |  ranBefore found
+**    2017/12/07 10:44:03  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:44:03  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:44:03  |  Start Up  |  Starting Program
+**    2017/12/07 10:44:03  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 10:44:03  |  Start Up  |  Checking for updates
+**    2017/12/07 10:44:03  |  Start Up  |  Opening Window
+**    2017/12/07 10:44:06  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/07 10:44:09  |  System  |  EXIT
 ----------
