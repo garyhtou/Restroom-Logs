@@ -1,60 +1,30 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2017/12/06 20:07:49
+	File created on 2017/12/07 00:11:39
 
-**   	2017/12/06 20:07:49  |  Start Up  |  Starting Program
-**   	2017/12/06 20:07:49  |  Start Up  |  Starting Splash Screen
-**   	2017/12/06 20:07:49  |  Start Up  |  NOTICE: Program hasn't ran before!
-**   	2017/12/06 20:07:49  |  Start Up  |  Checking database
-**   	2017/12/06 20:07:49  |  Start Up  |  Creating PDF Logs
-**   	2017/12/06 20:07:49  |  Start Up  |  Opening Window
-**   	2017/12/06 20:07:52  |  Start Up  |  Start Up Complete
------
-     	2017/12/06 20:07:55  |  Logs.txt Opened
-*****	2017/12/06 20:08:00  |  System  |  EXIT
-----------**   	2017/12/06 20:20:48  |  Start Up  |  ranBefore found
-**   	2017/12/06 20:20:48  |  Start Up  |  Config.txt ranBefore = ranBefore = true
-**   	2017/12/06 20:20:48  |  Start Up  |  ranBefore is now set to: true
-**   	2017/12/06 20:20:48  |  Start Up  |  
+**    2017/12/07 00:11:39  |  Start Up  |  
 
 
 ----------
-**   	2017/12/06 20:20:48  |  Start Up  |  Starting Program
-**   	2017/12/06 20:20:48  |  Start Up  |  Starting Splash Screen
-**   	2017/12/06 20:20:49  |  Start Up  |  Checking for updates
-**   	2017/12/06 20:20:49  |  Start Up  |  Opening Window
-**   	2017/12/06 20:20:52  |  Start Up  |  Start Up Complete
+**    2017/12/07 00:11:39  |  Start Up  |  ranBefore found
+**    2017/12/07 00:11:39  |  Start Up  |  Config.txt: ranBefore = false
+**    2017/12/07 00:11:39  |  Start Up  |  ranBefore is now set to: false
+**    2017/12/07 00:11:39  |  Start Up  |  Starting Program
+**    2017/12/07 00:11:39  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 00:11:39  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/07 00:11:39  |  Start Up  |  Checking database
+**    2017/12/07 00:11:39  |  Start Up  |  Creating PDF Logs
+**    2017/12/07 00:11:40  |  Start Up  |  Opening Window
+**    2017/12/07 00:11:43  |  Start Up  |  Start Up Complete
 -----
-     	2017/12/06 20:20:55  |  Logs.txt Opened
-     	2017/12/06 20:21:23  |  Preferences Opened
-     	2017/12/06 20:21:29  |  Logs.txt Opened
-*****	2017/12/06 20:21:38  |  System  |  EXIT
-----------**   	2017/12/06 20:22:35  |  Start Up  |  ranBefore found
-**   	2017/12/06 20:22:35  |  Start Up  |  Config.txt ranBefore = ranBefore = true
-**   	2017/12/06 20:22:35  |  Start Up  |  ranBefore is now set to: true
-**   	2017/12/06 20:22:35  |  Start Up  |  
-
-
-----------
-**   	2017/12/06 20:22:35  |  Start Up  |  Starting Program
-**   	2017/12/06 20:22:35  |  Start Up  |  Starting Splash Screen
-**   	2017/12/06 20:22:35  |  Start Up  |  Checking for updates
-**   	2017/12/06 20:22:35  |  Start Up  |  Opening Window
-**   	2017/12/06 20:22:39  |  Start Up  |  Start Up Complete
+***** 2017/12/07 00:11:46  |  System  |  EXIT
+----------***** 2017/12/07 00:14:25  |  ERROR  |  ranBefore non-valid boolean (maybe) atconfig/DoNotTouch.txt
+***** 2017/12/07 00:14:25  |  ERROR  |  Assuming that program has ran before (ranBefore = true
+**    2017/12/07 00:14:25  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 00:14:25  |  Start Up  |  Starting Program
+**    2017/12/07 00:14:25  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 00:14:25  |  Start Up  |  Checking for updates
+**    2017/12/07 00:14:25  |  Start Up  |  Opening Window
+**    2017/12/07 00:14:29  |  Start Up  |  Start Up Complete
 -----
-*****	2017/12/06 20:22:41  |  System  |  EXIT
-----------**   	2017/12/06 20:25:23  |  Start Up  |  
-
-
-----------
-**   	2017/12/06 20:25:23  |  Start Up  |  ranBefore found
-**   	2017/12/06 20:25:23  |  Start Up  |  Config.txt ranBefore = ranBefore = true
-**   	2017/12/06 20:25:23  |  Start Up  |  ranBefore is now set to: true
-**   	2017/12/06 20:25:23  |  Start Up  |  Starting Program
-**   	2017/12/06 20:25:23  |  Start Up  |  Starting Splash Screen
-**   	2017/12/06 20:25:23  |  Start Up  |  Checking for updates
-**   	2017/12/06 20:25:23  |  Start Up  |  Opening Window
-**   	2017/12/06 20:25:27  |  Start Up  |  Start Up Complete
------
-     	2017/12/06 20:25:29  |  Logs.txt Opened
-*****	2017/12/06 20:25:40  |  System  |  EXIT
+***** 2017/12/07 00:14:33  |  System  |  EXIT
 ----------

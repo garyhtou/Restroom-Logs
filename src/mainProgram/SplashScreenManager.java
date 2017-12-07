@@ -5,21 +5,16 @@ import org.apache.commons.lang.time.StopWatch;
 
 public class SplashScreenManager {
 	public static void main(String[] args) {
-		init(false);
+		config.checkRanBefore();
+		init();
 		//SplashScreen.getSplashScreen();
 	}
 	
 	static StopWatch stopWatch = new StopWatch();
 	
-	public static void init(boolean ranBeforeInput) {
+	public static void init() {
 		logs.updateLogsStartUp("Starting Program");
 		logs.updateLogsStartUp("Starting Splash Screen");
-		if(ranBeforeInput) {
-			config.ranBefore = true;
-		}
-		else {
-			config.ranBefore = false;
-		}
 		runSplash();
 	}
 
