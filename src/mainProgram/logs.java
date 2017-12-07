@@ -27,11 +27,17 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class logs {
 
-	static String DBPath = config.StudentDBPath; 
-	static String PdfLogPath = config.PdfLogPath; 
-	static String PdfLogViewPath = config.PdfLogViewPath; 
-	static String DBTableName = config.DBTableName; 
-	static String LogsPath = config.LogsPath; 
+	private static String DBPath = config.StudentDBPath; 
+	private static String PdfLogPath = config.PdfLogPath; 
+	private static String PdfLogViewPath = config.PdfLogViewPath; 
+	private static String DBTableName = config.DBTableName; 
+	private static String LogsPath = config.LogsPath; 
+	
+	private final static String SystemPriority = config.SystemPriority;
+	private final static String ErrorPriority = config.ErrorPriority;
+	private final static String StartUpPriority = config.StartUpPriority;
+	private final static String updateLogsPriority = config.updateLogsPriority;
+	
 //FOLLOWING 3 METHODS ARE FOR INIT FOR CLEARING LOGS----------------
 	
 //CREATE PDF FOR INIT
@@ -183,13 +189,7 @@ public class logs {
 				table.addCell(rs.getString(1));
 				table.addCell(rs.getString(2));
 				table.addCell(rs.getString(3));
-				
-			    
-			    
-	
 			}
-			
-			
 			for(int i=0;i<3;i++) {
 			
 			}
@@ -245,23 +245,12 @@ public class logs {
 				rs.getString(4);
 			}
 			    
-			    
-	
-			
-			
-			
-			
-			
+
 			
 			//adds the table on to the document
 			
 		
 		//Error stuff so the code doesn't break
-		
-	}
-
-	public static String getFirstName(String sid) {
-		return sid;
 		
 	}
 	
@@ -318,12 +307,11 @@ public class logs {
 	 * <strong> Format Example:</strong> 2017/11/23 16:55:32  |    Hello
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String updateLogsPriority = "     ";
 	public static void updateLogs(String data) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = updateLogsPriority + " " + dtf.format(now) + "  |  " + data + "\n";
+		String TimeAndData = updateLogsPriority + "\t" + dtf.format(now) + "  |  " + data + "\n";
 		writeToLogs(TimeAndData);
 	}
 	
@@ -331,12 +319,11 @@ public class logs {
 	 * adds a String to the Logs file as a Start Up.<br>
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String StartUpPriority = "**   "; //Out of 5
 	public static void updateLogsStartUp(String StartUpData) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		
-		String TimeAndStartUpData = StartUpPriority + " " + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
+		String TimeAndStartUpData = StartUpPriority + "\t" + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
 		writeToLogs(TimeAndStartUpData);
 	}
 	
@@ -344,12 +331,11 @@ public class logs {
 	 * adds a String to the Logs file as an Error Message.<br>
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String ErrorPriority = "*****"; //Out of 5
 	public static void updateLogsERROR(String ERRORdata) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
+		String TimeAndData = ErrorPriority + "\t" + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
 
 		writeToLogs(TimeAndData);
 	}
@@ -358,12 +344,11 @@ public class logs {
 	 * adds a String to the Logs file as an Regular Message.<br>
 	 * @param data The String that will be added to the Logs File
 	 */
-	final static String SystemPriority = "*****"; //Out of 5
 	public static void updateLogsSystem(String SystemData) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 
-		String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
+		String TimeAndData = ErrorPriority + "\t" + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
 
 		writeToLogs(TimeAndData);
 	}

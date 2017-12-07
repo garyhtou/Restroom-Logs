@@ -70,7 +70,7 @@ public class SplashScreenManager {
         	//START PROGRAM
         	logs.updateLogsStartUp("Opening Window");
         	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
-        	logs.updateLogsStartUp("Start Up Complete\n\n-----\n\n");
+        	logs.updateLogsStartUp("Start Up Complete\n-----");
         }
 //STEP INIT -------------------------------------
         else { //INIT START UP, HAS NOT RAN BEFORE
@@ -98,7 +98,7 @@ public class SplashScreenManager {
         	//START PROGRAM
         	logs.updateLogsStartUp("Opening Window");
         	waitThreeStart(splash, graphic);
-        	logs.updateLogsStartUp("Start Up Complete\n\n-----\n\n");
+        	logs.updateLogsStartUp("Start Up Complete\n-----");
         }
         splash.close();
     }
