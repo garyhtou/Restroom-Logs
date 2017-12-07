@@ -156,7 +156,7 @@ public class logs {
 			table.setSpacingBefore(1f);
 			table.setSpacingAfter(11f);
 			//width for each column
-			float[] columnWidth= {1f,1f,2f,0.5f};
+			float[] columnWidth= {1f,1f,0.5f,0.5f};
 			table.setWidths(columnWidth);
 			//sets variables for each cell
 			PdfPCell c1=new PdfPCell(new Paragraph("First Name"));
@@ -183,19 +183,19 @@ public class logs {
 			s = conn.createStatement();
 
 		ResultSet rs;
-		String name = "Michael";
-		rs = s.executeQuery("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]='"+ name+"'");
-		//PreparedStatement pstmt = conn.prepareStatement("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]="+ name);
+		String studentID = "12345";
+		rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
 			rs.next();
-			table.addCell(rs.getString(1));
+			rs.getString(1);
 			table.addCell(rs.getString(2));
-			/*System.out.println(rs.getString(1));
-			System.out.print(rs.getString(2));*/
-			/*while (rs.next()) {
-				table.addCell(rs.getString(1));
+			table.addCell(rs.getString(3));
+			table.addCell("   ");
+			table.addCell("sjsj");
+			
+			while (rs.next()) {
 				table.addCell(rs.getString(2));
-				}*/
-		// name=pstmt.setString(1) ;
+				table.addCell(rs.getString(3));
+				}
 				
 			    
 			    
