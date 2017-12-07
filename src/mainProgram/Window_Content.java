@@ -228,7 +228,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
                     	}
             		}
             		else {
-            			logs.updateLogs(input + " Is not an integer");
+            			logs.updateLogs("\"" + input + "\"  is not an integer");
             			
             			JTextArea onlyInts = new JTextArea("Please only enter numbers");
             			JOptionPane.showMessageDialog(null, onlyInts, "Scan Error", JOptionPane.INFORMATION_MESSAGE);
