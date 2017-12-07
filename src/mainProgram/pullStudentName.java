@@ -34,7 +34,7 @@ public class pullStudentName {
 			
 			
 			ResultSet rs;
-			rs = s.executeQuery("SELECT StudentID FirstName LastName FROM ["+config.StudentDBPath+"]");
+			rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]");
 			
 			rs.next();
 			while(!rs.getString(1).equals(studentID)){

@@ -27,4 +27,69 @@
 **    2017/12/07 00:14:29  |  Start Up  |  Start Up Complete
 -----
 ***** 2017/12/07 00:14:33  |  System  |  EXIT
+----------**    2017/12/07 10:41:51  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:41:51  |  Start Up  |  ranBefore found
+**    2017/12/07 10:41:51  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:41:51  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:41:51  |  Start Up  |  Starting Program
+**    2017/12/07 10:41:51  |  Start Up  |  Starting Splash Screen
+***** 2017/12/07 10:41:51  |  ERROR  |  SplashScreen.getSplashScreen() returned null
+**    2017/12/07 10:43:40  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:43:40  |  Start Up  |  ranBefore found
+**    2017/12/07 10:43:40  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:43:40  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:43:40  |  Start Up  |  Starting Program
+**    2017/12/07 10:43:40  |  Start Up  |  Starting Splash Screen
+***** 2017/12/07 10:43:40  |  ERROR  |  SplashScreen.getSplashScreen() returned null
+**    2017/12/07 10:44:42  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:44:42  |  Start Up  |  ranBefore found
+**    2017/12/07 10:44:42  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:44:42  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:44:42  |  Start Up  |  Starting Program
+**    2017/12/07 10:44:42  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 10:44:43  |  Start Up  |  Checking for updates
+**    2017/12/07 10:44:43  |  Start Up  |  Opening Window
+**    2017/12/07 10:44:46  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/07 10:44:53  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 10:47:50  |  System  |  EXIT
+----------**    2017/12/07 10:48:00  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:48:00  |  Start Up  |  ranBefore found
+**    2017/12/07 10:48:00  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:48:00  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:48:00  |  Start Up  |  Starting Program
+**    2017/12/07 10:48:00  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 10:48:00  |  Start Up  |  Checking for updates
+**    2017/12/07 10:48:00  |  Start Up  |  Opening Window
+**    2017/12/07 10:48:03  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/07 10:48:11  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 10:48:43  |  System  |  EXIT
+----------**    2017/12/07 10:50:07  |  Start Up  |  
+
+
+----------
+**    2017/12/07 10:50:07  |  Start Up  |  ranBefore found
+**    2017/12/07 10:50:07  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 10:50:07  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 10:50:07  |  Start Up  |  Starting Program
+**    2017/12/07 10:50:07  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 10:50:07  |  Start Up  |  Checking for updates
+**    2017/12/07 10:50:07  |  Start Up  |  Opening Window
+**    2017/12/07 10:50:10  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/07 10:50:17  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 10:51:15  |  System  |  EXIT
 ----------

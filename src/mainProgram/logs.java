@@ -184,15 +184,17 @@ public class logs {
 
 		ResultSet rs;
 		String name = "Michael";
-		rs = s.executeQuery("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]="+name);
+		rs = s.executeQuery("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]='"+ name+"'");
 		//PreparedStatement pstmt = conn.prepareStatement("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]="+ name);
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
-			while (rs.next()) {
+			/*System.out.println(rs.getString(1));
+			System.out.print(rs.getString(2));*/
+			/*while (rs.next()) {
 				table.addCell(rs.getString(1));
 				table.addCell(rs.getString(2));
-				}
+				}*/
 		// name=pstmt.setString(1) ;
 				
 			    
