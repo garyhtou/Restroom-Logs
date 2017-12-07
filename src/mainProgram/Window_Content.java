@@ -196,7 +196,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             			
             			pullStudentName names = new pullStudentName(intInput);
                 		
-                		System.out.println(intInput);
+                		//System.out.println(intInput);
                     	String FirstName = names.getFirstName();
                     	String LastName = names.getLastName();
                     	

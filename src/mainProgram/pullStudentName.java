@@ -34,13 +34,10 @@ public class pullStudentName {
 			
 			
 			ResultSet rs;
-			rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]");
+			rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
 			
 			rs.next();
-			while(!rs.getString(1).equals(studentID)){
-				rs.next();
-			}
-
+			rs.getString(1);
 			FirstName = rs.getString(2);
 			LastName = rs.getString(3);
 
@@ -54,7 +51,7 @@ public class pullStudentName {
 	 * @return FirstName as a String
 	 */
 	public static String getFirstName() {
-		System.out.println(FirstName);
+		//System.out.println(FirstName);
 		return FirstName;
 	}
 	/**
