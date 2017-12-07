@@ -16,8 +16,9 @@ public class MAIN {
 	static String ConfigFilePath = config.ConfigFilePath;
 	//DO THREADS IN HERE
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		config.checkRanBefore();
-		startUp();
+		/*config.checkRanBefore();
+		startUp();*/
+		logs.updatePDF();
 	}
 	
 	public static void startUp() {

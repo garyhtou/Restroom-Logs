@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,6 +35,10 @@ public class logs {
 	static String LogsPath = config.LogsPath; 
 //FOLLOWING 3 METHODS ARE FOR INIT FOR CLEARING LOGS----------------
 	
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		updatePDF();
+	}
 //CREATE PDF FOR INIT
 	public static void createPDF() { //create blank PDF and Logs.txt for when the program initially starts up
 		//Create PDF
@@ -173,21 +178,22 @@ public class logs {
 			s = conn.createStatement();
 
 		ResultSet rs;
-
-		rs = s.executeQuery("SELECT FirstName, LastName FROM ["+DBTableName+"]");
+		String name = "Michael";
+		rs = s.executeQuery("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]="+name);
+		//PreparedStatement pstmt = conn.prepareStatement("SELECT [FirstName], [LastName] FROM ["+DBTableName+"] WHERE [FirstName]="+ name);
 			rs.next();
 			table.addCell(rs.getString(1));
 			table.addCell(rs.getString(2));
-			table.addCell(rs.getString(3));
 			while (rs.next()) {
 				table.addCell(rs.getString(1));
 				table.addCell(rs.getString(2));
-				table.addCell(rs.getString(3));
+				}
+		// name=pstmt.setString(1) ;
 				
 			    
 			    
 	
-			}
+			
 			
 			
 			for(int i=0;i<3;i++) {
@@ -260,10 +266,26 @@ public class logs {
 		
 	}
 
-	public static String getFirstName(String sid) {
-		return sid;
+	/*public static String getFirstName(String sid) {
+		String fname;
+		try {
+			
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		Connection conn;
+			conn = DriverManager.getConnection(
+			    "jdbc:ucanaccess://"+DBPath);
+		Statement s;
+			s = conn.createStatement();
+		ResultSet rs;
+			rs = s.executeQuery("SELECT FirstName, LastName FROM ["+DBTableName+"]");
+			rs.next();
 		
-	}
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return fname;
+	}*/
 	
 	//UPDATE LOGS
 	/**
