@@ -258,36 +258,14 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
-		try {
+	//TO DISPLAY WEBSITE
+    	/*try {
 	    	String url = WebisteBaseUrl+"logs/messages.html";
 			messageContent.setPage(url); //HAS NO CSS
 		} catch (IOException e) {
+			messageContent.setText("<html>Could not load message from "+url);
 			e.printStackTrace();
-		}
-		
-    	/*String textFromUrl = "";
-    	URL url = null;
-    	try {
-    		url = new URL("http://rl.coding2kids.com/logs/messages.html");
-    	} catch (MalformedURLException e1) {
-    		e1.printStackTrace();
-    	}
-	    try {
-	    	if(url !=null) {
-			    BufferedReader in = new BufferedReader(
-			    new InputStreamReader(
-			   	url.openStream()));
-				String inputLine;
-				while ((inputLine = in.readLine()) != null)
-			   		textFromUrl+=inputLine;
-				messageContent.setText(textFromUrl);
-			    in.close();
-	    	}
-	    }
-	    catch (IOException e) {
-	    	messageContent.setContentType("text/html");
-	     	messageContent.setText("<html>Could not load message from "+url);
-	    }*/
+		}*/
     	messageContent.setEditable(false);
     	messageContent.setFont(new Font("Verdana", Font.PLAIN, teacherName.getFont().getSize()));
     	messageContent.setContentType("text/html");

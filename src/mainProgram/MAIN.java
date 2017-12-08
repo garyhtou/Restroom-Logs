@@ -23,7 +23,5 @@ public class MAIN {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png"
 		config.checkRanBefore();
 		SplashScreenManager.init(); //IF IT HAS RAN BEFORE
-	}
-	
-
+	}	
 }

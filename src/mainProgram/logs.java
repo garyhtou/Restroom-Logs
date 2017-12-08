@@ -228,38 +228,22 @@ public class logs {
 		}
 		
 	}
-	public static void addLogInfoToDB() throws ClassNotFoundException, SQLException {
+	/**
+	 * Adds an Entry or Exit to the Logs Database
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public static void addEntryToLogDB() throws ClassNotFoundException, SQLException {
 	Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
+		//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
+		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		
-	
-			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
-			
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
-			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://"+LogsDBPath);
-
+		Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+		
 		Statement s;
-		 
-
-			s = conn.createStatement();
+		s = conn.createStatement();
 
 		ResultSet rs;
-
-//			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
-			/*rs = s.executeQuery("INSERT INTO [Logs] (StudentID, FirstName, LastName, TimeOut, TimeIn) VALUES (value1, value2, value3,);");
-			rs.next();
-			rs.getString(1);
-			rs.getString(2);
-			rs.getString(3);
-			rs.getString(4);
-			
-			while (rs.next()) {
-				rs.getString(1);
-				rs.getString(2);
-				rs.getString(3);
-				rs.getString(4);
-			}*/
 		String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement st = conn.prepareStatement (q);
 		st.setString(1, "12345");
@@ -268,59 +252,52 @@ public class logs {
 		st.setString(4, "10:55");
 		st.setString(5, "10:58");
 		st.executeUpdate();
-			    
-			    
-	
-			
-			
-			
-			
-			
-			
-			//adds the table on to the document
-			
-		
-		//Error stuff so the code doesn't break
-		
 	}
+	/**
+	 * Adds a new student to the Student Database<BR>
+	 * FIXME: NOT DONE
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	//FIXME: NOT DONE
+	public static void addStudentToDB() throws ClassNotFoundException, SQLException {
+		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
+			//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			
+			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+			
+			Statement s;
+			s = conn.createStatement();
+
+			ResultSet rs;
+			String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
+			PreparedStatement st = conn.prepareStatement (q);
+			st.setString(1, "12345");
+			st.setString(2, "Michael");
+			st.setString(3, "Schwamborn");
+			st.setString(4, "10:55");
+			st.setString(5, "10:58");
+			st.executeUpdate();
+		}
+	/**
+	 * Clears the log Database<br>Caution, this removes all student entry and exits.
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static void clearLogsDB() throws ClassNotFoundException, SQLException {
 		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
 		Connection conn=DriverManager.getConnection(
 	        "jdbc:ucanaccess://"+LogsDBPath);
-
 	Statement s;
-	 
-
 		s = conn.createStatement();
-
 	ResultSet rs;
 
 	String q = "DELETE FROM "+LogsTableName;
 	PreparedStatement st = conn.prepareStatement (q);
 	st.executeUpdate();
 	}
-	
-	/*public static String getFirstName(String sid) {
-		String fname;
-		try {
-			
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-		Connection conn;
-			conn = DriverManager.getConnection(
-			    "jdbc:ucanaccess://"+DBPath);
-		Statement s;
-			s = conn.createStatement();
-		ResultSet rs;
-			rs = s.executeQuery("SELECT FirstName, LastName FROM ["+DBTableName+"]");
-			rs.next();
-		
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		return fname;
-	}*/
 	
 	//UPDATE LOGS
 	/**

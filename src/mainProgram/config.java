@@ -28,11 +28,10 @@ public class config {
 	final static String ErrorPriority = "*****"; //Out of 5
 	final static String StartUpPriority = "**   "; //Out of 5
 	final static String updateLogsPriority = "     "; //Out of 5
-	public static boolean ranBefore = true;;
+	public static boolean ranBefore = true;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 	
 	/**

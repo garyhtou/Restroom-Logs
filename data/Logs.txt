@@ -196,3 +196,27 @@
       2017/12/07 13:52:09  |  "drhsfh"  is not an integer
       2017/12/07 13:52:21  |  "sdghsdh"  is not an integer
       2017/12/07 13:53:01  |  "smsdkgh"  is not an integer
+**    2017/12/08 13:39:06  |  Start Up  |  
+
+
+----------
+**    2017/12/08 13:39:06  |  Start Up  |  ranBefore found
+**    2017/12/08 13:39:06  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/08 13:39:06  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/08 13:39:06  |  Start Up  |  Starting Program
+**    2017/12/08 13:39:06  |  Start Up  |  Starting Splash Screen
+**    2017/12/08 13:39:06  |  Start Up  |  Checking for updates
+**    2017/12/08 13:39:06  |  Start Up  |  Opening Window
+**    2017/12/08 13:39:10  |  Start Up  |  Start Up Complete
+-----
+      2017/12/08 13:39:48  |  เม aA Signed Out
+      2017/12/08 13:40:11  |  Jess Potesrt Signed Out
+      2017/12/08 13:40:20  |  Bob Stern Signed Out
+***** 2017/12/08 13:40:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/08 13:40:27  |  Bob Stern Signed Out
+      2017/12/08 13:40:33  |  Gary Tou Signed Out
+      2017/12/08 13:40:52  |  Gary Tou Signed Out
+      2017/12/08 13:41:31  |  Gary Tou Signed Out
+      2017/12/08 13:43:20  |  เม aA Signed Out
+      2017/12/08 13:43:46  |  Jess Potesrt Signed Out
+      2017/12/08 13:44:31  |  Student Tester Signed Out
