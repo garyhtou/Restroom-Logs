@@ -33,6 +33,7 @@ public class logs {
 	static String PdfLogPath = config.PdfLogPath; 
 	static String PdfLogViewPath = config.PdfLogViewPath; 
 	static String DBTableName = config.DBTableName; 
+	static String LogsTableName = config.LogsDBTableName; 
 	static String LogsPath = config.LogsPath; 
 	
 	private final static String SystemPriority = config.SystemPriority;
@@ -43,7 +44,7 @@ public class logs {
 	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		addLogInfoToDB();
+		clearLogsDB();
 	}
 //CREATE PDF FOR INIT
 	public static void createPDF() { //create blank PDF and Logs.txt for when the program initially starts up
@@ -259,7 +260,7 @@ public class logs {
 				rs.getString(3);
 				rs.getString(4);
 			}*/
-		String q = "INSERT INTO Logs ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
+		String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement st = conn.prepareStatement (q);
 		st.setString(1, "12345");
 		st.setString(2, "Michael");
@@ -282,7 +283,24 @@ public class logs {
 		//Error stuff so the code doesn't break
 		
 	}
+	public static void clearLogsDB() throws ClassNotFoundException, SQLException {
+		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
+		Connection conn=DriverManager.getConnection(
+	        "jdbc:ucanaccess://"+LogsDBPath);
+
+	Statement s;
+	 
+
+		s = conn.createStatement();
+
+	ResultSet rs;
+
+	String q = "DELETE FROM "+LogsTableName;
+	PreparedStatement st = conn.prepareStatement (q);
+	st.executeUpdate();
+	}
+	
 	/*public static String getFirstName(String sid) {
 		String fname;
 		try {

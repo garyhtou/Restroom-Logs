@@ -16,6 +16,7 @@ public class config {
 	public static String PdfLogPath  = "data/LogsPDF.pdf";
 	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";
+	public static String LogsDBTableName  = "Logs";
 	public static String LogsPath  = "data/Logs.txt";
 	public static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
 	public static String GeneralConfigFilePath = "config/config.txt";
