@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class config {
 	//The following are universal constants
 	public static String StudentDBPath  = "data/TestDB.accdb";
+	public static String LogsDBPath  = "data/LogsDB.accdb";
 	public static String PdfLogPath  = "data/LogsPDF.pdf";
 	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";

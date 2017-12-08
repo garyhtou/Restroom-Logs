@@ -28,7 +28,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class logs {
 
-	static String DBPath = config.StudentDBPath; 
+	static String StudentDBPath = config.StudentDBPath; 
+	static String LogsDBPath = config.LogsDBPath;
 	static String PdfLogPath = config.PdfLogPath; 
 	static String PdfLogViewPath = config.PdfLogViewPath; 
 	static String DBTableName = config.DBTableName; 
@@ -42,7 +43,7 @@ public class logs {
 	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		updatePDF();
+		addLogInfoToDB();
 	}
 //CREATE PDF FOR INIT
 	public static void createPDF() { //create blank PDF and Logs.txt for when the program initially starts up
@@ -175,7 +176,7 @@ public class logs {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
 			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://"+DBPath);
+		        "jdbc:ucanaccess://"+StudentDBPath);
 
 		Statement s;
 		 
@@ -235,7 +236,7 @@ public class logs {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
 			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://data/TestDB.accdb");
+		        "jdbc:ucanaccess://"+LogsDBPath);
 
 		Statement s;
 		 
@@ -244,7 +245,8 @@ public class logs {
 
 		ResultSet rs;
 
-			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
+//			rs = s.executeQuery("SELECT FirstName, LastName, TimeOut, TimeIn FROM [PdfLogs]");
+			/*rs = s.executeQuery("INSERT INTO [Logs] (StudentID, FirstName, LastName, TimeOut, TimeIn) VALUES (value1, value2, value3,);");
 			rs.next();
 			rs.getString(1);
 			rs.getString(2);
@@ -256,7 +258,15 @@ public class logs {
 				rs.getString(2);
 				rs.getString(3);
 				rs.getString(4);
-			}
+			}*/
+		String q = "INSERT INTO Logs ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
+		PreparedStatement st = conn.prepareStatement (q);
+		st.setString(1, "12345");
+		st.setString(2, "Michael");
+		st.setString(3, "Schwamborn");
+		st.setString(4, "10:55");
+		st.setString(5, "10:58");
+		st.executeUpdate();
 			    
 			    
 	
