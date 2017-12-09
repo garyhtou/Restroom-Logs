@@ -158,21 +158,6 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	ScanAndMessage.setTopComponent(scan);
     	
     	//SCANNING
-    	//whole window
-    	MajorLeftAndRight.addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {}
-
-            @Override
-            public void keyReleased(KeyEvent e) {}
-
-            @Override
-            public void keyPressed(KeyEvent escan) {
-            	System.out.print(escan.getKeyChar());
-            	scanField.setText(scanField.getText() + escan.getKeyChar());
-            }
-        });
     	//text field
     	scanField.addKeyListener(new KeyListener() {
 
@@ -191,36 +176,40 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             		EventQueue.invokeLater(() -> {
             			scanField.setText("");
                     });
+            		if(pullStudentName.containsOnlyNumbers(input)) {
+            			int intInput = Integer.parseInt(input);
+            			
+            			pullStudentName names = new pullStudentName(intInput);
+                		
+                		//System.out.println(intInput);
+                    	String FirstName = names.getFirstName();
+                    	String LastName = names.getLastName();
+                    	
+                    	if((FirstName != null) && (LastName != null)) {
+                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
+                        	//adding to DB
+                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
+                        	
+                        	//Addedin to Logs.txt
+                        	if(inOrOut) {
+                        		String data = FirstName + " " + LastName + " Signed Out";
+                        		logs.updateLogs(data);
+                        	}
+                        	else {
+                        		String data = FirstName + " " + LastName + " Signed In";
+                        		logs.updateLogs(data);
+                        	}
+                    	}
+            		}
+            		else {
+            			logs.updateLogs("\"" + input + "\"  is not an integer");
+            			
+            			//TODO: change popup to message in Message Pane
+            			JTextArea onlyInts = new JTextArea("Please only enter numbers");
+            			JOptionPane.showMessageDialog(null, onlyInts, "Scan Error", JOptionPane.INFORMATION_MESSAGE);
+            			
+            		}
             		
-            		//TODO: ACCESS DATA BASE WITH INPUT STRING
-            		System.out.println(input);
-                	String FirstName = "";
-                	String LastName = "";
-                	
-                	//UDPATES!!1
-                	boolean NotSignOut = true; //CURRENTLY SIGNED OUT??
-                	if(NotSignOut) {
-                		String data = FirstName + " " + LastName + " Signed Out";
-                		logs.updateLogs(data);
-                		try {
-                			logs.updatePDF(/*data*/);
-            			} catch (ClassNotFoundException e) {
-            				e.printStackTrace();
-            			} catch (SQLException e) {
-            				e.printStackTrace();
-            			}
-                	}
-                	else {
-                		String data = FirstName + " " + LastName + " Signed In";
-                		logs.updateLogs(data);
-                		try {
-                			logs.updatePDF(/*data*/);
-            			} catch (ClassNotFoundException e) {
-            				e.printStackTrace();
-            			} catch (SQLException e) {
-            				e.printStackTrace();
-            			}
-                	}
             	}
             }
         });
@@ -244,36 +233,14 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	message.add(messageTitle, messageTitleConstraints);
     	
     	JEditorPane messageContent = new JEditorPane();
-		try {
+	//TO DISPLAY WEBSITE
+    	/*try {
 	    	String url = WebisteBaseUrl+"logs/messages.html";
 			messageContent.setPage(url); //HAS NO CSS
 		} catch (IOException e) {
+			messageContent.setText("<html>Could not load message from "+url);
 			e.printStackTrace();
-		}
-		
-    	/*String textFromUrl = "";
-    	URL url = null;
-    	try {
-    		url = new URL("http://rl.coding2kids.com/logs/messages.html");
-    	} catch (MalformedURLException e1) {
-    		e1.printStackTrace();
-    	}
-	    try {
-	    	if(url !=null) {
-			    BufferedReader in = new BufferedReader(
-			    new InputStreamReader(
-			   	url.openStream()));
-				String inputLine;
-				while ((inputLine = in.readLine()) != null)
-			   		textFromUrl+=inputLine;
-				messageContent.setText(textFromUrl);
-			    in.close();
-	    	}
-	    }
-	    catch (IOException e) {
-	    	messageContent.setContentType("text/html");
-	     	messageContent.setText("<html>Could not load message from "+url);
-	    }*/
+		}*/
     	messageContent.setEditable(false);
     	messageContent.setFont(new Font("Verdana", Font.PLAIN, teacherName.getFont().getSize()));
     	messageContent.setContentType("text/html");

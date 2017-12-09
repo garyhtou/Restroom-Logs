@@ -1,127 +1,272 @@
 -ï=ï=ï=ï  LOGS  ï=ï=ï=ï-
-	File created on 2017/11/28 10:50:27
+	File created on 2017/12/07 13:09:12
 
-***** 2017/11/30 14:01:16  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-***2017/12/04 13:44:32  |  Start Up  |  
-***2017/12/04 13:44:33  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-***2017/12/04 13:44:33  |  Start Up  |  Starting Program
-***2017/12/04 13:44:33  |  Start Up  |  Starting Splash Screen
-***2017/12/04 13:44:33  |  ERROR  |  SplashScreen.getSplashScreen() returned null
-**    2017/12/05 10:55:15  |  Start Up  |  Starting Program
-***** 2017/12/05 10:55:15  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 10:55:15  |  Start Up  |  
+**    2017/12/07 13:09:12  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 10:55:15  |  Start Up  |  Starting Program
-**    2017/12/05 10:55:15  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 10:55:15  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 10:55:15  |  Start Up  |  Checking database
-**    2017/12/05 10:55:15  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 10:55:16  |  Start Up  |  Creating Logs
-**    2017/12/05 10:55:16  |  Start Up  |  Opening Window
-**    2017/12/05 10:55:19  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:09:12  |  Start Up  |  ranBefore found
+**    2017/12/07 13:09:12  |  Start Up  |  Config.txt: ranBefore = false
+**    2017/12/07 13:09:12  |  Start Up  |  ranBefore is now set to: false
+**    2017/12/07 13:09:12  |  Start Up  |  Starting Program
+**    2017/12/07 13:09:12  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:09:12  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2017/12/07 13:09:12  |  Start Up  |  Checking database
+**    2017/12/07 13:09:12  |  Start Up  |  Creating PDF Logs
+**    2017/12/07 13:09:12  |  Start Up  |  Opening Window
+**    2017/12/07 13:09:15  |  Start Up  |  Start Up Complete
 -----
-
-
-**    2017/12/05 13:40:41  |  Start Up  |  Starting Program
-***** 2017/12/05 13:40:41  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 13:40:41  |  Start Up  |  
+***** 2017/12/07 13:09:24  |  System  |  EXIT
+----------**    2017/12/07 13:14:33  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 13:40:41  |  Start Up  |  Starting Program
-**    2017/12/05 13:40:41  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 13:40:41  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 13:40:41  |  Start Up  |  Checking database
-**    2017/12/05 13:40:41  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 13:40:42  |  Start Up  |  Creating Logs
-**    2017/12/05 13:40:42  |  Start Up  |  Opening Window
-**    2017/12/05 13:40:45  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:14:33  |  Start Up  |  ranBefore found
+**    2017/12/07 13:14:33  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:14:33  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:14:33  |  Start Up  |  Starting Program
+**    2017/12/07 13:14:33  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:14:33  |  Start Up  |  Checking for updates
+**    2017/12/07 13:14:33  |  Start Up  |  Opening Window
+**    2017/12/07 13:14:36  |  Start Up  |  Start Up Complete
 -----
-
-
-**    2017/12/05 13:47:07  |  Start Up  |  Starting Program
-***** 2017/12/05 13:47:07  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 13:47:07  |  Start Up  |  
+***** 2017/12/07 13:14:42  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:16:25  |  System  |  EXIT
+----------**    2017/12/07 13:16:30  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 13:47:07  |  Start Up  |  Starting Program
-**    2017/12/05 13:47:07  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 13:47:07  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 13:47:07  |  Start Up  |  Checking database
-**    2017/12/05 13:47:07  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 13:47:08  |  Start Up  |  Creating Logs
-**    2017/12/05 13:47:08  |  Start Up  |  Opening Window
-**    2017/12/05 13:47:11  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:16:30  |  Start Up  |  ranBefore found
+**    2017/12/07 13:16:30  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:16:30  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:16:30  |  Start Up  |  Starting Program
+**    2017/12/07 13:16:30  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:16:30  |  Start Up  |  Checking for updates
+**    2017/12/07 13:16:30  |  Start Up  |  Opening Window
+**    2017/12/07 13:16:34  |  Start Up  |  Start Up Complete
 -----
-
-
-     2017/12/05 13:47:30  |    Signed Out
-     2017/12/05 13:47:43  |    Signed Out
-     2017/12/05 13:48:05  |    Signed Out
-***** 2017/12/05 13:50:53  |  System  |  EXIT
-**    2017/12/05 13:50:55  |  Start Up  |  Starting Program
-***** 2017/12/05 13:50:55  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 13:50:55  |  Start Up  |  
+***** 2017/12/07 13:16:38  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:17:28  |  System  |  EXIT
+----------**    2017/12/07 13:17:32  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 13:50:55  |  Start Up  |  Starting Program
-**    2017/12/05 13:50:55  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 13:50:55  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 13:50:55  |  Start Up  |  Checking database
-**    2017/12/05 13:50:55  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 13:50:56  |  Start Up  |  Creating Logs
-**    2017/12/05 13:50:56  |  Start Up  |  Opening Window
-**    2017/12/05 13:50:59  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:17:32  |  Start Up  |  ranBefore found
+**    2017/12/07 13:17:32  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:17:32  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:17:32  |  Start Up  |  Starting Program
+**    2017/12/07 13:17:32  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:17:32  |  Start Up  |  Checking for updates
+**    2017/12/07 13:17:32  |  Start Up  |  Opening Window
+**    2017/12/07 13:17:35  |  Start Up  |  Start Up Complete
 -----
-
-
-***** 2017/12/05 13:51:02  |  System  |  EXIT
-----------
-**    2017/12/05 13:58:22  |  Start Up  |  Starting Program
-***** 2017/12/05 13:58:22  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 13:58:22  |  Start Up  |  
+***** 2017/12/07 13:17:41  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:18:01  |  System  |  EXIT
+----------**    2017/12/07 13:18:05  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 13:58:22  |  Start Up  |  Starting Program
-**    2017/12/05 13:58:22  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 13:58:22  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 13:58:22  |  Start Up  |  Checking database
-**    2017/12/05 13:58:22  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 13:58:23  |  Start Up  |  Creating Logs
-**    2017/12/05 13:58:23  |  Start Up  |  Opening Window
-**    2017/12/05 13:58:26  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:18:05  |  Start Up  |  ranBefore found
+**    2017/12/07 13:18:05  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:18:05  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:18:05  |  Start Up  |  Starting Program
+**    2017/12/07 13:18:05  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:18:05  |  Start Up  |  Checking for updates
+**    2017/12/07 13:18:05  |  Start Up  |  Opening Window
+**    2017/12/07 13:18:09  |  Start Up  |  Start Up Complete
 -----
-
-
-     2017/12/05 13:59:57  |  ViewLogsPDF Opened
-     2017/12/05 14:00:23  |  Preferences Opened
-     2017/12/05 14:01:28  |  Logs.txt Opened
-***** 2017/12/05 14:02:31  |  System  |  EXIT
-----------**    2017/12/05 14:03:07  |  Start Up  |  Starting Program
-***** 2017/12/05 14:03:07  |  ERROR  |  Not able to read file at  /config/DoNotTouch.txt
-**    2017/12/05 14:03:07  |  Start Up  |  
+***** 2017/12/07 13:18:14  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+**    2017/12/07 13:19:26  |  Start Up  |  
 
 
 ----------
-**    2017/12/05 14:03:07  |  Start Up  |  Starting Program
-**    2017/12/05 14:03:07  |  Start Up  |  Starting Splash Screen
-**    2017/12/05 14:03:07  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2017/12/05 14:03:07  |  Start Up  |  Checking database
-**    2017/12/05 14:03:07  |  Start Up  |  Creating PDF Logs
-**    2017/12/05 14:03:08  |  Start Up  |  Creating Logs
-**    2017/12/05 14:03:08  |  Start Up  |  Opening Window
-**    2017/12/05 14:03:11  |  Start Up  |  Start Up Complete
-
+**    2017/12/07 13:19:26  |  Start Up  |  ranBefore found
+**    2017/12/07 13:19:26  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:19:26  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:19:26  |  Start Up  |  Starting Program
+**    2017/12/07 13:19:26  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:19:26  |  Start Up  |  Checking for updates
+**    2017/12/07 13:19:26  |  Start Up  |  Opening Window
+***** 2017/12/07 13:19:28  |  System  |  EXIT
+----------**    2017/12/07 13:19:29  |  Start Up  |  Start Up Complete
 -----
+      2017/12/07 13:19:53  |  Gary Tou Signed Out
+***** 2017/12/07 13:20:37  |  System  |  EXIT
+----------**    2017/12/07 13:20:39  |  Start Up  |  
 
 
+----------
+**    2017/12/07 13:20:39  |  Start Up  |  ranBefore found
+**    2017/12/07 13:20:39  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:20:39  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:20:39  |  Start Up  |  Starting Program
+**    2017/12/07 13:20:39  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:20:39  |  Start Up  |  Checking for updates
+**    2017/12/07 13:20:39  |  Start Up  |  Opening Window
+**    2017/12/07 13:20:43  |  Start Up  |  Start Up Complete
+-----
+      2017/12/07 13:20:47  |  Gary Tou Signed Out
+      2017/12/07 13:22:51  |  Gary Tou Signed Out
+***** 2017/12/07 13:22:57  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:22:57  |  Gary Tou Signed Out
+      2017/12/07 13:23:13  |  Michael Schwamborn Signed Out
+***** 2017/12/07 13:24:24  |  System  |  EXIT
+----------**    2017/12/07 13:24:27  |  Start Up  |  
+
+
+----------
+**    2017/12/07 13:24:27  |  Start Up  |  ranBefore found
+**    2017/12/07 13:24:27  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:24:27  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:24:27  |  Start Up  |  Starting Program
+**    2017/12/07 13:24:27  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:24:27  |  Start Up  |  Checking for updates
+**    2017/12/07 13:24:27  |  Start Up  |  Opening Window
+**    2017/12/07 13:24:30  |  Start Up  |  Start Up Complete
+-----
+      2017/12/07 13:24:39  |  Gary Tou Signed Out
+      2017/12/07 13:24:57  |  Michael Schwamborn Signed Out
+***** 2017/12/07 13:26:05  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:26:05  |  Michael Schwamborn Signed Out
+      2017/12/07 13:26:13  |  Gary Tou Signed Out
+      2017/12/07 13:26:20  |  Gary Tou Signed Out
+***** 2017/12/07 13:26:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:26:46  |  Gary Tou Signed Out
+***** 2017/12/07 13:27:14  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:27:14  |  Gary Tou Signed Out
+***** 2017/12/07 13:27:52  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:27:52  |  Gary Tou Signed Out
+***** 2017/12/07 13:28:06  |  System  |  EXIT
+----------**    2017/12/07 13:29:24  |  Start Up  |  
+
+
+----------
+**    2017/12/07 13:29:24  |  Start Up  |  ranBefore found
+**    2017/12/07 13:29:24  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:29:24  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:29:24  |  Start Up  |  Starting Program
+**    2017/12/07 13:29:24  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:29:24  |  Start Up  |  Checking for updates
+**    2017/12/07 13:29:24  |  Start Up  |  Opening Window
+**    2017/12/07 13:29:28  |  Start Up  |  Start Up Complete
+-----
+      2017/12/07 13:29:35  |  ï???43.?3ï34% {Kn??? Signed Out
+      2017/12/07 13:31:47  |  ‡¡ aA Signed Out
+***** 2017/12/07 13:31:59  |  System  |  EXIT
+----------**    2017/12/07 13:42:12  |  Start Up  |  
+
+
+----------
+**    2017/12/07 13:42:12  |  Start Up  |  ranBefore found
+**    2017/12/07 13:42:12  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:42:12  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:42:12  |  Start Up  |  Starting Program
+**    2017/12/07 13:42:12  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:42:12  |  Start Up  |  Checking for updates
+**    2017/12/07 13:42:12  |  Start Up  |  Opening Window
+**    2017/12/07 13:42:16  |  Start Up  |  Start Up Complete
+-----
+      2017/12/07 13:42:18  |  asdf Is not an integer
+      2017/12/07 13:42:19  |  sdf Is not an integer
+***** 2017/12/07 13:42:23  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:23  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:26  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:26  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:28  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/07 13:42:28  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/07 13:42:29  |  Bob Stern Signed Out
+      2017/12/07 13:42:33  |  Jess Potesrt Signed Out
+      2017/12/07 13:42:36  |  ‡¡ aA Signed Out
+***** 2017/12/07 13:47:09  |  System  |  EXIT
+----------**    2017/12/07 13:52:02  |  Start Up  |  
+
+
+----------
+**    2017/12/07 13:52:02  |  Start Up  |  ranBefore found
+**    2017/12/07 13:52:02  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/07 13:52:02  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/07 13:52:02  |  Start Up  |  Starting Program
+**    2017/12/07 13:52:02  |  Start Up  |  Starting Splash Screen
+**    2017/12/07 13:52:02  |  Start Up  |  Checking for updates
+**    2017/12/07 13:52:02  |  Start Up  |  Opening Window
+**    2017/12/07 13:52:06  |  Start Up  |  Start Up Complete
+-----
+      2017/12/07 13:52:09  |  "drhsfh"  is not an integer
+      2017/12/07 13:52:21  |  "sdghsdh"  is not an integer
+      2017/12/07 13:53:01  |  "smsdkgh"  is not an integer
+**    2017/12/08 13:39:06  |  Start Up  |  
+
+
+----------
+**    2017/12/08 13:39:06  |  Start Up  |  ranBefore found
+**    2017/12/08 13:39:06  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/08 13:39:06  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/08 13:39:06  |  Start Up  |  Starting Program
+**    2017/12/08 13:39:06  |  Start Up  |  Starting Splash Screen
+**    2017/12/08 13:39:06  |  Start Up  |  Checking for updates
+**    2017/12/08 13:39:06  |  Start Up  |  Opening Window
+**    2017/12/08 13:39:10  |  Start Up  |  Start Up Complete
+-----
+      2017/12/08 13:39:48  |  ‡¡ aA Signed Out
+      2017/12/08 13:40:11  |  Jess Potesrt Signed Out
+      2017/12/08 13:40:20  |  Bob Stern Signed Out
+***** 2017/12/08 13:40:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/08 13:40:27  |  Bob Stern Signed Out
+      2017/12/08 13:40:33  |  Gary Tou Signed Out
+      2017/12/08 13:40:52  |  Gary Tou Signed Out
+      2017/12/08 13:41:31  |  Gary Tou Signed Out
+      2017/12/08 13:43:20  |  ‡¡ aA Signed Out
+      2017/12/08 13:43:46  |  Jess Potesrt Signed Out
+      2017/12/08 13:44:31  |  Student Tester Signed Out
+**    2017/12/09 00:45:56  |  Start Up  |  
+
+
+----------
+**    2017/12/09 00:45:56  |  Start Up  |  ranBefore found
+**    2017/12/09 00:45:56  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 00:45:56  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 00:45:56  |  Start Up  |  Starting Program
+**    2017/12/09 00:45:56  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 00:45:56  |  Start Up  |  Checking for updates
+**    2017/12/09 00:45:56  |  Start Up  |  Opening Window
+**    2017/12/09 00:46:00  |  Start Up  |  Start Up Complete
+-----
+      2017/12/09 00:46:09  |  ‡¡ aA Signed Out
+***** 2017/12/09 00:46:11  |  System  |  EXIT
+----------**    2017/12/09 00:47:32  |  Start Up  |  
+
+
+----------
+**    2017/12/09 00:47:32  |  Start Up  |  ranBefore found
+**    2017/12/09 00:47:32  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 00:47:32  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 00:47:32  |  Start Up  |  Starting Program
+**    2017/12/09 00:47:32  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 00:47:32  |  Start Up  |  Checking for updates
+**    2017/12/09 00:47:32  |  Start Up  |  Opening Window
+**    2017/12/09 00:47:36  |  Start Up  |  Start Up Complete
+-----
+      2017/12/09 00:47:40  |  Gary Tou Signed Out
+      2017/12/09 00:47:41  |  ‡¡ aA Signed Out
+***** 2017/12/09 00:47:43  |  System  |  EXIT
+----------**    2017/12/09 00:49:21  |  Start Up  |  
+
+
+----------
+**    2017/12/09 00:49:21  |  Start Up  |  ranBefore found
+**    2017/12/09 00:49:21  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 00:49:21  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 00:49:21  |  Start Up  |  Starting Program
+**    2017/12/09 00:49:21  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 00:49:21  |  Start Up  |  Checking for updates
+**    2017/12/09 00:49:21  |  Start Up  |  Opening Window
+**    2017/12/09 00:49:25  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 00:49:28  |  ERROR  |  Could not access Database
+      2017/12/09 00:49:28  |  Gary Tou Signed In
+***** 2017/12/09 00:49:46  |  ERROR  |  Could not access Database
+      2017/12/09 00:49:46  |  ‡¡ aA Signed In
+***** 2017/12/09 00:49:49  |  System  |  EXIT
+----------

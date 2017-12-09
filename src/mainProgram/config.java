@@ -3,24 +3,35 @@ package mainProgram;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class config {
 	//The following are universal constants
 	public static String StudentDBPath  = "data/TestDB.accdb";
+	public static String LogsDBPath  = "data/LogsDB.accdb";
 	public static String PdfLogPath  = "data/LogsPDF.pdf";
 	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";
-	public static String LogsPath  = "data\\Logs.txt";
-	public static String ConfigFilePath  = "/config/DoNotTouch.txt";
+	public static String LogsDBTableName  = "Logs";
+	public static String LogsPath  = "data/Logs.txt";
+	public static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
+	public static String GeneralConfigFilePath = "config/config.txt";
+	public static String mailFromFilePath = "config/mailFrom.txt";
+	public static String mailTemplateFilePath = "config/mailTemplate.html";
+	public static String mailToFilePath = "config/mailTo.txt";
 	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
-	
+	final static String SystemPriority = "**** "; //Out of 5
+	final static String ErrorPriority = "*****"; //Out of 5
+	final static String StartUpPriority = "**   "; //Out of 5
+	final static String updateLogsPriority = "     "; //Out of 5
+	public static boolean ranBefore = true;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 	
 	/**
@@ -88,5 +99,87 @@ public class config {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	/**
+	 * Checks if program has ranBefore
+	 */
+	public static void checkRanBefore() {
+		
+		try {
+			int lineCounter = 0;
+			File file = new File(DoNotTouchFilePath);
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = null;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
+			   //System.out.println(lineCounter + " " + line);
+	
+			   switch(lineCounter){  
+			    case 3: //on 3rd line
+			    	if(line.contains("ranBefore = ")) {
+			    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
+			    		if(lineSub.equalsIgnoreCase("false")){
+			    			ranBefore = false;
+			    			logs.createLogs();
+			    			logs.updateLogsStartUp("\n\n\n----------");
+				    		logs.updateLogsStartUp("ranBefore found");
+				    		logs.updateLogsStartUp("Config.txt: " + line);
+
+				    		//Change false to true
+
+				    		File log = new File(DoNotTouchFilePath);
+				    		FileReader fr;
+				    		try {
+				    			fr = new FileReader(log);
+				    			String currentLine;
+				    			String TotalLine = "";
+				    		    BufferedReader br2 = new BufferedReader(fr);
+				    		    
+				    		    int lineCounter2 = 1;
+				    		    while ((currentLine = br2.readLine()) != null) {
+				    		    	if(lineCounter2 == 3){
+				    		    		currentLine = "ranBefore = true";
+				    		    	}
+				    		    	TotalLine += currentLine + "\n";
+				    		    	lineCounter2++;
+				    		    }
+				    		    FileWriter fw = new FileWriter(log);
+				    		    fw.write(TotalLine);
+				    		    fw.close();
+				    		    br2.close();
+				    		} catch (FileNotFoundException e) {
+				    			logs.updateLogsERROR("Can not find Config.txt");
+				    			e.printStackTrace();
+				    		} catch (IOException e) {
+				    			logs.updateLogsERROR("Can not access Config.txt");
+				    			e.printStackTrace();
+				    		}
+			    		}
+			    		else if(lineSub.equalsIgnoreCase("true")) {
+			    			ranBefore = true;
+			    			logs.updateLogsStartUp("\n\n\n----------");
+				    		logs.updateLogsStartUp("ranBefore found");
+				    		logs.updateLogsStartUp("Config.txt:  " + line);
+			    		}
+			    		else {
+			    			logs.updateLogsStartUp("\n\n\n----------");
+			    			logs.updateLogsERROR("ranBefore non-valid boolean ("+ line + ") at " + DoNotTouchFilePath);
+			    			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+			    			ranBefore = true;
+			    		}
+			    		logs.updateLogsStartUp("ranBefore is now set to: " + ranBefore);
+			    	}
+			    	break;
+			   }
+			}    
+			br.close(); 
+		}
+		catch (IOException e) {
+			logs.updateLogsERROR("Not able to read file at  "+DoNotTouchFilePath);
+			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+			ranBefore = true;
+			e.printStackTrace();
+		}
 	}
 }

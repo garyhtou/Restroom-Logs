@@ -1,31 +1,20 @@
 package mainProgram;
 
-/*
- * @author: Achintha Gunasekara
- * @date: 14.09.2015
- */
-
 import java.awt.*;
 import org.apache.commons.lang.time.StopWatch;
 
 public class SplashScreenManager {
 	public static void main(String[] args) {
-		init(false);
+		config.checkRanBefore();
+		init();
 		//SplashScreen.getSplashScreen();
 	}
 	
-	static boolean ranBefore = true;
 	static StopWatch stopWatch = new StopWatch();
 	
-	public static void init(boolean ranBeforeInput) {
+	public static void init() {
 		logs.updateLogsStartUp("Starting Program");
 		logs.updateLogsStartUp("Starting Splash Screen");
-		if(ranBeforeInput) {
-			ranBefore = true;
-		}
-		else {
-			ranBefore = false;
-		}
 		runSplash();
 	}
 
@@ -38,7 +27,7 @@ public class SplashScreenManager {
         graphic.fillRect(170,140,250,40); //120, 140, 200, 40
         graphic.setPaintMode();
         graphic.setColor(LAVENDER_GRAY);
-        if(ranBefore) {
+        if(config.ranBefore) {
         	graphic.drawString(message+"...", 200, 165);
         }
         else {
@@ -65,7 +54,7 @@ public class SplashScreenManager {
         
         stopWatch.start();
 //STEPS ---------------------------------------
-        if(ranBefore) {
+        if(config.ranBefore) {
         	//Step 1
         	renderSplashFrame(graphic, "Checking for updates");
         	logs.updateLogsStartUp("Checking for updates");
@@ -76,7 +65,7 @@ public class SplashScreenManager {
         	//START PROGRAM
         	logs.updateLogsStartUp("Opening Window");
         	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
-        	logs.updateLogsStartUp("Start Up Complete\n\n-----\n\n");
+        	logs.updateLogsStartUp("Start Up Complete\n-----");
         }
 //STEP INIT -------------------------------------
         else { //INIT START UP, HAS NOT RAN BEFORE
@@ -100,18 +89,11 @@ public class SplashScreenManager {
         	logs.createPDF();
         	//Call Action in another thread
         	
-        	//STEP 5
-        	renderSplashFrame(graphic, "Creating Logs");
-        	logs.updateLogsStartUp("Creating Logs");
-        	splash.update();
-        	//Logs have already been create, this is for display onlyu :)
-        	//Call Action in another thread
-        	
-        	ranBefore = true; //TODO: Change in file
+        	config.ranBefore = true; //TODO: Change in file
         	//START PROGRAM
         	logs.updateLogsStartUp("Opening Window");
         	waitThreeStart(splash, graphic);
-        	logs.updateLogsStartUp("Start Up Complete\n\n-----\n\n");
+        	logs.updateLogsStartUp("Start Up Complete\n-----");
         }
         splash.close();
     }
