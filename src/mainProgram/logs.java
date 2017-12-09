@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -89,6 +90,7 @@ public class logs {
 		}
 		
 	}
+
 //CREATE VIEW PDF FOR INIT
 	public static boolean createViewPDF() {
 		//copy PDF

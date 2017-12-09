@@ -220,6 +220,7 @@
       2017/12/08 13:43:20  |  เม aA Signed Out
       2017/12/08 13:43:46  |  Jess Potesrt Signed Out
       2017/12/08 13:44:31  |  Student Tester Signed Out
+<<<<<<< HEAD
 **    2017/12/09 00:45:56  |  Start Up  |  
 
 
@@ -270,3 +271,5 @@
       2017/12/09 00:49:46  |  เม aA Signed In
 ***** 2017/12/09 00:49:49  |  System  |  EXIT
 ----------
+=======
+>>>>>>> branch 'master' of https://github.com/garytou2/Restroom-Logs.git
