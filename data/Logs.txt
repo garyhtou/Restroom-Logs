@@ -273,3 +273,493 @@
 ----------
 =======
 >>>>>>> branch 'master' of https://github.com/garytou2/Restroom-Logs.git
+**    2017/12/09 15:40:53  |  Start Up  |  
+
+
+----------
+**    2017/12/09 15:40:53  |  Start Up  |  ranBefore found
+**    2017/12/09 15:40:53  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 15:40:53  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 15:40:53  |  Start Up  |  Starting Program
+**    2017/12/09 15:40:53  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 15:40:53  |  Start Up  |  Checking for updates
+**    2017/12/09 15:40:53  |  Start Up  |  Opening Window
+**    2017/12/09 15:40:57  |  Start Up  |  Start Up Complete
+-----
+      2017/12/09 15:41:24  |  Logs.txt Opened
+***** 2017/12/09 15:41:33  |  System  |  EXIT
+----------**    2017/12/09 15:52:01  |  Start Up  |  
+
+
+----------
+**    2017/12/09 15:52:01  |  Start Up  |  ranBefore found
+**    2017/12/09 15:52:01  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 15:52:01  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 15:52:01  |  Start Up  |  Starting Program
+**    2017/12/09 15:52:01  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 15:52:01  |  Start Up  |  Checking for updates
+**    2017/12/09 15:52:01  |  Start Up  |  Opening Window
+**    2017/12/09 15:52:05  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 15:52:07  |  System  |  EXIT
+----------**    2017/12/09 16:08:11  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:08:11  |  Start Up  |  ranBefore found
+**    2017/12/09 16:08:11  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:08:11  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:08:11  |  Start Up  |  Starting Program
+**    2017/12/09 16:08:11  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:08:11  |  Start Up  |  Checking for updates
+**    2017/12/09 16:08:11  |  Start Up  |  Opening Window
+**    2017/12/09 16:08:14  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:08:21  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 16:08:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:08:31  |  Logs.txt Opened
+***** 2017/12/09 16:08:44  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:08:47  |  Logs.txt Opened
+***** 2017/12/09 16:08:55  |  System  |  EXIT
+----------**    2017/12/09 16:24:59  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:24:59  |  Start Up  |  ranBefore found
+**    2017/12/09 16:24:59  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:24:59  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:24:59  |  Start Up  |  Starting Program
+**    2017/12/09 16:24:59  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:24:59  |  Start Up  |  Checking for updates
+**    2017/12/09 16:24:59  |  Start Up  |  Opening Window
+**    2017/12/09 16:25:03  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:25:08  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:25:13  |  Logs.txt Opened
+***** 2017/12/09 16:25:27  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:25:32  |  Logs.txt Opened
+***** 2017/12/09 16:25:39  |  System  |  EXIT
+----------**    2017/12/09 16:27:44  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:27:44  |  Start Up  |  ranBefore found
+**    2017/12/09 16:27:44  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:27:44  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:27:44  |  Start Up  |  Starting Program
+**    2017/12/09 16:27:44  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:27:44  |  Start Up  |  Checking for updates
+**    2017/12/09 16:27:44  |  Start Up  |  Opening Window
+**    2017/12/09 16:27:47  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:27:51  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 16:28:06  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:28:10  |  Logs.txt Opened
+***** 2017/12/09 16:28:17  |  System  |  EXIT
+----------**    2017/12/09 16:30:05  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:30:05  |  Start Up  |  ranBefore found
+**    2017/12/09 16:30:05  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:30:05  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:30:05  |  Start Up  |  Starting Program
+**    2017/12/09 16:30:05  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:30:05  |  Start Up  |  Checking for updates
+**    2017/12/09 16:30:05  |  Start Up  |  Opening Window
+**    2017/12/09 16:30:08  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:30:18  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 16:30:21  |  Logs.txt Opened
+***** 2017/12/09 16:30:28  |  ERROR  |  Could not access Database
+      2017/12/09 16:30:28  |  Gary Tou Signed Out
+      2017/12/09 16:30:32  |  Logs.txt Opened
+***** 2017/12/09 16:30:39  |  System  |  EXIT
+----------**    2017/12/09 16:36:48  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:36:48  |  Start Up  |  ranBefore found
+**    2017/12/09 16:36:48  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:36:48  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:36:48  |  Start Up  |  Starting Program
+**    2017/12/09 16:36:48  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:36:48  |  Start Up  |  Checking for updates
+**    2017/12/09 16:36:48  |  Start Up  |  Opening Window
+**    2017/12/09 16:36:51  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:37:15  |  System  |  EXIT
+----------**    2017/12/09 16:48:03  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:48:03  |  Start Up  |  ranBefore found
+**    2017/12/09 16:48:03  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:48:03  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:48:03  |  Start Up  |  Starting Program
+**    2017/12/09 16:48:03  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:48:03  |  Start Up  |  Checking for updates
+**    2017/12/09 16:48:03  |  Start Up  |  Opening Window
+**    2017/12/09 16:48:07  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:48:12  |  System  |  EXIT
+----------**    2017/12/09 16:52:32  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:52:32  |  Start Up  |  ranBefore found
+**    2017/12/09 16:52:32  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:52:32  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:52:32  |  Start Up  |  Starting Program
+**    2017/12/09 16:52:32  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:52:32  |  Start Up  |  Checking for updates
+**    2017/12/09 16:52:32  |  Start Up  |  Opening Window
+**    2017/12/09 16:52:36  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:52:40  |  System  |  EXIT
+----------**    2017/12/09 16:57:48  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:57:48  |  Start Up  |  ranBefore found
+**    2017/12/09 16:57:48  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:57:48  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:57:48  |  Start Up  |  Starting Program
+**    2017/12/09 16:57:48  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:57:49  |  Start Up  |  Checking for updates
+**    2017/12/09 16:57:49  |  Start Up  |  Opening Window
+**    2017/12/09 16:57:52  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 16:57:57  |  ERROR  |  Could not access Database
+      2017/12/09 16:57:57  |  Gary Tou Signed Out
+***** 2017/12/09 16:58:04  |  ERROR  |  Could not access Database
+      2017/12/09 16:58:04  |  เม aA Signed Out
+***** 2017/12/09 16:58:07  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 16:58:07  |  ERROR  |  Could not access Database
+      2017/12/09 16:58:07  |  เม aA Signed Out
+***** 2017/12/09 16:58:12  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 16:58:12  |  ERROR  |  Could not access Database
+      2017/12/09 16:58:12  |  เม aA Signed Out
+***** 2017/12/09 16:58:14  |  System  |  EXIT
+----------**    2017/12/09 16:59:53  |  Start Up  |  
+
+
+----------
+**    2017/12/09 16:59:53  |  Start Up  |  ranBefore found
+**    2017/12/09 16:59:53  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 16:59:53  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 16:59:53  |  Start Up  |  Starting Program
+**    2017/12/09 16:59:53  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 16:59:53  |  Start Up  |  Checking for updates
+**    2017/12/09 16:59:53  |  Start Up  |  Opening Window
+**    2017/12/09 16:59:56  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 17:10:17  |  ERROR  |  Could not access Database
+      2017/12/09 17:10:17  |  Gary Tou Signed Out
+***** 2017/12/09 17:10:20  |  ERROR  |  Could not access Database
+      2017/12/09 17:10:20  |  เม aA Signed Out
+***** 2017/12/09 17:10:23  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 17:10:23  |  ERROR  |  Could not access Database
+      2017/12/09 17:10:23  |  เม aA Signed Out
+***** 2017/12/09 17:10:30  |  ERROR  |  Could not access Database
+      2017/12/09 17:10:30  |  Bob Stern Signed Out
+      2017/12/09 17:10:34  |  Logs.txt Opened
+***** 2017/12/09 17:10:53  |  System  |  EXIT
+----------**    2017/12/09 17:15:12  |  Start Up  |  
+
+
+----------
+**    2017/12/09 17:15:12  |  Start Up  |  ranBefore found
+**    2017/12/09 17:15:12  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 17:15:12  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 17:15:12  |  Start Up  |  Starting Program
+**    2017/12/09 17:15:12  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 17:15:12  |  Start Up  |  Checking for updates
+**    2017/12/09 17:15:12  |  Start Up  |  Opening Window
+**    2017/12/09 17:15:15  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 17:15:19  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 17:15:22  |  ERROR  |  Could not access Database
+      2017/12/09 17:15:22  |  Gary Tou Signed Out
+***** 2017/12/09 17:15:28  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 17:15:30  |  ERROR  |  Could not access Database
+      2017/12/09 17:15:30  |  Bob Stern Signed Out
+***** 2017/12/09 17:15:32  |  System  |  EXIT
+----------**    2017/12/09 17:22:24  |  Start Up  |  
+
+
+----------
+**    2017/12/09 17:22:24  |  Start Up  |  ranBefore found
+**    2017/12/09 17:22:24  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 17:22:24  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 17:22:24  |  Start Up  |  Starting Program
+**    2017/12/09 17:22:24  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 17:22:24  |  Start Up  |  Checking for updates
+**    2017/12/09 17:22:24  |  Start Up  |  Opening Window
+**    2017/12/09 17:22:28  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 17:22:31  |  ERROR  |  Could not access Database
+      2017/12/09 17:22:31  |  Gary Tou Signed Out
+***** 2017/12/09 17:22:37  |  System  |  EXIT
+----------**    2017/12/09 17:53:00  |  Start Up  |  
+
+
+----------
+**    2017/12/09 17:53:00  |  Start Up  |  ranBefore found
+**    2017/12/09 17:53:00  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 17:53:00  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 17:53:00  |  Start Up  |  Starting Program
+**    2017/12/09 17:53:00  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 17:53:00  |  Start Up  |  Checking for updates
+**    2017/12/09 17:53:00  |  Start Up  |  Opening Window
+**    2017/12/09 17:53:03  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 17:53:07  |  ERROR  |  Could not access Database
+      2017/12/09 17:53:07  |  Gary Tou Signed Out
+***** 2017/12/09 17:53:11  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 17:53:14  |  "j"  is not an integer
+***** 2017/12/09 17:53:37  |  System  |  EXIT
+----------      2017/12/09 17:56:26  |  "sdf"  is not an integer
+**    2017/12/09 17:59:20  |  Start Up  |  
+
+
+----------
+**    2017/12/09 17:59:20  |  Start Up  |  ranBefore found
+**    2017/12/09 17:59:20  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 17:59:20  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 17:59:20  |  Start Up  |  Starting Program
+**    2017/12/09 17:59:20  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 17:59:20  |  Start Up  |  Checking for updates
+**    2017/12/09 17:59:20  |  Start Up  |  Opening Window
+**    2017/12/09 17:59:24  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 17:59:27  |  System  |  EXIT
+----------      2017/12/09 18:12:56  |  "sdf"  is not an integer
+      2017/12/09 18:13:00  |  "sdf"  is not an integer
+      2017/12/09 18:13:03  |  "sdf"  is not an integer
+      2017/12/09 18:13:17  |  "df"  is not an integer
+***** 2017/12/09 18:16:35  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:37  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:37  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:39  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:39  |  Bob Stern Signed Out
+***** 2017/12/09 18:16:40  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:40  |  Jess Potesrt Signed Out
+***** 2017/12/09 18:16:41  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:41  |  เม aA Signed Out
+***** 2017/12/09 18:16:42  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:42  |  Bob Stern Signed Out
+***** 2017/12/09 18:16:43  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:43  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:43  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:44  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:44  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:44  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:45  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:45  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:45  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:45  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:46  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:47  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:47  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:47  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:48  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:48  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:48  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:48  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:49  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:51  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:52  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:16:58  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:58  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:58  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:58  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:58  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:58  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:59  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:59  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:59  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:59  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:59  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:59  |  Gary Tou Signed Out
+***** 2017/12/09 18:16:59  |  ERROR  |  Could not access Database
+      2017/12/09 18:16:59  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:00  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:00  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:00  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:00  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:00  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:00  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:00  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:00  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:01  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:01  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:01  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:17:02  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 18:17:03  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:03  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:03  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:03  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:03  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:03  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:03  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:03  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:04  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:04  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:04  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:04  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:04  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:04  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:04  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:04  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:05  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:05  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:05  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:05  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:05  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:05  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:05  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:05  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:05  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:05  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:06  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:06  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:06  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:06  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:06  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:06  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:07  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:07  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:07  |  ERROR  |  Could not access Database
+      2017/12/09 18:17:07  |  Gary Tou Signed Out
+***** 2017/12/09 18:17:08  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 18:19:44  |  "sddfsdfsdfsdfsdfffdsdfdsdfsdfsdssdf"  is not an integer
+      2017/12/09 18:19:48  |  "sdf;lkj"  is not an integer
+      2017/12/09 19:40:12  |  "asdf"  is not an integer
+      2017/12/09 19:40:13  |  "f"  is not an integer
+      2017/12/09 19:40:14  |  "d"  is not an integer
+      2017/12/09 19:40:14  |  "f"  is not an integer
+      2017/12/09 19:40:14  |  "s"  is not an integer
+      2017/12/09 19:40:26  |  "asdf"  is not an integer
+      2017/12/09 19:43:25  |  "asdf"  is not an integer
+      2017/12/09 19:45:32  |  "hello"  is not an integer
+***** 2017/12/09 19:45:35  |  ERROR  |  Could not access Database
+      2017/12/09 19:45:35  |  Gary Tou Signed Out
+      2017/12/09 19:45:44  |  "sadfkl"  is not an integer
+      2017/12/09 19:48:33  |  "sadf"  is not an integer
+      2017/12/09 19:48:44  |  "asdf"  is not an integer
+***** 2017/12/09 19:57:05  |  ERROR  |  Could not access Database
+      2017/12/09 19:57:05  |  Gary Tou Signed Out
+      2017/12/09 19:57:09  |  "sdf"  is not an integer
+***** 2017/12/09 20:07:34  |  ERROR  |  Could not access Database
+      2017/12/09 20:07:34  |  Gary Tou Signed Out
+***** 2017/12/09 20:08:06  |  ERROR  |  Could not access Database
+      2017/12/09 20:08:06  |  Gary Tou Signed Out
+      2017/12/09 20:08:32  |  "sdf234"  is not an integer
+***** 2017/12/09 20:08:34  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:08:54  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:07  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:10  |  ERROR  |  Could not access Database
+      2017/12/09 20:09:10  |  เม aA Signed Out
+***** 2017/12/09 20:09:11  |  ERROR  |  Could not access Database
+      2017/12/09 20:09:11  |  Jess Potesrt Signed Out
+***** 2017/12/09 20:09:13  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:16  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:17  |  ERROR  |  Could not access Database
+      2017/12/09 20:09:17  |  Bob Stern Signed Out
+***** 2017/12/09 20:09:18  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:25  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+      2017/12/09 20:09:28  |  "sd"  is not an integer
+      2017/12/09 20:09:29  |  "f"  is not an integer
+***** 2017/12/09 20:09:31  |  ERROR  |  Could not access Database
+      2017/12/09 20:09:31  |  Gary Tou Signed Out
+***** 2017/12/09 20:09:33  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:09:40  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+**    2017/12/09 20:54:04  |  Start Up  |  
+
+
+----------
+**    2017/12/09 20:54:04  |  Start Up  |  ranBefore found
+**    2017/12/09 20:54:04  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 20:54:04  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 20:54:04  |  Start Up  |  Starting Program
+**    2017/12/09 20:54:04  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 20:54:04  |  Start Up  |  Checking for updates
+**    2017/12/09 20:54:04  |  Start Up  |  Opening Window
+**    2017/12/09 20:54:07  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 20:54:14  |  ERROR  |  Could not access Database
+      2017/12/09 20:54:14  |  Gary Tou Signed Out
+***** 2017/12/09 20:54:19  |  ERROR  |  Could not access Database
+      2017/12/09 20:54:19  |  Gary Tou Signed Out
+      2017/12/09 20:54:46  |  Logs.txt Opened
+***** 2017/12/09 20:54:56  |  System  |  EXIT
+----------**    2017/12/09 20:55:47  |  Start Up  |  
+
+
+----------
+**    2017/12/09 20:55:47  |  Start Up  |  ranBefore found
+**    2017/12/09 20:55:47  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 20:55:47  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 20:55:47  |  Start Up  |  Starting Program
+**    2017/12/09 20:55:47  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 20:55:47  |  Start Up  |  Checking for updates
+**    2017/12/09 20:55:47  |  Start Up  |  Opening Window
+**    2017/12/09 20:55:51  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 20:56:01  |  ERROR  |  Could not access Database
+      2017/12/09 20:56:01  |  Gary Tou Signed Out
+***** 2017/12/09 20:56:04  |  System  |  EXIT
+----------**    2017/12/09 20:57:34  |  Start Up  |  
+
+
+----------
+**    2017/12/09 20:57:34  |  Start Up  |  ranBefore found
+**    2017/12/09 20:57:34  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 20:57:34  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 20:57:34  |  Start Up  |  Starting Program
+**    2017/12/09 20:57:34  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 20:57:34  |  Start Up  |  Checking for updates
+**    2017/12/09 20:57:34  |  Start Up  |  Opening Window
+**    2017/12/09 20:57:38  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 20:57:50  |  System  |  EXIT
+----------***** 2017/12/09 20:58:13  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/09 20:58:55  |  ERROR  |  Could not access Database
+      2017/12/09 20:58:55  |  Gary Tou Signed Out
+***** 2017/12/09 21:00:03  |  ERROR  |  Could not access Database
+      2017/12/09 21:00:03  |  Gary Tou Signed Out
+***** 2017/12/09 21:01:10  |  ERROR  |  Could not access Database
+      2017/12/09 21:01:10  |  Gary Tou Signed Out
+***** 2017/12/09 21:10:24  |  ERROR  |  Could not access Database
+      2017/12/09 21:10:24  |  Gary Tou Signed Out
+***** 2017/12/09 21:10:32  |  ERROR  |  Could not access database at  data/TestDB.accdb.  Returning null
+**    2017/12/09 21:11:34  |  Start Up  |  
+
+
+----------
+**    2017/12/09 21:11:34  |  Start Up  |  ranBefore found
+**    2017/12/09 21:11:34  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/09 21:11:34  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/09 21:11:34  |  Start Up  |  Starting Program
+**    2017/12/09 21:11:34  |  Start Up  |  Starting Splash Screen
+**    2017/12/09 21:11:34  |  Start Up  |  Checking for updates
+**    2017/12/09 21:11:34  |  Start Up  |  Opening Window
+**    2017/12/09 21:11:37  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/09 21:11:43  |  ERROR  |  Could not access Database
+      2017/12/09 21:11:43  |  Gary Tou Signed Out
+***** 2017/12/09 21:11:47  |  System  |  EXIT
+----------***** 2017/12/09 21:13:13  |  ERROR  |  Could not access Database
+      2017/12/09 21:13:13  |  Gary Tou Signed Out
+***** 2017/12/09 21:25:38  |  ERROR  |  Could not access Database
+      2017/12/09 21:25:38  |  alt code for ? Signed Out
+***** 2017/12/09 21:25:43  |  ERROR  |  Could not access Database
+      2017/12/09 21:25:43  |  alt code for ? Signed Out
+***** 2017/12/09 21:25:49  |  ERROR  |  Could not access Database
+      2017/12/09 21:25:50  |  Mr. Sabo Signed Out

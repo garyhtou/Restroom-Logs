@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +18,9 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 import interfaces.*;
 import interfaces.RL_Colors;
@@ -25,6 +29,9 @@ import interfaces.RL_General;
  
 public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	static String WebisteBaseUrl = config.WebsiteBaseURL;
+	static JEditorPane messageContent = new JEditorPane();
+	
+	
     public static Object content(JFrame frame) {
     	frame.setVisible(true);
     	Container pane = frame.getContentPane();
@@ -141,21 +148,44 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	TitleBarAndScanAndMessage.add(ScanAndMessage, ScanAndMessageConstraints);
     	
     	//-----------
-    	JPanel scan = new JPanel();
+    	JPanel scan = new JPanel(new BorderLayout());
     	scan.setOpaque(true);
     	scan.setBackground(RL_Colors.color(3));
-    	//SCAN TITLE
+    	/*//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
     	scanTitle.setFont(new Font("Serif", Font.BOLD, scanTitle.getFont().getSize() + 10));
-    	scan.add(scanTitle, BorderLayout.PAGE_START);
+    	scan.add(scanTitle, BorderLayout.PAGE_START);*/
     	//SCAN FIELD
-    	//TODO: make typable from focused window
-    	JTextField scanField = new JTextField(10);
+    	//TODO: make typeable from focused window
+    	JTextField scanField = new JTextField();
     	scanField.setEditable(true);
     	scanField.setToolTipText("Scan your Student ID card");
-    	scan.add(scanField, BorderLayout.PAGE_END);
+    	scanField.setBackground(Color.WHITE);
+    	scanField.setOpaque(true);
+    	
+    	//border
+    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, RL_Fonts.AnticSlab, Color.BLACK);
+    	scanField.setBorder(scanFieldBorder);
+    	
+    	//scan font
+    	scanField.setFont(RL_Fonts.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
+    	
+	    	System.out.println("");
+	    	System.out.println(scanField.getFont());
+	    	System.out.println(scanField.getPreferredSize());
+	    	System.out.println(scanField.getSize());
+	    	
+	    	System.out.println("");
+	    	System.out.println(scan.getPreferredSize());
+	    	System.out.println(scan.getSize());
+    	
+    	//scanField size
+    	scan.setSize(scan.getPreferredSize());
+    	scan.add(scanField, BorderLayout.PAGE_START);
     	ScanAndMessage.setTopComponent(scan);
+    	
+    	
     	
     	//SCANNING
     	//text field
@@ -179,35 +209,44 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             		if(pullStudentName.containsOnlyNumbers(input)) {
             			int intInput = Integer.parseInt(input);
             			
-            			pullStudentName names = new pullStudentName(intInput);
-                		
-                		//System.out.println(intInput);
-                    	String FirstName = names.getFirstName();
-                    	String LastName = names.getLastName();
-                    	
-                    	if((FirstName != null) && (LastName != null)) {
-                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
-                        	//adding to DB
-                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
-                        	
-                        	//Addedin to Logs.txt
-                        	if(inOrOut) {
-                        		String data = FirstName + " " + LastName + " Signed Out";
-                        		logs.updateLogs(data);
-                        	}
-                        	else {
-                        		String data = FirstName + " " + LastName + " Signed In";
-                        		logs.updateLogs(data);
-                        	}
-                    	}
+            			pullStudentName names;
+						try {
+							names = new pullStudentName(intInput);
+							
+							String FirstName = names.getFirstName();
+	                    	String LastName = names.getLastName();
+	                    	String FirstLastName = names.getBothNames();
+	                    	
+	                    	if((FirstName != null) && (LastName != null)) {
+	                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
+	                        	//adding to DB
+	                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
+	                        	
+	                        	//Addedin to Logs.txt
+	                        	if(inOrOut) {
+	                        		String data = FirstName + " " + LastName + " Signed Out";
+	                        		updateMessagesSuccessfulSignOut(FirstLastName);
+	                        		logs.updateLogs(data);
+	                        	}
+	                        	else {
+	                        		String data = FirstName + " " + LastName + " Signed In";
+	                        		updateMessagesSuccessfulSignIn(FirstLastName);
+	                        		logs.updateLogs(data);
+	                        	}
+	                    	}
+						}
+						catch (SQLException | ClassNotFoundException e) {
+							logs.updateLogsERROR("Could not access database at  " + config.StudentDBPath +".  Returning null");
+							Window_Content.updateMessagesUnsuccessful(intInput);
+							e.printStackTrace();
+						}
             		}
             		else {
             			logs.updateLogs("\"" + input + "\"  is not an integer");
             			
             			//TODO: change popup to message in Message Pane
             			JTextArea onlyInts = new JTextArea("Please only enter numbers");
-            			JOptionPane.showMessageDialog(null, onlyInts, "Scan Error", JOptionPane.INFORMATION_MESSAGE);
-            			
+            			updateMessagesInteger(input);
             		}
             		
             	}
@@ -232,7 +271,6 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	messageTitleConstraints.fill = GridBagConstraints.BOTH;
     	message.add(messageTitle, messageTitleConstraints);
     	
-    	JEditorPane messageContent = new JEditorPane();
 	//TO DISPLAY WEBSITE
     	/*try {
 	    	String url = WebisteBaseUrl+"logs/messages.html";
@@ -242,8 +280,12 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 			e.printStackTrace();
 		}*/
     	messageContent.setEditable(false);
-    	messageContent.setFont(new Font("Verdana", Font.PLAIN, teacherName.getFont().getSize()));
-    	messageContent.setContentType("text/html");
+    	//messageContent.setFont(new Font("Verdana", Font.CENTER_BASELINE, teacherName.getFont().getSize()));
+    	messageContent.setFont(RL_Fonts.AnticSlab.deriveFont(50f));
+    	//messageContent.setAlignmentY(messageContent.CENTER_ALIGNMENT);
+    	messageContent.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	//messageContent
+    	
     	GridBagConstraints messageContentConstraints = new GridBagConstraints();
     	messageContentConstraints.gridx = 1;
     	messageContentConstraints.gridy = 2;
@@ -318,8 +360,9 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	//TableClearButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
     	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
     	
-    	//MAJOR LEFT AND RIGHT DIVIDER LOCATION
+    	//DIVIDER LOCATIONS
     	RL_General.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
+    	RL_General.JSplitPaneDividerLocation(frame, ScanAndMessage, 0.15);
     	
     	ActionListener focusActionListener = new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {
@@ -332,6 +375,44 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	return MajorLeftAndRight;
     }
  
+    /**
+	 * Adding successful sign out message to Messages
+	 * @param FirstAndLastName Student's First and Last Name
+	 */
+	public static void updateMessagesSuccessfulSignOut(String FirstAndLastName) {
+		String message  = FirstAndLastName + " has Signed Out";
+		messageContent.setForeground(Color.GREEN);
+		messageContent.setText(message);
+	}
+	/**
+	 * Adding successful sign out message to Messages
+	 * @param FirstAndLastName Student's First and Last Name
+	 */
+	public static void updateMessagesSuccessfulSignIn(String FirstAndLastName) {
+		String message  = FirstAndLastName + " has Signed In";
+		messageContent.setForeground(Color.GREEN);
+		messageContent.setText(message);
+	}
+	/**
+	 * Adding can not find Student ID to Messages
+	 * @param StudentID StudentID
+	 */
+	public static void updateMessagesUnsuccessful(int StudentID) {
+		String message = "Student ID: " + "\"" + StudentID + "\"" + " could not be found";
+		messageContent.setForeground(Color.RED);
+		messageContent.setText(message);
+	}
+	/**
+	 * Adding can not find Student ID to Messages
+	 * @param FirstAndLastName Student's First and Last Name
+	 */
+	public static void updateMessagesInteger(String input) {
+		messageContent.setForeground(Color.RED);
+		messageContent.setText("Please only enter Numbers, \"" + input + "\" contains letters");
+	}
+	
+	
+	
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
@@ -339,8 +420,8 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             public void run() {
             	JFrame frame = new JFrame();
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
                 content(frame);
-                
             }
         });
     }

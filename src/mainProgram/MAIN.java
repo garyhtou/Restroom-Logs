@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import org.apache.commons.io.*;
 
 public class MAIN {
-	static String ConfigFilePath = config.DoNotTouchFilePath;
 	//DO THREADS IN HERE
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		startUp();
@@ -22,6 +21,6 @@ public class MAIN {
 	public static void startUp() {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png"
 		config.checkRanBefore();
-		SplashScreenManager.init(); //IF IT HAS RAN BEFORE
-	}	
+		SplashScreenManager.init();
+	}
 }

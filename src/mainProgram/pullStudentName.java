@@ -19,32 +19,28 @@ public class pullStudentName {
 	/**
 	 * Constructor for getting Student Names from ID
 	 * @param studentID input scanned Student ID
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public pullStudentName(int studentID){
+	public pullStudentName(int studentID) throws SQLException, ClassNotFoundException{
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		try {
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
-			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://"+config.StudentDBPath);
-			Statement s;
-			s = conn.createStatement();
-			
-			
-			ResultSet rs;
-			rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
-			
-			rs.next();
-			rs.getString(1);
-			FirstName = rs.getString(2);
-			LastName = rs.getString(3);
-
-		} catch (SQLException | ClassNotFoundException e) {
-			logs.updateLogsERROR("Could not access database at  " + config.StudentDBPath +".  Returning null");
-			e.printStackTrace();
-		}
+		Connection conn=DriverManager.getConnection(
+	        "jdbc:ucanaccess://"+config.StudentDBPath);
+		Statement s;
+		s = conn.createStatement();
+		
+		
+		ResultSet rs;
+		rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.DBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
+		
+		rs.next();
+		rs.getString(1);
+		FirstName = rs.getString(2);
+		LastName = rs.getString(3);
 	}
 	/**
 	 * 
@@ -63,8 +59,9 @@ public class pullStudentName {
 	/**
 	 * @return First name and last name in a String Array.<br>{FirstName, LastName}
 	 */
-	public static String[] getBothNames() {
-		return new String[] {FirstName, LastName};
+	public static String getBothNames() {
+		String BothNames = FirstName + " " + LastName;
+		return BothNames;
 	}
 
 	

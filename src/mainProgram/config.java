@@ -12,23 +12,25 @@ import java.util.ArrayList;
 public class config {
 	//The following are universal constants
 	public static String StudentDBPath  = "data/TestDB.accdb";
-	public static String LogsDBPath  = "data/LogsDB.accdb";
-	public static String PdfLogPath  = "data/LogsPDF.pdf";
-	public static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
+	public final static String LogsDBPath  = "data/LogsDB.accdb";
+	public final static String PdfLogPath  = "data/LogsPDF.pdf";
+	public final static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	public static String DBTableName  = "TestDB";
 	public static String LogsDBTableName  = "Logs";
 	public static String LogsPath  = "data/Logs.txt";
-	public static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
-	public static String GeneralConfigFilePath = "config/config.txt";
-	public static String mailFromFilePath = "config/mailFrom.txt";
-	public static String mailTemplateFilePath = "config/mailTemplate.html";
-	public static String mailToFilePath = "config/mailTo.txt";
+	public final static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
+	public final static String GeneralConfigFilePath = "config/config.txt";
+	public final static String mailFromFilePath = "config/mailFrom.txt";
+	public final static String mailTemplateFilePath = "config/mailTemplate.html";
+	public final static String mailToFilePath = "config/mailTo.txt";
 	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
 	final static String SystemPriority = "**** "; //Out of 5
 	final static String ErrorPriority = "*****"; //Out of 5
 	final static String StartUpPriority = "**   "; //Out of 5
 	final static String updateLogsPriority = "     "; //Out of 5
 	public static boolean ranBefore = true;
+	public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

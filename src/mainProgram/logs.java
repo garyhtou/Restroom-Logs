@@ -262,7 +262,7 @@ public class logs {
 				String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
 				PreparedStatement st = conn.prepareStatement (q);
 	
-				st.setString(1, Integer.toString(StudentID));
+				st.setInt(1, StudentID);
 				st.setString(2, FirstName);
 				st.setString(3, LastName);
 				st.setString(4, sdf.format(cal.getTime()));
