@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.apache.commons.io.FileUtils;
@@ -254,6 +255,11 @@ public class logs {
 		Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
         
+        ArrayList<String> logList = new ArrayList<String>();
+        String uniqueID = "";
+        //TODO not done
+        for(int i= 0; <logList)
+        
 		//Adding to DB
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -264,7 +270,7 @@ public class logs {
 			ResultSet rs;
 			
 			if(isSignedOut) {
-				String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
+				String q = "INSERT INTO "+LogsTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?,? )";
 				PreparedStatement st = conn.prepareStatement (q);
 	
 				st.setInt(1, StudentID);
@@ -272,6 +278,7 @@ public class logs {
 				st.setString(3, LastName);
 				st.setString(4, sdf.format(cal.getTime()));
 				st.setString(5, "Still Signed Out");
+				st.setString(6, "Still Signed Out");
 				
 				st.executeUpdate();
 			}
