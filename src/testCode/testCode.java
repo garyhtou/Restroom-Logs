@@ -12,10 +12,10 @@ public static String encrypt(String password){
     int LAST_INDEX = password.length()-1;
     int STARTING_POWER;
     int MULTIPLIER = 4;  // should be even to prevent truncating
-    int POWER = 2:
+    int POWER = 2;
     int LENGTH = password_char.length;
-    Char[] encrypted_char = new int {encrypt_recursive(password_char, FIRST_INDEX, LAST_INDEX, SWAP_INDEX, MULTIPLIER, POWER)};
-    String encrypted_string = “”;
+    char[] encrypted_char = new int {encrypt_recursive(password_char, FIRST_INDEX, LAST_INDEX, SWAP_INDEX, MULTIPLIER, POWER)};
+    String encrypted_string = “�;
     for(int i = 0; i < LENGTH; i++){
         encrypted_string+=encrypted_char[i];
     }
@@ -23,7 +23,7 @@ public static String encrypt(String password){
 }
 
 //recursive
-private static encrypt_recursive(char[] password, int first, int last, int swap, int multiplier, int power, int length) {
+private static void encrypt_recursive(char[] password, int first, int last, int swap, int multiplier, int power, int length) {
     //multiply
     for(int i = 0; i < length+1; i++) {
         if(i%2==0){
@@ -32,14 +32,14 @@ private static encrypt_recursive(char[] password, int first, int last, int swap,
     
     //swap
     int first_num= password[swap];
-    Int last_num= password[password.length-swap];
-    password[first] = last_num;
-    password[last] = first_num;
+    int last_num= password[password.length-swap];
+    password[first] = (char) last_num;
+    password[last] = (char) first_num;
 
     //power
-    for(int i = 0; i < length+1; i++) {
+    for(int u = 0; u < length+1; u++) {
         if(i%2==1){
-            password[i] = password[i].pow(power);
+            password[i] = (char) Math.pow(password[u], power);
         }
     }
 
@@ -50,10 +50,12 @@ private static encrypt_recursive(char[] password, int first, int last, int swap,
     }
 
      if(swap<(length/2)){
-         return password_recursive(password, first, last, swap++, multiplier++, power++);
+         return encrypt_recursive(password, first, last, swap++, multiplier++, power++);
     }
     else{
         return password;
     }
+}
+}
 }
 }
