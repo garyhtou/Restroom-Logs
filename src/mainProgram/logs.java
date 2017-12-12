@@ -153,17 +153,13 @@ public class logs {
 
 	
 	/**
-	 * @deprecated
-	 * <strong>THIS NEEDS TO BE UPDATED TO PULL INTO FROM DB AND PASTE IT TO PDF</strong>
-	 * <br>Also, use a try/catch in method instead of throwing exceptions!!
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws DocumentException
-	 * @throws FileNotFoundException
+	 * Gets the latest data from Logs Database and puts it on the PDF
+	 * <br> If it catches any error it will output it to the logs
+	 * 
 	 */
-	public static void updatePDF() throws ClassNotFoundException, SQLException, DocumentException, FileNotFoundException { 
+	public static void updatePDF() { 
 		
-		
+		try {
 		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 
 		//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
@@ -202,7 +198,9 @@ public class logs {
 		table.addCell(c3);
 		table.addCell(c4);
 		table.addCell(c5);
-		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		
 
 		Connection conn=DriverManager.getConnection(
 	        "jdbc:ucanaccess://"+LogsDBPath);
@@ -236,6 +234,13 @@ public class logs {
 		
 		writerCopy.close();
 		writer.close();
+	}
+		catch (ClassNotFoundException | SQLException | DocumentException | FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
 	}
 	/**
 	 * Adds an Entry or Exit to the Logs Database
@@ -300,9 +305,11 @@ public class logs {
 	 * @throws SQLException
 	 */
 	//FIXME: NOT DONE
-	public static void addStudentToDB() throws ClassNotFoundException, SQLException {
+	public static void addStudentToDB()  {
 		
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			try {
+				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		
 			
 			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);
 			
@@ -316,6 +323,9 @@ public class logs {
 			st.setString(2, "Michael");
 			st.setString(3, "Schwamborn");
 			st.executeUpdate();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	/**
 	 * Clears the log Database<br>Caution, this removes all student entry and exits.
@@ -323,10 +333,14 @@ public class logs {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static void clearLogsDB() throws ClassNotFoundException, SQLException {
-		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-		Connection conn=DriverManager.getConnection(
-	        "jdbc:ucanaccess://"+LogsDBPath);
+	public static void clearLogsDB() {
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		Connection conn;
+		
+			conn = DriverManager.getConnection(
+			    "jdbc:ucanaccess://"+LogsDBPath);
+		
 	Statement s;
 		s = conn.createStatement();
 	ResultSet rs;
@@ -334,6 +348,9 @@ public class logs {
 	String q = "DELETE FROM "+LogsTableName;
 	PreparedStatement st = conn.prepareStatement (q);
 	st.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 *  Adds the time a student comes back to Logs Database<br>
@@ -341,8 +358,10 @@ public class logs {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static void addTimeInToLogDB(String studentID) throws ClassNotFoundException, SQLException {
-Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+	public static void addTimeInToLogDB(String studentID) {
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		 
 		
 		Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
 		
@@ -355,6 +374,9 @@ Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		PreparedStatement st = conn.prepareStatement (q);
 		st.setString(1, Timein);
 		st.executeUpdate();
+		}catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
