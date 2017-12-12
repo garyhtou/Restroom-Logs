@@ -2,7 +2,7 @@ package testCode;
 
 class encrypt_recursive {
 
-    public static String encrypt(String password){
+public static String encrypt(String password){
     char[] password_char = password.toCharArray();
     for(int i = 0; i < password_char.length; i++) {
         password_char[i] *= 1;  //should change letter to num
@@ -14,7 +14,12 @@ class encrypt_recursive {
     int MULTIPLIER = 4;  // should be even to prevent truncating
     int POWER = 2:
     int LENGTH = password_char.length;
-    return encrypt_recursive(password_char, FIRST_INDEX, LAST_INDEX, SWAP_INDEX, MULTIPLIER, POWER);
+    Char[] encrypted_char = new int {encrypt_recursive(password_char, FIRST_INDEX, LAST_INDEX, SWAP_INDEX, MULTIPLIER, POWER)};
+    String encrypted_string = “”;
+    for(int i = 0; i < LENGTH; i++){
+        encrypted_string+=encrypted_char[i];
+    }
+    return encrypted_string;
 }
 
 //recursive
