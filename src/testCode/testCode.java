@@ -1,60 +1,54 @@
 package testCode;
 
-//IMPORTS
-//Back End
-import java.util.*;
-import javax.swing.*;  
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.lang.Thread;
-//Front End
-import com.itextpdf.text.*;
-import com.teamdev.jxdocument.*;
-import com.teamdev.jxdocument.SinglePagePresentation;
+class encrypt_recursive {
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+    public static String encrypt(String password){
+    char[] password_char = password.toCharArray();
+    for(int i = 0; i < password_char.length; i++) {
+        password_char[i] *= 1;  //should change letter to num
+    }
+    int FIRST_INDEX = 0;
+    int SWAP_INDEX = 0;
+    int LAST_INDEX = password.length()-1;
+    int STARTING_POWER;
+    int MULTIPLIER = 4;  // should be even to prevent truncating
+    int POWER = 2:
+    int LENGTH = password_char.length;
+    return encrypt_recursive(password_char, FIRST_INDEX, LAST_INDEX, SWAP_INDEX, MULTIPLIER, POWER);
+}
 
-/*
--= PURPOSE OF THIS FILE =-
-	This file is used for testing random code
- */
+//recursive
+private static encrypt_recursive(char[] password, int first, int last, int swap, int multiplier, int power, int length) {
+    //multiply
+    for(int i = 0; i < length+1; i++) {
+        if(i%2==0){
+            password[i]*=multiplier ;
+    }
+    
+    //swap
+    int first_num= password[swap];
+    Int last_num= password[password.length-swap];
+    password[first] = last_num;
+    password[last] = first_num;
 
-public class testCode {
-	public static void main(String[] args) {
-		test();
-	}
-	
-	/*
-	FIXME: LICENSING!!!!
-	12:10:35 INFO: OS name: Windows 10
-	12:10:35 INFO: JRE version: 1.8 64-bit
-	12:10:35 INFO: Retina Display: false
-	Exception in thread "main" java.lang.ExceptionInInitializerError
-	at testCode.testCode.rendering_pdf(testCode.java:36)
-	at testCode.testCode.main(testCode.java:28)
-	Caused by: java.lang.RuntimeException: JxDocument license check failed: No valid license found. 
-	 */
-	public static void rendering_pdf() {
-		JFrame frame = new JFrame();
-		
-		
-		File pdf = new File("data/ViewLogsPDF.pdf");
-		com.teamdev.jxdocument.Document document = new com.teamdev.jxdocument.Document(pdf);
-		SinglePagePresentation presentation= new SinglePagePresentation(document);
-		presentation.displayPage(0);
-		JComponent renderedViewPDF = presentation.getComponent();
-		
-		
-		frame.add(renderedViewPDF);
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
-	public static void test() {
-		System.out.println("sdf");
-	}
+    //power
+    for(int i = 0; i < length+1; i++) {
+        if(i%2==1){
+            password[i] = password[i].pow(power);
+        }
+    }
+
+    //divide
+    for(int i = 0; i < length; i++) {
+        if(i%2==0){
+            password[i]/=multiplier;
+    }
+
+     if(swap<(length/2)){
+         return password_recursive(password, first, last, swap++, multiplier++, power++);
+    }
+    else{
+        return password;
+    }
+}
 }
