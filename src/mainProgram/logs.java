@@ -258,7 +258,7 @@ public class logs {
         ArrayList<String> logList = new ArrayList<String>();
         String uniqueID = "";
         //TODO not done
-        for(int i= 0; <logList)
+        //FIXME: for(int i= 0; <logList)
         
 		//Adding to DB
 		try {
