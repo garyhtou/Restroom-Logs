@@ -29,7 +29,6 @@ public class Encryption {
         String password = "Hello World";
         
         SecretKey secKey = getSecretEncryptionKey(); //save key on pi in a encrypted .txt
-        System.out.println(secKey);
         
         byte[] cipherText = encryptText(password, secKey);
         String decryptedText = decryptText(cipherText, secKey);
