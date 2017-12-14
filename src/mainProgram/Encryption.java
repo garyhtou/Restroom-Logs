@@ -30,17 +30,24 @@ public class Encryption {
      * 3. 
      */
     public static void main(String[] args) throws Exception {
+    	//password to be encrypted
         String password = "Hello World";
         
+        //getting encryption key, should be stored to later use
         SecretKey secKey = getSecretEncryptionKey(); //save key on pi in a encrypted .txt
         
+        //converting encryption key to a string
         String encodedKey = Base64.getEncoder().encodeToString(secKey.getEncoded());
-
-        byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
-     // rebuild key using SecretKeySpec
-     SecretKey originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES"); 
         
+        //converting encryption string to encryption key
+        byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
+        
+        // rebuild key using SecretKeySpec
+        SecretKey originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES"); 
+        
+        //ENCRYPT
         byte[] cipherText = encryptText(password, secKey);
+        //DECRYPT
         String decryptedText = decryptText(cipherText, originalKey);
         
 
