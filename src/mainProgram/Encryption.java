@@ -1,8 +1,12 @@
 package mainProgram;
 
+import java.util.Arrays;
+import java.util.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
 /*TODO:
@@ -30,10 +34,19 @@ public class Encryption {
         
         SecretKey secKey = getSecretEncryptionKey(); //save key on pi in a encrypted .txt
         
+        String encodedKey = Base64.getEncoder().encodeToString(secKey.getEncoded());
+
+        byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
+     // rebuild key using SecretKeySpec
+     SecretKey originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES"); 
+        
         byte[] cipherText = encryptText(password, secKey);
-        String decryptedText = decryptText(cipherText, secKey);
+        String decryptedText = decryptText(cipherText, originalKey);
+        
+
         
         System.out.println("Original Text:" + password);
+        System.out.println("Key ToString:" + encodedKey);
         System.out.println("AES Key (Hex Form):"+bytesToHex(secKey.getEncoded()));
         System.out.println("Encrypted Text (Hex Form):"+bytesToHex(cipherText));
         System.out.println("Descrypted Text:"+decryptedText);
