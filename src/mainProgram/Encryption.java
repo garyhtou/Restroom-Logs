@@ -50,14 +50,12 @@ public class Encryption {
         //DECRYPT
         String decryptedText = decryptText(cipherText, originalKey);
         
-
-        
+        //printing
         System.out.println("Original Text:" + password);
         System.out.println("Key ToString:" + encodedKey);
         System.out.println("AES Key (Hex Form):"+bytesToHex(secKey.getEncoded()));
         System.out.println("Encrypted Text (Hex Form):"+bytesToHex(cipherText));
         System.out.println("Descrypted Text:"+decryptedText);
-        
     }
     
     /**
