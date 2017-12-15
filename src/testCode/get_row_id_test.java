@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import mainProgram.config;
-import mainProgram.logs;
+
+
 
 public class get_row_id_test {
 	
@@ -22,8 +23,9 @@ public class get_row_id_test {
 			s = conn.createStatement();
 			
 			
-			String q = "UPDATE ["+config.LogsDBTableName+"] ([TimeIn]) VALUES (?) WHERE (SELECT MAX(12345) FROM ["+config.LogsDBTableName+"]  WHERE id = 4)";
-			PreparedStatement st = conn.prepareStatement(q);
+			String q = "UPDATE ["+config.LogsDBTableName+"] ([TimeIn]) VALUES (?) WHERE SELECT MAX(12345) FROM ["+config.LogsDBTableName+"]  WHERE id = 4";
+			String k = "UPDATE ["+config.LogsDBTableName+"] ([TimeIn]) VALUES (?) WHERE (SELECT id  FROM ["+config.LogsDBTableName+"])";
+			PreparedStatement st = conn.prepareStatement(k);
 			
 			st.setString(1, "test");
 			
@@ -32,7 +34,7 @@ public class get_row_id_test {
 			
 
 		} catch (SQLException | ClassNotFoundException e) {
-			logs.updateLogsERROR("Couldnt not access database at  " + config.StudentDBPath +".  Returning null");
+			//logs.updateLogsERROR("Couldnt not access database at  " + config.StudentDBPath +".  Returning null");
 			e.printStackTrace();
 		}
 	}
