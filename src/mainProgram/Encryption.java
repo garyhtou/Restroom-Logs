@@ -22,7 +22,7 @@ import javax.xml.bind.DatatypeConverter;
  * @author Jayson
  */
 public class Encryption {
- 
+	
     /**
      * 1. Generate a plain text for encryption
      * 2. Get a secret key (printed in hexadecimal form). In actual use this must 
