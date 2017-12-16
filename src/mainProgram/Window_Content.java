@@ -28,7 +28,7 @@ import interfaces.RL_Fonts;
 import interfaces.RL_General;
  
 public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
-	static String WebisteBaseUrl = config.WebsiteBaseURL;
+	static String WebisteBaseUrl = config.WebsiteHomeURL;
 	static JEditorPane messageContent = new JEditorPane();
 	
 	

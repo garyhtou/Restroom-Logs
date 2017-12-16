@@ -36,7 +36,7 @@ public class logs {
 	static String LogsDBPath = config.LogsDBPath;
 	static String PdfLogPath = config.PdfLogPath; 
 	static String PdfLogViewPath = config.PdfLogViewPath; 
-	static String DBTableName = config.DBTableName; 
+	static String DBTableName = config.StudentDBTableName; 
 	static String LogsTableName = config.LogsDBTableName; 
 	static String LogsPath = config.LogsPath; 
 	

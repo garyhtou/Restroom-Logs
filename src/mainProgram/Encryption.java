@@ -31,7 +31,7 @@ public class Encryption {
      */
     public static void main(String[] args) throws Exception {
     	//password to be encrypted
-        String password = "Hello World";
+        String password = "oh hi #RestroomLogs";
         
         //getting encryption key, should be stored to later use
         SecretKey secKey = getSecretEncryptionKey(); //save key on pi in a encrypted .txt
@@ -47,6 +47,11 @@ public class Encryption {
         
         //ENCRYPT
         byte[] cipherText = encryptText(password, secKey);
+        for(byte item : cipherText) {
+        	System.out.print(item + ", ");
+        	
+        }
+        System.out.println("");
         //DECRYPT
         String decryptedText = decryptText(cipherText, originalKey);
         
@@ -56,6 +61,8 @@ public class Encryption {
         System.out.println("AES Key (Hex Form):"+bytesToHex(secKey.getEncoded()));
         System.out.println("Encrypted Text (Hex Form):"+bytesToHex(cipherText));
         System.out.println("Descrypted Text:"+decryptedText);
+        
+        System.out.println(Base64.getEncoder().encodeToString(originalKey.getEncoded()));
     }
     
     /**

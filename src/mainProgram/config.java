@@ -7,41 +7,62 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class config {
-	//The following are universal constants
-	public static String StudentDBPath  = "data/TestDB.accdb";
-	public final static String LogsDBPath  = "data/LogsDB.accdb";
-	public final static String PdfLogPath  = "data/LogsPDF.pdf";
-	public final static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
-	public static String DBTableName  = "TestDB";
-	public static String LogsDBTableName  = "Logs";
-	public static String LogsPath  = "data/Logs.txt";
-	public final static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
-	public final static String GeneralConfigFilePath = "config/config.txt";
-	public final static String mailFromFilePath = "config/mailFrom.txt";
-	public final static String mailTemplateFilePath = "config/mailTemplate.html";
-	public final static String mailToFilePath = "config/mailTo.txt";
-	public static String WebsiteBaseURL  = "http://rl.coding2kids.com/";
-	final static String SystemPriority = "**** "; //Out of 5
-	final static String ErrorPriority = "*****"; //Out of 5
-	final static String StartUpPriority = "**   "; //Out of 5
-	final static String updateLogsPriority = "     "; //Out of 5
-	public static boolean ranBefore = true;
-	public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
+//The following are universal constants
+	//Critical Vars
+		public static boolean ranBefore = true;
+	//Databases
+		//Student DB (Not final because file path should be customizable
+		public static String StudentDBPath  = "data/TestDB.accdb";
+		public static String StudentDBTableName  = "TestDB";
+		//Logs DB
+		public final static String LogsDBPath  = "data/LogsDB.accdb";
+		public final static String LogsDBTableName  = "Logs";
+		//remote DB Credentials (DB contains SecretKey)
+		public final static String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
+		public final static String remoteDB_User = "username to remote DB";
+		public final static String remoteDB_Pass = "password to remove DB";
+	//Logs
+		//.txt
+		public final static String LogsPath  = "data/Logs.txt";
+		//PDF
+		public final static String PdfLogPath  = "data/LogsPDF.pdf";
+		//View PDF
+		public final static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
+	//Config files
+		public final static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
+		public final static String GeneralConfigFilePath = "config/config.txt";
+		public final static String mailFromFilePath = "config/mailFrom.txt";
+		public final static String mailTemplateFilePath = "config/mailTemplate.html";
+		public final static String mailToFilePath = "config/mailTo.txt";
+	//Website URLs
+		public final static String WebsiteHomeURL  = "http://rl.coding2kids.com/";
+		public final static String WebsiteRemoteDBURL = "http://rl.coding2kids.com/";
+	//Log .txt Priorities
+		public final static String SystemPriority = "**** "; //Out of 5
+		public final static String ErrorPriority = "*****"; //Out of 5
+		public final static String StartUpPriority = "**   "; //Out of 5
+		public final static String updateLogsPriority = "     "; //Out of 5
+	//Fonts
+		public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
 	
-
+	
+		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
+	
 	
 	/**
 	 * 
 	 * @param configName name of config with out '='<br><strong>Example:</strong> ranBefore
 	 * @return
 	 */
-	public static String pull(String fileName, String configName) {
+	public static String pullFile(String fileName, String configName) {
 		configName = configName + " =";
 		
 		try {
@@ -80,7 +101,7 @@ public class config {
 	 * @param value value to be writen
 	 * @return returns true if couldn't write, returns false if successful
 	 */
-	public static boolean push(String fileName, String configName, String value) {
+	public static boolean pushFile(String fileName, String configName, String value) {
 		configName = configName + " =";
 		
 		try {
@@ -109,6 +130,46 @@ public class config {
 		}
 		return true;
 	}
+	
+	//TODO: pull info from website
+	public static String pullWebsite(String url) {
+		URL remoteDBURL = null;
+		try {
+			remoteDBURL = new URL(WebsiteRemoteDBURL);
+		} catch (MalformedURLException e) {
+			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
+			e.printStackTrace();
+		}
+		
+		StringBuilder result = new StringBuilder();
+
+	    URLConnection connection = null;
+	    try {
+	    	connection = remoteDBURL.openConnection();
+	    }
+	    catch (IOException ex) {
+	    	logs.updateLogsERROR("Cannot open connection to URL: " + remoteDBURL);
+	    }
+
+	    //not all headers come in key-value pairs - sometimes the key is
+	    //null or an empty String
+	    int headerIdx = 0;
+	    String headerKey = null;
+	    String headerValue = null;
+	    while ( (headerValue = connection.getHeaderField(headerIdx)) != null ) {
+	      headerKey = connection.getHeaderFieldKey(headerIdx);
+	      if (headerKey != null && headerKey.length()>0) {
+	        result.append(headerKey);
+	        result.append(" : ");
+	      }
+	      result.append(headerValue);
+	      result.append("n");
+	      headerIdx++;
+	    }
+	    return result.toString();
+	}
+	
+	
 	/**
 	 * Checks if program has ranBefore
 	 */
@@ -190,5 +251,44 @@ public class config {
 			ranBefore = true;
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * This will update all Var values from .txt files
+	 */
+	public static void checkAllVars() {
+		//TODO: CHECK ALL VARS FROM .TXT FILES and CHECK IF WEBSITES EXIST!
+		
+		//WebsiteHomeURL
+		URL URL_WebsiteHomeURL = null;
+		try {
+			URL_WebsiteHomeURL = new URL(WebsiteHomeURL);
+		} catch (MalformedURLException e) {
+			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteHomeURL + "\")");
+			e.printStackTrace();
+		}
+	    try {
+	    	URLConnection connection = URL_WebsiteHomeURL.openConnection();
+	    }
+	    catch (IOException ex) {
+	    	logs.updateLogsERROR("Webpage URL: \"" + URL_WebsiteHomeURL + "\" does not exist");
+	    }
+	    
+	    //WebsiteRemoteDBURL
+	    URL URL_WebsiteRemoteDBURL = null;
+		try {
+			URL_WebsiteRemoteDBURL = new URL(WebsiteRemoteDBURL);
+		} catch (MalformedURLException e) {
+			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
+			e.printStackTrace();
+		}
+	    try {
+	    	URLConnection connection = URL_WebsiteRemoteDBURL.openConnection();
+	    }
+	    catch (IOException ex) {
+	    	logs.updateLogsERROR("Webpage URL: \"" + URL_WebsiteRemoteDBURL + "\" does not exist.  Will not be able to send emails");
+	    }
+	    
+	    
 	}
 }
