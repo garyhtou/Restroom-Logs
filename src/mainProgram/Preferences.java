@@ -34,11 +34,15 @@ public class Preferences {
 		Font f = tabbedPane.getFont();
 		Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
 		
-		JComponent panel1 = new JPanel();
-		tabbedPane.addTab("General", blankIcon, panel1, "General Preferences"); //table title, tab icon, tab content, tab ToolTipText
-		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-		addTitle(panel1, "GENERAL");
+		newPreferencesTab GeneralTab = new newPreferencesTab(tabbedPane, "General", null, "General ToolTip");
+		//tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+		JPanel GeneralTC = new JPanel();
+		GeneralTab.add(GeneralTC);
+		
+		
     		//TODO: add time zone change for logs (Back_End.updateLogs)
+		
+		
 
 		JComponent panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(5, 1));

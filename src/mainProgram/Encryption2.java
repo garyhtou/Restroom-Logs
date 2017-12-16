@@ -107,7 +107,7 @@ public class Encryption2 implements IDebug{
      * Encrypts plainText in AES using the secret key
      * @param plainText
      * @param secKey
-     * @return byte[] with the encrypted password. Can be use with {@link #}}
+     * @return byte[] with the encrypted password. Can be use with {@link #Encrypt(String)}}
      * @throws Exception 
      */
     private static byte[] encryptText(String plainText,SecretKey secKey) throws Exception{
@@ -129,9 +129,14 @@ public class Encryption2 implements IDebug{
 		// AES defaults to AES/ECB/PKCS5Padding in Java 7
         Cipher aesCipher = Cipher.getInstance("AES");
         aesCipher.init(Cipher.DECRYPT_MODE, secKey);
-        byte[] bytePlainText = aesCipher.doFinal(byteCipherText);
+        //byte[] bytePlainText = aesCipher.doFinal(byteCipherText);
         
-        return new String(bytePlainText);
+        System.out.println();
+        
+        byte[] test = aesCipher.doFinal();
+        		
+        
+        return new String(test);
     }
     
     

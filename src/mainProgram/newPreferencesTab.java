@@ -23,7 +23,7 @@ public class newPreferencesTab extends JComponent{
 		//TITLE
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(RL_Fonts.preferencesTitle);
-		textArea.setOpaque(false);
+		textArea.setOpaque(true);
 		textArea.setEditable(false);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
 		textArea.setText(nameOfTab);
