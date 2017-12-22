@@ -23,11 +23,11 @@ public class get_row_id_test {
 			s = conn.createStatement();
 			
 			
-			String q = "UPDATE ["+config.LogsDBTableName+"] ([TimeIn]) VALUES (?) WHERE SELECT MAX(12345) FROM ["+config.LogsDBTableName+"]  WHERE id = 4";
+			String q = "UPDATE ["+config.LogsDBTableName+"] SET ([TimeIn]) = "+"'test'" +"  WHERE id = 4";
 			String k = "UPDATE ["+config.LogsDBTableName+"] ([TimeIn]) VALUES (?) WHERE (SELECT id  FROM ["+config.LogsDBTableName+"])";
-			PreparedStatement st = conn.prepareStatement(k);
+			PreparedStatement st = conn.prepareStatement(q);
 			
-			st.setString(1, "test");
+			//st.setString(1, "test");
 			
 			st.executeUpdate();
 			
