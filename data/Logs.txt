@@ -35,4 +35,24 @@
 **    2017/12/16 22:40:48  |  Start Up  |  Start Up Complete
 -----
 ***** 2017/12/16 22:40:52  |  System  |  EXIT
-----------
+----------***** 2017/12/21 16:38:30  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:42:24  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:42:28  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:42:56  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:43:46  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:44:57  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:50:49  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:52:50  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 16:53:10  |  ERROR  |  Couldnt not access database at  data/TestDB.accdb.  Returning null
+***** 2017/12/21 17:35:43  |  ERROR  |  Can not create Ucanaccess SQL Statment with "INSERT INTO data/LogsDB.accdb ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)". Statment may be invalid
+      2017/12/21 17:41:08  |  Bob Stern has Signed Out
+      2017/12/21 17:41:16  |  Bob Stern has Signed Out
+***** 2017/12/21 17:55:58  |  ERROR  |  Unable execute query, "SELECT StudentID, ID, TimeIn FROM TestDBWHERE StudentID = 11111 ORDER BY ID DESC"
+***** 2017/12/21 17:56:23  |  ERROR  |  Unable execute query, "SELECT StudentID, ID, TimeIn FROM TestDB WHERE StudentID = 11111 ORDER BY ID DESC"
+***** 2017/12/21 18:02:05  |  ERROR  |  Unable to get entryRowNum
+***** 2017/12/21 18:02:05  |  ERROR  |  Was unable to access TimeOut value in DB, assuming that Studenting is signing out
+      2017/12/21 18:02:05  |  Bob Stern has Signed Out
+***** 2017/12/21 18:02:52  |  ERROR  |  Unable to get entryRowNum
+***** 2017/12/21 18:02:52  |  ERROR  |  Was unable to access TimeOut value in DB, assuming that Studenting is signing out
+      2017/12/21 18:02:52  |  Bob Stern has Signed Out
+***** 2017/12/21 18:05:45  |  ERROR  |  Unable execute query, "UPDATE data/LogsDB.accdb ([TimeIn]) VALUES (?) WHERE ID = 17"

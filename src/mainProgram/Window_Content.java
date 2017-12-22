@@ -218,6 +218,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	                    	String FirstLastName = names.getBothNames();
 	                    	
 	                    	if((FirstName != null) && (LastName != null)) {
+	                    		//FIXME: 
 	                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
 	                        	//adding to DB
 	                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);

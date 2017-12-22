@@ -46,25 +46,19 @@ public class database {
 		ArrayList<String> list = new ArrayList<String>();
 		
 		try {
+			//accessing driver
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
-			Connection conn=DriverManager.getConnection(
+			//establishing connection to DB
+			Connection conn = DriverManager.getConnection(
 		        "jdbc:ucanaccess://"+config.StudentDBPath);
 			Statement s;
 			s = conn.createStatement();
 			
-			
+			//creating statement
 			ResultSet rs;
-			rs = s.executeQuery("SELECT FirstName LastName FROM ["+config.StudentDBPath+"]");
+			rs = s.executeQuery("SELECT FirstName, LastName FROM "+config.StudentDBTableName+"  WHERE StudentID = " + studentID);
 			
-			//TODO: find if contains studentID and get row
-			int row = 5; //change to row of student ID
 			rs.next();
-			//move to selected row
-			for(int i = 0; i < row; i++) {
-				rs.next();
-			}
-			
 			list.add(rs.getString(1));
 			list.add(rs.getString(2));
 			
@@ -72,6 +66,7 @@ public class database {
 
 		} catch (SQLException | ClassNotFoundException e) {
 			logs.updateLogsERROR("Couldnt not access database at  " + config.StudentDBPath +".  Returning null");
+			System.err.println("Couldnt not access database at  " + config.StudentDBPath +".  Returning null");
 			e.printStackTrace();
 			return null;
 		}
