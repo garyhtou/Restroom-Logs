@@ -56,3 +56,18 @@
 ***** 2017/12/21 18:02:52  |  ERROR  |  Was unable to access TimeOut value in DB, assuming that Studenting is signing out
       2017/12/21 18:02:52  |  Bob Stern has Signed Out
 ***** 2017/12/21 18:05:45  |  ERROR  |  Unable execute query, "UPDATE data/LogsDB.accdb ([TimeIn]) VALUES (?) WHERE ID = 17"
+**    2017/12/22 15:18:23  |  Start Up  |  
+
+
+----------
+**    2017/12/22 15:18:23  |  Start Up  |  ranBefore found
+**    2017/12/22 15:18:23  |  Start Up  |  Config.txt:  ranBefore = true
+**    2017/12/22 15:18:23  |  Start Up  |  ranBefore is now set to: true
+**    2017/12/22 15:18:23  |  Start Up  |  Starting Program
+**    2017/12/22 15:18:23  |  Start Up  |  Starting Splash Screen
+**    2017/12/22 15:18:23  |  Start Up  |  Checking for updates
+**    2017/12/22 15:18:23  |  Start Up  |  Opening Window
+**    2017/12/22 15:18:27  |  Start Up  |  Start Up Complete
+-----
+***** 2017/12/22 15:18:33  |  System  |  EXIT
+----------
