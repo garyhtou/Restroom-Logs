@@ -88,7 +88,7 @@ public class database_times {
 			
 			//changing boolean
 			//FIXME: timeOut is ALWAYS NULL 
-			if(timeOut.equals(null)) { //incorrect way to check if it's null, giving an error
+			if(timeOut == null) { //incorrect way to check if it's null, giving an error -- I think i fixed it (Michael)
 				signingOut = false;
 			}
 			else if(timeOut.isEmpty()) {
@@ -139,7 +139,9 @@ public class database_times {
 			}
 		}
 		else { //CURRENTLY SIGNING IN
-			String q2 = "UPDATE "+config.LogsDBPath+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
+			String q2 = "UPDATE "+config.LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
+			
+			String ex = "UPDATE ["+config.LogsDBTableName+"] SET ([TimeIn]) = "+"'test'" +"  WHERE id = "+entryRowNum; // The correct way to format an UPDATE query; the 'test' field is what you want to put into the column, so in our case the In Time. - Michael
 			
 			//creating statement
 			PreparedStatement st = null;
