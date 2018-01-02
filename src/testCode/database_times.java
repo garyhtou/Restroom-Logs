@@ -139,17 +139,18 @@ public class database_times {
 			}
 		}
 		else { //CURRENTLY SIGNING IN
-			String q2 = "UPDATE "+config.LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
+			String findRow = "SELECT [ID] FROM" + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " ORDER BY ID DESC";
+			/*String q2 = "UPDATE "+config.LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
 			
 			String ex = "UPDATE ["+config.LogsDBTableName+"] SET ([TimeIn]) = "+"'test'" +"  WHERE id = "+entryRowNum; // The correct way to format an UPDATE query; the 'test' field is what you want to put into the column, so in our case the In Time. - Michael
-			
+			*/
 			//creating statement
 			PreparedStatement st = null;
 			try {
-				st = conn.prepareStatement (q2);
+				st = conn.prepareStatement (findRow);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable execute query, \"" + q2 + "\"");
-				System.err.println("Unable execute query, \"" + q2 + "\"");
+				logs.updateLogsERROR("Unable execute query, \"" + findRow + "\"");
+				System.err.println("Unable execute query, \"" + findRow + "\"");
 				e.printStackTrace();
 			}
 			
