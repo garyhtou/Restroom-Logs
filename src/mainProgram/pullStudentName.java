@@ -22,11 +22,13 @@ public class pullStudentName {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public pullStudentName(int studentID) throws SQLException, ClassNotFoundException{
+	public pullStudentName(int studentID){
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		
 
 		Connection conn=DriverManager.getConnection(
 	        "jdbc:ucanaccess://"+config.StudentDBPath);
@@ -41,6 +43,11 @@ public class pullStudentName {
 		rs.getString(1);
 		FirstName = rs.getString(2);
 		LastName = rs.getString(3);
+		} catch (ClassNotFoundException e) {
+			logs.updateLogsERROR("Can't find jdbc Driver");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * 

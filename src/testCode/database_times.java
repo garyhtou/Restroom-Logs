@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import mainProgram.config;
-import mainProgram.database;
+import mainProgram.pullStudentName;
 import mainProgram.logs;
 
 public class database_times {
+	
 	public static void main(String[] args) {
 		entry(11111);
 	}
 	
 	public static void entry(int studentID) {
-		String firstName = (String) database.pullStudentName(studentID).get(0);
-        String lastName = (String) database.pullStudentName(studentID).get(1);
+		pullStudentName  pull = new pullStudentName(studentID); 
+		String firstName = (String) pull.getFirstName();
+        String lastName = (String) pull.getLastName();
         
         //Getting current sys time
         Calendar cal = Calendar.getInstance();
