@@ -210,37 +210,31 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
             			int intInput = Integer.parseInt(input);
             			
             			pullStudentName names;
-						try {
-							names = new pullStudentName(intInput);
-							
-							String FirstName = names.getFirstName();
-	                    	String LastName = names.getLastName();
-	                    	String FirstLastName = names.getBothNames();
-	                    	
-	                    	if((FirstName != null) && (LastName != null)) {
-	                    		//FIXME: 
-	                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
-	                        	//adding to DB
-	                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
-	                        	
-	                        	//Addedin to Logs.txt
-	                        	if(inOrOut) {
-	                        		String data = FirstName + " " + LastName + " Signed Out";
-	                        		updateMessagesSuccessfulSignOut(FirstLastName);
-	                        		logs.updateLogs(data);
-	                        	}
-	                        	else {
-	                        		String data = FirstName + " " + LastName + " Signed In";
-	                        		updateMessagesSuccessfulSignIn(FirstLastName);
-	                        		logs.updateLogs(data);
-	                        	}
-	                    	}
-						}
-						catch (SQLException | ClassNotFoundException e) {
-							logs.updateLogsERROR("Could not access database at  " + config.StudentDBPath +".  Returning null");
-							Window_Content.updateMessagesUnsuccessful(intInput);
-							e.printStackTrace();
-						}
+						names = new pullStudentName(intInput);
+						
+						String FirstName = names.getFirstName();
+                    	String LastName = names.getLastName();
+                    	String FirstLastName = names.getBothNames();
+                    	
+                    	if((FirstName != null) && (LastName != null)) {
+                    		//FIXME: 
+                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
+                        	//adding to DB
+                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
+                        	
+                        	//Addedin to Logs.txt
+                        	if(inOrOut) {
+                        		String data = FirstName + " " + LastName + " Signed Out";
+                        		updateMessagesSuccessfulSignOut(FirstLastName);
+                        		logs.updateLogs(data);
+                        	}
+                        	else {
+                        		String data = FirstName + " " + LastName + " Signed In";
+                        		updateMessagesSuccessfulSignIn(FirstLastName);
+                        		logs.updateLogs(data);
+                        	}
+                    	}
+					
             		}
             		else {
             			logs.updateLogs("\"" + input + "\"  is not an integer");
