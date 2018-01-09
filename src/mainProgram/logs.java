@@ -71,7 +71,7 @@ public class logs {
 		Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 		try {
 			PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream(PdfLogPath));
-			HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+			HeaderFooter event = new HeaderFooter();
 	        writer.setPageEvent(event);
 			document.open();
 			// The random space is needed because it PDF wont write if there isn't anything in the document
@@ -166,7 +166,7 @@ public class logs {
 		//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
 		PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream(PdfLogPath));
 		PdfWriter writerCopy =PdfWriter.getInstance(document, new FileOutputStream(PdfLogViewPath));
-		HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+		HeaderFooter event = new HeaderFooter();
         writer.setPageEvent(event);
         writerCopy.setPageEvent(event);
 		//needs to open the document

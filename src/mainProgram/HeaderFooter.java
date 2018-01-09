@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  * <strong>Format:</strong>  LOGO  Restroom Logs DATE<br>
  */
 
-public class HeaderFooterPageEvent extends PdfPageEventHelper {
+public class HeaderFooter extends PdfPageEventHelper {
 	 public static final String IMG1 = "assets/logos/RestroomLogsLogo.png";
     private PdfTemplate t;
     private Image total;
