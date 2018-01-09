@@ -25,8 +25,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 
 
-public class BackEnd {
-	static String LogsPath = config.LogsPath; 
+public class BackEnd extends config{
+	/*static String LogsPath = config.LogsPath; 
 	static String PdfLogPath = config.PdfLogPath; 
 	static String LogsDBPath = config.LogsDBPath;
 
@@ -34,7 +34,7 @@ public class BackEnd {
 	private final static String SystemPriority = config.SystemPriority;
 	private final static String ErrorPriority = config.ErrorPriority;
 	private final static String StartUpPriority = config.StartUpPriority;
-	private final static String updateLogsPriority = config.updateLogsPriority;
+	private final static String updateLogsPriority = config.updateLogsPriority;*/
 	
 	public static class logs{
 		//CREATE LOGS FOR INIT
@@ -82,49 +82,7 @@ public class BackEnd {
 		 * Writes a String to the log file, should normally be called by other functions.
 		 * @param data
 		 */
-		public static void writeToLogs(String data) {
-			BufferedWriter bw = null;
-			FileWriter fw = null;
-
-			try {
-				File file = new File(LogsPath);
-				//FILE SHOULD ALREADY EXIST THROUGH initStartUp
-				// if file doesnt exists, then create it
-				if (!file.exists()) {
-					file.createNewFile();
-				}
-
-				// true = append file, append means to add, false = overwrite
-				fw = new FileWriter(file.getAbsoluteFile(), true);
-				bw = new BufferedWriter(fw);
-
-				bw.write(data);
-
-			}
-			catch (IOException e) {
-
-				e.printStackTrace();
-				
-
-			}
-			finally {
-
-				try {
-
-					if (bw != null)
-						bw.close();
-
-					if (fw != null)
-						fw.close();
-
-				} catch (IOException ex) {
-
-					ex.printStackTrace();
-
-				}
-			}
-		}
-			
+		
 		public static class update{
 			/**
 			 * adds a String to the Logs file as a Normal Message.<br>
@@ -137,7 +95,7 @@ public class BackEnd {
 				LocalDateTime now = LocalDateTime.now();
 	
 				String TimeAndData = updateLogsPriority + " " + dtf.format(now) + "  |  " + data + "\n";
-				writeToLogs(TimeAndData);
+				//writeToLogs(TimeAndData);
 			}
 			
 			/**
@@ -149,7 +107,7 @@ public class BackEnd {
 				LocalDateTime now = LocalDateTime.now();
 				
 				String TimeAndStartUpData = StartUpPriority + " " + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
-				writeToLogs(TimeAndStartUpData);
+				//writeToLogs(TimeAndStartUpData);
 			}
 			
 			/**
@@ -162,7 +120,7 @@ public class BackEnd {
 	
 				String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
 	
-				writeToLogs(TimeAndData);
+				//writeToLogs(TimeAndData);
 			}
 			
 			/**
@@ -175,7 +133,7 @@ public class BackEnd {
 	
 				String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
 	
-				writeToLogs(TimeAndData);
+				//writeToLogs(TimeAndData);
 			}
 		}
 	}
