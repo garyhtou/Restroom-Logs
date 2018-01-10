@@ -248,4 +248,9 @@ public class BackEnd extends config{
 	}
 	
 	}
+
+	public static class database{
+		
+	}
+	
 }
