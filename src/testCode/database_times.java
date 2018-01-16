@@ -10,9 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import mainProgram.BackEnd;
 import mainProgram.config;
-import mainProgram.pullStudentName;
-import mainProgram.logs;
+import oldCode.pullStudentName;
+import mainProgram.BackEnd.logs;
 
 public class database_times {
 	
@@ -33,7 +34,7 @@ public class database_times {
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		} catch (ClassNotFoundException e) {
-			logs.updateLogsERROR("Can not access UcanaccessDriver");
+			BackEnd.logs.update.ERROR("Can not access UcanaccessDriver");
 			System.err.println("Can not access UcanaccessDriver");
 			e.printStackTrace();
 		}
@@ -44,7 +45,7 @@ public class database_times {
 		try {
 			conn = DriverManager.getConnection("jdbc:ucanaccess://"+config.LogsDBPath);
 		} catch (SQLException e) {
-			logs.updateLogsERROR("Can not access Logs Database at " + config.LogsDBPath);
+			BackEnd.logs.update.ERROR("Can not access Logs Database at " + config.LogsDBPath);
 			System.err.println("Can not access Logs Database at " + config.LogsDBPath);
 			e.printStackTrace();
 		}
@@ -54,7 +55,7 @@ public class database_times {
 		try {
 			s = conn.createStatement();
 		} catch (SQLException e) {
-			logs.updateLogsERROR("Can not create Ucanaccess SQL Statement");
+			BackEnd.logs.update.ERROR("Can not create Ucanaccess SQL Statement");
 			System.err.println("Can not create Ucanaccess SQL Statement");
 			e.printStackTrace();
 		}
@@ -72,7 +73,7 @@ public class database_times {
 			try {
 				rs = s.executeQuery(q);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable execute query, \"" + q + "\"");
+				BackEnd.logs.update.ERROR("Unable execute query, \"" + q + "\"");
 				System.err.println("Unable execute query, \"" + q + "\"");
 				e.printStackTrace();
 			}
@@ -83,7 +84,7 @@ public class database_times {
 				entryRowNum = rs.getInt(1);
 				timeOut = rs.getString(2);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable to get entryRowNum");
+				BackEnd.logs.update.ERROR("Unable to get entryRowNum");
 				System.err.println("Unable to get entryRowNum");
 				e.printStackTrace();
 			}
@@ -94,7 +95,7 @@ public class database_times {
 				signingOut = false;
 			}
 			else if(timeOut.isEmpty()) {
-				logs.updateLogsERROR("Was unable to access TimeOut value in DB, assuming that Studenting is signing out");
+				BackEnd.logs.update.ERROR("Was unable to access TimeOut value in DB, assuming that Studenting is signing out");
 				System.err.println("Was unable to access TimeOut value in DB, assuming that Studenting is signing out");
 			}
 			else {
@@ -112,7 +113,7 @@ public class database_times {
 			try {
 				st = conn.prepareStatement (q2);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Can not create Ucanaccess SQL Statment with \"" + q2 + "\". Statment may be invalid");
+				BackEnd.logs.update.ERROR("Can not create Ucanaccess SQL Statment with \"" + q2 + "\". Statment may be invalid");
 				System.err.println("Can not create Ucanaccess SQL Statment with \"" + q2 + "\". Statment may be invalid");
 				e.printStackTrace();
 			}
@@ -125,7 +126,7 @@ public class database_times {
 				st.setString(4, sdf.format(cal.getTime())); //Current time, for Time Out
 				st.setString(5, null); //null, for Time In. This will remain null until signed out by student, manually signed out by teacher, or signed out by system
 			} catch (SQLException e) {
-				logs.updateLogsERROR("unable to set values in Ucanaccess SQL Statment");
+				BackEnd.logs.update.ERROR("unable to set values in Ucanaccess SQL Statment");
 				System.err.println("unable to set values in Ucanaccess SQL Statment");;
 				e.printStackTrace();
 			}
@@ -133,9 +134,9 @@ public class database_times {
 			//Committing changes to DB
 			try {
 				st.executeUpdate();
-				logs.updateLogs(firstName + " " + lastName + " has Signed Out");
+				BackEnd.logs.update.Logs(firstName + " " + lastName + " has Signed Out");
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable to executeUpdate Values in Ucanaccess SQL Statment");
+				BackEnd.logs.update.ERROR("Unable to executeUpdate Values in Ucanaccess SQL Statment");
 				System.err.println("Unable to executeUpdate Values in Ucanaccess SQL Statment");
 				e.printStackTrace();
 			}
@@ -151,7 +152,7 @@ public class database_times {
 			try {
 				st = conn.prepareStatement (findRow);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable execute query, \"" + findRow + "\"");
+				BackEnd.logs.update.ERROR("Unable execute query, \"" + findRow + "\"");
 				System.err.println("Unable execute query, \"" + findRow + "\"");
 				e.printStackTrace();
 			}
@@ -159,9 +160,9 @@ public class database_times {
 			try {
 				st.setString(1, sdf.format(cal.getTime()));
 				st.executeUpdate();
-				logs.updateLogs(firstName + " " + lastName + " has Signed in");
+				BackEnd.logs.update.Logs(firstName + " " + lastName + " has Signed in");
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable to Update In Time");
+				BackEnd.logs.update.ERROR("Unable to Update In Time");
 				System.err.println("Unable to Update In Time");
 				e.printStackTrace();
 			}
