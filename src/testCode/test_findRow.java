@@ -11,7 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import mainProgram.config;
-import mainProgram.logs;
+import mainProgram.BackEnd;
+import mainProgram.BackEnd.logs;
 
 public class test_findRow {
 	public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class test_findRow {
 			try {
 				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			} catch (ClassNotFoundException e) {
-				logs.updateLogsERROR("Can not access UcanaccessDriver");
+				BackEnd.logs.update.ERROR("Can not access UcanaccessDriver");
 				System.err.println("Can not access UcanaccessDriver");
 				e.printStackTrace();
 			}
@@ -37,7 +38,7 @@ public class test_findRow {
 			try {
 				conn = DriverManager.getConnection("jdbc:ucanaccess://"+config.LogsDBPath);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Can not access Logs Database at " + config.LogsDBPath);
+				BackEnd.logs.update.ERROR("Can not access Logs Database at " + config.LogsDBPath);
 				System.err.println("Can not access Logs Database at " + config.LogsDBPath);
 				e.printStackTrace();
 			}
@@ -52,7 +53,7 @@ public class test_findRow {
 			try {
 				st = conn.prepareStatement (updateInTime);
 			} catch (SQLException e) {
-				logs.updateLogsERROR("Unable execute query, \"" + updateInTime + "\"");
+				BackEnd.logs.update.ERROR("Unable execute query, \"" + updateInTime + "\"");
 				System.err.println("Unable execute query, \"" + updateInTime + "\"");
 				e.printStackTrace();
 			}

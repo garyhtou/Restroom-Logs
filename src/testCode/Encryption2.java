@@ -1,4 +1,4 @@
-package mainProgram;
+package testCode;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
