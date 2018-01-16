@@ -8,11 +8,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import org.apache.commons.io.FileUtils;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -23,19 +29,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import oldCode.logs;
+
 
 
 public class BackEnd extends config{
-	/*static String LogsPath = config.LogsPath; 
-	static String PdfLogPath = config.PdfLogPath; 
-	static String LogsDBPath = config.LogsDBPath;
-
-	
-	private final static String SystemPriority = config.SystemPriority;
-	private final static String ErrorPriority = config.ErrorPriority;
-	private final static String StartUpPriority = config.StartUpPriority;
-	private final static String updateLogsPriority = config.updateLogsPriority;*/
-	
 	public static class logs{
 		//CREATE LOGS FOR INIT
 		public static void create() {
@@ -82,7 +80,52 @@ public class BackEnd extends config{
 		 * Writes a String to the log file, should normally be called by other functions.
 		 * @param data
 		 */
-		
+		private static void write(String data) {
+			BufferedWriter bw = null;
+			FileWriter fw = null;
+
+			try {
+				File file = new File(LogsPath);
+				//FILE SHOULD ALREADY EXIST THROUGH initStartUp
+				// if file doesnt exists, then create it
+				if (!file.exists()) {
+					file.createNewFile();
+				}
+
+				// true = append file, append means to add, false = overwrite
+				fw = new FileWriter(file.getAbsoluteFile(), true);
+				bw = new BufferedWriter(fw);
+
+				bw.write(data);
+
+			}
+			catch (IOException e) {
+
+				e.printStackTrace();
+				
+
+			}
+			finally {
+
+				try {
+
+					if (bw != null)
+						bw.close();
+
+					if (fw != null)
+						fw.close();
+
+				} catch (IOException ex) {
+
+					ex.printStackTrace();
+
+				}
+			}
+		}
+		/**
+		 * Writes a String to the log file, should normally be called by other functions.
+		 * @param data
+		 */
 		public static class update{
 			/**
 			 * adds a String to the Logs file as a Normal Message.<br>
@@ -95,7 +138,7 @@ public class BackEnd extends config{
 				LocalDateTime now = LocalDateTime.now();
 	
 				String TimeAndData = updateLogsPriority + " " + dtf.format(now) + "  |  " + data + "\n";
-				//writeToLogs(TimeAndData);
+				write(TimeAndData);
 			}
 			
 			/**
@@ -107,7 +150,7 @@ public class BackEnd extends config{
 				LocalDateTime now = LocalDateTime.now();
 				
 				String TimeAndStartUpData = StartUpPriority + " " + dtf.format(now) + "  |  " + "Start Up" + "  |  " + StartUpData + "\n";
-				//writeToLogs(TimeAndStartUpData);
+				write(TimeAndStartUpData);
 			}
 			
 			/**
@@ -120,7 +163,7 @@ public class BackEnd extends config{
 	
 				String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  ERROR  |  "+ ERRORdata + "\n";
 	
-				//writeToLogs(TimeAndData);
+				write(TimeAndData);
 			}
 			
 			/**
@@ -131,16 +174,19 @@ public class BackEnd extends config{
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				LocalDateTime now = LocalDateTime.now();
 	
-				String TimeAndData = ErrorPriority + " " + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
+				String TimeAndData = SystemPriority + " " + dtf.format(now) + "  |  System  |  "+ SystemData + "\n";
 	
-				//writeToLogs(TimeAndData);
+				write(TimeAndData);
 			}
 		}
 		
 	}
-
+	
 	public static class email{
 		public static class PDF{
+			/**
+			 * Creates a blank PDF
+			 */
 			public static void CreateBlankPDF() { //create blank PDF and Logs.txt for when the program initially starts up
 				//Create PDF
 				Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
@@ -164,8 +210,10 @@ public class BackEnd extends config{
 				}
 				
 			}
-			public static void updatePDF() { 
-				
+			/**
+			 * Updates an existing PDF using information pulled from the Logs database
+			 */
+			public static void updatePDF() {
 				try {
 				Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
 
@@ -245,13 +293,198 @@ public class BackEnd extends config{
 				}
 				
 		}
-		
+			
 	}
-	
+
 	}
 
 	public static class database{
+		/**
+		 * Adds information into databases
+		 * @author gar.tou000
+		 *
+		 */
+		public static class Log {
+			/**
+			 * Adds an entry to the log
+			 * @author gar.tou000
+			 *
+			 */
+			public static class add{
+				/**
+				 * Adds an Entry or Exit to the Logs Database
+				 * @param StudentID Student's ID
+				 * @param FirstName Student's First Name
+				 * @param LastName Student's Last Name
+				 * @param isSignedOut true = signing out, false = signing in
+				 */
+				public static void entry(int StudentID, String FirstName, String LastName, boolean isSignedOut) {
+					//Getting current sys time
+					Calendar cal = Calendar.getInstance();
+			        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+			        
+			        ArrayList<String> logList = new ArrayList<String>();
+			        String uniqueID = "";
+			        //TODO not done
+			        //FIXME: for(int i= 0; <logList)
+			        
+					//Adding to DB
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+						Statement s;
+						s = conn.createStatement();
+						
+						ResultSet rs;
+						
+						if(isSignedOut) {
+							String q = "INSERT INTO "+LogsDBTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?,? )";
+							PreparedStatement st = conn.prepareStatement (q);
+				
+							st.setInt(1, StudentID);
+							st.setString(2, FirstName);
+							st.setString(3, LastName);
+							st.setString(4, sdf.format(cal.getTime()));
+							st.setString(5, "Still Signed Out");
+							st.setString(6, "Still Signed Out");
+							
+							st.executeUpdate();
+						}
+						else {
+							//psuedo
+								/*
+								 * find last entry
+								 * update (NOT ADD NEW ROW) just 5th column
+								 */
+							String q = "UPDATE "+LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE StudentID = " + StudentID;
+							PreparedStatement st = conn.prepareStatement (q);
+							
+							st.setString(1, sdf.format(cal.getTime()));
+							
+							st.executeUpdate();
+						}
+					}
+					catch(ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can not find JDBC class");
+						e.printStackTrace();
+					}
+					catch(SQLException e){
+						BackEnd.logs.update.ERROR("Could not access Database");
+						
+					}
+				}
+
+			}
+		 	/** Clears the log Database<br>Caution, this removes all student entry and exits.
+		 * 
+		 * @throws ClassNotFoundException
+		 * @throws SQLException
+		 */
+			public static void clear() {
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+					Statement s= conn.createStatement();
+					ResultSet rs;
+					
+					String q = "DELETE FROM "+LogsDBTableName;
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
+		
+		public static class Student{
+			public static void add()  {
+					
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+				
+					
+					Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);
+					
+					Statement s;
+					s = conn.createStatement();
+
+					ResultSet rs;
+					String q = "INSERT INTO "+StudentDBTableName+" ([StudentID], [FirstName], [LastName]) VALUES (?, ?, ?)";
+					PreparedStatement st = conn.prepareStatement (q);
+					st.setString(1, "12345");
+					st.setString(2, "Michael");
+					st.setString(3, "Schwamborn");
+					st.executeUpdate();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			/** @deprecated THERE SHOULD BE NO NEED TO CLEAR THE STUDENT DB
+			 * Clears the student Database<br>Caution, this removes all students.
+			 * 
+			 * @throws ClassNotFoundException
+			 * @throws SQLException
+			 */
+			public static void StudentDB() {
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);
+					Statement s = conn.createStatement();
+					ResultSet rs;
+					
+					String q = "DELETE FROM "+StudentDBTableName;
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		
+		}
+		public static class clear{
+			/**
+			 * Clears the log Database<br>Caution, this removes all student entry and exits.
+			 * 
+			 * @throws ClassNotFoundException
+			 * @throws SQLException
+			 */
+			public static void LogsDB() {
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+					Statement s= conn.createStatement();
+					ResultSet rs;
+					
+					String q = "DELETE FROM "+LogsDBTableName;
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+			/**
+			 * @deprecated THERE SHOULD BE NO NEED TO CLEAR THE STUDENT DB
+			 * Clears the student Database<br>Caution, this removes all students.
+			 * 
+			 * @throws ClassNotFoundException
+			 * @throws SQLException
+			 */
+			public static void StudentDB() {
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);
+					Statement s = conn.createStatement();
+					ResultSet rs;
+					
+					String q = "DELETE FROM "+StudentDBTableName;
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 }

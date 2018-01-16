@@ -137,6 +137,7 @@ public class FrontEnd {
 	        	renderSplashFrame(graphic, "Creating PDF Logs");
 	        	BackEnd.logs.update.StartUp("Creating PDF Logs");
 	        	splash.update();
+	        	//FIXME
 	        	BackEnd.email.PDF();
 	        	//Call Action in another thread
 	        	
@@ -416,18 +417,18 @@ public class FrontEnd {
 	                        	if(inOrOut) {
 	                        		String data = FirstName + " " + LastName + " Signed Out";
 	                        		updateMessagesSuccessfulSignOut(FirstLastName);
-	                        		logs.updateLogs(data);
+	                        		BackEnd.logs.update.Logs(data);
 	                        	}
 	                        	else {
 	                        		String data = FirstName + " " + LastName + " Signed In";
 	                        		updateMessagesSuccessfulSignIn(FirstLastName);
-	                        		logs.updateLogs(data);
+	                        		BackEnd.logs.update.Logs(data);
 	                        	}
 	                    	}
 						
 	            		}
 	            		else {
-	            			logs.updateLogs("\"" + input + "\"  is not an integer");
+	            			BackEnd.logs.update.Logs("\"" + input + "\"  is not an integer");
 	            			
 	            			//TODO: change popup to message in Message Pane
 	            			JTextArea onlyInts = new JTextArea("Please only enter numbers");
@@ -648,7 +649,7 @@ public class FrontEnd {
 	        dataView.setMnemonic(KeyEvent.VK_K);
 	        dataView.setToolTipText("View Sign in/out");
 	        dataView.addActionListener((ActionEvent dataViewButtonEvent) -> {
-	        	logs.updateLogs("ViewLogsPDF Opened");
+	        	BackEnd.logs.update.Logs("ViewLogsPDF Opened");
 	        	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
 	        	//SHOW VIEW PDF
 	        	/*if(Back_End.createViewPDF()) {
@@ -719,7 +720,7 @@ public class FrontEnd {
 					
 					
 				} catch (FileNotFoundException e) {
-					logs.updateLogs("Logs.txt Closed");
+					BackEnd.logs.update.Logs("Logs.txt Closed");
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(dataLogs,
 						    "Can not open Log file.", //message
@@ -732,7 +733,7 @@ public class FrontEnd {
 	        filePreferences.setMnemonic(KeyEvent.VK_P);
 	        filePreferences.setToolTipText("Preferences");
 	        filePreferences.addActionListener((ActionEvent filePreferencesButonEvent) -> { 
-	        	logs.updateLogs("Preferences Opened");
+	        	BackEnd.logs.update.Logs("Preferences Opened");
 	    		Preferences.preferences();
 	        });
 	        
@@ -816,8 +817,8 @@ public class FrontEnd {
 	           	
 	    		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
 	    		if(choice == JOptionPane.YES_OPTION) {
-	    			logs.createPDF();
-	    			logs.updateLogsSystem("LogsPDF Cleared");
+	    			BackEnd.PDF.create();
+	    			BackEnd.logs.update.System("LogsPDF Cleared");
 	    			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
 	    		}
 	        });
