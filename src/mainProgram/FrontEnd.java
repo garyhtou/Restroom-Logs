@@ -64,8 +64,8 @@ public class FrontEnd {
 		static StopWatch stopWatch = new StopWatch();
 		
 		public static void init() {
-			logs.updateLogsStartUp("Starting Program");
-			logs.updateLogsStartUp("Starting Splash Screen");
+			BackEnd.logs.update.StartUp("Starting Program");
+			BackEnd.logs.update.StartUp("Starting Splash Screen");
 			runSplash();
 		}
 		public Splash() {}
@@ -76,6 +76,7 @@ public class FrontEnd {
 	        graphic.fillRect(170,140,250,40); //120, 140, 200, 40
 	        graphic.setPaintMode();
 	        graphic.setColor(LAVENDER_GRAY);
+	        //TODO:??
 	        if(config.ranBefore) {
 	        	graphic.drawString(message+"...", 200, 165);
 	        }
@@ -88,8 +89,9 @@ public class FrontEnd {
 	    public static void runSplash() {
 	    	SplashScreen splash = SplashScreen.getSplashScreen();
 	        if (splash == null) {
-	            System.out.println("SplashScreen.getSplashScreen() returned null");
-	            logs.updateLogsERROR("SplashScreen.getSplashScreen() returned null");
+	            String message = "SplashScreen.getSplashScreen() returned null";
+	        	System.out.println(message);
+	            BackEnd.logs.update.ERROR(message);
 	            return;
 	        }
 	        
@@ -97,7 +99,7 @@ public class FrontEnd {
 	        Graphics2D graphic = splash.createGraphics();
 	        if (graphic == null) {
 	            System.out.println("graphic is null");
-	            logs.updateLogsERROR("graphic is null");
+	            BackEnd.logs.update.ERROR("graphic is null");
 	            return;
 	        }
 	        
@@ -106,43 +108,43 @@ public class FrontEnd {
 	        if(config.ranBefore) {
 	        	//Step 1
 	        	renderSplashFrame(graphic, "Checking for updates");
-	        	logs.updateLogsStartUp("Checking for updates");
+	        	BackEnd.logs.update.StartUp("Checking for updates");
 	        	splash.update();
 	        	//CHECK FOR UPDATES
 	        	//Call Action in another thread
 	        	
 	        	//START PROGRAM
-	        	logs.updateLogsStartUp("Opening Window");
+	        	BackEnd.logs.update.StartUp("Opening Window");
 	        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
-	        	logs.updateLogsStartUp("Start Up Complete\n-----");
+	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
 	        }
 	//STEP INIT -------------------------------------
 	        else { //INIT START UP, HAS NOT RAN BEFORE
 	        	//STEP 1
 	        	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
-	        	logs.updateLogsStartUp("NOTICE: Program hasn't ran before!");
+	        	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
 	        	splash.update();
 	        	//no need to call anything, this is a notice to use that this program has not ran before
 	        	
 	        	//STEP 2
 	        	renderSplashFrame(graphic, "Checking database");
-	        	logs.updateLogsStartUp("Checking database");
+	        	BackEnd.logs.update.StartUp("Checking database");
 	        	splash.update();
 	        	//TODO: check if data base exists
 	        	//Call Action in another thread
 	        	
 	        	//STEP 3
 	        	renderSplashFrame(graphic, "Creating PDF Logs");
-	        	logs.updateLogsStartUp("Creating PDF Logs");
+	        	BackEnd.logs.update.StartUp("Creating PDF Logs");
 	        	splash.update();
-	        	logs.createPDF();
+	        	BackEnd.email.PDF();
 	        	//Call Action in another thread
 	        	
 	        	config.ranBefore = true; //TODO: Change in file
 	        	//START PROGRAM
-	        	logs.updateLogsStartUp("Opening Window");
+	        	BackEnd.logs.update.StartUp("Opening Window");
 	        	waitThreeStart(splash, graphic);
-	        	logs.updateLogsStartUp("Start Up Complete\n-----");
+	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
 	        }
 	        splash.close();
 	    }
@@ -674,7 +676,7 @@ public class FrontEnd {
 	    					    JOptionPane.INFORMATION_MESSAGE);
 	            	//}
 	            	//catch (){
-	            		logs.updateLogsERROR("Error while opening ViewLogPDF");
+	            		BackEnd.logs.update.ERROR("Error while opening ViewLogPDF");
 	            		JOptionPane.showMessageDialog(dataView,
 	    				"Can not open ViewLogPDF for viewing.", //message
 	    				"ViewLogPDF File Error", //title
@@ -687,7 +689,7 @@ public class FrontEnd {
 	        dataLogs.setMnemonic(KeyEvent.VK_K);
 	        dataLogs.setToolTipText("View logs");
 	        dataLogs.addActionListener((ActionEvent dataLogsButtonEvent) -> {
-	        	logs.updateLogs("Logs.txt Opened");
+	        	BackEnd.logs.update.Logs("Logs.txt Opened");
 	        	String fileContent;
 				try {
 					fileContent = new Scanner(new File(LogsPath)).useDelimiter("\\Z").next();
