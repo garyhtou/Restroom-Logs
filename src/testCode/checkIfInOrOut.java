@@ -103,4 +103,31 @@ public class checkIfInOrOut {
 			return -1;
 		}
 	}
+
+	//FIXME:Not Done
+	public static void check(){
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection(
+		        "jdbc:ucanaccess://"+config.LogsDBPath);
+			Statement s;
+			s = conn.createStatement();
+			
+			
+			ResultSet rs;
+			rs = s.executeQuery("SELECT [ID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " ORDER BY ID DESC");
+			
+			rs.next(); //move into table
+			
+			int row = rs.getInt(1);
+			System.out.println(row);
+			
+
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("ERROR");
+			e.printStackTrace();
+			
+		}
+	}
 }
