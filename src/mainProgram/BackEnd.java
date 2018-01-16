@@ -38,7 +38,7 @@ public class BackEnd extends config{
 	
 	public static class logs{
 		//CREATE LOGS FOR INIT
-		public static void Create() {
+		public static void create() {
 			BufferedWriter bw = null;
 			FileWriter fw = null;
 			
@@ -136,6 +136,7 @@ public class BackEnd extends config{
 				//writeToLogs(TimeAndData);
 			}
 		}
+		
 	}
 
 	public static class email{

@@ -76,3 +76,19 @@
 ***** 2017/12/21 20:08:50  |  ERROR  |  Unable execute query, "UPDATE data/LogsDB.accdb ([TimeIn]) VALUES (?) WHERE ID = 17"
 ***** 2017/12/21 20:11:35  |  ERROR  |  Unable execute query, "UPDATE Logs ([TimeIn]) VALUES (?) WHERE ID = 17"
 >>>>>>> branch 'master' of https://github.com/garytou2/Restroom-Logs.git
+**    2018/01/09 10:39:50  |  Start Up  |  
+
+
+----------
+**    2018/01/09 10:39:50  |  Start Up  |  ranBefore found
+**    2018/01/09 10:39:50  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/09 10:39:50  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/09 10:39:50  |  Start Up  |  Starting Program
+**    2018/01/09 10:39:50  |  Start Up  |  Starting Splash Screen
+**    2018/01/09 10:39:50  |  Start Up  |  Checking for updates
+**    2018/01/09 10:39:50  |  Start Up  |  Opening Window
+**    2018/01/09 10:39:54  |  Start Up  |  Start Up Complete
+-----
+      2018/01/09 10:40:16  |  Logs.txt Opened
+***** 2018/01/09 10:40:24  |  System  |  EXIT
+----------

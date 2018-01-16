@@ -86,7 +86,7 @@ public class config {
 			
 		}
 		catch (IOException e) {
-			logs.updateLogsERROR("Error while pulling for information from config");
+			BackEnd.logs.update.ERROR("Error while pulling for information from config");
 			e.printStackTrace();
 		}
 		
@@ -125,7 +125,7 @@ public class config {
 			bw.close();
 		}
 		catch (IOException e) {
-			logs.updateLogsERROR("Error while writing information to config");
+			BackEnd.logs.update.ERROR("Error while writing information to config");
 			e.printStackTrace();
 		}
 		return true;
@@ -137,7 +137,7 @@ public class config {
 		try {
 			remoteDBURL = new URL(WebsiteRemoteDBURL);
 		} catch (MalformedURLException e) {
-			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
+			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
 			e.printStackTrace();
 		}
 		
@@ -148,7 +148,7 @@ public class config {
 	    	connection = remoteDBURL.openConnection();
 	    }
 	    catch (IOException ex) {
-	    	logs.updateLogsERROR("Cannot open connection to URL: " + remoteDBURL);
+	    	BackEnd.logs.update.ERROR("Cannot open connection to URL: " + remoteDBURL);
 	    }
 
 	    //not all headers come in key-value pairs - sometimes the key is
@@ -191,10 +191,10 @@ public class config {
 			    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
 			    		if(lineSub.equalsIgnoreCase("false")){
 			    			ranBefore = false;
-			    			logs.createLogs();
-			    			logs.updateLogsStartUp("\n\n\n----------");
-				    		logs.updateLogsStartUp("ranBefore found");
-				    		logs.updateLogsStartUp("Config.txt: " + line);
+			    			BackEnd.logs.create();
+			    			BackEnd.logs.update.StartUp("\n\n\n----------");
+				    		BackEnd.logs.update.StartUp("ranBefore found");
+				    		BackEnd.logs.update.StartUp("Config.txt: " + line);
 
 				    		//Change false to true
 
@@ -219,26 +219,26 @@ public class config {
 				    		    fw.close();
 				    		    br2.close();
 				    		} catch (FileNotFoundException e) {
-				    			logs.updateLogsERROR("Can not find Config.txt");
+				    			BackEnd.logs.update.ERROR("Can not find Config.txt");
 				    			e.printStackTrace();
 				    		} catch (IOException e) {
-				    			logs.updateLogsERROR("Can not access Config.txt");
+				    			BackEnd.logs.update.ERROR("Can not access Config.txt");
 				    			e.printStackTrace();
 				    		}
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
 			    			ranBefore = true;
-			    			logs.updateLogsStartUp("\n\n\n----------");
-				    		logs.updateLogsStartUp("ranBefore found");
-				    		logs.updateLogsStartUp("Config.txt:  " + line);
+			    			BackEnd.logs.update.StartUp("\n\n\n----------");
+				    		BackEnd.logs.update.StartUp("ranBefore found");
+				    		BackEnd.logs.update.StartUp("Config.txt:  " + line);
 			    		}
 			    		else {
-			    			logs.updateLogsStartUp("\n\n\n----------");
-			    			logs.updateLogsERROR("ranBefore non-valid boolean ("+ line + ") at " + DoNotTouchFilePath);
-			    			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+			    			BackEnd.logs.update.StartUp("\n\n\n----------");
+			    			BackEnd.logs.update.ERROR("ranBefore non-valid boolean ("+ line + ") at " + DoNotTouchFilePath);
+			    			BackEnd.logs.update.ERROR("Assuming that program has ran before (ranBefore = true");
 			    			ranBefore = true;
 			    		}
-			    		logs.updateLogsStartUp("ranBefore is now set to: " + ranBefore);
+			    		BackEnd.logs.update.StartUp("ranBefore is now set to: " + ranBefore);
 			    	}
 			    	break;
 			   }
@@ -246,8 +246,8 @@ public class config {
 			br.close(); 
 		}
 		catch (IOException e) {
-			logs.updateLogsERROR("Not able to read file at  "+DoNotTouchFilePath);
-			logs.updateLogsERROR("Assuming that program has ran before (ranBefore = true");
+			BackEnd.logs.update.ERROR("Not able to read file at  "+DoNotTouchFilePath);
+			BackEnd.logs.update.ERROR("Assuming that program has ran before (ranBefore = true");
 			ranBefore = true;
 			e.printStackTrace();
 		}
@@ -264,14 +264,14 @@ public class config {
 		try {
 			URL_WebsiteHomeURL = new URL(WebsiteHomeURL);
 		} catch (MalformedURLException e) {
-			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteHomeURL + "\")");
+			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteHomeURL + "\")");
 			e.printStackTrace();
 		}
 	    try {
 	    	URLConnection connection = URL_WebsiteHomeURL.openConnection();
 	    }
 	    catch (IOException ex) {
-	    	logs.updateLogsERROR("Webpage URL: \"" + URL_WebsiteHomeURL + "\" does not exist");
+	    	BackEnd.logs.update.ERROR("Webpage URL: \"" + URL_WebsiteHomeURL + "\" does not exist");
 	    }
 	    
 	    //WebsiteRemoteDBURL
@@ -279,14 +279,14 @@ public class config {
 		try {
 			URL_WebsiteRemoteDBURL = new URL(WebsiteRemoteDBURL);
 		} catch (MalformedURLException e) {
-			logs.updateLogsERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
+			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
 			e.printStackTrace();
 		}
 	    try {
 	    	URLConnection connection = URL_WebsiteRemoteDBURL.openConnection();
 	    }
 	    catch (IOException ex) {
-	    	logs.updateLogsERROR("Webpage URL: \"" + URL_WebsiteRemoteDBURL + "\" does not exist.  Will not be able to send emails");
+	    	BackEnd.logs.update.ERROR("Webpage URL: \"" + URL_WebsiteRemoteDBURL + "\" does not exist.  Will not be able to send emails");
 	    }
 	    
 	    
