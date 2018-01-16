@@ -1,7 +1,9 @@
-package mainProgram;
+package oldCode;
 
 import java.awt.*;
 import org.apache.commons.lang.time.StopWatch;
+
+import mainProgram.config;
 
 public class SplashScreenManager {
 	public static void main(String[] args) {

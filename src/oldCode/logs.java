@@ -1,4 +1,4 @@
-package mainProgram;
+package oldCode;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -29,6 +29,9 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import mainProgram.HeaderFooter;
+import mainProgram.config;
 
 public class logs {
 

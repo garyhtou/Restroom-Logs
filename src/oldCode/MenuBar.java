@@ -1,4 +1,4 @@
-package mainProgram;
+package oldCode;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -25,6 +25,8 @@ import javax.swing.JTextArea;
 import javax.swing.text.Document;
 
 import com.teamdev.jxdocument.*;
+
+import mainProgram.config;
 
 public class MenuBar {
 	static String LogsPath = config.LogsPath;

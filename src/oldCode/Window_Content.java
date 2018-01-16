@@ -1,4 +1,4 @@
-package mainProgram;
+package oldCode;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,6 +26,7 @@ import interfaces.*;
 import interfaces.RL_Colors;
 import interfaces.RL_Fonts;
 import interfaces.RL_General;
+import mainProgram.config;
  
 public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	static String WebisteBaseUrl = config.WebsiteHomeURL;

@@ -1,4 +1,4 @@
-package mainProgram;
+package oldCode;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import mainProgram.config;
 
 public class pullStudentName {
 
