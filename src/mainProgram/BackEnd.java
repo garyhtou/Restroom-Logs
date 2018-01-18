@@ -373,7 +373,7 @@ public class BackEnd extends config{
 						
 					}
 				}
-
+				
 			}
 		 	/** Clears the log Database<br>Caution, this removes all student entry and exits.
 		 * 
@@ -394,7 +394,34 @@ public class BackEnd extends config{
 					e.printStackTrace();
 				}
 			}
+			
+
+			public static boolean checkIfOut(int studentID){
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+					Connection conn=DriverManager.getConnection(
+				        "jdbc:ucanaccess://"+config.LogsDBPath);
+					Statement s;
+					s = conn.createStatement();
+					
+					
+					ResultSet rs;
+					rs = s.executeQuery("SELECT [StudentID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " AND 	TimeIn='Still Signed Out'");
+					
+					rs.next(); //move into table
+					
+					rs.getString(1);
+					return true;
+					
+
+				} catch (SQLException | ClassNotFoundException e) {
+					return false;
+					
+				}
+			}
 		}
+
 		
 		
 		public static class Student{
