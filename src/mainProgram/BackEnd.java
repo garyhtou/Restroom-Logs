@@ -80,7 +80,7 @@ public class BackEnd extends config{
 		 * Writes a String to the log file, should normally be called by other functions.
 		 * @param data
 		 */
-		private static void write(String data) {
+		public static void write(String data) {
 			BufferedWriter bw = null;
 			FileWriter fw = null;
 
@@ -375,27 +375,11 @@ public class BackEnd extends config{
 				}
 				
 			}
-		 	/** Clears the log Database<br>Caution, this removes all student entry and exits.
-		 * 
-		 * @throws ClassNotFoundException
-		 * @throws SQLException
-		 */
-			public static void clear() {
-				try {
-					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
-					Statement s= conn.createStatement();
-					ResultSet rs;
-					
-					String q = "DELETE FROM "+LogsDBTableName;
-					PreparedStatement st = conn.prepareStatement (q);
-					st.executeUpdate();
-				} catch (SQLException | ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-			}
-			
-
+			/**
+			 * Checks if a student is currently signed in or out
+			 * @param studentID the student ID to be checked
+			 * @return true or false;
+			 */
 			public static boolean checkIfOut(int studentID){
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -422,8 +406,6 @@ public class BackEnd extends config{
 			}
 		}
 
-		
-		
 		public static class Student{
 			public static void add()  {					
 					try {
@@ -446,30 +428,71 @@ public class BackEnd extends config{
 						e.printStackTrace();
 					}
 				}
-			public static void pullStudentName() {
+			public static class pullStudentName {
+				private static String FirstName = null;
+				private static String LastName = null;
 				
-			}
-			/** @deprecated THERE SHOULD BE NO NEED TO CLEAR THE STUDENT DB
-			 * Clears the student Database<br>Caution, this removes all students.
-			 * 
-			 * @throws ClassNotFoundException
-			 * @throws SQLException
-			 */
-			public static void clear() {
-				try {
-					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);
-					Statement s = conn.createStatement();
-					ResultSet rs;
+				/**
+				 * Constructor for getting Student Names from ID
+				 * @param studentID input scanned Student ID
+				 */
+				public pullStudentName(int studentID){
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 					
-					String q = "DELETE FROM "+StudentDBTableName;
-					PreparedStatement st = conn.prepareStatement (q);
-					st.executeUpdate();
-				} catch (SQLException | ClassNotFoundException e) {
-					e.printStackTrace();
+
+					Connection conn=DriverManager.getConnection(
+				        "jdbc:ucanaccess://"+config.StudentDBPath);
+					Statement s;
+					s = conn.createStatement();
+					
+					
+					ResultSet rs;
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.StudentDBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
+					
+					rs.next();
+					rs.getString(1);
+					FirstName = rs.getString(2);
+					LastName = rs.getString(3);
+					} catch (ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				/**
+				 * 
+				 * @return FirstName as a String
+				 */
+				public static String getFirstName() {
+					//System.out.println(FirstName);
+					return FirstName;
+				}
+				/**
+				 * @return LastName as a String
+				 */
+				public static String getLastName() {
+					return LastName;
+				}
+				/**
+				 * @return First name and last name in a String Array.<br>{FirstName, LastName}
+				 */
+				public static String getBothNames() {
+					String BothNames = FirstName + " " + LastName;
+					return BothNames;
+				}
+
+				
+				
+				public static boolean containsOnlyNumbers(String str) {
+				    for (int i = 0; i < str.length(); i++) {
+				      if (!Character.isDigit(str.charAt(i)))
+				        return false;
+				    }
+				    return true;
 				}
 			}
-		
+
 		}
 		public static class clear{
 			/**

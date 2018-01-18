@@ -56,6 +56,7 @@ import com.teamdev.jxdocument.SinglePagePresentation;
 import interfaces.RL_Colors;
 import interfaces.RL_Fonts;
 import interfaces.RL_General;
+import mainProgram.BackEnd.database.Student.pullStudentName;
 
 public class FrontEnd {
 
@@ -400,8 +401,7 @@ public class FrontEnd {
 	            		if(pullStudentName.containsOnlyNumbers(input)) {
 	            			int intInput = Integer.parseInt(input);
 	            			
-	            			pullStudentName names;
-							names = new pullStudentName(intInput);
+	            			pullStudentName names = new pullStudentName(intInput);
 							
 							String FirstName = names.getFirstName();
 	                    	String LastName = names.getLastName();
@@ -411,7 +411,7 @@ public class FrontEnd {
 	                    		//FIXME: 
 	                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
 	                        	//adding to DB
-	                        	logs.addEntryToLogDB(intInput, FirstName, LastName, inOrOut);
+	                        	BackEnd.database.Log.add.entry(intInput, FirstName, LastName, inOrOut);
 	                        	
 	                        	//Addedin to Logs.txt
 	                        	if(inOrOut) {
@@ -640,8 +640,8 @@ public class FrontEnd {
 	        fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
 	        fileExit.setToolTipText("Exit application");
 	        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
-	        	logs.updateLogsSystem("EXIT");
-	        	logs.writeToLogs("----------");
+	        	BackEnd.logs.update.System("EXIT");
+	        	BackEnd.logs.write("----------");
 	            System.exit(0);
 	        });
 	        //view entries
@@ -817,7 +817,7 @@ public class FrontEnd {
 	           	
 	    		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
 	    		if(choice == JOptionPane.YES_OPTION) {
-	    			BackEnd.PDF.create();
+	    			BackEnd.email.PDF.CreateBlankPDF();
 	    			BackEnd.logs.update.System("LogsPDF Cleared");
 	    			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
 	    		}

@@ -14,8 +14,8 @@ import java.io.InputStream;
 
 import javax.swing.*;
 
+import mainProgram.BackEnd;
 import mainProgram.config;
-import mainProgram.logs;
 /**
  * An interface for Fonts that are used in this program
  * @author gary
@@ -44,7 +44,7 @@ public interface RL_Fonts {
 			return ttfReal;
 		} catch (Exception ex) {
 	        ex.printStackTrace();
-	        logs.updateLogsERROR("Font could not be loaded from  " + path);
+	        BackEnd.logs.update.ERROR("Font could not be loaded from  " + path);
 	        System.err.println("Font could not be loaded from  " + path);
 	        return null;
 	    }
