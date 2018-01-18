@@ -409,12 +409,13 @@ public class FrontEnd {
 	                    	
 	                    	if((FirstName != null) && (LastName != null)) {
 	                    		//FIXME: 
-	                        	boolean inOrOut = true; //CURRENTLY SIGNED OUT??
+	                        	boolean inOrOut = BackEnd.database.Log.checkIfOut(intInput); //CURRENTLY SIGNED OUT??
+	                        	
 	                        	//adding to DB
-	                        	BackEnd.database.Log.add.entry(intInput, FirstName, LastName, inOrOut);
+                        		BackEnd.database.Log.add.entry(intInput, FirstName, LastName, inOrOut);
 	                        	
 	                        	//Addedin to Logs.txt
-	                        	if(inOrOut) {
+	                        	if(!inOrOut) {
 	                        		String data = FirstName + " " + LastName + " Signed Out";
 	                        		updateMessagesSuccessfulSignOut(FirstLastName);
 	                        		BackEnd.logs.update.Logs(data);
@@ -569,6 +570,7 @@ public class FrontEnd {
 			String message  = FirstAndLastName + " has Signed Out";
 			messageContent.setForeground(Color.GREEN);
 			messageContent.setText(message);
+			System.out.println("signing out sent to messageContent");
 		}
 		/**
 		 * Adding successful sign out message to Messages
@@ -578,6 +580,7 @@ public class FrontEnd {
 			String message  = FirstAndLastName + " has Signed In";
 			messageContent.setForeground(Color.GREEN);
 			messageContent.setText(message);
+			System.out.println("signing in sent to messageContent");
 		}
 		/**
 		 * Adding can not find Student ID to Messages

@@ -91,4 +91,97 @@
 -----
       2018/01/09 10:40:16  |  Logs.txt Opened
 ***** 2018/01/09 10:40:24  |  System  |  EXIT
+----------**    2018/01/18 13:47:57  |  Start Up  |  
+
+
+----------
+**    2018/01/18 13:47:57  |  Start Up  |  ranBefore found
+**    2018/01/18 13:47:57  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/18 13:47:57  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/18 13:47:57  |  Start Up  |  Starting Program
+**    2018/01/18 13:47:57  |  Start Up  |  Starting Splash Screen
+**    2018/01/18 13:47:57  |  Start Up  |  Checking for updates
+**    2018/01/18 13:47:57  |  Start Up  |  Opening Window
+**    2018/01/18 13:48:01  |  Start Up  |  Start Up Complete
+-----
+***** 2018/01/18 13:48:10  |  ERROR  |  Could not access Database
+      2018/01/18 13:48:10  |  Gary Tou Signed Out
+***** 2018/01/18 13:48:13  |  ERROR  |  Could not access Database
+      2018/01/18 13:48:13  |  Gary Tou Signed Out
+      2018/01/18 13:48:19  |  ViewLogsPDF Opened
+      2018/01/18 13:48:27  |  Logs.txt Opened
+      2018/01/18 13:48:49  |  Preferences Opened
+****  2018/01/18 13:48:55  |  System  |  LogsPDF Cleared
+      2018/01/18 13:49:17  |  Preferences Opened
+****  2018/01/18 13:49:20  |  System  |  LogsPDF Cleared
+****  2018/01/18 13:50:04  |  System  |  LogsPDF Cleared
+****  2018/01/18 13:50:13  |  System  |  EXIT
+----------**    2018/01/18 13:52:04  |  Start Up  |  
+
+
+----------
+**    2018/01/18 13:52:04  |  Start Up  |  ranBefore found
+**    2018/01/18 13:52:04  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/18 13:52:04  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/18 13:52:04  |  Start Up  |  Starting Program
+**    2018/01/18 13:52:04  |  Start Up  |  Starting Splash Screen
+**    2018/01/18 13:52:04  |  Start Up  |  Checking for updates
+**    2018/01/18 13:52:04  |  Start Up  |  Opening Window
+**    2018/01/18 13:52:07  |  Start Up  |  Start Up Complete
+-----
+***** 2018/01/18 13:52:17  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:17  |  Gary Tou Signed In
+***** 2018/01/18 13:52:21  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:21  |  Gary Tou Signed In
+***** 2018/01/18 13:52:25  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:25  |  Gary Tou Signed In
+***** 2018/01/18 13:52:28  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:28  |  Gary Tou Signed In
+***** 2018/01/18 13:52:29  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:29  |  Gary Tou Signed In
+***** 2018/01/18 13:52:33  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:33  |  Gary Tou Signed In
+***** 2018/01/18 13:52:35  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:35  |  Gary Tou Signed In
+***** 2018/01/18 13:52:46  |  ERROR  |  Could not access Database
+      2018/01/18 13:52:46  |  Gary Tou Signed In
+****  2018/01/18 13:52:51  |  System  |  EXIT
+----------**    2018/01/18 13:54:56  |  Start Up  |  
+
+
+----------
+**    2018/01/18 13:54:56  |  Start Up  |  ranBefore found
+**    2018/01/18 13:54:56  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/18 13:54:56  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/18 13:54:56  |  Start Up  |  Starting Program
+**    2018/01/18 13:54:56  |  Start Up  |  Starting Splash Screen
+**    2018/01/18 13:54:56  |  Start Up  |  Checking for updates
+**    2018/01/18 13:54:56  |  Start Up  |  Opening Window
+**    2018/01/18 13:55:00  |  Start Up  |  Start Up Complete
+-----
+***** 2018/01/18 13:55:06  |  ERROR  |  Could not access Database
+      2018/01/18 13:55:06  |  Gary Tou Signed In
+***** 2018/01/18 13:55:11  |  ERROR  |  Could not access Database
+      2018/01/18 13:55:11  |  Gary Tou Signed In
+***** 2018/01/18 14:00:23  |  ERROR  |  Could not access Database
+      2018/01/18 14:00:23  |  Gary Tou Signed In
+****  2018/01/18 14:00:37  |  System  |  EXIT
+----------**    2018/01/18 14:02:07  |  Start Up  |  
+
+
+----------
+**    2018/01/18 14:02:07  |  Start Up  |  ranBefore found
+**    2018/01/18 14:02:07  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/18 14:02:07  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/18 14:02:07  |  Start Up  |  Starting Program
+**    2018/01/18 14:02:07  |  Start Up  |  Starting Splash Screen
+**    2018/01/18 14:02:07  |  Start Up  |  Checking for updates
+**    2018/01/18 14:02:07  |  Start Up  |  Opening Window
+**    2018/01/18 14:02:11  |  Start Up  |  Start Up Complete
+-----
+***** 2018/01/18 14:02:18  |  ERROR  |  Could not access Database
+      2018/01/18 14:02:18  |  Gary Tou Signed Out
+***** 2018/01/18 14:02:22  |  ERROR  |  Could not access Database
+      2018/01/18 14:02:22  |  Gary Tou Signed Out
+****  2018/01/18 14:02:28  |  System  |  EXIT
 ----------
