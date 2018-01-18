@@ -398,8 +398,7 @@ public class BackEnd extends config{
 		
 		
 		public static class Student{
-			public static void add()  {
-					
+			public static void add()  {					
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 				
@@ -420,13 +419,16 @@ public class BackEnd extends config{
 						e.printStackTrace();
 					}
 				}
+			public static void pullStudentName() {
+				
+			}
 			/** @deprecated THERE SHOULD BE NO NEED TO CLEAR THE STUDENT DB
 			 * Clears the student Database<br>Caution, this removes all students.
 			 * 
 			 * @throws ClassNotFoundException
 			 * @throws SQLException
 			 */
-			public static void StudentDB() {
+			public static void clear() {
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+StudentDBPath);

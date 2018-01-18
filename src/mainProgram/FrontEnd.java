@@ -138,7 +138,7 @@ public class FrontEnd {
 	        	BackEnd.logs.update.StartUp("Creating PDF Logs");
 	        	splash.update();
 	        	//FIXME
-	        	BackEnd.email.PDF();
+	        	BackEnd.email.PDF.CreateBlankPDF();
 	        	//Call Action in another thread
 	        	
 	        	config.ranBefore = true; //TODO: Change in file
