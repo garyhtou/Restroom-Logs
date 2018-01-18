@@ -16,7 +16,11 @@ import mainProgram.BackEnd.logs;
 
 public class checkIfInOrOut {
 	public static void main(String[] args) {
-		signIn(12345);
+		//signIn(12345);
+		if(checkIfOut(33333))
+			System.out.print("The ID is in the db and they are signed out.");
+		else
+			System.out.print("The ID is not in the db and they are not signed out.");
 	}
 	public static void signIn(int studentID) {
 		int row = getRow(studentID);
@@ -104,8 +108,8 @@ public class checkIfInOrOut {
 		}
 	}
 
-	//FIXME:Not Done
-	public static void check(){
+	
+	public static boolean checkIfOut(int studentID){
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
@@ -116,17 +120,16 @@ public class checkIfInOrOut {
 			
 			
 			ResultSet rs;
-			rs = s.executeQuery("SELECT [ID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " ORDER BY ID DESC");
+			rs = s.executeQuery("SELECT [StudentID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " AND 	TimeIn='Still Signed Out'");
 			
 			rs.next(); //move into table
 			
-			int row = rs.getInt(1);
-			System.out.println(row);
+			rs.getString(1);
+			return true;
 			
 
 		} catch (SQLException | ClassNotFoundException e) {
-			System.err.println("ERROR");
-			e.printStackTrace();
+			return false;
 			
 		}
 	}
