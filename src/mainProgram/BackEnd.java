@@ -346,7 +346,7 @@ public class BackEnd extends config{
 							st.setString(3, LastName);
 							st.setString(4, sdf.format(cal.getTime()));
 							st.setString(5, "Still Signed Out");
-							st.setString(6, "Still Signed Out");
+							
 							
 							st.executeUpdate();
 						}
