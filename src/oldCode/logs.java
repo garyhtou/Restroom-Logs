@@ -30,7 +30,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import mainProgram.HeaderFooter;
+import oldCode.HeaderFooter;
 import mainProgram.config;
 
 public class logs {

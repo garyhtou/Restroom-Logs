@@ -1,4 +1,4 @@
-package mainProgram;
+package oldCode;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter;
  * Adds a Header to the PDF.<br>
  * <strong>Format:</strong>  LOGO  Restroom Logs DATE<br>
  */
-
 public class HeaderFooter extends PdfPageEventHelper {
 	 public static final String IMG1 = "assets/logos/RestroomLogsLogo.png";
     private PdfTemplate t;

@@ -80,16 +80,12 @@ public class config {
 				   return data;
 			   }
 			}
-			
-				br.close();
-			
-			
+			br.close();
 		}
 		catch (IOException e) {
 			BackEnd.logs.update.ERROR("Error while pulling for information from config");
 			e.printStackTrace();
 		}
-		
 		return null;
 		
 	}
