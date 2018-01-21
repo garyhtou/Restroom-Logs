@@ -191,36 +191,6 @@ public class config {
 			    			BackEnd.logs.update.StartUp("\n\n\n----------");
 				    		BackEnd.logs.update.StartUp("ranBefore found");
 				    		BackEnd.logs.update.StartUp("Config.txt: " + line);
-
-				    		//Change false to true
-
-				    		File log = new File(DoNotTouchFilePath);
-				    		FileReader fr;
-				    		try {
-				    			fr = new FileReader(log);
-				    			String currentLine;
-				    			String TotalLine = "";
-				    		    BufferedReader br2 = new BufferedReader(fr);
-				    		    
-				    		    int lineCounter2 = 1;
-				    		    while ((currentLine = br2.readLine()) != null) {
-				    		    	if(lineCounter2 == 3){
-				    		    		currentLine = "ranBefore = true";
-				    		    	}
-				    		    	TotalLine += currentLine + "\n";
-				    		    	lineCounter2++;
-				    		    }
-				    		    FileWriter fw = new FileWriter(log);
-				    		    fw.write(TotalLine);
-				    		    fw.close();
-				    		    br2.close();
-				    		} catch (FileNotFoundException e) {
-				    			BackEnd.logs.update.ERROR("Can not find Config.txt");
-				    			e.printStackTrace();
-				    		} catch (IOException e) {
-				    			BackEnd.logs.update.ERROR("Can not access Config.txt");
-				    			e.printStackTrace();
-				    		}
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
 			    			ranBefore = true;
@@ -245,6 +215,39 @@ public class config {
 			BackEnd.logs.update.ERROR("Not able to read file at  "+DoNotTouchFilePath);
 			BackEnd.logs.update.ERROR("Assuming that program has ran before (ranBefore = true");
 			ranBefore = true;
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Should only be used on init run of program. This changes ranBefore=false to ranBefore=true
+	 */
+	public static void ranBeforeToTrue() {
+		File log = new File(DoNotTouchFilePath);
+		FileReader fr;
+		try {
+			fr = new FileReader(log);
+			String currentLine;
+			String TotalLine = "";
+		    BufferedReader br2 = new BufferedReader(fr);
+		    
+		    int lineCounter2 = 1;
+		    while ((currentLine = br2.readLine()) != null) {
+		    	if(lineCounter2 == 3){
+		    		currentLine = "ranBefore = true";
+		    	}
+		    	TotalLine += currentLine + "\n";
+		    	lineCounter2++;
+		    }
+		    FileWriter fw = new FileWriter(log);
+		    fw.write(TotalLine);
+		    fw.close();
+		    br2.close();
+		} catch (FileNotFoundException e) {
+			BackEnd.logs.update.ERROR("Can not find Config.txt");
+			e.printStackTrace();
+		} catch (IOException e) {
+			BackEnd.logs.update.ERROR("Can not access Config.txt");
 			e.printStackTrace();
 		}
 	}

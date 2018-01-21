@@ -61,7 +61,7 @@ import mainProgram.BackEnd.database.Student.pullStudentName;
 public class FrontEnd {
 
 	public static class Splash{
-	
+		
 		static StopWatch stopWatch = new StopWatch();
 		
 		public static void init() {
