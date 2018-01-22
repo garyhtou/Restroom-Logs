@@ -184,4 +184,35 @@
 ***** 2018/01/18 14:02:22  |  ERROR  |  Could not access Database
       2018/01/18 14:02:22  |  Gary Tou Signed Out
 ****  2018/01/18 14:02:28  |  System  |  EXIT
+----------**    2018/01/21 12:17:43  |  Start Up  |  
+
+
+----------
+**    2018/01/21 12:17:43  |  Start Up  |  ranBefore found
+**    2018/01/21 12:17:43  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/21 12:17:43  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/21 12:23:53  |  Start Up  |  
+
+
+----------
+**    2018/01/21 12:23:53  |  Start Up  |  ranBefore found
+**    2018/01/21 12:23:53  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/21 12:23:53  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/21 12:23:53  |  Start Up  |  Starting Program
+**    2018/01/21 12:23:53  |  Start Up  |  Starting Splash Screen
+***** 2018/01/21 12:23:53  |  ERROR  |  SplashScreen.getSplashScreen() returned null
+**    2018/01/21 12:24:11  |  Start Up  |  
+
+
+----------
+**    2018/01/21 12:24:11  |  Start Up  |  ranBefore found
+**    2018/01/21 12:24:11  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/01/21 12:24:11  |  Start Up  |  ranBefore is now set to: true
+**    2018/01/21 12:24:11  |  Start Up  |  Starting Program
+**    2018/01/21 12:24:11  |  Start Up  |  Starting Splash Screen
+**    2018/01/21 12:24:11  |  Start Up  |  Checking for updates
+**    2018/01/21 12:24:11  |  Start Up  |  Opening Window
+**    2018/01/21 12:24:14  |  Start Up  |  Start Up Complete
+-----
+****  2018/01/21 12:24:29  |  System  |  EXIT
 ----------

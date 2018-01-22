@@ -89,6 +89,7 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	        }
 	        
 	        stopWatch.start();
+	//FIXME: move ranbefore vs not ranbefore to different methods and all the two methods inside the if/else
 	//STEPS ---------------------------------------
 	        if(config.ranBefore) {
 	        	//Step 1
