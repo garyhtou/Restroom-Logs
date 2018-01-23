@@ -171,14 +171,15 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 		public void menuBar() {
 			
 		}
-		public class file {
-			public class exit {
+		public abstract class file {
+			public abstract void create();
+			public class exit extends file {
 				public void create() {
 					
 				}
 			}
 			
-			public class preferences {
+			public class preferences extends file{
 				public preferences() { //Constructor  for tabs and titles
 					
 				}
