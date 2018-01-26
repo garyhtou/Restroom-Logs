@@ -30,8 +30,8 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 		splashScreen.create(); //will wait at least 3 seconds before moving on
 		frame(); //set up main settings of the frame
 		
-		window.stuff;
-		content.stuff;
+		/*window.stuff;
+		content.stuff;*/
 		
 		frame.setVisible(true);
 		
@@ -59,7 +59,7 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 			BackEnd.logs.update.StartUp("Starting Splash Screen");
 			runSplash();
 		}
-		//public splashScreen() {}
+		//public splashScreen() {} //This is needed??? I don't know. it's an empty constructor
 	    private static void renderSplashFrame(Graphics2D graphic, String message) {
 	    	Color LAVENDER_GRAY = new Color(0xC5C6C7); //custom color
 	    	
@@ -89,53 +89,54 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	        }
 	        
 	        stopWatch.start();
-	//FIXME: move ranbefore vs not ranbefore to different methods and all the two methods inside the if/else
-	//STEPS ---------------------------------------
 	        if(config.ranBefore) {
-	        	//Step 1
-	        	renderSplashFrame(graphic, "Checking for updates");
-	        	BackEnd.logs.update.StartUp("Checking for updates");
-	        	splash.update();
-	        	//CHECK FOR UPDATES
-	        	//Call Action in another thread
-	        	
-	        	//START PROGRAM
-	        	BackEnd.logs.update.StartUp("Opening Window");
-	        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
-	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
-	        }
-	//STEP INIT -------------------------------------
-	        else { //INIT START UP, HAS NOT RAN BEFORE
-	        	//STEP 1
-	        	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
-	        	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
-	        	splash.update();
-	        	//no need to call anything, this is a notice to use that this program has not ran before
-	        	
-	        	//STEP 2
-	        	renderSplashFrame(graphic, "Checking database");
-	        	BackEnd.logs.update.StartUp("Checking database");
-	        	splash.update();
-	        	//TODO: check if data base exists
-	        	//Call Action in another thread
-	        	
-	        	//STEP 3
-	        	renderSplashFrame(graphic, "Creating PDF Logs");
-	        	BackEnd.logs.update.StartUp("Creating PDF Logs");
-	        	splash.update();
-	        	BackEnd.email.PDF.CreateBlankPDF();
-	        	//Call Action in another thread
-	        	
-	        	//changes ranBefore=false to ranBefore=true
-	        	ranBeforeToTrue();
-	        	
-	        	//START PROGRAM
-	        	BackEnd.logs.update.StartUp("Opening Window");
-	        	waitThreeStart(splash, graphic);
-	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+	        	regularStart(splash, graphic);
+	        } else {
+	        	initStart(splash, graphic);
 	        }
 	        splash.close();
 	    }
+	     private static void regularStart(SplashScreen splash, Graphics2D graphic) {
+        	//STEP ONE
+	    	renderSplashFrame(graphic, "Checking for updates");
+	    	BackEnd.logs.update.StartUp("Checking for updates");
+        	splash.update();
+        	//CHECK FOR UPDATES
+        	//Call Action in another thread
+        	
+        	//START PROGRAM
+        	BackEnd.logs.update.StartUp("Opening Window");
+        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+		        
+	     }
+	     private static void initStart(SplashScreen splash, Graphics2D graphic) {
+        	//STEP 1
+        	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
+        	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
+        	splash.update();
+        	//no need to call anything, this is a notice to use that this program has not ran before 
+        	//STEP 2
+        	renderSplashFrame(graphic, "Checking database");
+        	BackEnd.logs.update.StartUp("Checking database");
+        	splash.update();
+        	//TODO: check if data base exists
+        	//Call Action in another thread 
+        	//STEP 3
+        	renderSplashFrame(graphic, "Creating PDF Logs");
+        	BackEnd.logs.update.StartUp("Creating PDF Logs");
+        	splash.update();
+        	BackEnd.email.PDF.CreateBlankPDF();
+        	//Call Action in another thread
+        	
+        	//changes ranBefore=false to ranBefore=true
+        	ranBeforeToTrue();
+        	
+        	//START PROGRAM
+        	BackEnd.logs.update.StartUp("Opening Window");
+        	waitThreeStart(splash, graphic);
+        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+	     }
+	    
 	    
 	    /**
 	     * this method only waits 3 secounds, don't start the window
@@ -195,6 +196,31 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	}
 	
 	public class content {
+		public class majorRL {
+			public void create() {
+				JSplitPane majorRL = new JSplitPane();
+			}
+			public class left {
+				public class statsScan {
+					public void create() {
+						JSplitPane statsScan = new JSplitPane();
+					}
+					public class stats{
+						public class bannerStats{
+							public static 
+						}
+					}
+					public class scan{
+						
+					}
+				}
+			}
+			public class right {
+				public void table() {
+					
+				}
+			}
+		}
 		public void pane() {
 			
 		}
@@ -202,9 +228,6 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 			
 		}
 		public void messages() {
-			
-		}
-		public void table() {
 			
 		}
 		public void stats() {
