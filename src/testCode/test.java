@@ -1,6 +1,7 @@
 package testCode;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -13,8 +14,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import mainProgram.config;
+import oldCode.MenuBar;
+import oldCode.Window_Content;
 import oldCode.logs;
 import oldCode.newPreferencesTab;
 
@@ -24,6 +29,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,6 +37,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import interfaces.RL_Fonts;
 import mainProgram.BackEnd;
@@ -38,11 +45,34 @@ import mainProgram.BackEnd;
 public class test implements ActionListener{
     String prefix = "";
 	
-	public test() {
+	public test() throws URISyntaxException {
 		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
+		URI uri = new URI("https://www.rl.coding2kids.com/docs");
+
    
 
 		ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
+JFrame frame = new JFrame();
+    	
+    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
+    	ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
+    	frame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
+    	
+        //WINDOW SETTINGS
+    	frame.setTitle("Restroom Logs");
+    	//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    	frame.setResizable(true);
+    	frame.setUndecorated(true);
+    	frame.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setAlwaysOnTop(true); //DO NOT USE THIS, THIS WILL PREVENT DIALOG FROM TOPPING THIS
+    	
+    	//MENU BAR
+    	//frame.setJMenuBar(MenuBar.createMenuBar());
+    	
+    	//CONTENT (adding content to JFrame)
+    	//Window_Content.content(frame);
+    	frame.setVisible(true);
 		
  
 
@@ -71,19 +101,35 @@ public class test implements ActionListener{
 			    			
 			    			JPanel panel1  = new JPanel(new GridLayout(0,1));
 			    			addTitle(panel1, "            Welcome");
-			    	        panel1.add(Box.createHorizontalStrut(15)); // a spacer
+			    	        panel1.add(Box.createHorizontalStrut(5)); // a spacer
 			    			JTextArea preferencesLogsClearText = new JTextArea();
 			    	    	preferencesLogsClearText.setOpaque(false);
 			    	    	preferencesLogsClearText.setEditable(false);
 			    	    	//CONTENT
 			    	    	preferencesLogsClearText.setText("This is the inital setup for the Restroom Logs Program");
 			    	    	panel1.add(preferencesLogsClearText);
-			    	    	panel1.add(new JLabel("These settings can be changed later in the Preferences tab"));
+			    	    	panel1.add(new JLabel("These settings can be changed later in the Preferences tab"));	    	    	
 			    	    	
+			    	        
+			    	        JButton button = new JButton();
+			    	        button.setText("<HTML>Click <FONT color=\"#000099\"><U>here</U></FONT>"
+			    	            + " for more information.</HTML>");
+			    	        button.setHorizontalAlignment(SwingConstants.LEFT);
+			    	        button.setBorderPainted(false);
+			    	        button.setOpaque(false);
+			    	        button.setBackground(Color.WHITE);
+			    	        button.setToolTipText(uri.toString());
+			    	        button.addActionListener(new OpenUrlAction());
+			    	        panel1.add(button);
+			    	        frame.setVisible(true);
+			    	      
+
+			    	      
 			    	    	
 			    	    	int result = JOptionPane.showOptionDialog(null, panel1 , "Restroom Logs | Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Icon, null,null );
 			    	    	if (result == JOptionPane.OK_OPTION)	
 			    	    	{
+			    	    		
 
 			    			JTextField xField = new JTextField(5);
 			    	        //JTextField yField = new JTextField(5);
@@ -107,8 +153,9 @@ public class test implements ActionListener{
 			    			
 			    
 			    			  int result1 = JOptionPane.showConfirmDialog(null, myPanel, 
-			    		                 "Restroom Logs | Initial Setup", JOptionPane.OK_CANCEL_OPTION);
+			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.OK_CANCEL_OPTION);
 			    		        if (result1 == JOptionPane.OK_OPTION) {
+			    		        	frame.dispose();
 			    		           System.out.println("x value: " + xField.getText());
 			    		           //System.out.println("y value: " + yField.getText());
 			    		   		FileReader fr = new FileReader(DoNotTouchFilePath);
@@ -129,21 +176,12 @@ public class test implements ActionListener{
 			    			    fw.close();
 			    			    br2.close();
 			    		        }
+			    		        
 			    			
 			    			
-			    	    	JOptionPane.showMessageDialog(null, myPanel, "Preferences", JOptionPane.INFORMATION_MESSAGE);
-			    	    	String s = (String)JOptionPane.showInputDialog(
-			                        null,
-			                        "Complete the sentence:\n"
-			                        + "\"Green eggs and...\"",
-			                        "Customized Dialog",
-			                        JOptionPane.PLAIN_MESSAGE,
-			                        null,
-			                        null,
-			                        null);
-			    	    	
-			    	    	
-			    	    	JOptionPane.showOptionDialog(null, "This is a test of the inital setup" , "Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,null );
+			    	    	//JOptionPane.showMessageDialog(null, myPanel, "Preferences", JOptionPane.INFORMATION_MESSAGE);
+			    	    	//String s = (String)JOptionPane.showInputDialog( null, "Complete the sentence:\n"+ "\"Green eggs and...\"","Customized Dialog",JOptionPane.PLAIN_MESSAGE,null,null, null);
+			    	    	//JOptionPane.showOptionDialog(null, "This is a test of the inital setup" , "Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,null );
 			    			
 			    	    	
 			    	    	
@@ -163,6 +201,7 @@ public class test implements ActionListener{
 			}   
 			}
 			br.close(); 
+			frame.dispose();
 			
 		}
 		catch (IOException e) {
@@ -174,8 +213,9 @@ public class test implements ActionListener{
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws URISyntaxException {
 		//BackEnd.email.PDF.CreateBlankPDF();
+
 		test t = new test();
 		
 	}
@@ -200,5 +240,29 @@ public class test implements ActionListener{
 		prefix = e.getActionCommand();
 		
 	}
+	private static void open(URI uri) {
+        if (Desktop.isDesktopSupported()) {
+          try {
+            Desktop.getDesktop().browse(uri);
+          } catch (IOException e) { /* TODO: error handling */ }
+        } else { /* TODO: error handling */ }
+	}
+        
+	class OpenUrlAction implements ActionListener {
+        @Override public void actionPerformed(ActionEvent e) {
+    		URI uri;
+			try {
+				uri = new URI("https://www.rl.coding2kids.com/docs");
+				open(uri);
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
+          
+        }
+      }
+
+
+	
 }
