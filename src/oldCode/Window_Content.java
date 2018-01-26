@@ -96,6 +96,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	    JPanel stats = new JPanel(new BorderLayout());
 	    //TEACHER NAME
 	    JEditorPane teacherName = new JEditorPane();
+	    //TODO: Change teacher name so it gets it from the DoNotTouch.txt
 	    String teacherNameData = "Mr. Sabo";
 	    teacherName.setEditable(false);
 	    teacherName.setContentType("text/hteml");
