@@ -8,6 +8,9 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -30,7 +33,9 @@ import mainProgram.config;
  
 public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	static String WebisteBaseUrl = config.WebsiteHomeURL;
+	static String DoNotTouchFilePath = config.DoNotTouchFilePath;
 	static JEditorPane messageContent = new JEditorPane();
+	static String teacherNameData;
 	
 	
     public static Object content(JFrame frame) {
@@ -96,8 +101,33 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	    JPanel stats = new JPanel(new BorderLayout());
 	    //TEACHER NAME
 	    JEditorPane teacherName = new JEditorPane();
-	    //TODO: Change teacher name so it gets it from the DoNotTouch.txt
-	    String teacherNameData = "Mr. Sabo";
+	    
+	    try {
+	    	int lineCounter = 0;
+		File file = new File(DoNotTouchFilePath);
+		BufferedReader br;
+		
+			br = new BufferedReader(new FileReader(file));
+		
+		String line = null;
+		while ((line = br.readLine()) != null) {  
+		   // process the line.  
+		   lineCounter++;
+		   //System.out.println(lineCounter + " " + line);
+
+		   switch(lineCounter){  
+		    case 5: //on 3rd line
+		    	if(line.contains("teacherName = ")) {
+		    		 teacherNameData = line.substring(line.lastIndexOf(' ')+1);
+		    	}
+		   }
+		}
+	    } catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    
 	    teacherName.setEditable(false);
 	    teacherName.setContentType("text/hteml");
 	    teacherName.setText(teacherNameData);

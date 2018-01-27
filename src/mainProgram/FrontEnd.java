@@ -20,8 +20,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -222,7 +225,8 @@ public class FrontEnd {
 	public static class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 		static String WebisteBaseUrl = config.WebsiteHomeURL;
 		static JEditorPane messageContent = new JEditorPane();
-		
+		static String DoNotTouchFilePath = config.DoNotTouchFilePath;
+		static String teacherNameData;
 		
 	    public static Object content(JFrame frame) {
 	    	frame.setVisible(true);
@@ -287,7 +291,33 @@ public class FrontEnd {
 		    JPanel stats = new JPanel(new BorderLayout());
 		    //TEACHER NAME
 		    JEditorPane teacherName = new JEditorPane();
-		    String teacherNameData = "Mr. Sabo";
+		    try {
+		    	int lineCounter = 0;
+			File file = new File(DoNotTouchFilePath);
+			BufferedReader br;
+			
+				br = new BufferedReader(new FileReader(file));
+			
+			String line = null;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
+			   //System.out.println(lineCounter + " " + line);
+
+			   switch(lineCounter){  
+			    case 5: //on 3rd line
+			    	if(line.contains("teacherName = ")) {
+			    		 teacherNameData = line.substring(line.lastIndexOf(' ')+1);
+			    	}
+			   }
+			}
+		    } catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		    teacherName.setEditable(false);
 		    teacherName.setContentType("text/hteml");
 		    teacherName.setText(teacherNameData);

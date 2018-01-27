@@ -55,7 +55,7 @@ public class test implements ActionListener{
 JFrame frame = new JFrame();
     	
     	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
-    	ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
+    	ImageIcon webIcon = new ImageIcon("assets/images/RestroomLogsLogoGears.png"); //create and icon with the image, "web.png" should be in the root of the project
     	frame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
     	
         //WINDOW SETTINGS
@@ -93,11 +93,6 @@ JFrame frame = new JFrame();
 			    	if(line.contains("ranBefore = ")) {
 			    		String lineSub = line.substring(line.lastIndexOf(' ')+1);
 			    		if(lineSub.equalsIgnoreCase("false")){
-			    			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			    			double screenWidth = screenSize.getWidth();
-			    			double screenHeight = screenSize.getHeight();
-			    			int displayWidth = (int) (screenWidth/1.3);
-			    			int displayHeight = (int) (screenHeight/1.3);
 			    			
 			    			JPanel panel1  = new JPanel(new GridLayout(0,1));
 			    			addTitle(panel1, "            Welcome");
@@ -187,7 +182,8 @@ JFrame frame = new JFrame();
 			    	    	
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
-			    			mainProgram.MAIN.startUp();;
+			    			//FIXME: When called it does nothing and ends program
+			    			mainProgram.MAIN.startUp();
 			    		}
 			    		else {
 			    			BackEnd.logs.update.StartUp("\n\n\n----------");
