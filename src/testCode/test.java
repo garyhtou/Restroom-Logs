@@ -1,10 +1,12 @@
 package testCode;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,11 +31,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -44,6 +48,11 @@ import mainProgram.BackEnd;
 
 public class test implements ActionListener{
     String prefix = "";
+    String path = "";
+    static private final String newline = "\n";
+    JButton openButton, saveButton;
+    JTextArea log;
+    JFileChooser fc;
 	
 	public test() throws URISyntaxException {
 		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
@@ -61,6 +70,8 @@ JFrame frame = new JFrame();
         //WINDOW SETTINGS
     	frame.setTitle("Restroom Logs");
     	//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(null);
     	frame.setResizable(true);
     	frame.setUndecorated(true);
     	frame.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
@@ -150,7 +161,7 @@ JFrame frame = new JFrame();
 			    			  int result1 = JOptionPane.showConfirmDialog(null, myPanel, 
 			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.OK_CANCEL_OPTION);
 			    		        if (result1 == JOptionPane.OK_OPTION) {
-			    		        	frame.dispose();
+			    		        	//frame.dispose();
 			    		           System.out.println("x value: " + xField.getText());
 			    		           //System.out.println("y value: " + yField.getText());
 			    		   		FileReader fr = new FileReader(DoNotTouchFilePath);
@@ -170,8 +181,71 @@ JFrame frame = new JFrame();
 			    			    fw.write(TotalLine);
 			    			    fw.close();
 			    			    br2.close();
-			    		        }
+			    		       
+			    		        JPanel panel3  =new JPanel(new GridLayout(0,1));
 			    		        
+			    		        log = new JTextArea(5,20);
+			    		        log.setMargin(new Insets(5,5,0,5));
+			    		        log.setEditable(false);
+			    		        
+			    		        JScrollPane logScrollPane = new JScrollPane(log);
+			    		        
+			    		        panel3.add(new JLabel("Please select your students' Access Database file:"));
+			    		        button.setText("<HTML>Click <FONT color=\"#000099\"><U>here</U></FONT>"
+					    	            + " for info on how to make an Access Database.</HTML>");
+					    	        //button.setHorizontalAlignment(SwingConstants.LEFT);
+			    		        //button.setMargin(new Insets(0,0,0,0));
+					    	        button.setBorderPainted(false);
+					    	        button.setOpaque(false);
+					    	        button.setPreferredSize(new Dimension(400, 40));
+					    	        button.setBackground(Color.WHITE);
+					    	        button.setToolTipText(uri.toString());
+					    	        button.addActionListener(new OpenUrlAction());
+					    	        
+
+			    		        //Create a file chooser
+			    		        fc = new JFileChooser();
+			    		        openButton = new JButton("Open a File...",
+		                                 null);
+						        openButton.addActionListener(this);
+				
+						        //Create the save button.  We use the image from the JLF
+						        //Graphics Repository (but we extracted it from the jar).
+						        
+				
+						        //For layout purposes, put the buttons in a separate panel
+						        JPanel buttonPanel = new JPanel(); //use FlowLayout
+						        buttonPanel.add(openButton);
+						        
+				
+						        //Add the buttons and the log to this panel.
+						        panel3.add(logScrollPane, BorderLayout.CENTER);
+						        panel3.add(buttonPanel, BorderLayout.CENTER);
+						        JButton jj = new JButton();
+						        buttonPanel.add(button);
+						        panel3.add(buttonPanel, BorderLayout.CENTER);
+						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.OK_CANCEL_OPTION);
+						        
+						        if(result2==JOptionPane.OK_OPTION) {
+						        	FileReader fr1 = new FileReader(DoNotTouchFilePath);
+				    				 
+				    				 TotalLine = "";
+				    			    BufferedReader br3 = new BufferedReader(fr1);
+				    			    
+				    			     lineCounter2 = 1;
+				    			    while ((currentLine = br3.readLine()) != null) {
+				    			    	if(lineCounter2 == 6){
+				    			    		currentLine = "studentDBPath = "+path;
+				    			    	}
+				    			    	TotalLine += currentLine + "\n";
+				    			    	lineCounter2++;
+				    			    }
+				    			    FileWriter fw1 = new FileWriter(DoNotTouchFilePath);
+				    			    fw1.write(TotalLine);
+				    			    fw1.close();
+				    			    br3.close();
+						        }
+			    		        }
 			    			
 			    			
 			    	    	//JOptionPane.showMessageDialog(null, myPanel, "Preferences", JOptionPane.INFORMATION_MESSAGE);
@@ -234,6 +308,22 @@ JFrame frame = new JFrame();
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		prefix = e.getActionCommand();
+		if (e.getSource() == openButton) {
+            int returnVal = fc.showOpenDialog(null);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                log.append("Selected: " + file.getName() + "." + newline);
+                //log.append("Path: " + file.getPath() + newline);
+                log.append("Path: " + file.getAbsolutePath() + newline);
+                path = file.getAbsolutePath();
+            } else {
+                log.append("Open command cancelled by user." + newline);
+            }
+            log.setCaretPosition(log.getDocument().getLength());
+		}
+		
 		
 	}
 	private static void open(URI uri) {
