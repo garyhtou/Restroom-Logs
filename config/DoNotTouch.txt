@@ -1,5 +1,5 @@
 Restroom Logs Config - DO NOT TOUCH THIS FILE
 ----------
-ranBefore = false
+ranBefore = true
 mailDecrypt = aksdfjla3f94834yf9384n
-teacherName = Mr.sabo1
+teacherName = 
