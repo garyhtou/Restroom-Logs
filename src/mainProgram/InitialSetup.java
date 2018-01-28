@@ -1,4 +1,4 @@
-package testCode;
+package mainProgram;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,10 +16,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import mainProgram.config;
 import oldCode.MenuBar;
 import oldCode.Window_Content;
 import oldCode.logs;
@@ -44,9 +44,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import interfaces.RL_Fonts;
-import mainProgram.BackEnd;
 
-public class test implements ActionListener{
+public class InitialSetup implements ActionListener{
     String prefix = "";
     String path = "";
     static private final String newline = "\n";
@@ -54,7 +53,7 @@ public class test implements ActionListener{
     JTextArea log;
     JFileChooser fc;
 	
-	public test() throws URISyntaxException {
+	public InitialSetup() throws URISyntaxException {
 		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
 		URI uri = new URI("https://www.rl.coding2kids.com/docs");
 
@@ -62,6 +61,7 @@ public class test implements ActionListener{
 
 		ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
 JFrame frame = new JFrame();
+
     	
     	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
     	ImageIcon webIcon = new ImageIcon("assets/images/RestroomLogsLogoGears.png"); //create and icon with the image, "web.png" should be in the root of the project
@@ -244,11 +244,17 @@ JFrame frame = new JFrame();
 				    			    fw1.write(TotalLine);
 				    			    fw1.close();
 				    			    br3.close();
-						        }
+				    			    
+				    									        }
 			    		        }
+			    		        JPanel finalPanel = new JPanel(new GridLayout(0,1));
+			    		        finalPanel.add(new JLabel("Setup Complete"));
+			    		        finalPanel.add(new JLabel("Restroom Logs Program will now open"));
 			    			
 			    			
-			    	    	//JOptionPane.showMessageDialog(null, myPanel, "Preferences", JOptionPane.INFORMATION_MESSAGE);
+			    	    	JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
+		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
+
 			    	    	//String s = (String)JOptionPane.showInputDialog( null, "Complete the sentence:\n"+ "\"Green eggs and...\"","Customized Dialog",JOptionPane.PLAIN_MESSAGE,null,null, null);
 			    	    	//JOptionPane.showOptionDialog(null, "This is a test of the inital setup" , "Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,null );
 			    			
@@ -257,7 +263,7 @@ JFrame frame = new JFrame();
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
 			    			//FIXME: When called it does nothing and ends program
-			    			mainProgram.MAIN.startUp();
+		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 			    		}
 			    		else {
 			    			BackEnd.logs.update.StartUp("\n\n\n----------");
@@ -286,7 +292,7 @@ JFrame frame = new JFrame();
 	public static void main(String[] args) throws URISyntaxException {
 		//BackEnd.email.PDF.CreateBlankPDF();
 
-		test t = new test();
+		InitialSetup t = new InitialSetup();
 		
 	}
 	/**
