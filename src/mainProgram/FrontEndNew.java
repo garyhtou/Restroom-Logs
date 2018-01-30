@@ -205,19 +205,38 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 					public void create() {
 						JSplitPane statsScan = new JSplitPane();
 					}
-					public class stats{
-						public class bannerStats{
-							public static 
+					public class stats {
+						public class banner {
+							public void create() {
+								
+							}
+						}
+						public class information {
+							public void create() {
+
+							}
 						}
 					}
-					public class scan{
-						
+					public class scan {
+						public class field {
+							public void create() {
+								JTextField field = new JTextField();
+								field.setEditable(true);
+							}
+						}
+						public class messageCenter {
+							public void create() {
+								JTextArea messageCenter = new JTextArea();
+								messageCenter.setEditable(false);
+							}
+						}
 					}
 				}
 			}
 			public class right {
 				public void table() {
-					
+					//https://stackoverflow.com/questions/39804819/how-to-display-data-from-ms-access-database-in-a-jtable
+					//https://stackoverflow.com/questions/27679867/jtable-how-to-use-rs2xml
 				}
 			}
 		}

@@ -292,7 +292,7 @@ JFrame frame = new JFrame();
 			    	        
 			    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
 			    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-			    	    	String filePath = "C:/Users/michael/Desktop/Test.txt";
+			    	    	String filePath = "C:/Users/michael/Desktop/Test.txt"; //FIXME: make this realative instead of abs.
 			    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
 
 			    	    	HttpClient client = HttpClientBuilder.create().build();
