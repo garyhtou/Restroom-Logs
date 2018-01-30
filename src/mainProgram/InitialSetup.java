@@ -292,7 +292,7 @@ JFrame frame = new JFrame();
 			    	        
 			    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
 			    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-			    	    	String filePath = "C:/Users/michael/Desktop/Test.txt"; //FIXME: make this realative instead of abs.
+			    	    	String filePath = "/RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
 			    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
 
 			    	    	HttpClient client = HttpClientBuilder.create().build();
@@ -322,7 +322,7 @@ JFrame frame = new JFrame();
 			    	      			   lineCounter++;
 			    	      	
 			    	      			   switch(lineCounter){  
-			    	      			    case 7: //on 7th line
+			    	      			    case 8: //on 8th line
 			    	                         System.out.println(line); //debugging
 			    	      			    	versLine = line;
 			    	      			   }
@@ -339,7 +339,6 @@ JFrame frame = new JFrame();
 			    	            if (entity != null && !updated) {
 			    	                long len = entity.getContentLength();
 			    	                progressBar.setMaximum((int)len);
-			    	                // How do I write it?
 			    	                InputStream is = entity.getContent();
 			    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
 			    	                int inByte;
@@ -349,8 +348,9 @@ JFrame frame = new JFrame();
 			    	                    
 			    	                }
 			    	                dialog.dispose();
-			    	                is.close();
 			    	                fos.close();
+			    	                is.close();
+			    	                
 			    	                //Update DoNotTouch.txt with new release number
 			    	                FileReader fr = new FileReader(DoNotTouchFilePath);
 				    				 String TotalLine = "";
@@ -369,6 +369,9 @@ JFrame frame = new JFrame();
 				    			    fw1.close();
 				    			    br3.close();
 			    	            } 
+			    	            else {
+			    	            	dialog.dispose();
+			    	            }
 			    	            
 		    			   // Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 
