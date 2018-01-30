@@ -104,7 +104,8 @@ JFrame frame = new JFrame();
 
       
 		try {
-			URI uri = new URI("https://www.rl.coding2kids.com/docs#studentdatabase");
+			URI uri = new URI("https://www.rl.coding2kids.com/docs");
+			//Might want to make a new variable for the link  to creating the student database (when that page is up)
 
 			int lineCounter = 0;
 			File file = new File(DoNotTouchFilePath);
@@ -153,7 +154,7 @@ JFrame frame = new JFrame();
 			    	    	{
 			    	    		
 
-			    			JTextField xField = new JTextField(5);
+			    			JTextField Field = new JTextField(5);
 			    	        //JTextField yField = new JTextField(5);
 			    	       
 			    	        JPanel myPanel = new JPanel(new GridLayout(0,1));
@@ -169,17 +170,16 @@ JFrame frame = new JFrame();
 			    	     	myPanel.add(mrs);
 			    	     	 mrs.setActionCommand("Mrs.");
 			    	     	 mrs.addActionListener(this);
-			    	        myPanel.add(xField);
+			    	        myPanel.add(Field);
 			    	        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 			    	       
 			    			
 			    
 			    			  int result1 = JOptionPane.showConfirmDialog(null, myPanel, 
-			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.OK_CANCEL_OPTION);
+			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.DEFAULT_OPTION);
 			    		        if (result1 == JOptionPane.OK_OPTION) {
 			    		        	//frame.dispose();
-			    		           System.out.println("x value: " + xField.getText());
-			    		           //System.out.println("y value: " + yField.getText());
+			    		           System.out.println("value: " + Field.getText());
 			    		   		FileReader fr = new FileReader(DoNotTouchFilePath);
 			    				String currentLine;
 			    				String TotalLine = "";
@@ -188,7 +188,11 @@ JFrame frame = new JFrame();
 			    			    int lineCounter2 = 1;
 			    			    while ((currentLine = br2.readLine()) != null) {
 			    			    	if(lineCounter2 == 5){
-			    			    		currentLine = "teacherName = "+prefix+xField.getText();
+			    			    	//	currentLine = "teacherTitle = "+prefix.substring(0,prefix.indexOf(".")); //Without period at the end
+			    			    		currentLine = "teacherTitle = "+prefix; //With period at the end
+			    			    	}
+			    			    	if(lineCounter2 == 6){
+			    			    		currentLine = "teacherName = "+Field.getText();
 			    			    	}
 			    			    	TotalLine += currentLine + "\n";
 			    			    	lineCounter2++;
@@ -239,7 +243,7 @@ JFrame frame = new JFrame();
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
-						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.OK_CANCEL_OPTION);
+						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
 						        
 						        if(result2==JOptionPane.OK_OPTION) {
 						        	FileReader fr1 = new FileReader(DoNotTouchFilePath);
@@ -249,7 +253,7 @@ JFrame frame = new JFrame();
 				    			    
 				    			     lineCounter2 = 1;
 				    			    while ((currentLine = br3.readLine()) != null) {
-				    			    	if(lineCounter2 == 6){
+				    			    	if(lineCounter2 == 7){
 				    			    		currentLine = "studentDBPath = "+path;
 				    			    	}
 				    			    	TotalLine += currentLine + "\n";
@@ -265,11 +269,10 @@ JFrame frame = new JFrame();
 			    		        JPanel finalPanel = new JPanel(new GridLayout(0,1));
 			    		        finalPanel.add(new JLabel("Setup Complete"));
 			    		        finalPanel.add(new JLabel("Restroom Logs Program will now open"));
-			    			
-			    			//  OTA UPDATES
-			    		        frame.dispose();
-			    	    	JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
+			    			    frame.dispose();
+			    			    JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
 			    	    	
+			    	    	//  OTA UPDATES
 			    	        final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
 			    	        JProgressBar progressBar = new JProgressBar();
 			    	        progressBar.setIndeterminate(true);
@@ -298,7 +301,7 @@ JFrame frame = new JFrame();
 			    	    	// add request header
 			    	    	request.addHeader("User-Agent", USER_AGENT);
 			    	    	HttpResponse response = client.execute(request);
-			    	            HttpEntity entity = response.getEntity();
+			    	        HttpEntity entity = response.getEntity();
 			    	            
 			    	            String inputLine ;
 			    	            boolean updated = false;
@@ -355,7 +358,7 @@ JFrame frame = new JFrame();
 				    			    BufferedReader br3 = new BufferedReader(fr);
 				    			      lineCounter = 1;
 				    			    while ((currentLine = br3.readLine()) != null) {
-				    			    	if(lineCounter== 7){
+				    			    	if(lineCounter== 8){
 				    			    		currentLine = webLine;
 				    			    	}
 				    			    	TotalLine += currentLine + "\n";
