@@ -2,5 +2,6 @@ Restroom Logs Config - DO NOT TOUCH THIS FILE
 ----------
 ranBefore = false
 mailDecrypt = aksdfjla3f94834yf9384n
-teacherName = Mrs.Hoover
-studentDBPath = C:\Users\michael\SchoolProjects\data\TestDB.accdb
+teacherName = 
+studentDBPath = 
+Release Version: 0.1.0

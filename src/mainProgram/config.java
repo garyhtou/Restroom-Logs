@@ -15,6 +15,7 @@ public class config {
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore = true;
+		public static String VersionNumber = getVersionNumber();
 	//Databases
 		//Student DB (Not final because file path should be customizable
 		public static String StudentDBPath  = "data/TestDB.accdb";
@@ -289,5 +290,35 @@ public class config {
 	    }
 	    
 	    
+	}
+
+	public static String getVersionNumber() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			 String line = null, versLine = null;
+			 int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
+			   //System.out.println(lineCounter + " " + line);
+	
+			   switch(lineCounter){  
+			    case 7: //on 7th line
+			    	versLine = line.substring(line.lastIndexOf(" ")+1);
+			   }
+			}
+			
+				br.close();
+			
+		    	return versLine;
+
+		
+		
+		} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return "Error";
+			}
+		
 	}
 }

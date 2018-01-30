@@ -26,7 +26,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
@@ -227,6 +229,8 @@ public class FrontEnd {
 		static JEditorPane messageContent = new JEditorPane();
 		static String DoNotTouchFilePath = config.DoNotTouchFilePath;
 		static String teacherNameData;
+		
+		
 		
 	    public static Object content(JFrame frame) {
 	    	frame.setVisible(true);
@@ -796,6 +800,9 @@ public class FrontEnd {
 		}
 		public static void preferences() {
 			ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
+			ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
+
+			String versNum = config.VersionNumber;
 			
 			
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -889,6 +896,33 @@ public class FrontEnd {
 			tabbedPane.addTab("TEST", blankIcon, panel6, "TESTTESTTEST");
 			tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
 			addTitle(panel6, "TEST");
+			
+			JComponent panel7 = new JPanel(new GridLayout(5,1));
+			panel7.setPreferredSize(new Dimension(410, 50));
+			tabbedPane.addTab("About", blankIcon, panel7, "Abut Restroom Logs");
+			tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
+			addTitle(panel7, "About");
+			
+			JTextArea preferencesAboutClearText = new JTextArea();
+			preferencesAboutClearText.setOpaque(false);
+			preferencesAboutClearText.setEditable(false);
+			JTextArea preferencesAboutCopyClearText = new JTextArea();
+			preferencesAboutCopyClearText.setOpaque(false);
+			preferencesAboutCopyClearText.setEditable(false);
+	    	//CONTENT
+			JComponent panelIn = new JPanel();
+			//panelIn.add(new JLabel(Icon));
+			preferencesAboutClearText.setText("Version Number:");
+	    	panelIn.add(preferencesAboutClearText);
+	    	JLabel NumberLabel = new JLabel();
+	    	NumberLabel.setText(versNum);
+	    	panelIn.add(NumberLabel);
+	    	panel7.add(panelIn);
+	    	Calendar calendar = new GregorianCalendar();
+	    	int year = calendar.get(Calendar.YEAR);
+	    	preferencesAboutCopyClearText.setText("	\u00a9 Gary Tou and Michael Schwamborn "+year);
+	    	panel7.add(preferencesAboutCopyClearText);
+	    	
 			
 			
 			

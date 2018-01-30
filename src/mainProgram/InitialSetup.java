@@ -3,20 +3,24 @@ package mainProgram;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -25,23 +29,35 @@ import oldCode.Window_Content;
 import oldCode.logs;
 import oldCode.newPreferencesTab;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import interfaces.RL_Fonts;
 
@@ -53,9 +69,8 @@ public class InitialSetup implements ActionListener{
     JTextArea log;
     JFileChooser fc;
 	
-	public InitialSetup() throws URISyntaxException {
+	public InitialSetup()  {
 		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
-		URI uri = new URI("https://www.rl.coding2kids.com/docs");
 
    
 
@@ -89,7 +104,8 @@ JFrame frame = new JFrame();
 
       
 		try {
-			
+			URI uri = new URI("https://www.rl.coding2kids.com/docs#studentdatabase");
+
 			int lineCounter = 0;
 			File file = new File(DoNotTouchFilePath);
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -221,7 +237,6 @@ JFrame frame = new JFrame();
 						        //Add the buttons and the log to this panel.
 						        panel3.add(logScrollPane, BorderLayout.CENTER);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
-						        JButton jj = new JButton();
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.OK_CANCEL_OPTION);
@@ -251,9 +266,108 @@ JFrame frame = new JFrame();
 			    		        finalPanel.add(new JLabel("Setup Complete"));
 			    		        finalPanel.add(new JLabel("Restroom Logs Program will now open"));
 			    			
-			    			
+			    			//  OTA UPDATES
+			    		        frame.dispose();
 			    	    	JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
-		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
+			    	    	
+			    	        final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
+			    	        JProgressBar progressBar = new JProgressBar();
+			    	        progressBar.setIndeterminate(true);
+			    	        progressBar.setMinimum(0);
+			    	        dialog.setIconImage(webIcon.getImage());
+			    	        dialog.setLocationRelativeTo(null);
+							dialog.setResizable(false);
+							dialog.setPreferredSize(new Dimension(200, 65));
+			    	        
+			    	        JPanel panel = new JPanel(new BorderLayout());
+			    	        panel.add(progressBar, BorderLayout.CENTER);
+			    	        panel.add(new JLabel("Please wait......."), BorderLayout.PAGE_START);
+			    	        
+			    	        dialog.add(panel);
+			    	        dialog.pack();
+			    	        dialog.setVisible(true);
+			    	        
+			    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
+			    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
+			    	    	String filePath = "C:/Users/michael/Desktop/Test.txt";
+			    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
+
+			    	    	HttpClient client = HttpClientBuilder.create().build();
+			    	    	HttpGet request = new HttpGet(urlT);
+
+			    	    	// add request header
+			    	    	request.addHeader("User-Agent", USER_AGENT);
+			    	    	HttpResponse response = client.execute(request);
+			    	            HttpEntity entity = response.getEntity();
+			    	            
+			    	            String inputLine ;
+			    	            boolean updated = false;
+			    	            
+			    	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+			    	            String webLine = null,versLine = null;
+			    	                  while ((inputLine = br1.readLine()) != null) {
+			    	                         System.out.println(inputLine);//debugging
+			    	                         webLine=inputLine;
+			    	                  }
+			    	                  
+			    	                  br1.close();
+			    	                  BufferedReader br2 = new BufferedReader(new FileReader(file));
+			    	      			 line = null;
+			    	      			 lineCounter =0;
+			    	      			while ((line = br2.readLine()) != null) {  
+			    	      			   // process the line.  
+			    	      			   lineCounter++;
+			    	      	
+			    	      			   switch(lineCounter){  
+			    	      			    case 7: //on 7th line
+			    	                         System.out.println(line); //debugging
+			    	      			    	versLine = line;
+			    	      			   }
+			    	      			}
+			    	      			br2.close();
+			    	      			if(versLine.equals(webLine)) {
+			    	      				System.out.println("They're the same");
+			    	      				updated = true;
+			    	      			}
+			    	      			if(!versLine.equals(webLine)) {
+			    	      				updated = false;
+			    	      				System.out.println("They're NOT the same");
+			    	      			}
+			    	            if (entity != null && !updated) {
+			    	                long len = entity.getContentLength();
+			    	                progressBar.setMaximum((int)len);
+			    	                // How do I write it?
+			    	                InputStream is = entity.getContent();
+			    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
+			    	                int inByte;
+			    	               
+			    	                while((inByte = is.read()) != -1) {
+			    	                	 fos.write(inByte);
+			    	                    
+			    	                }
+			    	                dialog.dispose();
+			    	                is.close();
+			    	                fos.close();
+			    	                //Update DoNotTouch.txt with new release number
+			    	                FileReader fr = new FileReader(DoNotTouchFilePath);
+				    				 String TotalLine = "";
+					    			 String currentLine;
+				    			    BufferedReader br3 = new BufferedReader(fr);
+				    			      lineCounter = 1;
+				    			    while ((currentLine = br3.readLine()) != null) {
+				    			    	if(lineCounter== 7){
+				    			    		currentLine = webLine;
+				    			    	}
+				    			    	TotalLine += currentLine + "\n";
+				    			    	lineCounter++;
+				    			    }
+				    			    FileWriter fw1 = new FileWriter(DoNotTouchFilePath);
+				    			    fw1.write(TotalLine);
+				    			    fw1.close();
+				    			    br3.close();
+			    	            } 
+			    	            
+		    			   // Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 
 			    	    	//String s = (String)JOptionPane.showInputDialog( null, "Complete the sentence:\n"+ "\"Green eggs and...\"","Customized Dialog",JOptionPane.PLAIN_MESSAGE,null,null, null);
 			    	    	//JOptionPane.showOptionDialog(null, "This is a test of the inital setup" , "Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,null );
@@ -262,7 +376,6 @@ JFrame frame = new JFrame();
 			    	    	
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
-			    			//FIXME: When called it does nothing and ends program
 		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 			    		}
 			    		else {
@@ -280,16 +393,19 @@ JFrame frame = new JFrame();
 			frame.dispose();
 			
 		}
-		catch (IOException e) {
+		catch (IOException  e) {
 			BackEnd.logs.update.ERROR("Not able to read file at  "+DoNotTouchFilePath);
 			BackEnd.logs.update.ERROR("Assuming that program has ran before (ranBefore = true");
+			e.printStackTrace();
+		}
+		catch(URISyntaxException e) {
 			e.printStackTrace();
 		}
 		
 
 	}
 
-	public static void main(String[] args) throws URISyntaxException {
+	public static void main(String[] args) {
 		//BackEnd.email.PDF.CreateBlankPDF();
 
 		InitialSetup t = new InitialSetup();
@@ -347,7 +463,6 @@ JFrame frame = new JFrame();
 				uri = new URI("https://www.rl.coding2kids.com/docs");
 				open(uri);
 			} catch (URISyntaxException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
