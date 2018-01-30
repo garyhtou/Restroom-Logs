@@ -292,7 +292,7 @@ JFrame frame = new JFrame();
 			    	        
 			    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
 			    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-			    	    	String filePath = "/RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
+			    	    	String filePath = "RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
 			    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
 
 			    	    	HttpClient client = HttpClientBuilder.create().build();
@@ -337,9 +337,17 @@ JFrame frame = new JFrame();
 			    	      				System.out.println("They're NOT the same");
 			    	      			}
 			    	            if (entity != null && !updated) {
-			    	                long len = entity.getContentLength();
+			    	            	HttpClient client1 = HttpClientBuilder.create().build();
+					    	    	HttpGet request1 = new HttpGet(urlT);
+
+					    	    	// add request header
+					    	    	request1.addHeader("User-Agent", USER_AGENT);
+					    	    	HttpResponse response1 = client1.execute(request);
+					    	        HttpEntity entity1 = response1.getEntity();
+					    	        
+			    	                long len = entity1.getContentLength();
 			    	                progressBar.setMaximum((int)len);
-			    	                InputStream is = entity.getContent();
+			    	                InputStream is = entity1.getContent();
 			    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
 			    	                int inByte;
 			    	               
