@@ -59,7 +59,7 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 			BackEnd.logs.update.StartUp("Starting Splash Screen");
 			runSplash();
 		}
-		//public splashScreen() {} //This is needed??? I don't know. it's an empty constructor
+		//public static splashScreen() {} //This is needed??? I don't know. it's an empty constructor
 	    private static void renderSplashFrame(Graphics2D graphic, String message) {
 	    	Color LAVENDER_GRAY = new Color(0xC5C6C7); //custom color
 	    	
@@ -168,19 +168,19 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 			}
 	    }
 	}
-	public class window {
-		public void menuBar() {
+	public static class window {
+		public static void menuBar() {
 			
 		}
-		public abstract class file {
+		public static abstract class file {
 			public abstract void create();
-			public class exit extends file {
+			public static class exit extends file {
 				public void create() {
 					
 				}
 			}
 			
-			public class preferences extends file{
+			public static class preferences extends file{
 				public preferences() { //Constructor  for tabs and titles
 					
 				}
@@ -195,37 +195,38 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 		
 	}
 	
-	public class content {
-		public class majorRL {
-			public void create() {
+	public static class content {
+		public static class majorRL {
+			public static void create() {
 				JSplitPane majorRL = new JSplitPane();
 			}
-			public class left {
-				public class statsScan {
-					public void create() {
+			public static class left {
+				public static class statsScan {
+					public static void create() {
 						JSplitPane statsScan = new JSplitPane();
+						majorRL.create();
 					}
-					public class stats {
-						public class banner {
-							public void create() {
+					public static class stats {
+						public static class banner {
+							public static void create() {
 								
 							}
 						}
-						public class information {
-							public void create() {
+						public static class information {
+							public static void create() {
 
 							}
 						}
 					}
-					public class scan {
-						public class field {
-							public void create() {
+					public static class scan {
+						public static class field {
+							public static void create() {
 								JTextField field = new JTextField();
 								field.setEditable(true);
 							}
 						}
-						public class messageCenter {
-							public void create() {
+						public static class messageCenter {
+							public static void create() {
 								JTextArea messageCenter = new JTextArea();
 								messageCenter.setEditable(false);
 							}
@@ -233,24 +234,12 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 					}
 				}
 			}
-			public class right {
-				public void table() {
+			public static class right {
+				public static void table() {
 					//https://stackoverflow.com/questions/39804819/how-to-display-data-from-ms-access-database-in-a-jtable
 					//https://stackoverflow.com/questions/27679867/jtable-how-to-use-rs2xml
 				}
 			}
-		}
-		public void pane() {
-			
-		}
-		public void scan() {
-			
-		}
-		public void messages() {
-			
-		}
-		public void stats() {
-			
 		}
 		
 	}
