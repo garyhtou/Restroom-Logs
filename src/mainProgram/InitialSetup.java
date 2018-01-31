@@ -24,11 +24,6 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import oldCode.MenuBar;
-import oldCode.Window_Content;
-import oldCode.logs;
-import oldCode.newPreferencesTab;
-
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;

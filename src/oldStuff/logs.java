@@ -1,4 +1,4 @@
-package oldCode;
+package oldStuff;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,8 +30,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import oldCode.HeaderFooter;
 import mainProgram.config;
+import oldStuff.HeaderFooter;
 
 public class logs {
 

@@ -1,4 +1,4 @@
-package oldCode;
+package oldStuff;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

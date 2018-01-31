@@ -1,22 +1,21 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2018/01/26 13:55:02
+	File created on 2018/01/31 13:50:03
 
-**    2018/01/26 13:55:02  |  Start Up  |  
+**    2018/01/31 13:50:03  |  Start Up  |  
 
 
 ----------
-**    2018/01/26 13:55:02  |  Start Up  |  ranBefore found
-**    2018/01/26 13:55:02  |  Start Up  |  Config.txt: ranBefore = false
-**    2018/01/26 13:55:02  |  Start Up  |  ranBefore is now set to: false
-**    2018/01/26 13:55:02  |  Start Up  |  Starting Program
-**    2018/01/26 13:55:02  |  Start Up  |  Starting Splash Screen
-**    2018/01/26 13:55:02  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2018/01/26 13:55:02  |  Start Up  |  Checking database
-**    2018/01/26 13:55:02  |  Start Up  |  Creating PDF Logs
-**    2018/01/26 13:55:03  |  Start Up  |  Opening Window
-**    2018/01/26 13:55:05  |  Start Up  |  Start Up Complete
+**    2018/01/31 13:50:03  |  Start Up  |  ranBefore found
+**    2018/01/31 13:50:03  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/01/31 13:50:03  |  Start Up  |  ranBefore is now set to: false
+**    2018/01/31 13:50:03  |  Start Up  |  Starting Program
+**    2018/01/31 13:50:03  |  Start Up  |  Starting Splash Screen
+**    2018/01/31 13:50:04  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2018/01/31 13:50:04  |  Start Up  |  Checking database
+**    2018/01/31 13:50:04  |  Start Up  |  Creating PDF Logs
+**    2018/01/31 13:50:05  |  Start Up  |  Opening Window
+**    2018/01/31 13:50:07  |  Start Up  |  Start Up Complete
 -----
-***** 2018/01/30 11:43:41  |  ERROR  |  Not able to read file at  config/DoNotTouch.txt
-***** 2018/01/30 11:43:41  |  ERROR  |  Assuming that program has ran before (ranBefore = true
-***** 2018/01/30 11:45:32  |  ERROR  |  Not able to read file at  config/DoNotTouch.txt
-***** 2018/01/30 11:45:32  |  ERROR  |  Assuming that program has ran before (ranBefore = true
+      2018/01/31 13:50:15  |  Preferences Opened
+****  2018/01/31 13:51:00  |  System  |  EXIT
+----------

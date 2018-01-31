@@ -1,12 +1,18 @@
 package mainProgram;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 import org.apache.commons.lang.time.StopWatch;
 
+import interfaces.RL_Fonts;
+import mainProgram.BackEnd.database.Student.pullStudentName;
 import mainProgram.FrontEnd.Window;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * I am planning to completely rebuild front end by using
@@ -139,7 +145,7 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	    
 	    
 	    /**
-	     * this method only waits 3 secounds, don't start the window
+	     * this method only waits 3 seconds, don't start the window
 	     * @param splash
 	     * @param graphic
 	     */
@@ -219,10 +225,73 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 						}
 					}
 					public static class scan {
+						static JPanel scan = new JPanel();
 						public static class field {
 							public static void create() {
 								JTextField field = new JTextField();
-								field.setEditable(true);
+						    	field.setEditable(true);
+						    	field.setToolTipText("Scan your Student ID card");
+						    	field.setBackground(Color.WHITE);
+						    	field.setOpaque(true);
+						    	
+						    	//SCANNING
+						    	field.addKeyListener(new KeyListener() {
+						            @Override
+						            public void keyTyped(KeyEvent e) {}
+
+						            @Override
+						            public void keyReleased(KeyEvent e) {}
+
+						            @Override
+						            public void keyPressed(KeyEvent escan) {
+						            	String input = "";
+						            	if(escan.getKeyChar() == KeyEvent.VK_ENTER) {
+						            		//SCANING INFO-----------------------------------
+						            		input = field.getText();
+						            		EventQueue.invokeLater(() -> {
+						            			field.setText("");
+						                    });
+						            		if(pullStudentName.containsOnlyNumbers(input)) {
+						            			int intInput = Integer.parseInt(input);
+						            			
+						            			pullStudentName names = new pullStudentName(intInput);
+												
+												String FirstName = names.getFirstName();
+						                    	String LastName = names.getLastName();
+						                    	String FirstLastName = names.getBothNames();
+						                    	
+						                    	if((FirstName != null) && (LastName != null)) {
+						                    		//FIXME: 
+						                        	boolean inOrOut = BackEnd.database.Log.checkIfOut(intInput); //CURRENTLY SIGNED OUT??
+						                        	
+						                        	//adding to DB
+					                        		BackEnd.database.Log.add.entry(intInput, FirstName, LastName, inOrOut);
+						                        	
+						                        	//Addedin to Logs.txt
+						                        	if(!inOrOut) {
+						                        		String data = FirstName + " " + LastName + " Signed Out";
+						                        		updateMessagesSuccessfulSignOut(FirstLastName);
+						                        		BackEnd.logs.update.Logs(data);
+						                        	}
+						                        	else {
+						                        		String data = FirstName + " " + LastName + " Signed In";
+						                        		updateMessagesSuccessfulSignIn(FirstLastName);
+						                        		BackEnd.logs.update.Logs(data);
+						                        	}
+						                    	}
+											
+						            		}
+						            		else {
+						            			BackEnd.logs.update.Logs("\"" + input + "\"  is not an integer");
+						            			
+						            			//TODO: change popup to message in Message Pane
+						            			JTextArea onlyInts = new JTextArea("Please only enter numbers");
+						            			updateMessagesInteger(input);
+						            		}
+						            		
+						            	}
+						            }
+						        });
 							}
 						}
 						public static class messageCenter {
