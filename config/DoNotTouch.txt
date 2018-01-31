@@ -4,6 +4,6 @@ ranBefore = false
 mailDecrypt = aksdfjla3f94834yf9384n
 teacherTitle = 
 teacherName = 
-studentDBPath = 
-studentDBTableName = 
+studentDBPath = C:\Users\mic.sch001\Documents\Database1.accdb
+studentDBTableName = TestDbName
 Release Version: 0.1.0

@@ -19,7 +19,7 @@ public class config {
 	//Databases
 		//Student DB (Not final because file path should be customizable
 		public static String StudentDBPath  = getStudentDBPath();
-		public static String StudentDBTableName  = "TestDB";
+		public static String StudentDBTableName  = getStudentDBTableName();
 		//Logs DB
 		public final static String LogsDBPath  = "data/LogsDB.accdb";
 		public final static String LogsDBTableName  = "Logs";
@@ -300,7 +300,6 @@ public class config {
 			while ((line = br.readLine()) != null) {  
 			   // process the line.  
 			   lineCounter++;
-			   //System.out.println(lineCounter + " " + line);
 	
 			   switch(lineCounter){  
 			    case 9: 
@@ -315,8 +314,8 @@ public class config {
 		
 		
 		} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 				return "Error";
 			}
 		
@@ -329,7 +328,6 @@ public class config {
 			while ((line = br.readLine()) != null) {  
 				// process the line.  
 				lineCounter++;
-				//System.out.println(lineCounter + " " + line);
 				
 				switch(lineCounter){  
 				case 7: 
@@ -344,8 +342,36 @@ public class config {
 			
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+			return "Error";
+		}
+		
+	}
+	public static String getStudentDBTableName() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			String line = null, pathLine = null;
+			int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+				// process the line.  
+				lineCounter++;
+				
+				switch(lineCounter){  
+				case 8: 
+					pathLine = line.substring(line.lastIndexOf(" ")+1);
+				}
+			}
+			
+			br.close();
+			
+			return pathLine;
+			
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 			return "Error";
 		}
 		
