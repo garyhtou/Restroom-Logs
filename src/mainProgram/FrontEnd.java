@@ -825,11 +825,18 @@ public class FrontEnd {
 			GeneralTab.add(GeneralTC);
 			
 			
+			newPreferencesTab one = new newPreferencesTab(tabbedPane, "1", null, "General ToolTip");
+			newPreferencesTab two = new newPreferencesTab(tabbedPane, "2", null, "General ToolTip");
+			newPreferencesTab three = new newPreferencesTab(tabbedPane, "3", null, "General ToolTip");
+			
+			JTextArea textArea = new JTextArea("hey");
+			three.add(textArea);
+			
 	    		//TODO: add time zone change for logs (Back_End.updateLogs)
 			
 			
 
-			JComponent panel2 = new JPanel();
+			JPanel panel2 = new JPanel();
 			panel2.setLayout(new GridLayout(5, 1));
 			tabbedPane.addTab("Logs", blankIcon, panel2, "Logs Preferences");
 			tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);

@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 
 import interfaces.RL_Fonts;
 
-public class newPreferencesTab extends JComponent{
+public class newPreferencesTab extends JTabsd{
 	/**
 	 * Creates a new Tab in Preferences
 	 * @param tabbedPane JTabbedPane used for holding these tabs
@@ -30,26 +30,5 @@ public class newPreferencesTab extends JComponent{
 		this.add(textArea);
 		
 		tabbedPane.addTab(nameOfTab, icon, this, toolTip);
-	}
-	
-	/**
-	 * Creates a new Tab in Preferences<br>
-	 * Tooltip is set to none by default
-	 * @param tabbedPane JTabbedPane used for holding these tabs
-	 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
-	 * @param icon Icon next to tab name
-	 */
-	public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab, Icon icon) {
-		this(tabbedPane, nameOfTab, icon, "");
-	}
-
-	/**
-	 * Creates a new Tab in Preferences<br>
-	 * Tooltip and icon is set to none by default
-	 * @param tabbedPane JTabbedPane used for holding these tabs
-	 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
-	 */
-	public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab) {
-		this(tabbedPane, nameOfTab, new ImageIcon("assets/images/noIcon.png"), "");
 	}
 }
