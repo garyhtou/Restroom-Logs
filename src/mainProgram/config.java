@@ -18,7 +18,7 @@ public class config {
 		public static String VersionNumber = getVersionNumber();
 	//Databases
 		//Student DB (Not final because file path should be customizable
-		public static String StudentDBPath  = "data/TestDB.accdb";
+		public static String StudentDBPath  = getStudentDBPath();
 		public static String StudentDBTableName  = "TestDB";
 		//Logs DB
 		public final static String LogsDBPath  = "data/LogsDB.accdb";
@@ -303,7 +303,7 @@ public class config {
 			   //System.out.println(lineCounter + " " + line);
 	
 			   switch(lineCounter){  
-			    case 7: //on 7th line
+			    case 9: 
 			    	versLine = line.substring(line.lastIndexOf(" ")+1);
 			   }
 			}
@@ -319,6 +319,35 @@ public class config {
 				e.printStackTrace();
 				return "Error";
 			}
+		
+	}
+	public static String getStudentDBPath() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			String line = null, pathLine = null;
+			int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+				// process the line.  
+				lineCounter++;
+				//System.out.println(lineCounter + " " + line);
+				
+				switch(lineCounter){  
+				case 7: 
+					pathLine = line.substring(line.lastIndexOf(" ")+1);
+				}
+			}
+			
+			br.close();
+			
+			return pathLine;
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "Error";
+		}
 		
 	}
 }

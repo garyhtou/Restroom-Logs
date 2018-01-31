@@ -5,4 +5,5 @@ mailDecrypt = aksdfjla3f94834yf9384n
 teacherTitle = 
 teacherName = 
 studentDBPath = 
+studentDBTableName = 
 Release Version: 0.1.0

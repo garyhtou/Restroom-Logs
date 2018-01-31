@@ -243,6 +243,13 @@ JFrame frame = new JFrame();
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
+						        //TODO: add input for table name
+						        JPanel panelT = new JPanel();
+						        panel3.add(new JLabel("Enter the name of your Students' Database Table:"));
+						        Field.setColumns(0);
+						        Field.setPreferredSize(new Dimension(5,20));
+						        panelT.add(Field);
+						        panel3.add(panelT);
 						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
 						        
 						        if(result2==JOptionPane.OK_OPTION) {
@@ -322,7 +329,7 @@ JFrame frame = new JFrame();
 			    	      			   lineCounter++;
 			    	      	
 			    	      			   switch(lineCounter){  
-			    	      			    case 8: //on 8th line
+			    	      			    case 9: //on 9th line
 			    	                         System.out.println(line); //debugging
 			    	      			    	versLine = line;
 			    	      			   }
@@ -366,7 +373,7 @@ JFrame frame = new JFrame();
 				    			    BufferedReader br3 = new BufferedReader(fr);
 				    			      lineCounter = 1;
 				    			    while ((currentLine = br3.readLine()) != null) {
-				    			    	if(lineCounter== 8){
+				    			    	if(lineCounter== 9){
 				    			    		currentLine = webLine;
 				    			    	}
 				    			    	TotalLine += currentLine + "\n";
