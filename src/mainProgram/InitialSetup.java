@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -239,17 +241,18 @@ JFrame frame = new JFrame();
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        //TODO: add input for table name
-						        JPanel panelT = new JPanel();
+						        JPanel panelT = new JPanel((LayoutManager) new FlowLayout(FlowLayout.LEFT));
 						        panel3.add(new JLabel("Enter the name of your Students' Database Table:"));
 						        Field.setColumns(0);
-						        Field.setPreferredSize(new Dimension(5,20));
+						        Field.setPreferredSize(new Dimension(200,20));
 						        panelT.add(Field);
+						        Field.setText(null);
 						        panel3.add(panelT);
 						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
 						        
 						        if(result2==JOptionPane.OK_OPTION) {
 						        	FileReader fr1 = new FileReader(DoNotTouchFilePath);
-				    				 
+				    				 String DbName = Field.getText();
 				    				 TotalLine = "";
 				    			    BufferedReader br3 = new BufferedReader(fr1);
 				    			    
@@ -257,6 +260,9 @@ JFrame frame = new JFrame();
 				    			    while ((currentLine = br3.readLine()) != null) {
 				    			    	if(lineCounter2 == 7){
 				    			    		currentLine = "studentDBPath = "+path;
+				    			    	}
+				    			    	if(lineCounter2 == 8){
+				    			    		currentLine = "studentDBTableName = "+DbName;
 				    			    	}
 				    			    	TotalLine += currentLine + "\n";
 				    			    	lineCounter2++;
