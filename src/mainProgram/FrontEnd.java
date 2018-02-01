@@ -829,6 +829,7 @@ public class FrontEnd {
 			newPreferencesTab two = new newPreferencesTab(tabbedPane, "2", null, "General ToolTip");
 			newPreferencesTab three = new newPreferencesTab(tabbedPane, "3", null, "General ToolTip");
 			
+			
 			JTextArea textArea = new JTextArea("hey");
 			three.add(textArea);
 			
@@ -965,37 +966,17 @@ public class FrontEnd {
 		 * @param toolTip tool tip for user's info
 		 */
 		public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
-			//TITLE
 			JTextArea textArea = new JTextArea();
-			textArea.setFont(RL_Fonts.preferencesTitle);
+			/*textArea.setFont(RL_Fonts.preferencesTitle);
 			textArea.setOpaque(true);
 			textArea.setEditable(false);
-			textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+			textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));*/
 			textArea.setText(nameOfTab);
 			this.add(textArea);
 			
+			System.out.println("in constructor");
+			
 			tabbedPane.addTab(nameOfTab, icon, this, toolTip);
-		}
-		
-		/**
-		 * Creates a new Tab in Preferences<br>
-		 * Tooltip is set to none by default
-		 * @param tabbedPane JTabbedPane used for holding these tabs
-		 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
-		 * @param icon Icon next to tab name
-		 */
-		public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab, Icon icon) {
-			this(tabbedPane, nameOfTab, icon, "");
-		}
-
-		/**
-		 * Creates a new Tab in Preferences<br>
-		 * Tooltip and icon is set to none by default
-		 * @param tabbedPane JTabbedPane used for holding these tabs
-		 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
-		 */
-		public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab) {
-			this(tabbedPane, nameOfTab, new ImageIcon("assets/images/noIcon.png"), "");
 		}
 	}	
 }

@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 
 import interfaces.RL_Fonts;
 
-public class newPreferencesTab extends JTabsd{
+public class newPreferencesTab extends JComponent{
 	/**
 	 * Creates a new Tab in Preferences
 	 * @param tabbedPane JTabbedPane used for holding these tabs
@@ -22,12 +22,13 @@ public class newPreferencesTab extends JTabsd{
 	public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
 		//TITLE
 		JTextArea textArea = new JTextArea();
-		textArea.setFont(RL_Fonts.preferencesTitle);
+		/*textArea.setFont(RL_Fonts.preferencesTitle);
 		textArea.setOpaque(true);
 		textArea.setEditable(false);
-		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));*/
 		textArea.setText(nameOfTab);
 		this.add(textArea);
+		
 		
 		tabbedPane.addTab(nameOfTab, icon, this, toolTip);
 	}
