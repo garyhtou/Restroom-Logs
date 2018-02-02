@@ -821,7 +821,7 @@ public class FrontEnd {
 			
 			newPreferencesTab GeneralTab = new newPreferencesTab(tabbedPane, "General", null, "General ToolTip");
 			//tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-			JPanel GeneralTC = new JPanel();
+			JLabel GeneralTC = new JLabel("sdfsf");
 			GeneralTab.add(GeneralTC);
 			
 			
@@ -832,6 +832,10 @@ public class FrontEnd {
 			
 			JTextArea textArea = new JTextArea("hey");
 			three.add(textArea);
+			
+			three.setVisible(true);
+			textArea.setVisible(true);
+			
 			
 	    		//TODO: add time zone change for logs (Back_End.updateLogs)
 			
@@ -957,7 +961,7 @@ public class FrontEnd {
 		}
 	}
 	
-	public static class newPreferencesTab extends JComponent{
+	public static class newPreferencesTab extends JPanel{
 		/**
 		 * Creates a new Tab in Preferences
 		 * @param tabbedPane JTabbedPane used for holding these tabs
@@ -978,5 +982,9 @@ public class FrontEnd {
 			
 			tabbedPane.addTab(nameOfTab, icon, this, toolTip);
 		}
-	}	
+	}
+	
+	public static void main(String[] args) {
+		Preferences.preferences();
+	}
 }

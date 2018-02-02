@@ -54,7 +54,8 @@ public interface RL_Fonts {
 	//SET FONT SIZE
 	public static Font preferencesTitle = new Font(Font.DIALOG, Font.BOLD, 30);
 	public static Font statsTeacherNameFont = new Font(Font.MONOSPACED, Font.BOLD, 20);
-	public static Font AnticSlab  = RL_Fonts.loadFont(config.AnticSlabFilePath);
+	public static Font AnticSlab = RL_Fonts.loadFont(config.AnticSlabFilePath);
+	public static Font Kollektif = RL_Fonts.loadFont(config.KollektifFilePath);
 	
 	
 	//DYNAMIC FONT SIZE

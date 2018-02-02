@@ -28,7 +28,9 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	private static JFrame frame = new JFrame();
 	
 	public static void main(String[] args) {
-		create();
+		window.menuBar.preferences.create();
+		
+		//create();
 	}
 	
 	public static void create() {
@@ -175,8 +177,52 @@ public class FrontEndNew extends BackEnd /*implements ONE BIG INTERFACES WITH EV
 	    }
 	}
 	public static class window {
-		public static void menuBar() {
-			
+		public static class menuBar {
+			public static class preferences extends JPanel{
+				public static void create() {
+					//JTabbedPane
+					ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
+					ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					double screenWidth = screenSize.getWidth();
+					double screenHeight = screenSize.getHeight();
+					int displayWidth = (int) (screenWidth/1.3);
+					int displayHeight = (int) (screenHeight/1.3);
+					
+					JTabbedPane tabbedPane = new JTabbedPane();
+					
+					String versNum = config.VersionNumber;
+					Font f = tabbedPane.getFont();
+					Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
+					
+					//tabs
+					preferences general = new preferences(tabbedPane, "General", null, "General Settings");
+					
+					
+					
+					JFrame frame = new JFrame();
+					frame.setVisible(true);
+					frame.add(tabbedPane);
+				}
+				
+				/**
+				 * Creates a new Tab in Preferences
+				 * @param tabbedPane JTabbedPane used for holding these tabs
+				 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
+				 * @param icon Icon next to tab name
+				 * @param toolTip tool tip for user's info
+				 */
+				public preferences(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
+					JTextArea textArea = new JTextArea();
+					textArea.setFont(RL_Fonts.Kollektif);
+					textArea.setOpaque(false);
+					textArea.setEditable(false);
+					textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+					textArea.setText(nameOfTab);
+					this.add(textArea);
+					tabbedPane.addTab(nameOfTab, icon, this, toolTip);
+				}
+			}
 		}
 		public static abstract class file {
 			public abstract void create();

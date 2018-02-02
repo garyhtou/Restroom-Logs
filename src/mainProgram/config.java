@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class config {
+public class config extends RL{
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore = true;
@@ -50,6 +50,7 @@ public class config {
 		public final static String updateLogsPriority = "     "; //Out of 5
 	//Fonts
 		public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
+		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
 	
 	
 		
