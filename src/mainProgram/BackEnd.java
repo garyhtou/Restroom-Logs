@@ -537,12 +537,24 @@ public class BackEnd extends config{
 				}
 				
 			}
+			
+			public static class table{ 
+				
+				public static void create() {
+					
+				}
+				/**@deprecated I don't think this class is nessesary/ redunadnt
+				*
+				*/
+				public static void clear() {
+					
+				}
+			}
 			/**
 			 * Checks if a student is currently signed in or out
 			 * @param studentID the student ID to be checked
 			 * @return true or false;
-			 */
-			public static boolean checkIfOut(int studentID){
+			 */public static boolean checkIfOut(int studentID){
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
