@@ -1,21 +1,18 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2018/02/01 13:55:24
+	File created on 2018/02/02 13:42:53
 
-**    2018/02/01 13:55:24  |  Start Up  |  
+**    2018/02/02 13:42:53  |  Start Up  |  
 
 
 ----------
-**    2018/02/01 13:55:24  |  Start Up  |  ranBefore found
-**    2018/02/01 13:55:24  |  Start Up  |  Config.txt: ranBefore = false
-**    2018/02/01 13:55:24  |  Start Up  |  ranBefore is now set to: false
-**    2018/02/01 13:55:24  |  Start Up  |  Starting Program
-**    2018/02/01 13:55:24  |  Start Up  |  Starting Splash Screen
-**    2018/02/01 13:55:24  |  Start Up  |  NOTICE: Program hasn't ran before!
-**    2018/02/01 13:55:24  |  Start Up  |  Checking database
-**    2018/02/01 13:55:24  |  Start Up  |  Creating PDF Logs
-**    2018/02/01 13:55:24  |  Start Up  |  Opening Window
-**    2018/02/01 13:55:27  |  Start Up  |  Start Up Complete
+**    2018/02/02 13:42:53  |  Start Up  |  ranBefore found
+**    2018/02/02 13:42:53  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/02/02 13:42:53  |  Start Up  |  ranBefore is now set to: false
+**    2018/02/02 13:42:53  |  Start Up  |  Starting Program
+**    2018/02/02 13:42:53  |  Start Up  |  Starting Splash Screen
+**    2018/02/02 13:42:53  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2018/02/02 13:42:53  |  Start Up  |  Checking database
+**    2018/02/02 13:42:53  |  Start Up  |  Creating PDF Logs
+**    2018/02/02 13:42:53  |  Start Up  |  Opening Window
+**    2018/02/02 13:42:56  |  Start Up  |  Start Up Complete
 -----
-      2018/02/01 13:55:29  |  Preferences Opened
-****  2018/02/01 13:56:04  |  System  |  EXIT
-----------
