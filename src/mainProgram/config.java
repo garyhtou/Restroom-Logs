@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class config extends RL{
+public class config{
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore = true;
