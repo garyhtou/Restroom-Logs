@@ -606,6 +606,36 @@ public class BackEnd extends config{
 			        boolean successful = false;
 			        ArrayList<String> manSignedOutNames = new ArrayList<String>();
 			        
+			        //collect names
+			        try {
+				        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+						Statement s;
+						s = conn.createStatement();
+						
+						ResultSet rs;
+						rs = s.executeQuery("SELECT [FirstName], [LastName] FROM ["+LogsDBTableName+"] WHERE [TimeIn] = '" + stillSignedOut + "'");
+						
+						while(rs.next()) {
+							manSignedOutNames.add(rs.getString(1) + " " + rs.getString(2));
+						}
+			        } catch(ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can not find JDBC class");
+						e.printStackTrace();
+					}
+					catch(SQLException e){
+						BackEnd.logs.update.ERROR("Could not access Database");
+					}
+			        
+			        //print to logs
+			        if(successful) {
+			        	for(int i = 0; i < manSignedOutNames.size(); i++) {
+			        		String output = manSignedOutNames.get(i) + " was manually signed out";
+			        		BackEnd.logs.update.Logs(output);
+			        	}
+			        }
+			        
+			        //chnage in database
 			        try {
 				        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
@@ -624,9 +654,9 @@ public class BackEnd extends config{
 					}
 					catch(SQLException e){
 						BackEnd.logs.update.ERROR("Could not access Database");
-						
 					}
 			        
+			        //print to logs
 			        if(successful) {
 			        	for(int i = 0; i < manSignedOutNames.size(); i++) {
 			        		String output = manSignedOutNames.get(i) + " was manually signed out";

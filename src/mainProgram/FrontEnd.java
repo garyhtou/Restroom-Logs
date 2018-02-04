@@ -480,6 +480,10 @@ public class FrontEnd extends BackEnd{
 										message.setText("Please only enter numbers");
 										BackEnd.logs.update.Logs(input + " is not an integer");
 									}
+									public static void manualSignIn() {
+										message.setForeground(Color.BLACK);
+										message.setText("All student have been manually signed in");
+									}
 								}
 								public static class separator {
 									public static void create() {
@@ -542,6 +546,7 @@ public class FrontEnd extends BackEnd{
 								clear.addActionListener(new ActionListener(){
 									public void actionPerformed(ActionEvent e) {
 										if(BackEnd.database.Log.table.signAllIn()) {
+											content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
 											JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
 										} else {
 											JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
@@ -570,6 +575,8 @@ public class FrontEnd extends BackEnd{
 							};
 							tableContent = new JTable(data, columnNames);
 						//ENDING PLACE HOLDER
+							
+							//tableContent.
 							
 							
 							

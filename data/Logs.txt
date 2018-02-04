@@ -688,4 +688,24 @@
       2018/02/04 00:26:00  |  Tou Gary has signed out
 ****  2018/02/04 00:26:01  |  System  |  EXIT
 ----------****  2018/02/04 00:26:46  |  System  |  EXIT
+----------**    2018/02/04 13:12:16  |  Start Up  |  
+
+
+----------
+**    2018/02/04 13:12:16  |  Start Up  |  ranBefore found
+**    2018/02/04 13:12:16  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 13:12:16  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 13:12:16  |  Start Up  |  Starting Program
+**    2018/02/04 13:12:16  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 13:12:16  |  Start Up  |  Checking for updates
+**    2018/02/04 13:12:16  |  Start Up  |  Opening Window
+      2018/02/04 13:12:48  |  Gary Tou has signed out
+      2018/02/04 13:12:50  |  Bob Stern has signed out
+      2018/02/04 13:13:03  |  Gary Tou has signed in
+      2018/02/04 13:13:06  |  เม aA has signed out
+      2018/02/04 13:13:15  |  Bob Stern was manually signed out
+      2018/02/04 13:13:15  |  เม aA was manually signed out
+****  2018/02/04 13:13:30  |  System  |  EXIT
+----------****  2018/02/04 13:14:49  |  System  |  EXIT
+----------****  2018/02/04 13:15:51  |  System  |  EXIT
 ----------
