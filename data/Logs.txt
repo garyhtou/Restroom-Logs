@@ -16,3 +16,676 @@
 **    2018/02/02 13:42:53  |  Start Up  |  Opening Window
 **    2018/02/02 13:42:56  |  Start Up  |  Start Up Complete
 -----
+**    2018/02/03 17:41:05  |  Start Up  |  
+
+
+----------
+**    2018/02/03 17:41:05  |  Start Up  |  ranBefore found
+**    2018/02/03 17:41:05  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 17:41:05  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 17:41:05  |  Start Up  |  Starting Program
+**    2018/02/03 17:41:05  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 17:41:05  |  Start Up  |  Checking for updates
+**    2018/02/03 17:41:05  |  Start Up  |  Opening Window
+**    2018/02/03 18:05:33  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:05:33  |  Start Up  |  ranBefore found
+**    2018/02/03 18:05:33  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:05:33  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:05:33  |  Start Up  |  Starting Program
+**    2018/02/03 18:05:33  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:05:33  |  Start Up  |  Checking for updates
+**    2018/02/03 18:05:33  |  Start Up  |  Opening Window
+**    2018/02/03 18:10:19  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:10:19  |  Start Up  |  ranBefore found
+**    2018/02/03 18:10:19  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:10:19  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:10:19  |  Start Up  |  Starting Program
+**    2018/02/03 18:10:19  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:10:19  |  Start Up  |  Checking for updates
+**    2018/02/03 18:10:19  |  Start Up  |  Opening Window
+**    2018/02/03 18:11:18  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:11:18  |  Start Up  |  ranBefore found
+**    2018/02/03 18:11:18  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:11:18  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:11:18  |  Start Up  |  Starting Program
+**    2018/02/03 18:11:18  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:11:18  |  Start Up  |  Checking for updates
+**    2018/02/03 18:11:18  |  Start Up  |  Opening Window
+**    2018/02/03 18:12:19  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:12:19  |  Start Up  |  ranBefore found
+**    2018/02/03 18:12:19  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:12:19  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:12:19  |  Start Up  |  Starting Program
+**    2018/02/03 18:12:19  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:12:19  |  Start Up  |  Checking for updates
+**    2018/02/03 18:12:19  |  Start Up  |  Opening Window
+**    2018/02/03 18:14:12  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:14:12  |  Start Up  |  ranBefore found
+**    2018/02/03 18:14:12  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:14:12  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:14:12  |  Start Up  |  Starting Program
+**    2018/02/03 18:14:12  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:14:12  |  Start Up  |  Checking for updates
+**    2018/02/03 18:14:12  |  Start Up  |  Opening Window
+**    2018/02/03 18:16:34  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:16:34  |  Start Up  |  ranBefore found
+**    2018/02/03 18:16:34  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:16:34  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:16:34  |  Start Up  |  Starting Program
+**    2018/02/03 18:16:34  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:16:34  |  Start Up  |  Checking for updates
+**    2018/02/03 18:16:34  |  Start Up  |  Opening Window
+**    2018/02/03 18:16:51  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:16:51  |  Start Up  |  ranBefore found
+**    2018/02/03 18:16:51  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:16:51  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:16:52  |  Start Up  |  Starting Program
+**    2018/02/03 18:16:52  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:16:52  |  Start Up  |  Checking for updates
+**    2018/02/03 18:16:52  |  Start Up  |  Opening Window
+**    2018/02/03 18:23:26  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:23:26  |  Start Up  |  ranBefore found
+**    2018/02/03 18:23:26  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:23:26  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:23:26  |  Start Up  |  Starting Program
+**    2018/02/03 18:23:26  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:23:26  |  Start Up  |  Checking for updates
+**    2018/02/03 18:23:26  |  Start Up  |  Opening Window
+**    2018/02/03 18:24:05  |  Start Up  |  
+
+
+----------
+**    2018/02/03 18:24:05  |  Start Up  |  ranBefore found
+**    2018/02/03 18:24:05  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 18:24:05  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 18:24:05  |  Start Up  |  Starting Program
+**    2018/02/03 18:24:05  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 18:24:05  |  Start Up  |  Checking for updates
+**    2018/02/03 18:24:05  |  Start Up  |  Opening Window
+      2018/02/03 18:28:02  |  Preferences Opened
+****  2018/02/03 18:28:09  |  System  |  EXIT
+----------****  2018/02/03 18:31:09  |  System  |  EXIT
+----------****  2018/02/03 18:36:46  |  System  |  EXIT
+----------****  2018/02/03 18:36:58  |  System  |  EXIT
+----------****  2018/02/03 18:38:34  |  System  |  EXIT
+----------****  2018/02/03 19:06:24  |  System  |  EXIT
+----------      2018/02/03 19:07:16  |  sdfsdis not an integer
+****  2018/02/03 19:07:20  |  System  |  EXIT
+----------      2018/02/03 19:14:58  |  sfsdfis not an integer
+      2018/02/03 19:15:14  |  HELO WORLDis not an integer
+****  2018/02/03 19:15:19  |  System  |  EXIT
+----------****  2018/02/03 19:26:57  |  System  |  EXIT
+----------****  2018/02/03 19:27:53  |  System  |  EXIT
+----------****  2018/02/03 19:34:10  |  System  |  EXIT
+----------      2018/02/03 19:34:27  |  Preferences Opened
+      2018/02/03 19:34:30  |  Preferences Opened
+****  2018/02/03 19:34:38  |  System  |  EXIT
+----------****  2018/02/03 19:38:33  |  System  |  EXIT
+----------****  2018/02/03 19:39:08  |  System  |  EXIT
+----------****  2018/02/03 19:39:28  |  System  |  EXIT
+----------****  2018/02/03 19:40:17  |  System  |  EXIT
+----------****  2018/02/03 19:41:16  |  System  |  EXIT
+----------****  2018/02/03 19:41:42  |  System  |  EXIT
+----------****  2018/02/03 19:43:08  |  System  |  EXIT
+----------****  2018/02/03 19:49:23  |  System  |  EXIT
+----------****  2018/02/03 19:50:50  |  System  |  EXIT
+----------****  2018/02/03 19:51:38  |  System  |  EXIT
+----------****  2018/02/03 19:52:27  |  System  |  EXIT
+----------****  2018/02/03 19:52:52  |  System  |  EXIT
+----------****  2018/02/03 19:54:54  |  System  |  EXIT
+----------****  2018/02/03 19:56:15  |  System  |  EXIT
+----------****  2018/02/03 20:02:26  |  System  |  EXIT
+----------****  2018/02/03 20:07:44  |  System  |  EXIT
+----------**    2018/02/03 20:11:04  |  Start Up  |  
+
+
+----------
+**    2018/02/03 20:11:04  |  Start Up  |  ranBefore found
+**    2018/02/03 20:11:04  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 20:11:04  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 20:11:04  |  Start Up  |  Starting Program
+**    2018/02/03 20:11:04  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 20:11:04  |  Start Up  |  Checking for updates
+**    2018/02/03 20:11:04  |  Start Up  |  Opening Window
+**    2018/02/03 20:11:08  |  Start Up  |  Start Up Complete
+-----
+****  2018/02/03 20:11:20  |  System  |  EXIT
+----------**    2018/02/03 20:15:08  |  Start Up  |  
+
+
+----------
+**    2018/02/03 20:15:08  |  Start Up  |  ranBefore found
+**    2018/02/03 20:15:08  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 20:15:08  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 20:15:08  |  Start Up  |  Starting Program
+**    2018/02/03 20:15:08  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 20:15:08  |  Start Up  |  Checking for updates
+**    2018/02/03 20:15:08  |  Start Up  |  Opening Window
+****  2018/02/03 20:15:28  |  System  |  EXIT
+----------****  2018/02/03 20:26:58  |  System  |  EXIT
+----------****  2018/02/03 20:35:20  |  System  |  EXIT
+----------****  2018/02/03 20:37:34  |  System  |  EXIT
+----------****  2018/02/03 20:40:50  |  System  |  EXIT
+----------****  2018/02/03 20:43:38  |  System  |  EXIT
+----------****  2018/02/03 20:43:50  |  System  |  EXIT
+----------****  2018/02/03 20:43:59  |  System  |  EXIT
+----------****  2018/02/03 20:44:08  |  System  |  EXIT
+----------****  2018/02/03 20:44:14  |  System  |  EXIT
+----------****  2018/02/03 20:44:21  |  System  |  EXIT
+----------****  2018/02/03 20:44:28  |  System  |  EXIT
+----------****  2018/02/03 20:45:41  |  System  |  EXIT
+----------****  2018/02/03 20:45:48  |  System  |  EXIT
+----------****  2018/02/03 20:45:58  |  System  |  EXIT
+----------****  2018/02/03 20:46:05  |  System  |  EXIT
+----------      2018/02/03 20:52:02  |  Preferences Opened
+****  2018/02/03 20:52:11  |  System  |  EXIT
+----------***** 2018/02/03 21:19:26  |  ERROR  |  Could not access Database
+****  2018/02/03 21:19:28  |  System  |  EXIT
+----------***** 2018/02/03 21:20:16  |  ERROR  |  Could not access Database
+****  2018/02/03 21:20:17  |  System  |  EXIT
+----------***** 2018/02/03 21:25:55  |  ERROR  |  Could not access Database
+****  2018/02/03 21:25:57  |  System  |  EXIT
+----------***** 2018/02/03 21:26:23  |  ERROR  |  Could not access Database
+****  2018/02/03 21:26:26  |  System  |  EXIT
+----------***** 2018/02/03 21:26:43  |  ERROR  |  Could not access Database
+****  2018/02/03 21:26:45  |  System  |  EXIT
+----------***** 2018/02/03 21:29:59  |  ERROR  |  Could not access Database
+****  2018/02/03 21:30:03  |  System  |  EXIT
+----------**    2018/02/03 21:32:56  |  Start Up  |  
+
+
+----------
+**    2018/02/03 21:32:56  |  Start Up  |  ranBefore found
+**    2018/02/03 21:32:56  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 21:32:56  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 21:32:56  |  Start Up  |  Starting Program
+**    2018/02/03 21:32:56  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 21:32:56  |  Start Up  |  Checking for updates
+**    2018/02/03 21:32:56  |  Start Up  |  Opening Window
+***** 2018/02/03 21:33:05  |  ERROR  |  Could not access Database
+      2018/02/03 21:33:09  |  Preferences Opened
+      2018/02/03 21:33:23  |  abc is not an integer
+****  2018/02/03 21:33:36  |  System  |  EXIT
+----------**    2018/02/03 21:36:00  |  Start Up  |  
+
+
+----------
+**    2018/02/03 21:36:00  |  Start Up  |  ranBefore found
+**    2018/02/03 21:36:00  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 21:36:00  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 21:36:00  |  Start Up  |  Starting Program
+**    2018/02/03 21:36:00  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 21:36:00  |  Start Up  |  Checking for updates
+**    2018/02/03 21:36:00  |  Start Up  |  Opening Window
+***** 2018/02/03 21:36:07  |  ERROR  |  Could not access Database
+      2018/02/03 21:36:09  |  Preferences Opened
+      2018/02/03 21:36:23  |  hey! is not an integer
+****  2018/02/03 21:36:26  |  System  |  EXIT
+----------      2018/02/03 21:38:47  |  hey is not an integer
+****  2018/02/03 21:38:49  |  System  |  EXIT
+----------***** 2018/02/03 21:41:07  |  ERROR  |  Could not access Database
+      2018/02/03 21:41:14  |  hey is not an integer
+      2018/02/03 21:41:16  |  Preferences Opened
+****  2018/02/03 21:41:27  |  System  |  EXIT
+----------**    2018/02/03 21:46:24  |  Start Up  |  
+
+
+----------
+**    2018/02/03 21:46:24  |  Start Up  |  ranBefore found
+**    2018/02/03 21:46:24  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 21:46:24  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 21:46:24  |  Start Up  |  Starting Program
+**    2018/02/03 21:46:24  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 21:46:24  |  Start Up  |  Checking for updates
+**    2018/02/03 21:46:24  |  Start Up  |  Opening Window
+****  2018/02/03 21:46:35  |  System  |  EXIT
+----------**    2018/02/03 21:47:54  |  Start Up  |  
+
+
+----------
+**    2018/02/03 21:47:54  |  Start Up  |  ranBefore found
+**    2018/02/03 21:47:54  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 21:47:54  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 21:47:54  |  Start Up  |  Starting Program
+**    2018/02/03 21:47:54  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 21:47:54  |  Start Up  |  Checking for updates
+**    2018/02/03 21:47:54  |  Start Up  |  Opening Window
+***** 2018/02/03 21:48:08  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:08  |  Gary Tou has signed out
+***** 2018/02/03 21:48:12  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:12  |  Gary Tou has signed out
+***** 2018/02/03 21:48:17  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:17  |  Gary Tou has signed out
+***** 2018/02/03 21:48:19  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:19  |  Bob Stern has signed out
+***** 2018/02/03 21:48:21  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:21  |  Bob Stern has signed out
+      2018/02/03 21:48:27  |  hey is not an integer
+***** 2018/02/03 21:48:29  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:29  |  Gary Tou has signed out
+***** 2018/02/03 21:48:33  |  ERROR  |  Could not access Database
+      2018/02/03 21:48:33  |  Gary Tou has signed out
+****  2018/02/03 21:48:35  |  System  |  EXIT
+----------      2018/02/03 21:50:06  |  Could not find 111111111 in Student Data Base
+****  2018/02/03 21:50:10  |  System  |  EXIT
+----------****  2018/02/03 21:50:36  |  System  |  EXIT
+----------***** 2018/02/03 21:51:17  |  ERROR  |  Could not access Database
+      2018/02/03 21:51:17  |  Gary Tou has signed out
+***** 2018/02/03 21:51:22  |  ERROR  |  Could not access Database
+      2018/02/03 21:51:22  |  Gary Tou has signed out
+****  2018/02/03 21:51:25  |  System  |  EXIT
+----------**    2018/02/03 22:03:36  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:03:36  |  Start Up  |  ranBefore found
+**    2018/02/03 22:03:36  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:03:36  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:03:36  |  Start Up  |  Starting Program
+**    2018/02/03 22:03:36  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:03:36  |  Start Up  |  Checking for updates
+**    2018/02/03 22:03:36  |  Start Up  |  Opening Window
+      2018/02/03 22:03:50  |  เม aA has signed out
+      2018/02/03 22:03:53  |  เม aA has signed out
+****  2018/02/03 22:03:56  |  System  |  EXIT
+----------**    2018/02/03 22:12:18  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:12:18  |  Start Up  |  ranBefore found
+**    2018/02/03 22:12:18  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:12:18  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:12:18  |  Start Up  |  Starting Program
+**    2018/02/03 22:12:18  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:12:19  |  Start Up  |  Checking for updates
+**    2018/02/03 22:12:19  |  Start Up  |  Opening Window
+      2018/02/03 22:12:28  |  hello world!!!kdfs33234 is not an integer
+      2018/02/03 22:12:33  |  Jess Potesrt has signed out
+      2018/02/03 22:12:35  |  Jess Potesrt has signed out
+      2018/02/03 22:12:38  |  เม aA has signed out
+      2018/02/03 22:12:40  |  Bob Stern has signed out
+      2018/02/03 22:12:42  |  Jess Potesrt has signed out
+      2018/02/03 22:12:43  |  เม aA has signed out
+****  2018/02/03 22:12:46  |  System  |  EXIT
+----------**    2018/02/03 22:15:28  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:15:28  |  Start Up  |  ranBefore found
+**    2018/02/03 22:15:28  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:15:28  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:15:28  |  Start Up  |  Starting Program
+**    2018/02/03 22:15:28  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:15:29  |  Start Up  |  Checking for updates
+**    2018/02/03 22:15:29  |  Start Up  |  Opening Window
+      2018/02/03 22:15:36  |  Gary Tou has signed out
+****  2018/02/03 22:15:37  |  System  |  EXIT
+----------**    2018/02/03 22:15:57  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:15:57  |  Start Up  |  ranBefore found
+**    2018/02/03 22:15:57  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:15:57  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:15:57  |  Start Up  |  Starting Program
+**    2018/02/03 22:15:57  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:15:57  |  Start Up  |  Checking for updates
+**    2018/02/03 22:15:57  |  Start Up  |  Opening Window
+      2018/02/03 22:16:04  |  Gary Tou has signed out
+      2018/02/03 22:16:05  |  Gary Tou has signed out
+****  2018/02/03 22:16:07  |  System  |  EXIT
+----------**    2018/02/03 22:17:16  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:17:16  |  Start Up  |  ranBefore found
+**    2018/02/03 22:17:16  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:17:16  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:17:16  |  Start Up  |  Starting Program
+**    2018/02/03 22:17:16  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:17:16  |  Start Up  |  Checking for updates
+**    2018/02/03 22:17:16  |  Start Up  |  Opening Window
+      2018/02/03 22:17:24  |  Gary Tou has signed out
+****  2018/02/03 22:17:30  |  System  |  EXIT
+----------***** 2018/02/03 22:21:20  |  ERROR  |  Could not access Database
+      2018/02/03 22:21:20  |  Gary Tou has signed out
+****  2018/02/03 22:21:26  |  System  |  EXIT
+----------***** 2018/02/03 22:21:40  |  ERROR  |  Could not access Database
+      2018/02/03 22:21:40  |  Gary Tou has signed out
+***** 2018/02/03 22:21:43  |  ERROR  |  Could not access Database
+      2018/02/03 22:21:43  |  Gary Tou has signed out
+****  2018/02/03 22:21:44  |  System  |  EXIT
+----------**    2018/02/03 22:56:07  |  Start Up  |  
+
+
+----------
+**    2018/02/03 22:56:07  |  Start Up  |  ranBefore found
+**    2018/02/03 22:56:07  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 22:56:07  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 22:56:07  |  Start Up  |  Starting Program
+**    2018/02/03 22:56:07  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 22:56:07  |  Start Up  |  Checking for updates
+**    2018/02/03 22:56:07  |  Start Up  |  Opening Window
+***** 2018/02/03 22:56:13  |  ERROR  |  Could not access Database
+      2018/02/03 22:56:13  |  Gary Tou has signed out
+      2018/02/03 22:56:17  |  Preferences Opened
+****  2018/02/03 22:56:21  |  System  |  EXIT
+----------**    2018/02/03 23:42:03  |  Start Up  |  
+
+
+----------
+**    2018/02/03 23:42:03  |  Start Up  |  ranBefore found
+**    2018/02/03 23:42:03  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 23:42:03  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 23:42:03  |  Start Up  |  Starting Program
+**    2018/02/03 23:42:03  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 23:42:03  |  Start Up  |  Checking for updates
+**    2018/02/03 23:42:03  |  Start Up  |  Opening Window
+***** 2018/02/03 23:42:22  |  ERROR  |  Could not access Database
+      2018/02/03 23:42:22  |  Gary Tou has signed out
+      2018/02/03 23:46:13  |  ok is not an integer
+**    2018/02/03 23:46:29  |  Start Up  |  
+
+
+----------
+**    2018/02/03 23:46:29  |  Start Up  |  ranBefore found
+**    2018/02/03 23:46:29  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 23:46:29  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 23:46:29  |  Start Up  |  Starting Program
+**    2018/02/03 23:46:29  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 23:46:29  |  Start Up  |  Checking for updates
+**    2018/02/03 23:46:29  |  Start Up  |  Opening Window
+      2018/02/03 23:46:38  |  Gary Tou has signed out
+      2018/02/03 23:47:47  |  Gary Tou has signed out
+****  2018/02/03 23:52:18  |  System  |  EXIT
+----------**    2018/02/03 23:52:22  |  Start Up  |  
+
+
+----------
+**    2018/02/03 23:52:22  |  Start Up  |  ranBefore found
+**    2018/02/03 23:52:22  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 23:52:22  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 23:52:22  |  Start Up  |  Starting Program
+**    2018/02/03 23:52:22  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 23:52:22  |  Start Up  |  Checking for updates
+**    2018/02/03 23:52:22  |  Start Up  |  Opening Window
+      2018/02/03 23:52:35  |  Gary Tou has signed out
+      2018/02/03 23:53:05  |  Gary Tou has signed out
+****  2018/02/03 23:55:27  |  System  |  EXIT
+----------**    2018/02/03 23:55:36  |  Start Up  |  
+
+
+----------
+**    2018/02/03 23:55:36  |  Start Up  |  ranBefore found
+**    2018/02/03 23:55:36  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 23:55:36  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 23:55:36  |  Start Up  |  Starting Program
+**    2018/02/03 23:55:36  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 23:55:36  |  Start Up  |  Checking for updates
+**    2018/02/03 23:55:36  |  Start Up  |  Opening Window
+      2018/02/03 23:56:00  |  Gary Tou has signed out
+      2018/02/03 23:56:02  |  Gary Tou has signed out
+**    2018/02/03 23:59:58  |  Start Up  |  
+
+
+----------
+**    2018/02/03 23:59:58  |  Start Up  |  ranBefore found
+**    2018/02/03 23:59:58  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/03 23:59:58  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/03 23:59:58  |  Start Up  |  Starting Program
+**    2018/02/03 23:59:58  |  Start Up  |  Starting Splash Screen
+**    2018/02/03 23:59:58  |  Start Up  |  Checking for updates
+**    2018/02/03 23:59:58  |  Start Up  |  Opening Window
+      2018/02/04 00:00:05  |  Gary Tou has signed out
+      2018/02/04 00:00:07  |  Gary Tou has signed in
+      2018/02/04 00:00:45  |  Bob Stern has signed out
+      2018/02/04 00:00:48  |  Jess Potesrt has signed out
+      2018/02/04 00:00:49  |  เม aA has signed out
+      2018/02/04 00:00:52  |  Bob Stern has signed in
+      2018/02/04 00:00:54  |  เม aA has signed in
+      2018/02/04 00:00:57  |  Bob Stern has signed out
+      2018/02/04 00:00:58  |  Jess Potesrt has signed in
+      2018/02/04 00:01:00  |  Bob Stern has signed in
+****  2018/02/04 00:01:37  |  System  |  EXIT
+----------**    2018/02/04 00:04:20  |  Start Up  |  
+
+
+----------
+**    2018/02/04 00:04:20  |  Start Up  |  ranBefore found
+**    2018/02/04 00:04:20  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 00:04:20  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 00:04:20  |  Start Up  |  Starting Program
+**    2018/02/04 00:04:20  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 00:04:21  |  Start Up  |  Checking for updates
+**    2018/02/04 00:04:21  |  Start Up  |  Opening Window
+****  2018/02/04 00:04:36  |  System  |  EXIT
+----------****  2018/02/04 00:04:39  |  System  |  EXIT
+----------**    2018/02/04 00:04:43  |  Start Up  |  
+
+
+----------
+**    2018/02/04 00:04:43  |  Start Up  |  ranBefore found
+**    2018/02/04 00:04:43  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 00:04:43  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 00:04:43  |  Start Up  |  Starting Program
+**    2018/02/04 00:04:43  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 00:04:43  |  Start Up  |  Checking for updates
+**    2018/02/04 00:04:43  |  Start Up  |  Opening Window
+      2018/02/04 00:04:54  |  Gary Tou has signed out
+      2018/02/04 00:04:56  |  Gary Tou has signed out
+      2018/02/04 00:04:59  |  Gary Tou has signed out
+      2018/02/04 00:05:03  |  Gary Tou has signed in
+      2018/02/04 00:05:04  |  Gary Tou has signed in
+      2018/02/04 00:05:10  |  Gary Tou has signed out
+      2018/02/04 00:05:12  |  Gary Tou has signed in
+      2018/02/04 00:05:14  |  Gary Tou has signed in
+      2018/02/04 00:05:15  |  Gary Tou has signed out
+      2018/02/04 00:05:16  |  Gary Tou has signed in
+      2018/02/04 00:05:19  |  Gary Tou has signed out
+      2018/02/04 00:05:21  |  Gary Tou has signed in
+      2018/02/04 00:05:24  |  Gary Tou has signed out
+      2018/02/04 00:05:25  |  Gary Tou has signed out
+      2018/02/04 00:05:26  |  Gary Tou has signed out
+      2018/02/04 00:05:27  |  Gary Tou has signed out
+      2018/02/04 00:05:28  |  Gary Tou has signed in
+      2018/02/04 00:05:29  |  Gary Tou has signed out
+      2018/02/04 00:05:31  |  Gary Tou has signed in
+      2018/02/04 00:05:34  |  Jess Potesrt has signed out
+      2018/02/04 00:05:36  |  Bob Stern has signed out
+      2018/02/04 00:05:37  |  Bob Stern has signed out
+      2018/02/04 00:05:38  |  Bob Stern has signed in
+      2018/02/04 00:05:39  |  Bob Stern has signed out
+      2018/02/04 00:05:41  |  Bob Stern has signed in
+      2018/02/04 00:05:42  |  Bob Stern has signed out
+      2018/02/04 00:05:43  |  Bob Stern has signed in
+      2018/02/04 00:05:44  |  Bob Stern has signed in
+      2018/02/04 00:05:45  |  Bob Stern has signed out
+      2018/02/04 00:05:45  |  Bob Stern has signed in
+      2018/02/04 00:05:46  |  Bob Stern has signed out
+      2018/02/04 00:05:47  |  Bob Stern has signed in
+      2018/02/04 00:05:48  |  Bob Stern has signed out
+      2018/02/04 00:05:49  |  Bob Stern has signed in
+****  2018/02/04 00:05:51  |  System  |  EXIT
+----------**    2018/02/04 00:09:17  |  Start Up  |  
+
+
+----------
+**    2018/02/04 00:09:17  |  Start Up  |  ranBefore found
+**    2018/02/04 00:09:17  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 00:09:17  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 00:09:17  |  Start Up  |  Starting Program
+**    2018/02/04 00:09:17  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 00:09:17  |  Start Up  |  Checking for updates
+**    2018/02/04 00:09:17  |  Start Up  |  Opening Window
+***** 2018/02/04 00:12:55  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:12:55  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:12:58  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:12:58  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:12:58  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:12:58  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:12:59  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:12:59  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:13:00  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:13:00  |  Could not find 33 in Student Data Base
+      2018/02/04 00:13:02  |  Bob Stern has signed in
+***** 2018/02/04 00:13:02  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:13:02  |  Bob Stern has signed out
+***** 2018/02/04 00:13:03  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:13:03  |  Bob Stern has signed in
+***** 2018/02/04 00:13:07  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:13:07  |  Bob Stern has signed in
+***** 2018/02/04 00:13:08  |  ERROR  |  Student ID "55" does not exist
+      2018/02/04 00:13:08  |  Bob Stern has signed out
+***** 2018/02/04 00:13:09  |  ERROR  |  Student ID "11" does not exist
+      2018/02/04 00:13:09  |  Bob Stern has signed out
+      2018/02/04 00:13:19  |  Bob Stern has signed out
+      2018/02/04 00:13:22  |  Bob Stern has signed in
+      2018/02/04 00:13:24  |  Bob Stern has signed out
+      2018/02/04 00:13:26  |  Bob Stern has signed in
+***** 2018/02/04 00:13:28  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:13:28  |  Bob Stern has signed out
+****  2018/02/04 00:13:32  |  System  |  EXIT
+----------***** 2018/02/04 00:23:34  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:34  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:35  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:35  |  ERROR  |  Student ID "333" does not exist
+      2018/02/04 00:23:35  |  Could not find 333 in Student Data Base
+***** 2018/02/04 00:23:36  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:36  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:36  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:36  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:23:36  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:23:37  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:37  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:37  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:37  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:23:37  |  Could not find 22 in Student Data Base
+      2018/02/04 00:23:38  |  Stern Bob has signed out
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:23:39  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+***** 2018/02/04 00:23:39  |  ERROR  |  Student ID "33" does not exist
+      2018/02/04 00:23:39  |  Could not find 33 in Student Data Base
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:23:40  |  Could not find 22 in Student Data Base
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:40  |  ERROR  |  Student ID "2" does not exist
+      2018/02/04 00:23:40  |  Could not find 2 in Student Data Base
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+      2018/02/04 00:23:41  |  Could not find 1 in Student Data Base
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "1" does not exist
+      2018/02/04 00:23:41  |  Could not find 1 in Student Data Base
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:41  |  ERROR  |  Student ID "2" does not exist
+      2018/02/04 00:23:41  |  Could not find 2 in Student Data Base
+      2018/02/04 00:23:43  |  Stern Bob has signed in
+      2018/02/04 00:23:44  |  Stern Bob has signed out
+      2018/02/04 00:23:45  |  Potesrt Jess has signed in
+      2018/02/04 00:23:46  |  Tou Gary has signed in
+***** 2018/02/04 00:23:46  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 00:23:46  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 00:23:46  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 00:23:46  |  ERROR  |  Student ID "111" does not exist
+      2018/02/04 00:23:46  |  Could not find 111 in Student Data Base
+***** 2018/02/04 00:23:47  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:47  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:47  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:47  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:23:47  |  Could not find 22 in Student Data Base
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+      2018/02/04 00:23:48  |  Could not find 3 in Student Data Base
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+      2018/02/04 00:23:48  |  Could not find 3 in Student Data Base
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+***** 2018/02/04 00:23:48  |  ERROR  |  Student ID "3" does not exist
+      2018/02/04 00:23:48  |  Could not find 3 in Student Data Base
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "333" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "333" does not exist
+      2018/02/04 00:23:49  |  Could not find 333 in Student Data Base
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "22" does not exist
+***** 2018/02/04 00:23:49  |  ERROR  |  Student ID "22" does not exist
+      2018/02/04 00:23:49  |  Could not find 22 in Student Data Base
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "2" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "2" does not exist
+      2018/02/04 00:23:50  |  Could not find 2 in Student Data Base
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:50  |  ERROR  |  Student ID "1" does not exist
+      2018/02/04 00:23:50  |  Could not find 1 in Student Data Base
+***** 2018/02/04 00:23:51  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:51  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:51  |  ERROR  |  Student ID "1" does not exist
+***** 2018/02/04 00:23:51  |  ERROR  |  Student ID "1" does not exist
+      2018/02/04 00:23:51  |  Could not find 1 in Student Data Base
+****  2018/02/04 00:23:54  |  System  |  EXIT
+----------      2018/02/04 00:25:16  |  Stern Bob has signed in
+      2018/02/04 00:25:21  |  Stern Bob has signed out
+      2018/02/04 00:25:25  |  Tou Gary has signed out
+      2018/02/04 00:25:29  |  Stern Bob has signed in
+      2018/02/04 00:25:31  |  Tou Gary has signed in
+      2018/02/04 00:25:40  |  Tou Gary has signed out
+      2018/02/04 00:25:49  |  Tou Gary has signed out
+      2018/02/04 00:25:54  |  Stern Bob has signed out
+      2018/02/04 00:25:55  |  Potesrt Jess has signed out
+      2018/02/04 00:25:58  |  Tou Gary has signed in
+      2018/02/04 00:26:00  |  Tou Gary has signed out
+****  2018/02/04 00:26:01  |  System  |  EXIT
+----------****  2018/02/04 00:26:46  |  System  |  EXIT
+----------

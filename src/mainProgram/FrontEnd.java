@@ -1,98 +1,111 @@
 package mainProgram;
 
-import java.awt.AlphaComposite;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.SplashScreen;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Scanner;
-
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.Timer;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import org.apache.commons.lang.time.StopWatch;
 
-import com.teamdev.jxdocument.SinglePagePresentation;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import interfaces.RL_Colors;
-import interfaces.RL_Fonts;
-import interfaces.RL_General;
-import mainProgram.BackEnd.database.Student.pullStudentName;
-
-public class FrontEnd {
-
-	public static class Splash{
+/**
+ * I am planning to completely rebuild front end by using
+ * <ul>
+ * <li>subclasses
+ * <li>better naming
+ * <li>redo wireframing
+ * @author Gary Tou
+ *
+ */
+public class FrontEnd extends BackEnd{
+	
+	public static JFrame frame = new JFrame();
+	
+	public static void main(String[] args) {
+		//window.menuBar.preferences.create();
 		
-		static StopWatch stopWatch = new StopWatch();
+		create();
+	}
+	
+	public static void create() {
+	//Window
+		frame(); //set up main settings of the frame
 		
-		public static void init() {
+	//Menu Bar
+		window.menuBar.create();
+		window.menuBar.file.create();
+		window.menuBar.file.exit.create();
+		window.menuBar.file.preferences.create();
+		
+		content.majorRL.create();
+	//Major Left
+		content.majorRL.left.create();
+		content.majorRL.left.statsScan.create();
+		content.majorRL.left.statsScan.scanAndMessages.create();		
+		content.majorRL.left.statsScan.scanAndMessages.scan.create();
+		content.majorRL.left.statsScan.scanAndMessages.scan.field.create();	
+		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.create();
+		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.create();
+		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.create();
+		content.majorRL.left.statsScan.stats.create();
+		content.majorRL.left.statsScan.stats.banner.create();
+		content.majorRL.left.statsScan.stats.information.create();
+		
+	//Major Right
+		content.majorRL.right.create();
+		content.majorRL.right.table.create();
+		content.majorRL.right.table.titleBar.create();
+		content.majorRL.right.table.titleBar.title.create();
+		content.majorRL.right.table.titleBar.clearButton.create();
+		content.majorRL.right.table.tableContent.create();
+		
+		
+		
+	//final changes
+		frame.setVisible(true);
+		
+		
+		content.majorRL.majorRL.setDividerLocation((double)1);
+	}
+	
+	public static void frame() {		
+		//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
+    	ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
+    	frame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
+    	
+        //WINDOW SETTINGS
+    	frame.setTitle("Restroom Logs");
+    	frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    	frame.setResizable(false);
+    	frame.setUndecorated(true);
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static class splashScreen{
+		
+		private static StopWatch stopWatch = new StopWatch(); //used for 3 sec start
+		
+		public static void create() {
 			BackEnd.logs.update.StartUp("Starting Program");
 			BackEnd.logs.update.StartUp("Starting Splash Screen");
 			runSplash();
 		}
-		public Splash() {}
+		//public static splashScreen() {} //This is needed??? I don't know. it's an empty constructor
 	    private static void renderSplashFrame(Graphics2D graphic, String message) {
 	    	Color LAVENDER_GRAY = new Color(0xC5C6C7); //custom color
 	    	
 	    	graphic.setComposite(AlphaComposite.Clear); //Comment out this line to see where it will paint over
-	        graphic.fillRect(170,140,250,40); //120, 140, 200, 40
+	        graphic.fillRect(170,140,250,40); //default: 120, 140, 200, 40
 	        graphic.setPaintMode();
 	        graphic.setColor(LAVENDER_GRAY);
-	        //TODO:??
-	        if(config.ranBefore) {
-	        	graphic.drawString(message+"...", 200, 165);
-	        }
-	        else {
-	        	graphic.drawString(message+"...", 200, 165);
-	        }
+	        graphic.drawString(message+"...", 200, 165);
 	    }
 	    
 	    
-	    public static void runSplash() {
+	    private static void runSplash() {
 	    	SplashScreen splash = SplashScreen.getSplashScreen();
 	        if (splash == null) {
 	            String message = "SplashScreen.getSplashScreen() returned null";
@@ -110,53 +123,61 @@ public class FrontEnd {
 	        }
 	        
 	        stopWatch.start();
-	//STEPS ---------------------------------------
 	        if(config.ranBefore) {
-	        	//Step 1
-	        	renderSplashFrame(graphic, "Checking for updates");
-	        	BackEnd.logs.update.StartUp("Checking for updates");
-	        	splash.update();
-	        	//CHECK FOR UPDATES
-	        	//Call Action in another thread
-	        	
-	        	//START PROGRAM
-	        	BackEnd.logs.update.StartUp("Opening Window");
-	        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program
-	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
-	        }
-	//STEP INIT -------------------------------------
-	        else { //INIT START UP, HAS NOT RAN BEFORE
-	        	//STEP 1
-	        	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
-	        	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
-	        	splash.update();
-	        	//no need to call anything, this is a notice to use that this program has not ran before
-	        	
-	        	//STEP 2
-	        	renderSplashFrame(graphic, "Checking database");
-	        	BackEnd.logs.update.StartUp("Checking database");
-	        	splash.update();
-	        	//TODO: check if data base exists
-	        	//Call Action in another thread
-	        	
-	        	//STEP 3
-	        	renderSplashFrame(graphic, "Creating PDF Logs");
-	        	BackEnd.logs.update.StartUp("Creating PDF Logs");
-	        	splash.update();
-	        	//FIXME
-	        	BackEnd.email.PDF.CreateBlankPDF();
-	        	//Call Action in another thread
-	        	
-	        	config.ranBefore = true; //TODO: Change in file
-	        	//START PROGRAM
-	        	BackEnd.logs.update.StartUp("Opening Window");
-	        	waitThreeStart(splash, graphic);
-	        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+	        	regularStart(splash, graphic);
+	        } else {
+	        	initStart(splash, graphic);
 	        }
 	        splash.close();
 	    }
+	     private static void regularStart(SplashScreen splash, Graphics2D graphic) {
+        	//STEP ONE
+	    	renderSplashFrame(graphic, "Checking for updates");
+	    	BackEnd.logs.update.StartUp("Checking for updates");
+        	splash.update();
+        	//CHECK FOR UPDATES
+        	//Call Action in another thread
+        	
+        	//START PROGRAM
+        	BackEnd.logs.update.StartUp("Opening Window");
+        	waitThreeStart(splash, graphic); //makes sure you have been on start screen for 3 secs then run program BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+		        
+	     }
+	     private static void initStart(SplashScreen splash, Graphics2D graphic) {
+        	//STEP 1
+        	renderSplashFrame(graphic, "NOTICE: Program hasn't ran before!");
+        	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
+        	splash.update();
+        	//no need to call anything, this is a notice to use that this program has not ran before 
+        	//STEP 2
+        	renderSplashFrame(graphic, "Checking database");
+        	BackEnd.logs.update.StartUp("Checking database");
+        	splash.update();
+        	//TODO: check if data base exists
+        	//Call Action in another thread 
+        	//STEP 3
+        	renderSplashFrame(graphic, "Creating PDF Logs");
+        	BackEnd.logs.update.StartUp("Creating PDF Logs");
+        	splash.update();
+        	BackEnd.email.PDF.CreateBlankPDF();
+        	//Call Action in another thread
+        	
+        	//changes ranBefore=false to ranBefore=true
+        	ranBeforeToTrue();
+        	
+        	//START PROGRAM
+        	BackEnd.logs.update.StartUp("Opening Window");
+        	waitThreeStart(splash, graphic);
+        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+	     }
 	    
-	    public static void waitThreeStart(SplashScreen splash, Graphics2D graphic) {
+	    
+	    /**
+	     * this method only waits 3 seconds, don't start the window
+	     * @param splash
+	     * @param graphic
+	     */
+	    private static void waitThreeStart(SplashScreen splash, Graphics2D graphic) {
 	    	stopWatch.suspend();
 	    	int stopWatchSec = Integer.parseInt(stopWatch.toString().substring(5, 7));
 	    	int stopWatchMill = Integer.parseInt(stopWatch.toString().substring(8, 11));
@@ -179,812 +200,387 @@ public class FrontEnd {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-	    	Window.createWindow(); //TODO: NEEDS TO BE CALLED IN ANOTHER THREAD, i think
-	    	
+	    	FrontEnd.create();
 	    }
 	}
-
-	public static class Window{
-		public static void createWindow() {
-	    	EventQueue.invokeLater(() -> {
-	        	initUI();
-	        });
-	    }
-	    
-	    
-	    
-		private Window() { //this is a constructor, it calls a method to give the window settings
-	        initUI();
-	    }
-	    private static void initUI() { //window settings
-	    	JFrame frame = new JFrame();
-	    	
-	    	//ICON IMAGE (Like a favicon for websites), also changes icon in Taskbar
-	    	ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
-	    	frame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
-	    	
-	        //WINDOW SETTINGS
-	    	frame.setTitle("Restroom Logs");
-	    	frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	    	frame.setResizable(false);
-	    	frame.setUndecorated(true);
-	    	frame.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
-	        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-	        //setAlwaysOnTop(true); //DO NOT USE THIS, THIS WILL PREVENT DIALOG FROM TOPPING THIS
-	    	
-	    	//MENU BAR
-	    	frame.setJMenuBar(MenuBar.createMenuBar());
-	    	
-	    	//CONTENT (adding content to JFrame)
-	    	Window_Content.content(frame);
-	    	
-	    	frame.setVisible(true);
-	    	frame.setAlwaysOnTop(true); //jumps to top
-	    	frame.setAlwaysOnTop(false); //allows pop ups to show above frame
-	    }
-	}
-
-	public static class Window_Content implements RL_Colors, RL_Fonts, RL_General{
-		static String WebisteBaseUrl = config.WebsiteHomeURL;
-		static JEditorPane messageContent = new JEditorPane();
-		static String DoNotTouchFilePath = config.DoNotTouchFilePath;
-		static String teacherNameData;
-		
-		
-		
-	    public static Object content(JFrame frame) {
-	    	frame.setVisible(true);
-	    	Container pane = frame.getContentPane();
-	    	
-	    	JSplitPane MajorLeftAndRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	    	pane.add(MajorLeftAndRight, BorderLayout.CENTER);
-	    	
-	    	//-----------
-	    	JPanel TitleBarAndScanAndMessage = new JPanel();
-	    	TitleBarAndScanAndMessage.setLayout(new GridBagLayout());
-	    	MajorLeftAndRight.setLeftComponent(TitleBarAndScanAndMessage);
-	    	
-	    	//-----------
-	    	JPanel TitleBar = new JPanel(new GridBagLayout());
-	    	TitleBar.setOpaque(true);
-	    	TitleBar.setBackground(Color.WHITE);
-	    	GridBagConstraints TitleBarConstraints = new GridBagConstraints();
-	    	TitleBarConstraints.gridx = 1;
-	    	TitleBarConstraints.gridy = 1;
-	    	TitleBarConstraints.weightx = 1.0;
-	    	TitleBarConstraints.weighty = 0.0;
-	    	TitleBarConstraints.fill = GridBagConstraints.HORIZONTAL;
-	    	TitleBarAndScanAndMessage.add(TitleBar, TitleBarConstraints);
-
-	    	//BANNER
-	    	JLabel banner = new JLabel();
-		    ImageIcon RestroomLogsLogoWideBanner = new ImageIcon("assets/logos/RestroomLogsWideBanner.png");
-		    //find aspect ratios
-		    double orginalHeight = RestroomLogsLogoWideBanner.getIconHeight();
-		    double orginalWidth = RestroomLogsLogoWideBanner.getIconWidth();
-		    double aspectRatio = orginalWidth/orginalHeight;
-		    //find screen size
-		    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			double screenWidth = screenSize.getWidth(); //NOT USED
-			double screenHeight = screenSize.getHeight();
-		    //find new dimensions
-			final double HEIGHT_ASPECT_RATIO_MULTIPLIER = 0.15;
-		    int newHeight = (int) (screenHeight * HEIGHT_ASPECT_RATIO_MULTIPLIER);
-		    int newWidth = (int) (newHeight * aspectRatio);
-		    //resize image
-		    Image img = RestroomLogsLogoWideBanner.getImage() ;  
-		    Image newimg = img.getScaledInstance( newWidth, newHeight,  java.awt.Image.SCALE_SMOOTH ) ;  
-		    ImageIcon RestroomLogsLogoWideBannerResized = new ImageIcon( newimg );
-		    banner.setIcon(RestroomLogsLogoWideBannerResized);
-		    //banner.setHorizontalAlignment(SwingConstants.LEFT);
-		    GridBagConstraints bannerConstraints = new GridBagConstraints();
-		    bannerConstraints.gridx = 1;
-		    bannerConstraints.gridy = 1;
-		    bannerConstraints.weightx = 0.0;
-		    bannerConstraints.weighty = 1.0;
-		    bannerConstraints.anchor = GridBagConstraints.WEST;
-		    bannerConstraints.fill = GridBagConstraints.VERTICAL;
-		    
-	    	TitleBar.add(banner, bannerConstraints);
-		    
-		    //TEST------
-		    banner.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
-		    TitleBar.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
-		    
-	    	//STATS
-		    JPanel stats = new JPanel(new BorderLayout());
-		    //TEACHER NAME
-		    JEditorPane teacherName = new JEditorPane();
-		    try {
-		    	int lineCounter = 0;
-			File file = new File(DoNotTouchFilePath);
-			BufferedReader br;
-			
-				br = new BufferedReader(new FileReader(file));
-			
-			String line = null;
-			while ((line = br.readLine()) != null) {  
-			   // process the line.  
-			   lineCounter++;
-			   //System.out.println(lineCounter + " " + line);
-
-			   switch(lineCounter){  
-			    case 5: //on 3rd line
-			    	if(line.contains("teacherName = ")) {
-			    		 teacherNameData = line.substring(line.lastIndexOf(' ')+1);
-			    	}
-			   }
+	public static class window {
+		public static class menuBar {
+			static JMenuBar menuBar = new JMenuBar();
+			public static void create() {
+				frame.setJMenuBar(menuBar);
 			}
-		    } catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		    teacherName.setEditable(false);
-		    teacherName.setContentType("text/hteml");
-		    teacherName.setText(teacherNameData);
-		    teacherName.setFont(new Font("Verdana", Font.BOLD, teacherName.getFont().getSize()+20));
-		    //teacherName.setFont(RL_Fonts.statsTeacherNameDynamic(teacherName));
-		    teacherName.setForeground(RL_Colors.color("DARK_GUNMETAL"));
-		    stats.add(teacherName, BorderLayout.PAGE_START);
-		    
-	    	//TIME AND DATE
-		    //FIXME: PROBLEM, IT'S SLEEPING THE THREAD!!!
-		    Date date = new Date();
-		    SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
-		    String timeStamp = "Current Date: " + dateFormat.format(date);
-		    JEditorPane timeAndDate = new JEditorPane();
-		    timeAndDate.setText("<html><h1>"+teacherName+"</h1><Br><p>"+timeStamp+"<p></htlm>");
-		    timeAndDate.setContentType("text/html");
-		    timeAndDate.setEditable(false);
-			    ActionListener actionListener = new ActionListener() {
-			        public void actionPerformed(ActionEvent actionEvent) {
-			        	Date date = new Date();
-			            SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
-			            String timeStamp = "Current Date: " + dateFormat.format(date);
-			            timeAndDate.setText("<html><p>"+timeStamp+"<p></htlm>");
-			            //System.out.println(timeStamp);
-			        }
-			    };
-			Timer timer = new Timer(1000, actionListener);
-			timer.start();
-			timeAndDate.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
-			stats.add(timeAndDate, BorderLayout.CENTER);
-			
-			//STATS
-		    GridBagConstraints statsConstraints = new GridBagConstraints();
-		    statsConstraints.gridx = 2;
-		    statsConstraints.gridy = 1;
-		    statsConstraints.weightx = 1.0;
-		    statsConstraints.weighty = 1.0;
-		    statsConstraints.fill = GridBagConstraints.VERTICAL;
-		    statsConstraints.anchor = GridBagConstraints.WEST;
-	    	TitleBar.add(stats, statsConstraints);
-	    	
-	    	//-----------
-	    	JSplitPane ScanAndMessage = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-	    	GridBagConstraints ScanAndMessageConstraints = new GridBagConstraints();
-	    	ScanAndMessageConstraints.gridx = 1;
-	    	ScanAndMessageConstraints.gridy = 2;
-	    	ScanAndMessageConstraints.weightx = 1.0;
-	    	ScanAndMessageConstraints.weighty = 1.0;
-	    	ScanAndMessageConstraints.fill = GridBagConstraints.BOTH;
-	    	TitleBarAndScanAndMessage.add(ScanAndMessage, ScanAndMessageConstraints);
-	    	
-	    	//-----------
-	    	JPanel scan = new JPanel(new BorderLayout());
-	    	scan.setOpaque(true);
-	    	scan.setBackground(RL_Colors.color(3));
-	    	/*//SCAN TITLE
-	    	JLabel scanTitle = new JLabel();
-	    	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
-	    	scanTitle.setFont(new Font("Serif", Font.BOLD, scanTitle.getFont().getSize() + 10));
-	    	scan.add(scanTitle, BorderLayout.PAGE_START);*/
-	    	//SCAN FIELD
-	    	//TODO: make typeable from focused window
-	    	JTextField scanField = new JTextField();
-	    	scanField.setEditable(true);
-	    	scanField.setToolTipText("Scan your Student ID card");
-	    	scanField.setBackground(Color.WHITE);
-	    	scanField.setOpaque(true);
-	    	
-	    	//border
-	    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, RL_Fonts.AnticSlab, Color.BLACK);
-	    	scanField.setBorder(scanFieldBorder);
-	    	
-	    	//scan font
-	    	scanField.setFont(RL_Fonts.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
-	    	
-		    	System.out.println("");
-		    	System.out.println(scanField.getFont());
-		    	System.out.println(scanField.getPreferredSize());
-		    	System.out.println(scanField.getSize());
-		    	
-		    	System.out.println("");
-		    	System.out.println(scan.getPreferredSize());
-		    	System.out.println(scan.getSize());
-	    	
-	    	//scanField size
-	    	scan.setSize(scan.getPreferredSize());
-	    	scan.add(scanField, BorderLayout.PAGE_START);
-	    	ScanAndMessage.setTopComponent(scan);
-	    	
-	    	
-	    	
-	    	//SCANNING
-	    	//text field
-	    	scanField.addKeyListener(new KeyListener() {
-
-	            @Override
-	            public void keyTyped(KeyEvent e) {}
-
-	            @Override
-	            public void keyReleased(KeyEvent e) {}
-
-	            @Override
-	            public void keyPressed(KeyEvent escan) {
-	            	String input = "";
-	            	if(escan.getKeyChar() == KeyEvent.VK_ENTER) {
-	            		//SCANING INFO-----------------------------------
-	            		input = scanField.getText();
-	            		EventQueue.invokeLater(() -> {
-	            			scanField.setText("");
-	                    });
-	            		if(pullStudentName.containsOnlyNumbers(input)) {
-	            			int intInput = Integer.parseInt(input);
-	            			
-	            			pullStudentName names = new pullStudentName(intInput);
-							
-							String FirstName = names.getFirstName();
-	                    	String LastName = names.getLastName();
-	                    	String FirstLastName = names.getBothNames();
-	                    	
-	                    	if((FirstName != null) && (LastName != null)) {
-	                    		//FIXME: 
-	                        	boolean inOrOut = BackEnd.database.Log.checkIfOut(intInput); //CURRENTLY SIGNED OUT??
-	                        	
-	                        	//adding to DB
-                        		BackEnd.database.Log.add.entry(intInput, FirstName, LastName, inOrOut);
-	                        	
-	                        	//Addedin to Logs.txt
-	                        	if(!inOrOut) {
-	                        		String data = FirstName + " " + LastName + " Signed Out";
-	                        		updateMessagesSuccessfulSignOut(FirstLastName);
-	                        		BackEnd.logs.update.Logs(data);
-	                        	}
-	                        	else {
-	                        		String data = FirstName + " " + LastName + " Signed In";
-	                        		updateMessagesSuccessfulSignIn(FirstLastName);
-	                        		BackEnd.logs.update.Logs(data);
-	                        	}
-	                    	}
-						
-	            		}
-	            		else {
-	            			BackEnd.logs.update.Logs("\"" + input + "\"  is not an integer");
-	            			
-	            			//TODO: change popup to message in Message Pane
-	            			JTextArea onlyInts = new JTextArea("Please only enter numbers");
-	            			updateMessagesInteger(input);
-	            		}
-	            		
-	            	}
-	            }
-	        });
-	    	
-	    	
-	    	
-	    	//-----------
-	    	JPanel message = new JPanel(new GridBagLayout());
-	    	
-	    	JEditorPane messageTitle = new JEditorPane();
-	    	messageTitle.setContentType("text/html");
-	    	messageTitle.setText("<html><center><h1>MESSAGES</h1></center></html>");
-	    	messageTitle.setEditable(false);
-	    	messageTitle.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
-	    	GridBagConstraints messageTitleConstraints = new GridBagConstraints();
-	    	messageTitleConstraints.gridx = 1;
-	    	messageTitleConstraints.gridy = 1;
-	    	messageTitleConstraints.weightx = 1.0;
-	    	messageTitleConstraints.weighty = 0.0;
-	    	messageTitleConstraints.fill = GridBagConstraints.BOTH;
-	    	message.add(messageTitle, messageTitleConstraints);
-	    	
-		//TO DISPLAY WEBSITE
-	    	/*try {
-		    	String url = WebisteBaseUrl+"logs/messages.html";
-				messageContent.setPage(url); //HAS NO CSS
-			} catch (IOException e) {
-				messageContent.setText("<html>Could not load message from "+url);
-				e.printStackTrace();
-			}*/
-	    	messageContent.setEditable(false);
-	    	//messageContent.setFont(new Font("Verdana", Font.CENTER_BASELINE, teacherName.getFont().getSize()));
-	    	messageContent.setFont(RL_Fonts.AnticSlab.deriveFont(50f));
-	    	//messageContent.setAlignmentY(messageContent.CENTER_ALIGNMENT);
-	    	messageContent.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    	//messageContent
-	    	
-	    	GridBagConstraints messageContentConstraints = new GridBagConstraints();
-	    	messageContentConstraints.gridx = 1;
-	    	messageContentConstraints.gridy = 2;
-	    	messageContentConstraints.weightx = 1.0;
-	    	messageContentConstraints.weighty = 0.5;
-	    	messageContentConstraints.fill = GridBagConstraints.BOTH;
-	    	message.add(messageContent, messageContentConstraints);
-	    	
-	    	ScanAndMessage.setBottomComponent(message);
-	    	
-	    	//----------------
-	    	JPanel TableAndTableTitleAndTableClearButton = new JPanel(new GridBagLayout());
-	    	MajorLeftAndRight.setRightComponent(TableAndTableTitleAndTableClearButton);
-	    	
-	    	//TITLE AND BUTTON
-	    	JPanel TableTitleAndTableClearButton = new JPanel(new GridBagLayout());
-	    	GridBagConstraints TableTitleAndTableClearButtonConstraints = new GridBagConstraints();
-	    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL_Colors.color(4)));
-	    	TableTitleAndTableClearButtonConstraints.gridx = 1;
-	    	TableTitleAndTableClearButtonConstraints.gridy = 1;
-	    	TableTitleAndTableClearButtonConstraints.weightx = 1.0;
-	    	TableTitleAndTableClearButtonConstraints.weighty = 0.0;
-	    	TableTitleAndTableClearButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
-	    	TableAndTableTitleAndTableClearButton.add(TableTitleAndTableClearButton, TableTitleAndTableClearButtonConstraints);
-	    	
-	    	//TABLE
-	    	JScrollPane TableScroll = new JScrollPane();
-	    	JTable Table = new JTable();
-	    	//Table.IDKKKKK
-	    	TableScroll.add(Table);
-	    	GridBagConstraints TableScrollConstraints = new GridBagConstraints();
-	    	TableScrollConstraints.gridx = 1;
-	    	TableScrollConstraints.gridy = 2;
-	    	TableScrollConstraints.weightx = 1.0;
-	    	TableScrollConstraints.weighty = 1.0;
-	    	TableScrollConstraints.fill = GridBagConstraints.BOTH;
-	    	TableAndTableTitleAndTableClearButton.add(TableScroll, TableScrollConstraints);
-	    	
-	    	//TABLE TITLE
-	    	JTextArea TableTitle = new JTextArea();
-	    	TableTitle.setEditable(false);
-	    	TableTitle.setText("Signed Out");
-	    	Insets TableTitleMargin = new Insets(1, 1, 1, 1);
-	    	TableTitle.setMargin(TableTitleMargin);
-	    	GridBagConstraints TableTitleConstraints = new GridBagConstraints();
-	    	TableTitleConstraints.gridx = 1;
-	    	TableTitleConstraints.gridy = 1;
-	    	TableTitleConstraints.weightx = 1.0;
-	    	TableTitleConstraints.weighty = 0.0;
-	    	//TableTitleConstraints.fill = GridBagConstraints.HORIZONTAL;
-	    	TableTitleAndTableClearButton.add(TableTitle, TableTitleConstraints);
-	    	
-	    	//TABLE CLEAR BUTTON
-	    	JButton TableClearButton = new JButton("Clear");
-	    	Insets TableClearButtonMargin = new Insets(1, 1, 1, 1);
-	    	TableClearButton.setMargin(TableClearButtonMargin);
-	    	//LARGER PREFERRED SIZE
-	    	Dimension TableClearButtonDimension = TableClearButton.getPreferredSize();
-	    	double TableClearButtonDimensionHEIGHT = TableClearButtonDimension.getHeight() + 5;
-	    	double TableClearButtonDimensionWIDTH = TableClearButtonDimension.getWidth() + 5;
-	    	Dimension NEWTableClearButtonDimension = new Dimension((int)TableClearButtonDimensionWIDTH, (int)TableClearButtonDimensionHEIGHT);
-	    	TableClearButton.setPreferredSize(NEWTableClearButtonDimension);
-	    	//EVENT LISTENER
-	    	TableClearButton.addActionListener((ActionEvent ClearButtonEvent) -> { //When clicked, exit
-	            /*TODO:CLEAR!!!!*/
-	        });
-	    	GridBagConstraints TableClearButtonConstraints = new GridBagConstraints();
-	    	TableClearButtonConstraints.gridx = 2;
-	    	TableClearButtonConstraints.gridy = 1;
-	    	TableClearButtonConstraints.weightx = 0.0;
-	    	TableClearButtonConstraints.weighty = 0.0;
-	    	//TableClearButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
-	    	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
-	    	
-	    	//DIVIDER LOCATIONS
-	    	RL_General.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
-	    	RL_General.JSplitPaneDividerLocation(frame, ScanAndMessage, 0.15);
-	    	
-	    	ActionListener focusActionListener = new ActionListener() {
-		        public void actionPerformed(ActionEvent actionEvent) {
-		        	scanField.requestFocus();
-		        }
-		    };
-		    Timer scanFieldTimer = new Timer(1000, focusActionListener);
-		    scanFieldTimer.start();
-	    	
-	    	return MajorLeftAndRight;
-	    }
-	 
-	    /**
-		 * Adding successful sign out message to Messages
-		 * @param FirstAndLastName Student's First and Last Name
-		 */
-		public static void updateMessagesSuccessfulSignOut(String FirstAndLastName) {
-			String message  = FirstAndLastName + " has Signed Out";
-			messageContent.setForeground(Color.GREEN);
-			messageContent.setText(message);
-			System.out.println("signing out sent to messageContent");
-		}
-		/**
-		 * Adding successful sign out message to Messages
-		 * @param FirstAndLastName Student's First and Last Name
-		 */
-		public static void updateMessagesSuccessfulSignIn(String FirstAndLastName) {
-			String message  = FirstAndLastName + " has Signed In";
-			messageContent.setForeground(Color.GREEN);
-			messageContent.setText(message);
-			System.out.println("signing in sent to messageContent");
-		}
-		/**
-		 * Adding can not find Student ID to Messages
-		 * @param StudentID StudentID
-		 */
-		public static void updateMessagesUnsuccessful(int StudentID) {
-			String message = "Student ID: " + "\"" + StudentID + "\"" + " could not be found";
-			messageContent.setForeground(Color.RED);
-			messageContent.setText(message);
-		}
-		/**
-		 * Adding can not find Student ID to Messages
-		 * @param FirstAndLastName Student's First and Last Name
-		 */
-		public static void updateMessagesInteger(String input) {
-			messageContent.setForeground(Color.RED);
-			messageContent.setText("Please only enter Numbers, \"" + input + "\" contains letters");
-		}
-		
-		
-		
-	    public static void main(String[] args) {
-	        //Schedule a job for the event-dispatching thread:
-	        //creating and showing this application's GUI.
-	        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	            	JFrame frame = new JFrame();
-	                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	                frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-	                content(frame);
-	            }
-	        });
-	    }
-	}   
-
-	public static class MenuBar {
-		static String LogsPath = config.LogsPath;
-		public static JMenuBar createMenuBar() { //JmenuBar = Menu Bar, JMenu = new dropdown, JMunuItem = item in a dropdown
-	    	
-	    	//MENUBAR
-	        JMenuBar menubar = new JMenuBar();
-	        //LOG FILE
-	        
-	        
-	        //ICONS
-	        ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
-	        ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
-	        ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
-	        ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
-	        
-	        //MENU
-	        JMenu file = new JMenu("File"); //New dropdown
-	        file.setMnemonic(KeyEvent.VK_F); //Short cut for "File" drop down
-	        JMenu data = new JMenu("Data"); //New dropdown
-	        data.setMnemonic(KeyEvent.VK_D); //Short cut for "File" drop down
-	        
-	        //MENU ITEM
-	        //exit
-	        JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
-	        fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
-	        fileExit.setToolTipText("Exit application");
-	        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
-	        	BackEnd.logs.update.System("EXIT");
-	        	BackEnd.logs.write("----------");
-	            System.exit(0);
-	        });
-	        //view entries
-	        JMenuItem dataView = new JMenuItem("View Entries", dataViewIcon);
-	        dataView.setMnemonic(KeyEvent.VK_K);
-	        dataView.setToolTipText("View Sign in/out");
-	        dataView.addActionListener((ActionEvent dataViewButtonEvent) -> {
-	        	BackEnd.logs.update.Logs("ViewLogsPDF Opened");
-	        	//CALL BACKEND TO CREATE VIEW PDF (copy from main pdf)
-	        	//SHOW VIEW PDF
-	        	/*if(Back_End.createViewPDF()) {
-	        		JOptionPane.showMessageDialog(dataView,
-						    "Can not create ViewLogPDF for viewing.", //message
-						    "ViewLogPDF File Error", //title
-						    JOptionPane.ERROR_MESSAGE);
-	        	}*/
-	        	//else {
-	        		//FIXME: Use jxdocument to render the ViewPDF
-	            	//try {
-	            		//JPanel renderedViewPDF = new JPanel();
-	            		
-	            		//RENDER
-	            		File pdf = new File("data/ViewLogsPDF.pdf");
-	            		com.teamdev.jxdocument.Document document = new com.teamdev.jxdocument.Document(pdf);
-	            		SinglePagePresentation presentation= new SinglePagePresentation(document);
-	            		presentation.displayPage(0);
-	            		JComponent renderedViewPDF = presentation.getComponent();
-	            		
-	            		//added to a JDialog
-	            		JOptionPane.showMessageDialog(dataView,
-	            				renderedViewPDF, //message
-	    					    "Logs PDF", //title
-	    					    JOptionPane.INFORMATION_MESSAGE);
-	            	//}
-	            	//catch (){
-	            		BackEnd.logs.update.ERROR("Error while opening ViewLogPDF");
-	            		JOptionPane.showMessageDialog(dataView,
-	    				"Can not open ViewLogPDF for viewing.", //message
-	    				"ViewLogPDF File Error", //title
-	    				JOptionPane.ERROR_MESSAGE);
-	            	//}
-	        	//}
-	        });
-	        //log .txt
-	        JMenuItem dataLogs = new JMenuItem("Logs", dataLogsIcon);
-	        dataLogs.setMnemonic(KeyEvent.VK_K);
-	        dataLogs.setToolTipText("View logs");
-	        dataLogs.addActionListener((ActionEvent dataLogsButtonEvent) -> {
-	        	BackEnd.logs.update.Logs("Logs.txt Opened");
-	        	String fileContent;
-				try {
-					fileContent = new Scanner(new File(LogsPath)).useDelimiter("\\Z").next();
-		        	//TEST: JOptionPane.showMessageDialog(dataLogs, fileContent);
-					
-					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-					double screenWidth = screenSize.getWidth();
-					double screenHeight = screenSize.getHeight();
-					//JOptionPane.showMessageDialog(dataLogs, screenWidth + " " + screenHeight);
-					
-					int displayWidth = (int) (screenWidth/15);
-					int displayHeight = (int) (screenHeight/20);
-					
-					JTextArea textArea = new JTextArea(displayHeight, displayWidth);
-				      textArea.setText(fileContent);
-				      textArea.setEditable(false);
-				      textArea.setLineWrap(true);
-				      textArea.setWrapStyleWord(true);
-				      textArea.setMargin(new Insets(10,10,10,10));
-				      textArea.setCaretPosition(0);
-				      
-				      // wrap a scrollpane around it
-				      JScrollPane scrollPane = new JScrollPane(textArea);
-				      
-				      // display them in a message dialog
-				      JOptionPane.showMessageDialog(dataLogs, scrollPane);
-					
-					
-				} catch (FileNotFoundException e) {
-					BackEnd.logs.update.Logs("Logs.txt Closed");
-					e.printStackTrace();
-					JOptionPane.showMessageDialog(dataLogs,
-						    "Can not open Log file.", //message
-						    "Log File Error", //title
-						    JOptionPane.ERROR_MESSAGE);
+			public static class file {
+				static JMenu fileMenu = new JMenu("File"); 
+				public static void create() {
+					menuBar.add(fileMenu);
+			        fileMenu.setMnemonic(KeyEvent.VK_F);
 				}
-	        });
-	        
-	        JMenuItem filePreferences = new JMenuItem("Preferences", filePreferencesIcon);
-	        filePreferences.setMnemonic(KeyEvent.VK_P);
-	        filePreferences.setToolTipText("Preferences");
-	        filePreferences.addActionListener((ActionEvent filePreferencesButonEvent) -> { 
-	        	BackEnd.logs.update.Logs("Preferences Opened");
-	    		Preferences.preferences();
-	        });
-	        
-	        
-	        
-	        //DISPLAY, backwards
-	        //file
-	        file.add(fileExit); //adds the exit menuitem to the "file" menu
-	        file.add(filePreferences);
-	        
-	        menubar.add(file); //adds the file menu to the menubar
-	        //data
-	        data.add(dataView);
-	        data.add(dataLogs);
-	        
-	        menubar.add(data);
-	        
-	        return menubar;
-	        //setJMenuBar(menubar); //displays menubar
-	    }
-	}
-	
-	public static class Preferences {
+				public static class exit {
+					public static void create() {
+						JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
+						fileMenu.add(fileExit);
+				        fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
+				        fileExit.setToolTipText("Exit application");
+				        
+				        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
+				        	BackEnd.logs.update.System("EXIT");
+				        	BackEnd.logs.write("----------");
+				            System.exit(0);
+				        });
+					}
+				}
+				public static class preferences extends JPanel{
+					static JMenuItem filePreferences = new JMenuItem("Preferences, filePreferencesIcon");
+					public static void create() {
+						fileMenu.add(filePreferences);
+						filePreferences.setMnemonic(KeyEvent.VK_P);
+					    filePreferences.setToolTipText("Preferences");
+						filePreferences.addActionListener((ActionEvent exitButtonEvent) -> {
+							BackEnd.logs.update.Logs("Preferences Opened");
+							content();
+				        });
+					}
+					public static void content() {
+						//JTabbedPane
+						JTabbedPane tabbedPane = new JTabbedPane();
+						int displayWidth = (int) (screenWidth/1.3);
+						int displayHeight = (int) (screenHeight/1.3);
+						Dimension displayDimension = new Dimension(displayWidth, displayHeight); 
+						tabbedPane.setPreferredSize(displayDimension);
+						
+						String versNum = config.VersionNumber;
+						Font f = tabbedPane.getFont();
+						Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
+						
+						//tabs
+						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
+					
+						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
+							JTextArea clearLogText = new JTextArea();
+								clearLogText.setOpaque(false);
+								clearLogText.setEditable(false);
+								clearLogText.setText("Clear PDF Log file");
+								logs.add(clearLogText);
+							JButton clearLogTextbutton = new JButton("Clear PDF");
+								clearLogTextbutton.setToolTipText("Caution, this will clear all student entry and exit logs");
+								clearLogTextbutton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
+									int choice = JOptionPane.showConfirmDialog(logs, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
+									if(choice == JOptionPane.YES_OPTION) {
+										BackEnd.email.PDF.CreateBlankPDF();
+										BackEnd.logs.update.System("LogsPDF Cleared");
+										JOptionPane.showMessageDialog(logs, "PDF Log has been cleared");
+									}
+								});
+							
+						preferences about = new preferences(tabbedPane, "About", null, "About this program");
+							
+						
+					
+						
+						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
+					}
+					
+					/**
+					 * Creates a new Tab in Preferences
+					 * @param tabbedPane JTabbedPane used for holding these tabs
+					 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
+					 * @param icon Icon next to tab name
+					 * @param toolTip tool tip for user's info
+					 */
+					public preferences(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
+						JTextArea textArea = new JTextArea();
+						textArea.setFont(RL.Kollektif);
+						textArea.setOpaque(false);
+						textArea.setEditable(false);
+						textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+						textArea.setText(nameOfTab);
+						this.add(textArea);
+						tabbedPane.addTab(nameOfTab, icon, this, toolTip);
+					}
+				}
+			}
 
-		public static void main(String[] args) {
-			preferences();
-		}
-		public static void preferences() {
-			ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
-			ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
-
-			String versNum = config.VersionNumber;
 			
-			
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			double screenWidth = screenSize.getWidth();
-			double screenHeight = screenSize.getHeight();
-			int displayWidth = (int) (screenWidth/1.3);
-			int displayHeight = (int) (screenHeight/1.3);
-	    	
-			JTabbedPane tabbedPane = new JTabbedPane();
-			//tabbedPane.setPreferredSize(new Dimension(displayWidth, displayHeight));
-			
-			ImageIcon blankIcon = new ImageIcon("assets/images/noIcon.png");
-			
-			Font f = tabbedPane.getFont();
-			Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
-			
-			newPreferencesTab GeneralTab = new newPreferencesTab(tabbedPane, "General", null, "General ToolTip");
-			//tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-			JLabel GeneralTC = new JLabel("sdfsf");
-			GeneralTab.add(GeneralTC);
-			
-			
-			newPreferencesTab one = new newPreferencesTab(tabbedPane, "1", null, "General ToolTip");
-			newPreferencesTab two = new newPreferencesTab(tabbedPane, "2", null, "General ToolTip");
-			newPreferencesTab three = new newPreferencesTab(tabbedPane, "3", null, "General ToolTip");
-			
-			
-			JTextArea textArea = new JTextArea("hey");
-			three.add(textArea);
-			
-			three.setVisible(true);
-			textArea.setVisible(true);
-			
-			
-	    		//TODO: add time zone change for logs (Back_End.updateLogs)
-			
-			
-
-			JPanel panel2 = new JPanel();
-			panel2.setLayout(new GridLayout(5, 1));
-			tabbedPane.addTab("Logs", blankIcon, panel2, "Logs Preferences");
-			tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-			/*//TITLE
-	    		JTextArea preferencesLogsTitle = new JTextArea();
-	    		//textArea Settings
-	    		preferencesLogsTitle.setFont(f2);
-	    		preferencesLogsTitle.setOpaque(false);
-	    		preferencesLogsTitle.setEditable(false);
-	    		//CONTENT
-	    		preferencesLogsTitle.setText("Logs");
-	    		panel2.add(preferencesLogsTitle);*/
-			addTitle(panel2, "LOGS");
-			
-	    	JTextArea preferencesLogsClearText = new JTextArea();
-	    	preferencesLogsClearText.setOpaque(false);
-	    	preferencesLogsClearText.setEditable(false);
-	    	//CONTENT
-	    	preferencesLogsClearText.setText("Clear PDF Log file");
-	    	panel2.add(preferencesLogsClearText);
-	    	
-	    	JButton preferencesLogsClearButton = new JButton("Clear PDF"); //creates button named "Quit"
-	    	preferencesLogsClearButton.setToolTipText("Caution, this will clear all student entry and exit logs"); //Adds a ToolTipText, this is like hovering of a link, it gives you info
-	    	preferencesLogsClearButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> { //event listener, if clicked, system.exit(0);
-	           	
-	    		int choice = JOptionPane.showConfirmDialog(panel2, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
-	    		if(choice == JOptionPane.YES_OPTION) {
-	    			BackEnd.email.PDF.CreateBlankPDF();
-	    			BackEnd.logs.update.System("LogsPDF Cleared");
-	    			JOptionPane.showMessageDialog(panel2, "PDF Log has been cleared");
-	    		}
-	        });
-	    	panel2.add(preferencesLogsClearButton);
-			//Clear logs (run initStartUp for back_end)
-			
-			JComponent panel3 = new JPanel();
-			tabbedPane.addTab("Email", blankIcon, panel3, "Email Preferences");
-			tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
-			addTitle(panel3, "General");
-			
-			//clear email history
-
-			JComponent panel4 = new JPanel();
-			panel4.setPreferredSize(new Dimension(410, 50));
-			tabbedPane.addTab("Wifi", blankIcon, panel4, "Wifi Infomation");
-			tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
-			addTitle(panel4, "General");
-			
-			
-			//using Ethernet
-			//turn on and off wifi (airplane mode), see all wifi info (MAC, IP4, IP6, etc.)
-			
-			JComponent panel5 = new JPanel();
-			panel5.setPreferredSize(new Dimension(410, 50));
-			tabbedPane.addTab("DataBase", blankIcon, panel5, "Student DataBase Configuration");
-			tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
-			addTitle(panel5, "General");
-			
-			//insert database (either remote or file path to local)
-			
-			//TEST COMP
-			JComponent panel6 = new JPanel();
-			panel5.setPreferredSize(new Dimension(410, 50));
-			tabbedPane.addTab("TEST", blankIcon, panel6, "TESTTESTTEST");
-			tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
-			addTitle(panel6, "TEST");
-			
-			JComponent panel7 = new JPanel(new GridLayout(5,1));
-			panel7.setPreferredSize(new Dimension(410, 50));
-			tabbedPane.addTab("About", blankIcon, panel7, "Abut Restroom Logs");
-			tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
-			addTitle(panel7, "About");
-			
-			JTextArea preferencesAboutClearText = new JTextArea();
-			preferencesAboutClearText.setOpaque(false);
-			preferencesAboutClearText.setEditable(false);
-			JTextArea preferencesAboutCopyClearText = new JTextArea();
-			preferencesAboutCopyClearText.setOpaque(false);
-			preferencesAboutCopyClearText.setEditable(false);
-	    	//CONTENT
-			JComponent panelIn = new JPanel();
-			//panelIn.add(new JLabel(Icon));
-			preferencesAboutClearText.setText("Version Number:");
-	    	panelIn.add(preferencesAboutClearText);
-	    	JLabel NumberLabel = new JLabel();
-	    	NumberLabel.setText(versNum);
-	    	panelIn.add(NumberLabel);
-	    	panel7.add(panelIn);
-	    	Calendar calendar = new GregorianCalendar();
-	    	int year = calendar.get(Calendar.YEAR);
-	    	preferencesAboutCopyClearText.setText("	\u00a9 Gary Tou and Michael Schwamborn "+year);
-	    	panel7.add(preferencesAboutCopyClearText);
-	    	
-			
-			
-			
-			JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
-			
-
 		}
 		
-		/**
-		 * 
-		 * @param addToComp JComponent
-		 * @param comp JTextArea
-		 * @param title String
-		 */
-		public static void addTitle(JComponent addToComp, String title) {
-			JTextArea textArea = new JTextArea();
-			//textArea Settings
-			textArea.setFont(RL_Fonts.preferencesTitle);
-			textArea.setOpaque(false);
-			textArea.setEditable(false);
-			textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-			textArea.setText(title);
-			addToComp.add(textArea);
-		}
 	}
 	
-	public static class newPreferencesTab extends JPanel{
-		/**
-		 * Creates a new Tab in Preferences
-		 * @param tabbedPane JTabbedPane used for holding these tabs
-		 * @param nameOfTab Name of this tab (This will show in the tab title and tab name
-		 * @param icon Icon next to tab name
-		 * @param toolTip tool tip for user's info
-		 */
-		public newPreferencesTab(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
-			JTextArea textArea = new JTextArea();
-			/*textArea.setFont(RL_Fonts.preferencesTitle);
-			textArea.setOpaque(true);
-			textArea.setEditable(false);
-			textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));*/
-			textArea.setText(nameOfTab);
-			this.add(textArea);
-			
-			System.out.println("in constructor");
-			
-			tabbedPane.addTab(nameOfTab, icon, this, toolTip);
+	public static class content {
+		public static class majorRL {
+			static JSplitPane majorRL = new JSplitPane();
+			public static void create() {
+				frame.add(majorRL);
+			}
+			public static class left {
+				static JPanel left = new JPanel(new BorderLayout());
+				public static void create() {
+					majorRL.setLeftComponent(left);
+				}
+				public static class statsScan {
+					static JPanel statsScan = new JPanel(new BorderLayout());
+					public static void create() {
+						left.add(statsScan, BorderLayout.PAGE_START);
+						
+					}
+					public static class stats {
+						static JPanel stats = new JPanel(new BorderLayout());
+						public static void create() {
+							statsScan.add(stats, BorderLayout.PAGE_START);
+						}
+						public static class banner {
+							static JLabel banner = new JLabel();
+							public static void create() {
+								ImageIcon RestroomLogsLogoWideBanner = new ImageIcon("assets/logos/RestroomLogsWideBanner.png");
+							    //find aspect ratios
+							    double orginalHeight = RestroomLogsLogoWideBanner.getIconHeight();
+							    double orginalWidth = RestroomLogsLogoWideBanner.getIconWidth();
+							    double aspectRatio = orginalWidth/orginalHeight;
+							    //find new dimensions
+								final double HEIGHT_ASPECT_RATIO_MULTIPLIER = 0.15;
+							    int newHeight = (int) (screenHeight * HEIGHT_ASPECT_RATIO_MULTIPLIER);
+							    int newWidth = (int) (newHeight * aspectRatio);
+							    //resize image
+							    Image img = RestroomLogsLogoWideBanner.getImage() ;  
+							    Image newimg = img.getScaledInstance( newWidth, newHeight,  java.awt.Image.SCALE_SMOOTH ) ;  
+							    ImageIcon RestroomLogsLogoWideBannerResized = new ImageIcon( newimg );
+							    banner.setIcon(RestroomLogsLogoWideBannerResized);
+							    GridBagConstraints bannerConstraints = new GridBagConstraints();
+							    bannerConstraints.gridx = 1;
+							    bannerConstraints.gridy = 1;
+							    bannerConstraints.weightx = 0.0;
+							    bannerConstraints.weighty = 1.0;
+							    bannerConstraints.anchor = GridBagConstraints.WEST;
+							    bannerConstraints.fill = GridBagConstraints.VERTICAL;
+								
+								stats.add(banner, BorderLayout.LINE_START);
+							}
+						}
+						public static class information {
+							static JLabel information = new JLabel();
+							public static void create() {
+								//todo:
+								String message = "we need to make a var for teacher name and other info that will go here";
+								
+								stats.add(information, BorderLayout.LINE_END);
+							}
+							public static void update(String teacherName) { //todo: add more info
+								
+							}
+						}
+					}
+					public static class scanAndMessages {
+						static JSplitPane scanAndMessages = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+						public static void create() {
+							statsScan.add(scanAndMessages);
+						}
+						public static class scan {
+							static JPanel scan = new JPanel(new GridBagLayout());
+							public static void create() {
+								scanAndMessages.setTopComponent(scan);
+							}
+							public static class field {
+								public static void create() {
+									JTextField field = new JTextField();
+							    	field.setEditable(true);
+							    	field.setBackground(Color.WHITE);
+							    	//field.setMinimumSize(new Dimension(220, 220));
+							    	field.setOpaque(true);
+							    	
+							    	GridBagConstraints  c = new GridBagConstraints ();
+							    	c.weightx = 0.9;
+							    	c.weighty = 0.9;
+							    	c.fill = GridBagConstraints.BOTH;
+							    	
+							    	scan.add(field, c);
+							    	
+							    	//SCANNING
+							    	field.addKeyListener(new KeyListener() {
+							            @Override
+							            public void keyTyped(KeyEvent e) {}
+	
+							            @Override
+							            public void keyReleased(KeyEvent e) {}
+	
+							            @Override
+							            public void keyPressed(KeyEvent escan) {
+							            	String input = "";
+							            	if(escan.getKeyChar() == KeyEvent.VK_ENTER) {
+							            		input = field.getText();
+							            		EventQueue.invokeLater(() -> {
+							            			field.setText("");
+							                    });
+							            		if(mainProgram.BackEnd.database.Student.pullStudentName.containsOnlyNumbers(input)) {
+							            			int intInput = Integer.parseInt(input);
+							            			
+							            			String FirstName = BackEnd.database.Student.pullStudentName.firstName(intInput);
+							                    	String LastName = BackEnd.database.Student.pullStudentName.lastName(intInput);
+							                    	String FirstLastName = BackEnd.database.Student.pullStudentName.bothNames(intInput);
+							                    	
+							                    	if((FirstName != null) && (LastName != null)) {
+							                    		boolean signingIn = BackEnd.database.Log.checkIfOut(intInput);
+							                    		
+							                        	//adding to DB
+						                        		BackEnd.database.Log.add.entry(intInput, FirstName, LastName, signingIn);
+						                        		
+							                        	//Showing scan status in messages
+							                        	if(!signingIn) {
+							                        		messageCenter.scanEntryMessage.successfulSignOut(FirstLastName);
+							                        	}
+							                        	else {
+							                        		messageCenter.scanEntryMessage.successfulSignIn(FirstLastName);
+							                        	}
+							                    	} else {
+							                    		messageCenter.scanEntryMessage.unsuccessful(intInput);
+							                    	}
+												
+							            		}
+							            		else {
+							            			messageCenter.scanEntryMessage.integer(input);
+							            		}
+							            	}
+							            }
+							        });
+								}
+							}
+							public static class messageCenter {
+								static JPanel messageCenter = new JPanel(new GridBagLayout());
+								public static void create() {
+									scanAndMessages.setBottomComponent(messageCenter);
+								}
+								public static class scanEntryMessage {
+									static JLabel message = new JLabel();
+									public static void create() {
+										message.setText("Welcome to the Restroom Logs Program!");
+										message.setHorizontalAlignment(SwingConstants.CENTER);
+										GridBagConstraints c = new GridBagConstraints();
+										c.gridx = 0;
+										c.gridy = 0;
+										c.fill = GridBagConstraints.HORIZONTAL;
+										messageCenter.add(message, c);
+									}
+									public static void successfulSignIn(String firstLastName) {
+										String outputMessage = firstLastName + " has signed in";
+										message.setForeground(Color.GREEN);
+										message.setText(outputMessage);
+										BackEnd.logs.update.Logs(outputMessage);
+									}
+									public static void successfulSignOut(String firstLastName) {
+										String outputMessage = firstLastName + " has signed out";
+										message.setForeground(Color.GREEN);
+										message.setText(outputMessage);
+										BackEnd.logs.update.Logs(outputMessage);
+									}
+									public static void unsuccessful(int studentID) {
+										message.setForeground(Color.RED);
+										message.setText("Invalid Student ID number: " + studentID);
+										BackEnd.logs.update.Logs("Could not find " + studentID + " in Student Data Base");
+									}
+									public static void integer(String input) {
+										message.setForeground(Color.RED);
+										message.setText("Please only enter numbers");
+										BackEnd.logs.update.Logs(input + " is not an integer");
+									}
+								}
+								public static class separator {
+									public static void create() {
+										GridBagConstraints c = new GridBagConstraints();
+										c.gridx = 0;
+										c.gridy = 1;
+										JSeparator sep = new JSeparator(); //FIXME: I don't think the JSeperator is visible... i can't see it
+										messageCenter.add(sep, c);
+									}
+								}
+								public static class otherMessages {
+									static JTextArea otherMessages = new JTextArea();
+									public static void create() {
+										otherMessages.setText("OTHER MESSAGES HERE!!!");
+										GridBagConstraints c = new GridBagConstraints();
+										c.gridx = 0;
+										c.gridy = 2;
+										c.weightx = 1;
+										c.weighty = 1;
+										c.fill = GridBagConstraints.BOTH;
+										messageCenter.add(otherMessages, c);
+									}
+									public static void update(String message) {
+										otherMessages.setText(message);
+									}
+								}
+							}
+						}
+					}//scan and messages
+				}
+			}
+			public static class right {
+				static JPanel right = new JPanel(new BorderLayout());
+				public static void create() {
+					majorRL.setRightComponent(right);
+				}
+				public static class table {
+					static JPanel table = new JPanel(new BorderLayout());
+					public static void create() {
+						right.add(table, BorderLayout.CENTER);
+					}
+					public static class titleBar {
+						static JPanel titleBar = new JPanel(new BorderLayout());
+						public static void create() {
+							table.add(titleBar, BorderLayout.PAGE_START);
+						}
+						public static class title {
+							static JLabel title = new JLabel();
+							public static void create() {
+								title.setText("Student Signed Out");
+								titleBar.add(title, BorderLayout.LINE_START);
+							}
+						}
+						public static class clearButton {
+							static JButton clear = new JButton();
+							public static void create() {
+								clear.setText("clear");
+								clear.setToolTipText("Signed all students back in");
+								
+								clear.addActionListener(new ActionListener(){
+									public void actionPerformed(ActionEvent e) {
+										if(BackEnd.database.Log.table.signAllIn()) {
+											JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+										} else {
+											JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
+										}
+									}
+								});
+								
+								titleBar.add(clear, BorderLayout.LINE_END);
+							}
+						}
+					}
+					public static class tableContent {
+						static JTable tableContent = new JTable();
+						public static void create() {
+							
+						//THIS IS A PALCE HOLDER
+							String[] columnNames = {"First Name",
+			                        "Last Name",
+			                        "Time Out"};
+							Object[][] data = {
+							    {"Kathy", "Smith", "10:50"},
+							    {"John", "Doe", "10:50"},
+							    {"Sue", "Black", "10:50"},
+							    {"Jane", "White", "10:50"},
+							    {"Joe", "Brown", "10:50"}
+							};
+							tableContent = new JTable(data, columnNames);
+						//ENDING PLACE HOLDER
+							
+							
+							
+							
+							table.add(tableContent);
+						}
+					}
+				}
+			}
 		}
+		
 	}
 	
-	public static void main(String[] args) {
-		Preferences.preferences();
-	}
 }

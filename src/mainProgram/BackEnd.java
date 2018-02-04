@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 
@@ -478,52 +479,113 @@ public class BackEnd extends config{
 				 * @param StudentID Student's ID
 				 * @param FirstName Student's First Name
 				 * @param LastName Student's Last Name
-				 * @param isSignedOut true = signing out, false = signing in
+				 * @param signingOut true = signing out, false = signing in
 				 */
-				public static void entry(int StudentID, String FirstName, String LastName, boolean isSignedOut) {
+				public static void entry(int StudentID, String FirstName, String LastName, boolean signingIn) {
+					boolean signingOut = !signingIn;
 					//Getting current sys time
 					Calendar cal = Calendar.getInstance();
 			        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
-			        
-			        ArrayList<String> logList = new ArrayList<String>();
-			        String uniqueID = "";
-			        //TODO not done
-			        //FIXME: for(int i= 0; <logList)
 			        
 					//Adding to DB
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
 						Statement s;
-						s = conn.createStatement();
-						
-						ResultSet rs;
-						
-						if(isSignedOut) {
-							String q = "INSERT INTO "+LogsDBTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?,? )";
+						s = conn.createStatement();						
+						if(signingOut) {
+							String q = "INSERT INTO "+LogsDBTableName+" ([StudentID], [FirstName], [LastName], [TimeOut], [TimeIn]) VALUES (?, ?, ?, ?, ?)";
 							PreparedStatement st = conn.prepareStatement (q);
-				
+							
 							st.setInt(1, StudentID);
 							st.setString(2, FirstName);
 							st.setString(3, LastName);
 							st.setString(4, sdf.format(cal.getTime()));
-							st.setString(5, "Still Signed Out");
+							st.setString(5, stillSignedOut);
 							
 							
 							st.executeUpdate();
 						}
 						else {
-							//psuedo
-								/*
-								 * find last entry
-								 * update (NOT ADD NEW ROW) just 5th column
-								 */
-							String q = "UPDATE "+LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE StudentID = " + StudentID;
-							PreparedStatement st = conn.prepareStatement (q);
+							//getting row # of latest sign out
+							int row;
+							try {
+								Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+								Connection conn2=DriverManager.getConnection(
+							        "jdbc:ucanaccess://"+config.LogsDBPath);
+								Statement s2;
+								s2 = conn2.createStatement();
+								
+								
+								ResultSet rs;
+								rs = s2.executeQuery("SELECT [ID] FROM [" + config.LogsDBTableName + "] WHERE " + "[StudentID] = '" + StudentID + "' ORDER BY ID DESC");
+								
+								rs.next(); //move into table
+								
+								row = rs.getInt(1);
+							} catch (SQLException | ClassNotFoundException e) {
+								System.err.println("ERROR");
+								e.printStackTrace();
+								row = -1;
+							}
+							//using row # to update field
+							if(row == -1) {
+								System.err.print(StudentID + " not found in Databse at " + config.LogsDBPath);
+							}
+							else {
+								try {
+									Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+								} catch (ClassNotFoundException e) {
+									BackEnd.logs.update.ERROR("Can not access UcanaccessDriver");
+									System.err.println("Can not access UcanaccessDriver");
+									e.printStackTrace();
+								}
+								
+								
+								//establishing connection to DB
+								Connection conn3 = null;
+								try {
+									conn3 = DriverManager.getConnection("jdbc:ucanaccess://"+config.LogsDBPath);
+								} catch (SQLException e) {
+									BackEnd.logs.update.ERROR("Can not access Logs Database at " + config.LogsDBPath);
+									System.err.println("Can not access Logs Database at " + config.LogsDBPath);
+									e.printStackTrace();
+								}
+								
+								String updateInTime = "UPDATE [" + config.LogsDBTableName + "] SET [TimeIn] = ? WHERE " + "[ID] = '" + row + "'";
+								/*String q2 = "UPDATE "+config.LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
+								
+								String ex = "UPDATE ["+config.LogsDBTableName+"] SET ([TimeIn]) = "+"'test'" +"  WHERE id = "+entryRowNum; // The correct way to format an UPDATE query; the 'test' field is what you want to put into the column, so in our case the In Time. - Michael
+								*/
+								//creating statement
+								PreparedStatement st = null;
+								try {
+									st = conn3.prepareStatement (updateInTime);
+								} catch (SQLException e) {
+									BackEnd.logs.update.ERROR("Unable execute query, \"" + updateInTime + "\"");
+									System.err.println("Unable execute query, \"" + updateInTime + "\"");
+									e.printStackTrace();
+								}
+								
+								String currentTime = (new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(new Date()));
+								
+								try {
+									st.setString(1, currentTime);
+								} catch (SQLException e1) {
+									
+									e1.printStackTrace();
+								}
+								
+								try {
+									st.executeUpdate();
+									st.close();
+								} catch (SQLException e) {
+									System.err.println("Unable to Update In Time");
+									e.printStackTrace();
+								}
+							}
 							
-							st.setString(1, sdf.format(cal.getTime()));
-							
-							st.executeUpdate();
 						}
 					}
 					catch(ClassNotFoundException e) {
@@ -535,19 +597,44 @@ public class BackEnd extends config{
 						
 					}
 				}
-				
 			}
 			
 			public static class table{ 
-				
-				public static void create() {
-					
-				}
-				/**@deprecated I don't think this class is nessesary/ redunadnt
-				*
-				*/
-				public static void clear() {
-					
+				public static boolean signAllIn() {
+					Calendar cal = Calendar.getInstance();
+			        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+			        boolean successful = false;
+			        ArrayList<String> manSignedOutNames = new ArrayList<String>();
+			        
+			        try {
+				        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+						Statement s;
+						s = conn.createStatement();
+						
+						String q = "UPDATE ["+LogsDBTableName+"] SET [TimeIn] = 'Manually Signed Out " + sdf.format(cal.getTime()) + "' WHERE [TimeIn] = '" + stillSignedOut + "'";
+						PreparedStatement st = conn.prepareStatement (q);
+						
+						st.executeUpdate();
+						
+						successful = true;
+			        } catch(ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can not find JDBC class");
+						e.printStackTrace();
+					}
+					catch(SQLException e){
+						BackEnd.logs.update.ERROR("Could not access Database");
+						
+					}
+			        
+			        if(successful) {
+			        	for(int i = 0; i < manSignedOutNames.size(); i++) {
+			        		String output = manSignedOutNames.get(i) + " was manually signed out";
+			        		BackEnd.logs.update.Logs(output);
+			        	}
+			        }
+			        
+			        return successful;
 				}
 			}
 			/**
@@ -562,17 +649,16 @@ public class BackEnd extends config{
 				        "jdbc:ucanaccess://"+config.LogsDBPath);
 					Statement s;
 					s = conn.createStatement();
-					
-					
+								
 					ResultSet rs;
-					rs = s.executeQuery("SELECT [StudentID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " AND 	TimeIn='Still Signed Out'");
-					
+					rs = s.executeQuery("SELECT [TimeIn] FROM [" + config.LogsDBTableName + "] WHERE " + "[StudentID] = '" + studentID + "' AND []TimeIn = '" + stillSignedOut + "'");
 					rs.next(); //move into table
-					
-					rs.getString(1);
-					return true;
-					
-
+					String content = rs.getString(1);
+					if(content.equals(stillSignedOut)) {
+						return true;
+					} else {
+						return false;
+					}
 				} catch (SQLException | ClassNotFoundException e) {
 					return false;
 					
@@ -603,14 +689,7 @@ public class BackEnd extends config{
 					}
 				}
 			public static class pullStudentName {
-				private static String FirstName = null;
-				private static String LastName = null;
-				
-				/**
-				 * Constructor for getting Student Names from ID
-				 * @param studentID input scanned Student ID
-				 */
-				public pullStudentName(int studentID){
+				public static String firstName(int studentID) {
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 					
@@ -622,41 +701,47 @@ public class BackEnd extends config{
 					
 					
 					ResultSet rs;
-					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+config.StudentDBTableName+"]  WHERE [StudentID]='"+ studentID+"'");
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName+"] WHERE [StudentID] = '"+ studentID+"'");
 					
 					rs.next();
-					rs.getString(1);
-					FirstName = rs.getString(2);
-					LastName = rs.getString(3);
+					String firstName = rs.getString(2);
+					return firstName;
 					} catch (ClassNotFoundException e) {
 						BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+						return null;
 					} catch (SQLException e) {
-						e.printStackTrace();
+						BackEnd.logs.update.ERROR("Student ID \"" + studentID + "\" does not exist");
+						return null;
 					}
 				}
-				/**
-				 * 
-				 * @return FirstName as a String
-				 */
-				public static String getFirstName() {
-					//System.out.println(FirstName);
-					return FirstName;
-				}
-				/**
-				 * @return LastName as a String
-				 */
-				public static String getLastName() {
-					return LastName;
-				}
-				/**
-				 * @return First name and last name in a String Array.<br>{FirstName, LastName}
-				 */
-				public static String getBothNames() {
-					String BothNames = FirstName + " " + LastName;
-					return BothNames;
-				}
+				public static String lastName(int studentID) {
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					
 
-				
+					Connection conn=DriverManager.getConnection(
+				        "jdbc:ucanaccess://"+config.StudentDBPath);
+					Statement s;
+					s = conn.createStatement();
+					
+					
+					ResultSet rs;
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName+"] WHERE [StudentID] = '"+ studentID+"'");
+					
+					rs.next();
+					String lastName = rs.getString(3);
+					return lastName;
+					} catch (ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+						return null;
+					} catch (SQLException e) {
+						BackEnd.logs.update.ERROR("Student ID \"" + studentID + "\" does not exist");
+						return null;
+					}
+				}
+				public static String bothNames(int studentID) {
+					return firstName(studentID) + " " + lastName(studentID);
+				}
 				
 				public static boolean containsOnlyNumbers(String str) {
 				    for (int i = 0; i < str.length(); i++) {

@@ -1,5 +1,7 @@
 package mainProgram;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,6 +12,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import javax.swing.ImageIcon;
 
 public class config{
 //The following are universal constants
@@ -23,6 +27,7 @@ public class config{
 		//Logs DB
 		public final static String LogsDBPath  = "data/LogsDB.accdb";
 		public final static String LogsDBTableName  = "Logs";
+		public final static String stillSignedOut = "Still Signed Out";
 		//remote DB Credentials (DB contains SecretKey)
 		public final static String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
 		public final static String remoteDB_User = "username to remote DB";
@@ -51,8 +56,15 @@ public class config{
 	//Fonts
 		public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
 		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
-	
-	
+	//Icons
+		public final static ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
+		public final static ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
+		public final static ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
+		public final static ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
+	//Scren dimensions
+		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		public static double screenWidth = screenSize.getWidth();
+		public static double screenHeight = screenSize.getHeight();
 		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -19,7 +19,30 @@ public class test_findRow {
 		signIn(12345);
 	}
 	public static void signIn(int studentID) {
-		int row = getRow(studentID);
+		int row;
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection(
+		        "jdbc:ucanaccess://"+config.LogsDBPath);
+			Statement s;
+			s = conn.createStatement();
+			
+			
+			ResultSet rs;
+			rs = s.executeQuery("SELECT [ID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " ORDER BY ID DESC");
+			
+			rs.next(); //move into table
+			
+			row = rs.getInt(1);
+			System.out.println(row);
+
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("ERROR");
+			e.printStackTrace();
+			row = -1;
+		}
+		
 		if(row == -1) {
 			System.err.print(studentID + " not found in Databse at " + config.LogsDBPath);
 		}
@@ -77,30 +100,5 @@ public class test_findRow {
 		}
 		
 		
-	}
-	private static int getRow(int studentID) {
-		try {
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
-			Connection conn=DriverManager.getConnection(
-		        "jdbc:ucanaccess://"+config.LogsDBPath);
-			Statement s;
-			s = conn.createStatement();
-			
-			
-			ResultSet rs;
-			rs = s.executeQuery("SELECT [ID] FROM " + config.LogsDBTableName + " WHERE " + "StudentID=" + studentID + " ORDER BY ID DESC");
-			
-			rs.next(); //move into table
-			
-			int row = rs.getInt(1);
-			System.out.println(row);
-			return row;
-
-		} catch (SQLException | ClassNotFoundException e) {
-			System.err.println("ERROR");
-			e.printStackTrace();
-			return -1;
-		}
 	}
 }

@@ -56,8 +56,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import interfaces.RL_Fonts;
-
 public class InitialSetup implements ActionListener{
     String prefix = "";
     String path = "";
@@ -442,7 +440,7 @@ JFrame frame = new JFrame();
 	public static void addTitle(JComponent addToComp, String title) {
 		JTextArea textArea = new JTextArea();
 		//textArea Settings
-		textArea.setFont(RL_Fonts.preferencesTitle);
+		textArea.setFont(RL.preferencesTitle);
 		textArea.setOpaque(false);
 		textArea.setEditable(false);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));

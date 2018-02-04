@@ -65,6 +65,7 @@ public class MAIN {
 	public static void startUp() {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png
 		config.checkRanBefore();
-		FrontEnd.Splash.init();
+		//FrontEnd.Splash.init();
+		FrontEnd.splashScreen.create();
 	}
 }
