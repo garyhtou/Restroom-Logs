@@ -11,6 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * I am planning to completely rebuild front end by using
@@ -61,7 +67,10 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.titleBar.create();
 		content.majorRL.right.table.titleBar.title.create();
 		content.majorRL.right.table.titleBar.clearButton.create();
-		content.majorRL.right.table.tableContent.create();
+		content.majorRL.right.table.tablePane.create();
+		content.majorRL.right.table.tablePane.tableContent.create();
+		content.majorRL.right.table.tablePane.tableContent.update();
+		
 		
 		
 		
@@ -438,6 +447,7 @@ public class FrontEnd extends BackEnd{
 							            			messageCenter.scanEntryMessage.integer(input);
 							            		}
 							            	}
+							            	content.majorRL.right.table.tablePane.tableContent.update();
 							            }
 							        });
 								}
@@ -551,6 +561,7 @@ public class FrontEnd extends BackEnd{
 										} else {
 											JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
 										}
+										content.majorRL.right.table.tablePane.tableContent.update();
 									}
 								});
 								
@@ -558,30 +569,69 @@ public class FrontEnd extends BackEnd{
 							}
 						}
 					}
-					public static class tableContent {
-						static JTable tableContent = new JTable();
+					public static class tablePane {
+						static JScrollPane tablePane = new JScrollPane();
 						public static void create() {
-							
-						//THIS IS A PALCE HOLDER
-							String[] columnNames = {"First Name",
-			                        "Last Name",
-			                        "Time Out"};
-							Object[][] data = {
-							    {"Kathy", "Smith", "10:50"},
-							    {"John", "Doe", "10:50"},
-							    {"Sue", "Black", "10:50"},
-							    {"Jane", "White", "10:50"},
-							    {"Joe", "Brown", "10:50"}
-							};
-							tableContent = new JTable(data, columnNames);
-						//ENDING PLACE HOLDER
-							
-							//tableContent.
-							
-							
-							
-							
-							table.add(tableContent);
+							table.add(tablePane, BorderLayout.CENTER);
+							tablePane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+							tablePane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+						}
+						public static class tableContent {
+							public static void create() {
+								JTable tableContent = new JTable();
+								String[] columnNames = {"First Name", "Last Name", "Time Out"};
+								
+								ArrayList<String[]> manSignedOutNames = new ArrayList<String[]>();
+						        try {
+							        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+									Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+									Statement s;
+									s = conn.createStatement();
+									
+									ResultSet rs;
+									rs = s.executeQuery("SELECT [FirstName], [LastName], [TimeOut] FROM ["+LogsDBTableName+"] WHERE [TimeIn] = '" + stillSignedOut + "'");
+									
+									while(rs.next()) {
+										String[] tempEntry = new String[3];
+										tempEntry[0] = rs.getString(1); //first name
+										tempEntry[1] = rs.getString(2); //last name
+										tempEntry[2] = rs.getString(3); //time out
+										manSignedOutNames.add(tempEntry);
+									}
+						        } catch(ClassNotFoundException e) {
+									BackEnd.logs.update.ERROR("Can not find JDBC class");
+									e.printStackTrace();
+								}
+								catch(SQLException e){
+									BackEnd.logs.update.ERROR("Could not access Database");
+								}
+								
+						        int numOfEntries = manSignedOutNames.size();
+								String[][] data = new String[numOfEntries][3];
+								
+								for(int i = 0; i < manSignedOutNames.size(); i++) {
+									for(int k = 0; k < 3; k++) {
+										data[i][k] = manSignedOutNames.get(i)[k];
+									}
+								}
+								
+								/*Object[][] data2 = {
+								    {"Kathy", "Smith", "10:50"},
+								    {"John", "Doe", "10:50"},
+								    {"Sue", "Black", "10:50"},
+								    {"Jane", "White", "10:50"},
+								    {"Joe", "Brown", "10:50"}
+								};*/
+								
+								tableContent = new JTable(data, columnNames);
+								tableContent.setFillsViewportHeight(true);
+								//tableContent.setAutoscrolls(true); //idk what this does
+								tableContent.setDefaultEditor(Object.class, null); //make table uneditable
+								tablePane.setViewportView(tableContent);
+							}
+							public static void update() {
+								create();
+							}
 						}
 					}
 				}

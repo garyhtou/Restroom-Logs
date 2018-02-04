@@ -708,4 +708,86 @@
 ****  2018/02/04 13:13:30  |  System  |  EXIT
 ----------****  2018/02/04 13:14:49  |  System  |  EXIT
 ----------****  2018/02/04 13:15:51  |  System  |  EXIT
+----------      2018/02/04 13:38:25  |  Gary Tou has signed out
+***** 2018/02/04 13:38:26  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 13:38:26  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 13:38:26  |  ERROR  |  Student ID "111" does not exist
+***** 2018/02/04 13:38:26  |  ERROR  |  Student ID "111" does not exist
+      2018/02/04 13:38:26  |  Could not find 111 in Student Data Base
+      2018/02/04 13:38:28  |  Bob Stern has signed out
+****  2018/02/04 13:38:30  |  System  |  EXIT
+----------****  2018/02/04 13:38:39  |  System  |  EXIT
+----------****  2018/02/04 13:49:51  |  System  |  EXIT
+----------****  2018/02/04 13:50:29  |  System  |  EXIT
+----------****  2018/02/04 13:50:39  |  System  |  EXIT
+----------****  2018/02/04 13:53:01  |  System  |  EXIT
+----------****  2018/02/04 13:53:10  |  System  |  EXIT
+----------****  2018/02/04 13:56:50  |  System  |  EXIT
+----------****  2018/02/04 13:57:22  |  System  |  EXIT
+----------****  2018/02/04 13:57:45  |  System  |  EXIT
+----------****  2018/02/04 13:58:08  |  System  |  EXIT
+----------****  2018/02/04 13:58:24  |  System  |  EXIT
+----------****  2018/02/04 13:59:00  |  System  |  EXIT
+----------****  2018/02/04 14:01:50  |  System  |  EXIT
+----------****  2018/02/04 14:02:08  |  System  |  EXIT
+----------****  2018/02/04 14:02:57  |  System  |  EXIT
+----------****  2018/02/04 14:03:06  |  System  |  EXIT
+----------****  2018/02/04 14:09:20  |  System  |  EXIT
+----------****  2018/02/04 14:10:24  |  System  |  EXIT
+----------****  2018/02/04 14:10:50  |  System  |  EXIT
+----------****  2018/02/04 14:11:13  |  System  |  EXIT
+----------****  2018/02/04 14:11:29  |  System  |  EXIT
+----------****  2018/02/04 14:14:48  |  System  |  EXIT
+----------****  2018/02/04 14:15:24  |  System  |  EXIT
+----------****  2018/02/04 14:15:46  |  System  |  EXIT
+----------****  2018/02/04 14:17:18  |  System  |  EXIT
+----------      2018/02/04 14:19:07  |  Gary Tou has signed in
+      2018/02/04 14:19:10  |  Gary Tou has signed out
+      2018/02/04 14:19:14  |  Gary Tou has signed in
+      2018/02/04 14:19:16  |  Gary Tou has signed out
+      2018/02/04 14:19:18  |  Gary Tou has signed in
+      2018/02/04 14:19:19  |  Gary Tou has signed out
+      2018/02/04 14:19:22  |  Jess Potesrt has signed out
+      2018/02/04 14:19:24  |  Bob Stern has signed in
+      2018/02/04 14:19:25  |  เม aA has signed out
+      2018/02/04 14:19:26  |  Bob Stern has signed out
+***** 2018/02/04 14:19:28  |  ERROR  |  Student ID "44444" does not exist
+***** 2018/02/04 14:19:28  |  ERROR  |  Student ID "44444" does not exist
+***** 2018/02/04 14:19:28  |  ERROR  |  Student ID "44444" does not exist
+***** 2018/02/04 14:19:28  |  ERROR  |  Student ID "44444" does not exist
+      2018/02/04 14:19:28  |  Could not find 44444 in Student Data Base
+      2018/02/04 14:19:30  |  s is not an integer
+      2018/02/04 14:19:31  |  Bob Stern has signed in
+      2018/02/04 14:19:33  |  Jess Potesrt has signed in
+      2018/02/04 14:19:34  |  Gary Tou has signed in
+      2018/02/04 14:19:37  |  Bob Stern has signed out
+      2018/02/04 14:19:38  |  Jess Potesrt has signed out
+      2018/02/04 14:19:39  |  เม aA has signed in
+      2018/02/04 14:19:41  |  เม aA has signed out
+      2018/02/04 14:19:42  |  Gary Tou has signed out
+      2018/02/04 14:19:45  |  renton area code has signed out
+      2018/02/04 14:19:47  |  Seattle area code has signed out
+      2018/02/04 14:19:49  |  Bob Stern was manually signed out
+      2018/02/04 14:19:49  |  Jess Potesrt was manually signed out
+      2018/02/04 14:19:49  |  เม aA was manually signed out
+      2018/02/04 14:19:49  |  Gary Tou was manually signed out
+      2018/02/04 14:19:49  |  renton area code was manually signed out
+      2018/02/04 14:19:49  |  Seattle area code was manually signed out
+      2018/02/04 14:19:58  |  Gary Tou has signed out
+      2018/02/04 14:20:12  |  Bob Stern has signed out
+      2018/02/04 14:20:13  |  Jess Potesrt has signed out
+      2018/02/04 14:20:14  |  เม aA has signed out
+      2018/02/04 14:20:18  |  renton area code has signed out
+      2018/02/04 14:20:23  |  Seattle area code has signed out
+      2018/02/04 14:20:27  |  Mr. Sabo has signed out
+      2018/02/04 14:20:30  |  3- is not an integer
+****  2018/02/04 14:21:53  |  System  |  EXIT
+----------      2018/02/04 14:23:37  |  Gary Tou was manually signed out
+      2018/02/04 14:23:37  |  Bob Stern was manually signed out
+      2018/02/04 14:23:37  |  Jess Potesrt was manually signed out
+      2018/02/04 14:23:37  |  เม aA was manually signed out
+      2018/02/04 14:23:37  |  renton area code was manually signed out
+      2018/02/04 14:23:37  |  Seattle area code was manually signed out
+      2018/02/04 14:23:37  |  Mr. Sabo was manually signed out
+****  2018/02/04 14:23:39  |  System  |  EXIT
 ----------
