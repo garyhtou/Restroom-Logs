@@ -58,7 +58,9 @@ public class RL {
 		public static Font tableTitle = Title.deriveFont(Font.BOLD, both/250);
 		public static Font tableClearButton = Text.deriveFont(Font.PLAIN, both/250);
 		public static Font tableText = Text.deriveFont(Font.PLAIN, both/200);
-		
+	//scan
+		public static Font scan = Main.deriveFont(Font.BOLD, both/100);
+			public static Font userScan = scan;;
 
 	
 //Color

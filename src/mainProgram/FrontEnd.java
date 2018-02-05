@@ -13,6 +13,8 @@ import org.apache.commons.lang.time.StopWatch;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.Connection;
@@ -577,11 +579,11 @@ public class FrontEnd extends BackEnd{
 								scanAndMessages.setTopComponent(scan);
 							}
 							public static class field {
+								static JTextField field = new JTextField();
 								public static void create() {
-									JTextField field = new JTextField();
 							    	field.setEditable(true);
 							    	field.setBackground(Color.WHITE);
-							    	//field.setMinimumSize(new Dimension(220, 220));
+							    	field.setFont(RL.userScan);
 							    	field.setOpaque(true);
 							    	
 							    	GridBagConstraints  c = new GridBagConstraints ();
@@ -639,6 +641,59 @@ public class FrontEnd extends BackEnd{
 							            	content.majorRL.right.table.tablePane.tableContent.update();
 							            }
 							        });
+							    	
+							    	//TEXT SIZE
+							    	field.addComponentListener(new ComponentListener() {
+										public void componentHidden(ComponentEvent e) {}
+										public void componentMoved(ComponentEvent e) {}
+										public void componentShown(ComponentEvent e) {}
+										
+										public void componentResized(ComponentEvent e) {
+											//http://java-sl.com/tip_adapt_label_font_size.html
+											Rectangle rect = field.getBounds();
+											int fontSize = config.minFontSize;
+									        Font f = RL.userScan;
+											
+											Rectangle small = new Rectangle();
+									        Rectangle big = new Rectangle();
+									        									        
+									        while (fontSize < 15) {
+									        	Dimension size=new Dimension();
+									        		FontMetrics fm = field.getFontMetrics(f);
+										            size.width = 1;
+										            size.height = fm.getHeight();
+									            Dimension size1=new Dimension();
+									            	Font f1 = f.deriveFont(f.getStyle(), f.getSize() + 1);
+										            FontMetrics fm2 = field.getFontMetrics(f1);
+										            size1.width = 1;
+										            size1.height = fm2.getHeight();
+									            									        	
+									            small.setSize(size);
+									            big.setSize(size1);
+									            System.out.println("small: " +small);
+									            System.out.println("big: " +big);
+									            if (rect.contains(small) && ! rect.contains(big)) {
+									                break;
+									            }
+									            fontSize++;
+									            System.out.println(fontSize);
+									            System.out.println(f.getSize());
+									            f = f.deriveFont(f.getSize() + 1); //font size not changing
+									            System.out.println(f.getSize());
+									        }
+									        System.out.println(fontSize);
+									        RL.userScan = RL.userScan.deriveFont((float) fontSize);
+									        content.majorRL.left.statsScan.scanAndMessages.scan.field.updateFontSize();
+									        //field.repaint(); //prob not needed
+										}
+									});
+							    
+								}
+								public static void updateFontSize() {
+									field.setFont(RL.userScan);
+								}
+								public static void resizeFIeld() {
+									//TODO: resize field based off font size
 								}
 							}
 							public static class messageCenter {

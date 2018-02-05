@@ -61,8 +61,8 @@ public class config{
 		public final static String CairoFilePath = "assets/fonts/Cairo-Regular.ttf";
 		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
 		public final static String RubikFilePath = "assets/fonts/Rubik-Regular.ttf";
-		private final static int minFontSize = 8;
-		private final static int maxFontSize = 72;
+		public final static int minFontSize = 8;
+		public final static int maxFontSize = 72;
 		public final static double minFontSizeDivider = (screenWidth + screenHeight) / minFontSize;		
 		public final static double maxFontSizeDivider = (screenWidth + screenHeight) / maxFontSize;
 	//Icons
