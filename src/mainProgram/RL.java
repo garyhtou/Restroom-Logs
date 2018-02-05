@@ -42,6 +42,9 @@ public class RL {
 	private static double height = config.screenWidth;
 	private static float both = (float) (width + height);
 	
+	//Color
+	public static Color ForestGreen = Color.decode("#33B523");
+	
 //preset font sizes		NOTE: IF A USER FONT VAR EXISTS, USE THAT ONE. Vars that don't have user vars can not be changed by the user
 	//stats
 		public static Font TeacherName = Main.deriveFont(Font.BOLD, both/70);

@@ -261,16 +261,17 @@ public class FrontEnd extends BackEnd{
 					//TABS
 					//General
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
-							general.addWithFont(new JLabel("SOmething here"));
-							general.addWithFont(new JLabel("and here too!"));
-							general.add(new JButton("maybe something like this!"));
-							general.add(new JToggleButton("OFF | ON"));
-							general.add(new JSlider());
-							general.add(new JLabel("OH HI!"));
-							general.add(new JSlider(JSlider.VERTICAL));
-							JLabel testLabel = new JLabel("HEY!");
-								testLabel.setFont(RL.TeacherName.deriveFont(800f));
-							general.add(testLabel);
+							general.addWithFont(new JLabel("Message Center"));
+								JTextField otherInfoField = new JTextField();
+								otherInfoField.setText(config.defaultOtherInfoMessage);
+								otherInfoField.setEditable(true);
+								otherInfoField.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.update(otherInfoField.getText());;
+									}
+								});
+								general.add(otherInfoField);
+							
 							general.add(new JSeparator());
 							general.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn"));
 						
@@ -704,7 +705,7 @@ public class FrontEnd extends BackEnd{
 								public static class scanEntryMessage {
 									static JLabel message = new JLabel();
 									public static void create() {
-										message.setText("Welcome to the Restroom Logs Program!");
+										message.setText(config.defaultOtherInfoMessage);
 										message.setHorizontalAlignment(SwingConstants.CENTER);
 										message.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
 										message.setFont(RL.scanMessage);
@@ -717,13 +718,13 @@ public class FrontEnd extends BackEnd{
 									}
 									public static void successfulSignIn(String firstLastName) {
 										String outputMessage = firstLastName + " has signed in";
-										message.setForeground(Color.GREEN);
+										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
 										BackEnd.logs.update.Logs(outputMessage);
 									}
 									public static void successfulSignOut(String firstLastName) {
 										String outputMessage = firstLastName + " has signed out";
-										message.setForeground(Color.GREEN);
+										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
 										BackEnd.logs.update.Logs(outputMessage);
 									}

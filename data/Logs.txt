@@ -1205,4 +1205,166 @@
 ----------****  2018/02/05 00:59:59  |  System  |  EXIT
 ----------****  2018/02/05 01:04:25  |  System  |  EXIT
 ----------****  2018/02/05 01:04:56  |  System  |  EXIT
+----------**    2018/02/05 13:21:38  |  Start Up  |  
+
+
+----------
+**    2018/02/05 13:21:38  |  Start Up  |  ranBefore found
+**    2018/02/05 13:21:38  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/05 13:21:38  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/05 13:21:38  |  Start Up  |  Starting Program
+**    2018/02/05 13:21:38  |  Start Up  |  Starting Splash Screen
+**    2018/02/05 13:21:38  |  Start Up  |  Checking for updates
+**    2018/02/05 13:21:38  |  Start Up  |  Opening Window
+      2018/02/05 13:22:52  |  Preferences Opened
+      2018/02/05 13:24:44  |  Bob Stern was manually signed out
+      2018/02/05 13:24:44  |  Jess Potesrt was manually signed out
+      2018/02/05 13:24:44  |  เม aA was manually signed out
+      2018/02/05 13:24:44  |  Gary Tou was manually signed out
+      2018/02/05 13:24:54  |  vgbdfbdvbddbdvb is not an integer
+      2018/02/05 13:24:57  |  Gary Tou has signed out
+      2018/02/05 13:24:59  |  Bob Stern has signed out
+      2018/02/05 13:25:00  |  Jess Potesrt has signed out
+      2018/02/05 13:25:01  |  เม aA has signed out
+      2018/02/05 13:25:02  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/02/05 13:25:02  |  temp2 LAST NAME SOMETHING 2 has signed out
+      2018/02/05 13:25:03  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/05 13:25:03  |  temp4 LAST NAME SOMETHING 4 has signed out
+      2018/02/05 13:25:03  |  temp5 LAST NAME SOMETHING 5 has signed out
+      2018/02/05 13:25:04  |  temp6 LAST NAME SOMETHING 6 has signed out
+      2018/02/05 13:25:08  |  temp7 LAST NAME SOMETHING 7 has signed out
+      2018/02/05 13:25:08  |  temp8 LAST NAME SOMETHING 8 has signed out
+      2018/02/05 13:25:09  |  temp9 LAST NAME SOMETHING 9 has signed out
+      2018/02/05 13:25:09  |  temp10 LAST NAME SOMETHING 10 has signed out
+      2018/02/05 13:25:11  |  Mr. Sabo has signed out
+***** 2018/02/05 13:25:12  |  ERROR  |  Student ID "245" does not exist
+***** 2018/02/05 13:25:12  |  ERROR  |  Student ID "245" does not exist
+***** 2018/02/05 13:25:12  |  ERROR  |  Student ID "245" does not exist
+***** 2018/02/05 13:25:12  |  ERROR  |  Student ID "245" does not exist
+      2018/02/05 13:25:12  |  Could not find 245 in Student Data Base
+      2018/02/05 13:25:13  |  Seattle area code has signed out
+      2018/02/05 13:25:17  |  renton area code has signed out
+      2018/02/05 13:25:23  |  Gary Tou has signed in
+      2018/02/05 13:25:25  |  Gary Tou has signed out
+****  2018/02/05 13:25:38  |  System  |  EXIT
+----------**    2018/02/05 13:25:41  |  Start Up  |  
+
+
+----------
+**    2018/02/05 13:25:41  |  Start Up  |  ranBefore found
+**    2018/02/05 13:25:41  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/05 13:25:41  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/05 13:25:41  |  Start Up  |  Starting Program
+**    2018/02/05 13:25:41  |  Start Up  |  Starting Splash Screen
+**    2018/02/05 13:25:41  |  Start Up  |  Checking for updates
+**    2018/02/05 13:25:41  |  Start Up  |  Opening Window
+      2018/02/05 13:25:52  |  Gary Tou has signed in
+****  2018/02/05 13:26:33  |  System  |  EXIT
+----------**    2018/02/05 13:28:52  |  Start Up  |  
+
+
+----------
+**    2018/02/05 13:28:52  |  Start Up  |  ranBefore found
+**    2018/02/05 13:28:52  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/05 13:28:52  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/05 13:28:52  |  Start Up  |  Starting Program
+**    2018/02/05 13:28:52  |  Start Up  |  Starting Splash Screen
+**    2018/02/05 13:28:52  |  Start Up  |  Checking for updates
+**    2018/02/05 13:28:52  |  Start Up  |  Opening Window
+      2018/02/05 13:29:50  |  as is not an integer
+      2018/02/05 13:29:52  |  Gary Tou has signed out
+      2018/02/05 13:30:29  |  Gary Tou has signed in
+****  2018/02/05 13:32:41  |  System  |  EXIT
+----------      2018/02/05 13:34:49  |  Gary Tou has signed out
+      2018/02/05 13:34:53  |  Bob Stern has signed in
+      2018/02/05 13:34:55  |  Bob Stern has signed out
+****  2018/02/05 13:35:04  |  System  |  EXIT
+----------      2018/02/05 13:35:39  |  Gary Tou has signed in
+      2018/02/05 13:36:04  |  renton area code has signed in
+      2018/02/05 13:36:05  |  Seattle area code has signed in
+      2018/02/05 13:36:08  |  Seattle area code has signed out
+      2018/02/05 13:36:11  |  renton area code has signed out
+***** 2018/02/05 13:36:13  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/05 13:36:13  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/05 13:36:13  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/05 13:36:13  |  ERROR  |  Student ID "123" does not exist
+      2018/02/05 13:36:13  |  Could not find 123 in Student Data Base
+***** 2018/02/05 13:36:19  |  ERROR  |  Student ID "112" does not exist
+***** 2018/02/05 13:36:19  |  ERROR  |  Student ID "112" does not exist
+***** 2018/02/05 13:36:19  |  ERROR  |  Student ID "112" does not exist
+***** 2018/02/05 13:36:19  |  ERROR  |  Student ID "112" does not exist
+      2018/02/05 13:36:19  |  Could not find 112 in Student Data Base
+***** 2018/02/05 13:36:21  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:21  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:21  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:21  |  ERROR  |  Student ID "12121" does not exist
+      2018/02/05 13:36:21  |  Could not find 12121 in Student Data Base
+      2018/02/05 13:36:35  |  Bob Stern has signed in
+***** 2018/02/05 13:36:38  |  ERROR  |  Student ID "111111" does not exist
+***** 2018/02/05 13:36:38  |  ERROR  |  Student ID "111111" does not exist
+***** 2018/02/05 13:36:38  |  ERROR  |  Student ID "111111" does not exist
+***** 2018/02/05 13:36:38  |  ERROR  |  Student ID "111111" does not exist
+      2018/02/05 13:36:38  |  Could not find 111111 in Student Data Base
+***** 2018/02/05 13:36:40  |  ERROR  |  Student ID "1111111" does not exist
+***** 2018/02/05 13:36:40  |  ERROR  |  Student ID "1111111" does not exist
+***** 2018/02/05 13:36:40  |  ERROR  |  Student ID "1111111" does not exist
+***** 2018/02/05 13:36:40  |  ERROR  |  Student ID "1111111" does not exist
+      2018/02/05 13:36:40  |  Could not find 1111111 in Student Data Base
+***** 2018/02/05 13:36:43  |  ERROR  |  Student ID "11111111" does not exist
+***** 2018/02/05 13:36:43  |  ERROR  |  Student ID "11111111" does not exist
+***** 2018/02/05 13:36:43  |  ERROR  |  Student ID "11111111" does not exist
+***** 2018/02/05 13:36:43  |  ERROR  |  Student ID "11111111" does not exist
+      2018/02/05 13:36:43  |  Could not find 11111111 in Student Data Base
+***** 2018/02/05 13:36:46  |  ERROR  |  Student ID "111111111" does not exist
+***** 2018/02/05 13:36:46  |  ERROR  |  Student ID "111111111" does not exist
+***** 2018/02/05 13:36:46  |  ERROR  |  Student ID "111111111" does not exist
+***** 2018/02/05 13:36:46  |  ERROR  |  Student ID "111111111" does not exist
+      2018/02/05 13:36:46  |  Could not find 111111111 in Student Data Base
+***** 2018/02/05 13:36:49  |  ERROR  |  Student ID "1111111111" does not exist
+***** 2018/02/05 13:36:49  |  ERROR  |  Student ID "1111111111" does not exist
+***** 2018/02/05 13:36:49  |  ERROR  |  Student ID "1111111111" does not exist
+***** 2018/02/05 13:36:49  |  ERROR  |  Student ID "1111111111" does not exist
+      2018/02/05 13:36:49  |  Could not find 1111111111 in Student Data Base
+***** 2018/02/05 13:36:55  |  ERROR  |  Student ID "1213" does not exist
+***** 2018/02/05 13:36:55  |  ERROR  |  Student ID "1213" does not exist
+***** 2018/02/05 13:36:55  |  ERROR  |  Student ID "1213" does not exist
+***** 2018/02/05 13:36:55  |  ERROR  |  Student ID "1213" does not exist
+      2018/02/05 13:36:55  |  Could not find 1213 in Student Data Base
+***** 2018/02/05 13:36:56  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:56  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:56  |  ERROR  |  Student ID "12121" does not exist
+***** 2018/02/05 13:36:56  |  ERROR  |  Student ID "12121" does not exist
+      2018/02/05 13:36:56  |  Could not find 12121 in Student Data Base
+***** 2018/02/05 13:37:00  |  ERROR  |  Student ID "32" does not exist
+***** 2018/02/05 13:37:00  |  ERROR  |  Student ID "32" does not exist
+***** 2018/02/05 13:37:00  |  ERROR  |  Student ID "32" does not exist
+***** 2018/02/05 13:37:00  |  ERROR  |  Student ID "32" does not exist
+      2018/02/05 13:37:00  |  Could not find 32 in Student Data Base
+****  2018/02/05 13:37:17  |  System  |  EXIT
+----------      2018/02/05 13:38:49  |  Gary Tou has signed out
+      2018/02/05 13:40:03  |  Preferences Opened
+      2018/02/05 13:40:16  |  Preferences Opened
+****  2018/02/05 13:40:26  |  System  |  EXIT
+----------      2018/02/05 13:49:44  |  Preferences Opened
+      2018/02/05 13:50:08  |  Preferences Opened
+****  2018/02/05 13:51:12  |  System  |  EXIT
+----------      2018/02/05 13:54:56  |  Preferences Opened
+****  2018/02/05 13:59:06  |  System  |  EXIT
+----------      2018/02/05 14:01:35  |  Seattle area code has signed in
+      2018/02/05 14:01:38  |  Jess Potesrt was manually signed out
+      2018/02/05 14:01:38  |  เม aA was manually signed out
+      2018/02/05 14:01:38  |  temp1 LAST NAME SOMETHING 1 was manually signed out
+      2018/02/05 14:01:38  |  temp2 LAST NAME SOMETHING 2 was manually signed out
+      2018/02/05 14:01:38  |  temp3 LAST NAME SOMETHING 3 was manually signed out
+      2018/02/05 14:01:38  |  temp4 LAST NAME SOMETHING 4 was manually signed out
+      2018/02/05 14:01:38  |  temp5 LAST NAME SOMETHING 5 was manually signed out
+      2018/02/05 14:01:38  |  temp6 LAST NAME SOMETHING 6 was manually signed out
+      2018/02/05 14:01:38  |  temp7 LAST NAME SOMETHING 7 was manually signed out
+      2018/02/05 14:01:38  |  temp8 LAST NAME SOMETHING 8 was manually signed out
+      2018/02/05 14:01:38  |  temp9 LAST NAME SOMETHING 9 was manually signed out
+      2018/02/05 14:01:38  |  temp10 LAST NAME SOMETHING 10 was manually signed out
+      2018/02/05 14:01:38  |  Mr. Sabo was manually signed out
+      2018/02/05 14:01:38  |  renton area code was manually signed out
+      2018/02/05 14:01:38  |  Gary Tou was manually signed out
+****  2018/02/05 14:01:41  |  System  |  EXIT
 ----------

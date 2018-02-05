@@ -70,7 +70,8 @@ public class config{
 		public final static ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public final static ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
 		public final static ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
-	
+	//message center
+		public static String defaultOtherInfoMessage = "Welcome To The Restroom Logs Program";
 		
 	/**
 	 * 
