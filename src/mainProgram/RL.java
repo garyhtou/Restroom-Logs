@@ -47,6 +47,7 @@ public class RL {
 		public static Font TeacherName = Main.deriveFont(Font.BOLD, both/70);
 			public static Font userTeacherName = TeacherName; //user changed size
 		public static Font otherInfo = Title.deriveFont(Font.PLAIN, both/200);
+			public static Font userOtherInfo = otherInfo;
 	//preferences
 		public static Font preferencesTitle = Title.deriveFont(Font.BOLD, both/80);
 		public static Font preferencesText = Text.deriveFont(Font.PLAIN, both/170);

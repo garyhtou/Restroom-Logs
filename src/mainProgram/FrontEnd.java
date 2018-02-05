@@ -77,8 +77,8 @@ public class FrontEnd extends BackEnd{
 		
 	//final changes
 		frame.setVisible(true);
-		content.majorRL.setDivLoc(); //must be done after frame is set visible
-		
+		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXE: NOT WORKING
+		content.majorRL.left.statsScan.scanAndMessages.setDivLoc();
 		
 		
 	}
@@ -264,6 +264,11 @@ public class FrontEnd extends BackEnd{
 							general.add(new JButton("maybe something like this!"));
 							general.add(new JToggleButton("OFF | ON"));
 							general.add(new JSlider());
+							general.add(new JLabel("OH HI!"));
+							general.add(new JSlider(JSlider.VERTICAL));
+							JLabel testLabel = new JLabel("HEY!");
+								testLabel.setFont(RL.TeacherName.deriveFont(800f));
+							general.add(testLabel);
 							general.add(new JSeparator());
 							general.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn"));
 						
@@ -291,9 +296,28 @@ public class FrontEnd extends BackEnd{
 							fontSize teacherName = new fontSize(font, "Teacher Name", RL.TeacherName, RL.userTeacherName) {
 								public void updateUserFont(Font refFont) {
 									RL.userTeacherName = refFont;
-									System.out.println("RL.userTeacherName: " + RL.userTeacherName.getSize());
+								}
+								public void updateJComponent() {
+									content.majorRL.left.statsScan.stats.information.teacherName.updateFontSize();
 								}
 							};
+							fontSize otherInfo = new fontSize(font, "Other Info", RL.otherInfo, RL.userOtherInfo) {
+								public void updateUserFont(Font refFont) {
+									RL.userOtherInfo = refFont;
+								}
+								public void updateJComponent() {
+									content.majorRL.left.statsScan.stats.information.otherInfo.updateFontSize();
+								}
+							};
+								//DUMMY FONTS!
+										for(int i = 1; i <= 200; i++) {
+											String name = "Dummy Font: " + i;
+											fontSize test = new fontSize(font,name, RL.tableText, RL.tableText) {
+												public void updateUserFont(Font refFont) {}
+												public void updateJComponent() {}
+											};
+										}
+							
 							
 					//Wifi
 						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
@@ -316,23 +340,31 @@ public class FrontEnd extends BackEnd{
 					 * @param toolTip tool tip for user's info
 					 */
 					public preferences(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
-						JPanel newTab = new JPanel();
-						newTab.setLayout(new BorderLayout());
+						JPanel newTab = new JPanel(new BorderLayout());
 						tabbedPane.addTab(nameOfTab, icon, newTab, toolTip);
 						
-						JTextArea Title = new JTextArea();
-						Title.setFont(RL.preferencesTitle);
-						Title.setOpaque(false);
-						Title.setEditable(false);
-						Title.setAlignmentX(JTextArea.CENTER_ALIGNMENT); //FIXME: Not working
-						Title.setBorder(new CompoundBorder(
-							BorderFactory.createEmptyBorder(10, 10, 15, 10),
-							BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK)
-						));
-						Title.setText(nameOfTab);
-						newTab.add(Title, BorderLayout.PAGE_START);
+						JPanel mainPane = new JPanel(new BorderLayout());
 						
-						newTab.add(this, BorderLayout.CENTER);
+						JScrollPane scrollPane = new JScrollPane();
+							scrollPane.setViewportView(mainPane);
+							scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+							scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+							newTab.add(scrollPane, BorderLayout.CENTER);
+												
+						JTextArea Title = new JTextArea();
+							Title.setFont(RL.preferencesTitle);
+							Title.setOpaque(false);
+							Title.setEditable(false);
+							Title.setAlignmentX(JTextArea.CENTER_ALIGNMENT); //FIXME: Not working
+							Title.setBorder(new CompoundBorder(
+								BorderFactory.createEmptyBorder(10, 10, 15, 10),
+								BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK)
+							));
+							Title.setText(nameOfTab);
+						
+						mainPane.add(Title, BorderLayout.PAGE_START);
+						mainPane.add(this, BorderLayout.CENTER);
+						
 						this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 						this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 						this.setFont(RL.preferencesText);
@@ -344,7 +376,13 @@ public class FrontEnd extends BackEnd{
 					public static abstract class fontSize extends JPanel{
 						Font refFont;
 						/**
-						 * user changed font sizes
+						 * user changed font sizes<br><br>
+						 * Note: all JComponent that have user changed sizes must have a <strong>updateFontSize()</strong> method.
+						 * <br>
+						 * Ex.<br><code>
+						 * public static void updateFontSize() {<br>
+							    teacherName.setFont(RL.userTeacherName);<Br>
+							}</code>
 						 * @param pane wich this JPanel to the parent JPael
 						 * @param name name of font (Teacher Name)
 						 * @param defaultFont orginal font
@@ -355,26 +393,50 @@ public class FrontEnd extends BackEnd{
 							int minDivider = (int) ((config.screenWidth + config.screenHeight) / config.minFontSizeDivider);
 							int maxDivider = (int) ((config.screenWidth + config.screenHeight) / config.maxFontSizeDivider);
 							
-							System.out.println(defaultSize);
-							System.out.println(minDivider);
-							System.out.println(maxDivider);
-							
-							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);
-														
+							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);;
 							JLabel title = new JLabel(name + ": " + slider.getValue());
 							title.setFont(defaultFont);
 							slider.addChangeListener(new ChangeListener() {
-								public void stateChanged(ChangeEvent arg0) {
+								public void stateChanged(ChangeEvent arg0) { //TODO WORK AREA
 									title.setText(name + ": " + slider.getValue());
 									refFont = defaultFont.deriveFont(defaultFont.getStyle(), slider.getValue());
 									updateUserFont(refFont);
 									title.setFont(refFont);
+									updateJComponent();
 									}
 							});
+							JButton reset = new JButton("Reset");
+							reset.addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									title.setText(name + ": " + defaultFont.getSize());
+									refFont = defaultFont;
+									updateUserFont(defaultFont);
+									title.setFont(defaultFont);
+									slider.setValue(defaultFont.getSize());
+									updateJComponent();
+								}
+							});
 							
+							title.setBorder(BorderFactory.createEmptyBorder(5, 10, 0, 0));
+							slider.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 15));
+							
+							this.setLayout(new GridBagLayout());
+							GridBagConstraints titleC = new GridBagConstraints();
+								titleC.gridx = 0;
+								titleC.fill = GridBagConstraints.HORIZONTAL;
+								titleC.weightx = (double) 1.0;
+							GridBagConstraints sliderPaneC = new GridBagConstraints();
+								sliderPaneC.gridx = 1;
+							
+							JPanel sliderPane = new JPanel(new BorderLayout());
+								sliderPane.add(slider, BorderLayout.LINE_START);
+								sliderPane.add(reset, BorderLayout.LINE_END);
+								sliderPane.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 15));
 								
-							this.add(title);
-							this.add(slider);
+							this.add(title, titleC);
+							this.add(sliderPane, sliderPaneC);
+							
 							pane.add(this);
 						}
 						/**
@@ -383,6 +445,11 @@ public class FrontEnd extends BackEnd{
 						 * @param refFont the new font with user changed size
 						 */
 						public abstract void updateUserFont(Font refFont);
+						/**
+						 * <strong>IMPORTANT: </strong> calls JComponent's updateFontSize method to user font.<br>
+						 * Ex. content.majorRL.left.statsScan.stats.information.teacherName.updateFontSize();
+						 */
+						public abstract void updateJComponent();
 					}
 				}
 			}
@@ -399,7 +466,7 @@ public class FrontEnd extends BackEnd{
 				frame.add(majorRL);
 			}
 			public static void setDivLoc() {
-				majorRL.setDividerLocation((double) 0.9); // left - 0 | 1 - right
+				majorRL.setDividerLocation((double) 0.9);
 			}
 			public static class left {
 				static JPanel left = new JPanel(new BorderLayout());
@@ -407,15 +474,21 @@ public class FrontEnd extends BackEnd{
 					majorRL.setLeftComponent(left);
 				}
 				public static class statsScan {
-					static JPanel statsScan = new JPanel(new BorderLayout());
+					static JPanel statsScan = new JPanel(new GridBagLayout());
 					public static void create() {
-						left.add(statsScan, BorderLayout.PAGE_START);
+						left.add(statsScan, BorderLayout.CENTER);
 						
 					}
 					public static class stats {
 						static JPanel stats = new JPanel(new BorderLayout());
 						public static void create() {
-							statsScan.add(stats, BorderLayout.PAGE_START);
+							GridBagConstraints statsC = new GridBagConstraints();
+								statsC.gridy = 0;
+								statsC.gridx = 0;
+								statsC.weightx = 1.0;
+								statsC.weighty = 0.0;
+								statsC.fill = GridBagConstraints.HORIZONTAL;
+							statsScan.add(stats, statsC);
 						}
 						public static class banner {
 							static JLabel banner = new JLabel();
@@ -457,8 +530,10 @@ public class FrontEnd extends BackEnd{
 								public static void create() {
 									update();
 									information.add(teacherName);
+									updateFontSize();
+								}
+								public static void updateFontSize() {
 									teacherName.setFont(RL.userTeacherName);
-									System.out.println(teacherName.getFont());
 								}
 								public static void update() {
 									String tempTeacherName = "Mr. Sabo"; //TODO: get teacher name from file
@@ -470,8 +545,11 @@ public class FrontEnd extends BackEnd{
 								static JLabel otherInfo = new JLabel();
 								public static void create() {
 									update("Welcome to the Restroom Log Program");
-									otherInfo.setFont(RL.otherInfo);
+									updateFontSize();
 									information.add(otherInfo);
+								}
+								public static void updateFontSize() {
+									otherInfo.setFont(RL.userOtherInfo);
 								}
 								public static void update(String info) {
 									otherInfo.setText(info);
@@ -482,7 +560,16 @@ public class FrontEnd extends BackEnd{
 					public static class scanAndMessages {
 						static JSplitPane scanAndMessages = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 						public static void create() {
-							statsScan.add(scanAndMessages);
+							GridBagConstraints scanAndMessagesC = new GridBagConstraints();
+								scanAndMessagesC.gridx = 0;
+								scanAndMessagesC.gridy = 1;
+								scanAndMessagesC.weightx = 1.0;
+								scanAndMessagesC.weighty = 1.0;
+								scanAndMessagesC.fill = GridBagConstraints.BOTH;
+							statsScan.add(scanAndMessages, scanAndMessagesC);
+						}
+						public static void setDivLoc() {
+							scanAndMessages.setDividerLocation((double)0.5);
 						}
 						public static class scan {
 							static JPanel scan = new JPanel(new GridBagLayout());

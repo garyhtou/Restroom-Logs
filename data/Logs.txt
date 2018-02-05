@@ -1044,4 +1044,134 @@
 ****  2018/02/04 19:51:55  |  System  |  EXIT
 ----------      2018/02/04 19:53:05  |  Preferences Opened
 ****  2018/02/04 19:53:24  |  System  |  EXIT
+----------      2018/02/04 19:59:42  |  Preferences Opened
+****  2018/02/04 19:59:58  |  System  |  EXIT
+----------      2018/02/04 20:00:13  |  Preferences Opened
+****  2018/02/04 20:00:20  |  System  |  EXIT
+----------      2018/02/04 20:03:46  |  Preferences Opened
+****  2018/02/04 20:04:00  |  System  |  EXIT
+----------      2018/02/04 20:07:20  |  Preferences Opened
+****  2018/02/04 20:07:29  |  System  |  EXIT
+----------      2018/02/04 20:08:10  |  Preferences Opened
+****  2018/02/04 20:08:32  |  System  |  EXIT
+----------      2018/02/04 20:09:46  |  Preferences Opened
+****  2018/02/04 20:10:01  |  System  |  EXIT
+----------      2018/02/04 20:16:21  |  Preferences Opened
+****  2018/02/04 20:16:28  |  System  |  EXIT
+----------      2018/02/04 20:17:48  |  Preferences Opened
+****  2018/02/04 20:18:13  |  System  |  EXIT
+----------      2018/02/04 20:30:10  |  Preferences Opened
+****  2018/02/04 20:30:19  |  System  |  EXIT
+----------      2018/02/04 20:31:13  |  Preferences Opened
+****  2018/02/04 20:31:24  |  System  |  EXIT
+----------      2018/02/04 20:32:05  |  Preferences Opened
+****  2018/02/04 20:32:20  |  System  |  EXIT
+----------      2018/02/04 20:33:50  |  Preferences Opened
+      2018/02/04 20:34:07  |  Preferences Opened
+****  2018/02/04 20:34:15  |  System  |  EXIT
+----------      2018/02/04 20:35:00  |  Preferences Opened
+****  2018/02/04 20:35:07  |  System  |  EXIT
+----------      2018/02/04 20:37:14  |  Preferences Opened
+****  2018/02/04 20:37:23  |  System  |  EXIT
+----------      2018/02/04 20:39:44  |  Preferences Opened
+****  2018/02/04 20:39:52  |  System  |  EXIT
+----------      2018/02/04 20:40:36  |  Preferences Opened
+****  2018/02/04 20:40:48  |  System  |  EXIT
+----------      2018/02/04 20:43:53  |  Preferences Opened
+****  2018/02/04 20:44:01  |  System  |  EXIT
+----------      2018/02/04 20:44:32  |  Preferences Opened
+****  2018/02/04 20:44:40  |  System  |  EXIT
+----------      2018/02/04 20:45:50  |  Preferences Opened
+      2018/02/04 20:45:51  |  Preferences Opened
+****  2018/02/04 20:45:58  |  System  |  EXIT
+----------      2018/02/04 20:46:19  |  Preferences Opened
+****  2018/02/04 20:46:31  |  System  |  EXIT
+----------      2018/02/04 20:47:53  |  Preferences Opened
+****  2018/02/04 20:48:05  |  System  |  EXIT
+----------      2018/02/04 20:48:17  |  Preferences Opened
+****  2018/02/04 20:48:24  |  System  |  EXIT
+----------      2018/02/04 20:49:03  |  Preferences Opened
+****  2018/02/04 20:49:10  |  System  |  EXIT
+----------      2018/02/04 20:49:21  |  Preferences Opened
+****  2018/02/04 20:49:33  |  System  |  EXIT
+----------      2018/02/04 20:50:43  |  Preferences Opened
+****  2018/02/04 20:50:49  |  System  |  EXIT
+----------      2018/02/04 20:51:06  |  Preferences Opened
+****  2018/02/04 20:51:15  |  System  |  EXIT
+----------      2018/02/04 20:55:56  |  Preferences Opened
+      2018/02/04 20:56:35  |  Preferences Opened
+      2018/02/04 20:56:55  |  Preferences Opened
+****  2018/02/04 20:57:07  |  System  |  EXIT
+----------      2018/02/04 21:00:31  |  Preferences Opened
+****  2018/02/04 21:00:33  |  System  |  EXIT
+----------      2018/02/04 21:03:06  |  Preferences Opened
+      2018/02/04 21:03:10  |  Preferences Opened
+      2018/02/04 21:03:12  |  Preferences Opened
+****  2018/02/04 21:03:13  |  System  |  EXIT
+----------      2018/02/04 21:06:47  |  Preferences Opened
+****  2018/02/04 21:06:49  |  System  |  EXIT
+----------      2018/02/04 21:07:17  |  Preferences Opened
+****  2018/02/04 21:07:19  |  System  |  EXIT
+----------      2018/02/04 21:10:25  |  Preferences Opened
+****  2018/02/04 21:10:26  |  System  |  EXIT
+----------      2018/02/04 21:11:22  |  Preferences Opened
+****  2018/02/04 21:11:42  |  System  |  EXIT
+----------      2018/02/04 21:13:31  |  Preferences Opened
+****  2018/02/04 21:13:41  |  System  |  EXIT
+----------      2018/02/04 21:14:25  |  Preferences Opened
+****  2018/02/04 21:14:29  |  System  |  EXIT
+----------      2018/02/04 21:15:51  |  Preferences Opened
+****  2018/02/04 21:15:55  |  System  |  EXIT
+----------      2018/02/04 21:16:08  |  Preferences Opened
+****  2018/02/04 21:16:14  |  System  |  EXIT
+----------      2018/02/04 21:16:25  |  Preferences Opened
+****  2018/02/04 21:16:44  |  System  |  EXIT
+----------      2018/02/04 21:17:00  |  Preferences Opened
+****  2018/02/04 21:17:03  |  System  |  EXIT
+----------      2018/02/04 21:17:14  |  Preferences Opened
+      2018/02/04 21:17:39  |  Preferences Opened
+****  2018/02/04 21:17:43  |  System  |  EXIT
+----------      2018/02/04 21:18:04  |  Preferences Opened
+****  2018/02/04 21:18:11  |  System  |  EXIT
+----------      2018/02/04 21:20:32  |  Preferences Opened
+****  2018/02/04 21:21:05  |  System  |  EXIT
+----------      2018/02/04 21:21:59  |  Preferences Opened
+****  2018/02/04 21:22:17  |  System  |  EXIT
+----------      2018/02/04 21:23:29  |  Preferences Opened
+      2018/02/04 21:24:09  |  Preferences Opened
+****  2018/02/04 21:24:23  |  System  |  EXIT
+----------      2018/02/04 21:27:25  |  Preferences Opened
+****  2018/02/04 21:27:33  |  System  |  EXIT
+----------      2018/02/04 21:28:37  |  Preferences Opened
+****  2018/02/04 21:28:49  |  System  |  EXIT
+----------      2018/02/04 21:28:59  |  Preferences Opened
+****  2018/02/04 21:29:19  |  System  |  EXIT
+----------      2018/02/04 21:29:39  |  Preferences Opened
+****  2018/02/04 21:30:03  |  System  |  EXIT
+----------****  2018/02/04 21:30:34  |  System  |  EXIT
+----------****  2018/02/04 21:34:39  |  System  |  EXIT
+----------****  2018/02/04 21:35:31  |  System  |  EXIT
+----------**    2018/02/04 21:40:06  |  Start Up  |  
+
+
+----------
+**    2018/02/04 21:40:06  |  Start Up  |  ranBefore found
+**    2018/02/04 21:40:06  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 21:40:06  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 21:40:06  |  Start Up  |  Starting Program
+**    2018/02/04 21:40:06  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 21:40:06  |  Start Up  |  Checking for updates
+**    2018/02/04 21:40:06  |  Start Up  |  Opening Window
+      2018/02/04 21:52:10  |  df is not an integer
+****  2018/02/04 22:30:29  |  System  |  EXIT
+----------****  2018/02/04 22:32:53  |  System  |  EXIT
+----------****  2018/02/04 22:33:33  |  System  |  EXIT
+----------****  2018/02/04 22:34:00  |  System  |  EXIT
+----------****  2018/02/04 22:34:09  |  System  |  EXIT
+----------****  2018/02/04 22:34:19  |  System  |  EXIT
+----------****  2018/02/04 22:35:04  |  System  |  EXIT
+----------****  2018/02/04 22:35:32  |  System  |  EXIT
+----------****  2018/02/04 22:37:58  |  System  |  EXIT
+----------      2018/02/04 22:38:21  |  ok is not an integer
+****  2018/02/04 22:38:23  |  System  |  EXIT
 ----------
