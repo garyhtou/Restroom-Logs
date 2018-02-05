@@ -20,6 +20,10 @@ public class config{
 	//Critical Vars
 		public static boolean ranBefore = true;
 		public static String VersionNumber = getVersionNumber();
+	//Scren dimensions
+		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		public static double screenWidth = screenSize.getWidth();
+		public static double screenHeight = screenSize.getHeight();
 	//Databases
 		//Student DB (Not final because file path should be customizable
 		public static String StudentDBPath  = getStudentDBPath();
@@ -54,18 +58,19 @@ public class config{
 		public final static String StartUpPriority = "**   "; //Out of 5
 		public final static String updateLogsPriority = "     "; //Out of 5
 	//Fonts file path
-		public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
+		public final static String CairoFilePath = "assets/fonts/Cairo-Regular.ttf";
 		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
 		public final static String RubikFilePath = "assets/fonts/Rubik-Regular.ttf";
+		private final static int minFontSize = 8;
+		private final static int maxFontSize = 72;
+		public final static double minFontSizeDivider = (screenWidth + screenHeight) / minFontSize;		
+		public final static double maxFontSizeDivider = (screenWidth + screenHeight) / maxFontSize;
 	//Icons
 		public final static ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
+		public final static ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public final static ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
 		public final static ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
-		public final static ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
-	//Scren dimensions
-		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		public static double screenWidth = screenSize.getWidth();
-		public static double screenHeight = screenSize.getHeight();
+	
 		
 	/**
 	 * 

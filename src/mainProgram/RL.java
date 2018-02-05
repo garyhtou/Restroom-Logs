@@ -35,18 +35,30 @@ public class RL {
 	//Load fonts
 	private static Font Main = loadFont(config.KollektifFilePath); //Main font
 	private static Font Title = loadFont(config.RubikFilePath); //Title Font
-	private static Font Text = loadFont(config.AnticSlabFilePath); //Regular Text font
+	private static Font Text = loadFont(config.CairoFilePath); //Regular Text font
 	
 	//for dynamic font size
 	private static double width = config.screenWidth;
 	private static double height = config.screenWidth;
 	private static float both = (float) (width + height);
 	
-	//preset font sizes	
-	public static Font preferencesTitle = Title.deriveFont(Font.BOLD, both/80);
-	public static Font TeacherName = Main.deriveFont(Font.BOLD, both/*/150*/);
-	
-	
+//preset font sizes		NOTE: IF A USER FONT VAR EXISTS, USE THAT ONE. Vars that don't have user vars can not be changed by the user
+	//stats
+		public static Font TeacherName = Main.deriveFont(Font.BOLD, both/70);
+			public static Font userTeacherName = TeacherName; //user changed size
+		public static Font otherInfo = Title.deriveFont(Font.PLAIN, both/200);
+	//preferences
+		public static Font preferencesTitle = Title.deriveFont(Font.BOLD, both/80);
+		public static Font preferencesText = Text.deriveFont(Font.PLAIN, both/170);
+	//message center
+		public static Font scanMessage = Text.deriveFont(Font.BOLD, both/150);
+		public static Font otherMessage = Text.deriveFont(Font.BOLD, both/230);
+	//table
+		public static Font tableTitle = Title.deriveFont(Font.BOLD, both/250);
+		public static Font tableClearButton = Text.deriveFont(Font.PLAIN, both/250);
+		public static Font tableText = Text.deriveFont(Font.PLAIN, both/200);
+		
+
 	
 //Color
 	/**

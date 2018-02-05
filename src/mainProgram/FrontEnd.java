@@ -2,8 +2,11 @@ package mainProgram;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.apache.commons.lang.time.StopWatch;
 
@@ -253,10 +256,16 @@ public class FrontEnd extends BackEnd{
 						JTabbedPane tabbedPane = new JTabbedPane();
 						tabbedPane.setPreferredSize(new Dimension((int) (screenWidth/1.3), (int) (screenHeight/1.3)));
 												
-					//tabs
-						
+					//TABS
 					//General
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
+							general.addWithFont(new JLabel("SOmething here"));
+							general.addWithFont(new JLabel("and here too!"));
+							general.add(new JButton("maybe something like this!"));
+							general.add(new JToggleButton("OFF | ON"));
+							general.add(new JSlider());
+							general.add(new JSeparator());
+							general.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn"));
 						
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
@@ -264,10 +273,10 @@ public class FrontEnd extends BackEnd{
 								clearLogText.setOpaque(false);
 								clearLogText.setEditable(false);
 								clearLogText.setText("Clear PDF Log file");
-								logs.add(clearLogText);
-							JButton clearLogTextbutton = new JButton("Clear PDF");
-								clearLogTextbutton.setToolTipText("Caution, this will clear all student entry and exit logs");
-								clearLogTextbutton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
+								logs.addWithFont(clearLogText);
+							JButton clearLogTextButton = new JButton("Clear PDF");
+								clearLogTextButton.setToolTipText("Caution, this will clear all student entry and exit logs");
+								clearLogTextButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
 									int choice = JOptionPane.showConfirmDialog(logs, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
 									if(choice == JOptionPane.YES_OPTION) {
 										BackEnd.email.PDF.CreateBlankPDF();
@@ -275,11 +284,25 @@ public class FrontEnd extends BackEnd{
 										JOptionPane.showMessageDialog(logs, "PDF Log has been cleared");
 									}
 								});
+								logs.add(clearLogTextButton);
 						
+					//Font
+						preferences font = new preferences(tabbedPane, "Font", null, "Change Font Sizes");
+							fontSize teacherName = new fontSize(font, "Teacher Name", RL.TeacherName, RL.userTeacherName) {
+								public void updateUserFont(Font refFont) {
+									RL.userTeacherName = refFont;
+									System.out.println("RL.userTeacherName: " + RL.userTeacherName.getSize());
+								}
+							};
+							
+					//Wifi
+						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
+								
+								
 					//About
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
-							JLabel verNum = new JLabel(config.VersionNumber);
-							about.add(verNum);
+							JLabel verNum = new JLabel("<html><strong>Version Number: </strong>" + config.VersionNumber + "</html>");
+							about.addWithFont(verNum);
 					
 						
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
@@ -293,16 +316,73 @@ public class FrontEnd extends BackEnd{
 					 * @param toolTip tool tip for user's info
 					 */
 					public preferences(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
-						JTextArea textArea = new JTextArea();
-						textArea.setFont(RL.preferencesTitle);
-						textArea.setOpaque(false);
-						textArea.setEditable(false);
-						textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-						textArea.setText(nameOfTab);
-						this.add(textArea);
-						tabbedPane.addTab(nameOfTab, icon, this, toolTip);
+						JPanel newTab = new JPanel();
+						newTab.setLayout(new BorderLayout());
+						tabbedPane.addTab(nameOfTab, icon, newTab, toolTip);
 						
+						JTextArea Title = new JTextArea();
+						Title.setFont(RL.preferencesTitle);
+						Title.setOpaque(false);
+						Title.setEditable(false);
+						Title.setAlignmentX(JTextArea.CENTER_ALIGNMENT); //FIXME: Not working
+						Title.setBorder(new CompoundBorder(
+							BorderFactory.createEmptyBorder(10, 10, 15, 10),
+							BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK)
+						));
+						Title.setText(nameOfTab);
+						newTab.add(Title, BorderLayout.PAGE_START);
 						
+						newTab.add(this, BorderLayout.CENTER);
+						this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+						this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+						this.setFont(RL.preferencesText);
+					}
+					public void addWithFont(Component comp) {
+						comp.setFont(RL.preferencesText);
+						this.add(comp);
+					}
+					public static abstract class fontSize extends JPanel{
+						Font refFont;
+						/**
+						 * user changed font sizes
+						 * @param pane wich this JPanel to the parent JPael
+						 * @param name name of font (Teacher Name)
+						 * @param defaultFont orginal font
+						 */
+						public fontSize(JComponent pane, String name, Font defaultFont, Font newFont) {
+							refFont = newFont;
+							int defaultSize = defaultFont.getSize();
+							int minDivider = (int) ((config.screenWidth + config.screenHeight) / config.minFontSizeDivider);
+							int maxDivider = (int) ((config.screenWidth + config.screenHeight) / config.maxFontSizeDivider);
+							
+							System.out.println(defaultSize);
+							System.out.println(minDivider);
+							System.out.println(maxDivider);
+							
+							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);
+														
+							JLabel title = new JLabel(name + ": " + slider.getValue());
+							title.setFont(defaultFont);
+							slider.addChangeListener(new ChangeListener() {
+								public void stateChanged(ChangeEvent arg0) {
+									title.setText(name + ": " + slider.getValue());
+									refFont = defaultFont.deriveFont(defaultFont.getStyle(), slider.getValue());
+									updateUserFont(refFont);
+									title.setFont(refFont);
+									}
+							});
+							
+								
+							this.add(title);
+							this.add(slider);
+							pane.add(this);
+						}
+						/**
+						 * <strong>IMPORTANT: </strong> set refFont to user font.<br>
+						 * Ex. RL.userTeacherName = refFont;
+						 * @param refFont the new font with user changed size
+						 */
+						public abstract void updateUserFont(Font refFont);
 					}
 				}
 			}
@@ -377,12 +457,12 @@ public class FrontEnd extends BackEnd{
 								public static void create() {
 									update();
 									information.add(teacherName);
-									teacherName.setFont(RL.TeacherName);
+									teacherName.setFont(RL.userTeacherName);
 									System.out.println(teacherName.getFont());
 								}
 								public static void update() {
 									String tempTeacherName = "Mr. Sabo"; //TODO: get teacher name from file
-									String message = "<html>" + "<h1><strong>" + tempTeacherName + "</strong></h1>" + "</html>";
+									String message = tempTeacherName;
 									teacherName.setText(message);
 								}
 							}
@@ -390,6 +470,7 @@ public class FrontEnd extends BackEnd{
 								static JLabel otherInfo = new JLabel();
 								public static void create() {
 									update("Welcome to the Restroom Log Program");
+									otherInfo.setFont(RL.otherInfo);
 									information.add(otherInfo);
 								}
 								public static void update(String info) {
@@ -484,7 +565,7 @@ public class FrontEnd extends BackEnd{
 										message.setText("Welcome to the Restroom Logs Program!");
 										message.setHorizontalAlignment(SwingConstants.CENTER);
 										message.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
-										
+										message.setFont(RL.scanMessage);
 										
 										GridBagConstraints c = new GridBagConstraints();
 										c.gridx = 0;
@@ -532,6 +613,9 @@ public class FrontEnd extends BackEnd{
 									static JTextArea otherMessages = new JTextArea();
 									public static void create() {
 										otherMessages.setText("OTHER MESSAGES HERE!!!");
+										otherMessages.setFont(RL.otherMessage);
+										otherMessages.setOpaque(false);
+										otherMessages.setBorder(BorderFactory.createEmptyBorder(0, 10, 5, 10));
 										GridBagConstraints c = new GridBagConstraints();
 										c.gridx = 0;
 										c.gridy = 2;
@@ -569,6 +653,7 @@ public class FrontEnd extends BackEnd{
 							public static void create() {
 								title.setText("Student Signed Out");
 								title.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+								title.setFont(RL.tableTitle);
 								titleBar.add(title, BorderLayout.LINE_START);
 							}
 						}
@@ -576,6 +661,7 @@ public class FrontEnd extends BackEnd{
 							static JButton clear = new JButton();
 							public static void create() {
 								clear.setText("clear");
+								clear.setFont(RL.tableClearButton);
 								clear.setToolTipText("Signed all students back in");
 								
 								clear.addActionListener(new ActionListener(){
@@ -602,8 +688,8 @@ public class FrontEnd extends BackEnd{
 							tablePane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 						}
 						public static class tableContent {
-							public static void create() {
-								JTable tableContent = new JTable();
+							static JTable tableContent = new JTable();	
+							public static void create() {							
 								String[] columnNames = {"First Name", "Last Name", "Time Out"};
 								
 								ArrayList<String[]> manSignedOutNames = new ArrayList<String[]>();
@@ -640,22 +726,27 @@ public class FrontEnd extends BackEnd{
 									}
 								}
 								
-								/*Object[][] data2 = {
-								    {"Kathy", "Smith", "10:50"},
-								    {"John", "Doe", "10:50"},
-								    {"Sue", "Black", "10:50"},
-								    {"Jane", "White", "10:50"},
-								    {"Joe", "Brown", "10:50"}
-								};*/
-								
 								tableContent = new JTable(data, columnNames);
+								tableContent.setFont(RL.tableText);
 								tableContent.setFillsViewportHeight(true);
-								//tableContent.setAutoscrolls(true); //idk what this does
 								tableContent.setDefaultEditor(Object.class, null); //make table uneditable
+								tableContent.setIntercellSpacing(new Dimension(5, 0));
+								updateCellSize();
 								tablePane.setViewportView(tableContent);
 							}
 							public static void update() {
 								create();
+							}
+							public static void updateCellSize() {
+								//can only be ran after data is added
+								for (int row = 0; row < tableContent.getRowCount(); row++) {
+									int rowHeight = tableContent.getRowHeight();
+							        for (int column = 0; column < tableContent.getColumnCount(); column++) {
+							            Component comp = tableContent.prepareRenderer(tableContent.getCellRenderer(row, column), row, column);
+							            rowHeight = Math.max(rowHeight, comp.getPreferredSize().height);
+							        }
+							        tableContent.setRowHeight(row, rowHeight);
+							    }
 							}
 						}
 					}
