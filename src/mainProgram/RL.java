@@ -10,6 +10,7 @@ import javax.swing.*;
  *
  */
 public class RL {
+//Fonts
 	/**
 	 * load True Type Fonts
 	 * @param path to the TTF file
@@ -31,13 +32,23 @@ public class RL {
 	    }
     }
 	
-	public static Font AnticSlab = loadFont(config.AnticSlabFilePath);
-	public static Font Kollektif = loadFont(config.KollektifFilePath);
+	//Load fonts
+	private static Font Main = loadFont(config.KollektifFilePath); //Main font
+	private static Font Title = loadFont(config.RubikFilePath); //Title Font
+	private static Font Text = loadFont(config.AnticSlabFilePath); //Regular Text font
 	
-	//SET FONT SIZE //TODO: this needs to be dynamic using either the size of it's parent component or screen size
-	public static Font preferencesTitle = new Font(Font.DIALOG, Font.BOLD, 30);
-	public static Font statsTeacherNameFont = new Font(Font.MONOSPACED, Font.BOLD, 20);
+	//for dynamic font size
+	private static double width = config.screenWidth;
+	private static double height = config.screenWidth;
+	private static float both = (float) (width + height);
 	
+	//preset font sizes	
+	public static Font preferencesTitle = Title.deriveFont(Font.BOLD, both/80);
+	public static Font TeacherName = Main.deriveFont(Font.BOLD, both/*/150*/);
+	
+	
+	
+//Color
 	/**
 	 * Easily get Color Object for color string name<br>
 	 * Example of use: pane.setBackground(RL.color("ELECTRIC_BLUE"));

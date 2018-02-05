@@ -790,4 +790,122 @@
       2018/02/04 14:23:37  |  Seattle area code was manually signed out
       2018/02/04 14:23:37  |  Mr. Sabo was manually signed out
 ****  2018/02/04 14:23:39  |  System  |  EXIT
+----------      2018/02/04 14:29:40  |  temp0 LAST NAME SOMETHING 0 has signed out
+      2018/02/04 14:29:41  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/02/04 14:29:41  |  temp2 LAST NAME SOMETHING 2 has signed out
+      2018/02/04 14:29:42  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/04 14:29:42  |  temp4 LAST NAME SOMETHING 4 has signed out
+      2018/02/04 14:29:42  |  temp5 LAST NAME SOMETHING 5 has signed out
+      2018/02/04 14:29:44  |  temp6 LAST NAME SOMETHING 6 has signed out
+      2018/02/04 14:29:45  |  temp4 LAST NAME SOMETHING 4 has signed in
+      2018/02/04 14:29:46  |  temp5 LAST NAME SOMETHING 5 has signed in
+      2018/02/04 14:29:46  |  temp6 LAST NAME SOMETHING 6 has signed in
+      2018/02/04 14:29:46  |  temp7 LAST NAME SOMETHING 7 has signed out
+      2018/02/04 14:29:47  |  temp8 LAST NAME SOMETHING 8 has signed out
+      2018/02/04 14:29:47  |  temp9 LAST NAME SOMETHING 9 has signed out
+      2018/02/04 14:29:48  |  temp10 LAST NAME SOMETHING 10 has signed out
+      2018/02/04 14:29:50  |  Gary Tou has signed out
+      2018/02/04 14:29:51  |  Bob Stern has signed out
+      2018/02/04 14:29:52  |  Jess Potesrt has signed out
+      2018/02/04 14:29:53  |  เม aA has signed out
+      2018/02/04 14:30:10  |  temp0 LAST NAME SOMETHING 0 was manually signed out
+      2018/02/04 14:30:10  |  temp1 LAST NAME SOMETHING 1 was manually signed out
+      2018/02/04 14:30:10  |  temp2 LAST NAME SOMETHING 2 was manually signed out
+      2018/02/04 14:30:10  |  temp3 LAST NAME SOMETHING 3 was manually signed out
+      2018/02/04 14:30:10  |  temp7 LAST NAME SOMETHING 7 was manually signed out
+      2018/02/04 14:30:10  |  temp8 LAST NAME SOMETHING 8 was manually signed out
+      2018/02/04 14:30:10  |  temp9 LAST NAME SOMETHING 9 was manually signed out
+      2018/02/04 14:30:10  |  temp10 LAST NAME SOMETHING 10 was manually signed out
+      2018/02/04 14:30:10  |  Gary Tou was manually signed out
+      2018/02/04 14:30:10  |  Bob Stern was manually signed out
+      2018/02/04 14:30:10  |  Jess Potesrt was manually signed out
+      2018/02/04 14:30:10  |  เม aA was manually signed out
+****  2018/02/04 14:30:41  |  System  |  EXIT
+----------**    2018/02/04 14:33:38  |  Start Up  |  
+
+
+----------
+**    2018/02/04 14:33:38  |  Start Up  |  ranBefore found
+**    2018/02/04 14:33:38  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 14:33:38  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 14:33:38  |  Start Up  |  Starting Program
+**    2018/02/04 14:33:38  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 14:33:38  |  Start Up  |  Checking for updates
+**    2018/02/04 14:33:38  |  Start Up  |  Opening Window
+      2018/02/04 14:33:50  |  Bob Stern has signed out
+      2018/02/04 14:33:51  |  Jess Potesrt has signed out
+      2018/02/04 14:33:53  |  เม aA has signed out
+      2018/02/04 14:33:54  |  Gary Tou has signed out
+      2018/02/04 14:33:57  |  Gary Tou has signed in
+***** 2018/02/04 14:33:58  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/02/04 14:33:58  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/02/04 14:33:58  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/02/04 14:33:58  |  ERROR  |  Student ID "1111" does not exist
+      2018/02/04 14:33:58  |  Could not find 1111 in Student Data Base
+      2018/02/04 14:34:01  |  Preferences Opened
+****  2018/02/04 14:34:08  |  System  |  EXIT
+----------**    2018/02/04 14:34:10  |  Start Up  |  
+
+
+----------
+**    2018/02/04 14:34:10  |  Start Up  |  ranBefore found
+**    2018/02/04 14:34:10  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 14:34:10  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 14:34:10  |  Start Up  |  Starting Program
+**    2018/02/04 14:34:10  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 14:34:11  |  Start Up  |  Checking for updates
+**    2018/02/04 14:34:11  |  Start Up  |  Opening Window
+****  2018/02/04 14:34:19  |  System  |  EXIT
+----------**    2018/02/04 14:34:22  |  Start Up  |  
+
+
+----------
+**    2018/02/04 14:34:22  |  Start Up  |  ranBefore found
+**    2018/02/04 14:34:22  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/04 14:34:22  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/04 14:34:22  |  Start Up  |  Starting Program
+**    2018/02/04 14:34:22  |  Start Up  |  Starting Splash Screen
+**    2018/02/04 14:34:22  |  Start Up  |  Checking for updates
+**    2018/02/04 14:34:22  |  Start Up  |  Opening Window
+****  2018/02/04 15:01:38  |  System  |  EXIT
+----------****  2018/02/04 15:02:29  |  System  |  EXIT
+----------****  2018/02/04 15:02:36  |  System  |  EXIT
+----------****  2018/02/04 15:02:57  |  System  |  EXIT
+----------****  2018/02/04 15:05:57  |  System  |  EXIT
+----------****  2018/02/04 15:06:09  |  System  |  EXIT
+----------****  2018/02/04 15:07:57  |  System  |  EXIT
+----------****  2018/02/04 15:09:07  |  System  |  EXIT
+----------****  2018/02/04 15:09:45  |  System  |  EXIT
+----------****  2018/02/04 15:19:48  |  System  |  EXIT
+----------****  2018/02/04 15:22:46  |  System  |  EXIT
+----------****  2018/02/04 15:23:37  |  System  |  EXIT
+----------****  2018/02/04 15:23:43  |  System  |  EXIT
+----------****  2018/02/04 15:23:59  |  System  |  EXIT
+----------****  2018/02/04 15:24:39  |  System  |  EXIT
+----------****  2018/02/04 15:27:38  |  System  |  EXIT
+----------****  2018/02/04 15:48:03  |  System  |  EXIT
+----------****  2018/02/04 15:49:26  |  System  |  EXIT
+----------****  2018/02/04 15:49:52  |  System  |  EXIT
+----------****  2018/02/04 15:54:04  |  System  |  EXIT
+----------****  2018/02/04 15:54:13  |  System  |  EXIT
+----------****  2018/02/04 15:54:33  |  System  |  EXIT
+----------****  2018/02/04 15:54:47  |  System  |  EXIT
+----------***** 2018/02/04 16:22:13  |  ERROR  |  Font could not be loaded from  assets/Rubik-Regular.ttf
+      2018/02/04 16:23:43  |  Preferences Opened
+****  2018/02/04 16:23:48  |  System  |  EXIT
+----------      2018/02/04 16:24:42  |  Preferences Opened
+****  2018/02/04 16:24:48  |  System  |  EXIT
+----------      2018/02/04 16:25:10  |  Preferences Opened
+****  2018/02/04 16:25:14  |  System  |  EXIT
+----------      2018/02/04 16:25:25  |  Preferences Opened
+****  2018/02/04 16:25:29  |  System  |  EXIT
+----------      2018/02/04 16:25:39  |  Preferences Opened
+****  2018/02/04 16:25:42  |  System  |  EXIT
+----------****  2018/02/04 16:26:17  |  System  |  EXIT
+----------****  2018/02/04 16:28:23  |  System  |  EXIT
+----------****  2018/02/04 16:28:35  |  System  |  EXIT
+----------****  2018/02/04 16:30:20  |  System  |  EXIT
+----------****  2018/02/04 16:30:48  |  System  |  EXIT
+----------      2018/02/04 16:33:27  |  Preferences Opened
+****  2018/02/04 16:33:31  |  System  |  EXIT
 ----------

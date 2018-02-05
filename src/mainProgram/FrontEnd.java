@@ -2,6 +2,7 @@ package mainProgram;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import org.apache.commons.lang.time.StopWatch;
@@ -32,8 +33,6 @@ public class FrontEnd extends BackEnd{
 	public static JFrame frame = new JFrame();
 	
 	public static void main(String[] args) {
-		//window.menuBar.preferences.create();
-		
 		create();
 	}
 	
@@ -60,6 +59,8 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.left.statsScan.stats.create();
 		content.majorRL.left.statsScan.stats.banner.create();
 		content.majorRL.left.statsScan.stats.information.create();
+		content.majorRL.left.statsScan.stats.information.teacherName.create();
+		content.majorRL.left.statsScan.stats.information.otherInfo.create();
 		
 	//Major Right
 		content.majorRL.right.create();
@@ -71,14 +72,12 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.tablePane.tableContent.create();
 		content.majorRL.right.table.tablePane.tableContent.update();
 		
-		
-		
-		
 	//final changes
 		frame.setVisible(true);
+		content.majorRL.setDivLoc(); //must be done after frame is set visible
 		
 		
-		content.majorRL.majorRL.setDividerLocation((double)1);
+		
 	}
 	
 	public static void frame() {		
@@ -239,7 +238,7 @@ public class FrontEnd extends BackEnd{
 					}
 				}
 				public static class preferences extends JPanel{
-					static JMenuItem filePreferences = new JMenuItem("Preferences, filePreferencesIcon");
+					static JMenuItem filePreferences = new JMenuItem("Preferences", filePreferencesIcon);
 					public static void create() {
 						fileMenu.add(filePreferences);
 						filePreferences.setMnemonic(KeyEvent.VK_P);
@@ -252,18 +251,14 @@ public class FrontEnd extends BackEnd{
 					public static void content() {
 						//JTabbedPane
 						JTabbedPane tabbedPane = new JTabbedPane();
-						int displayWidth = (int) (screenWidth/1.3);
-						int displayHeight = (int) (screenHeight/1.3);
-						Dimension displayDimension = new Dimension(displayWidth, displayHeight); 
-						tabbedPane.setPreferredSize(displayDimension);
+						tabbedPane.setPreferredSize(new Dimension((int) (screenWidth/1.3), (int) (screenHeight/1.3)));
+												
+					//tabs
 						
-						String versNum = config.VersionNumber;
-						Font f = tabbedPane.getFont();
-						Font f2 = new Font(f.getFontName(), Font.BOLD, f.getSize()+15);
-						
-						//tabs
+					//General
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
-					
+						
+					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
 							JTextArea clearLogText = new JTextArea();
 								clearLogText.setOpaque(false);
@@ -280,10 +275,11 @@ public class FrontEnd extends BackEnd{
 										JOptionPane.showMessageDialog(logs, "PDF Log has been cleared");
 									}
 								});
-							
-						preferences about = new preferences(tabbedPane, "About", null, "About this program");
-							
 						
+					//About
+						preferences about = new preferences(tabbedPane, "About", null, "About this program");
+							JLabel verNum = new JLabel(config.VersionNumber);
+							about.add(verNum);
 					
 						
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
@@ -298,13 +294,15 @@ public class FrontEnd extends BackEnd{
 					 */
 					public preferences(JTabbedPane tabbedPane, String nameOfTab, Icon icon, String toolTip) {
 						JTextArea textArea = new JTextArea();
-						textArea.setFont(RL.Kollektif);
+						textArea.setFont(RL.preferencesTitle);
 						textArea.setOpaque(false);
 						textArea.setEditable(false);
 						textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
 						textArea.setText(nameOfTab);
 						this.add(textArea);
 						tabbedPane.addTab(nameOfTab, icon, this, toolTip);
+						
+						
 					}
 				}
 			}
@@ -319,6 +317,9 @@ public class FrontEnd extends BackEnd{
 			static JSplitPane majorRL = new JSplitPane();
 			public static void create() {
 				frame.add(majorRL);
+			}
+			public static void setDivLoc() {
+				majorRL.setDividerLocation((double) 0.9); // left - 0 | 1 - right
 			}
 			public static class left {
 				static JPanel left = new JPanel(new BorderLayout());
@@ -365,15 +366,35 @@ public class FrontEnd extends BackEnd{
 							}
 						}
 						public static class information {
-							static JLabel information = new JLabel();
+							static JPanel information = new JPanel();
 							public static void create() {
-								//todo:
-								String message = "we need to make a var for teacher name and other info that will go here";
-								
-								stats.add(information, BorderLayout.LINE_END);
+								stats.add(information, BorderLayout.CENTER);
+								information.setLayout(new BoxLayout(information, BoxLayout.PAGE_AXIS));
+								information.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
 							}
-							public static void update(String teacherName) { //todo: add more info
-								
+							public static class teacherName {
+								static JLabel teacherName = new JLabel();
+								public static void create() {
+									update();
+									information.add(teacherName);
+									teacherName.setFont(RL.TeacherName);
+									System.out.println(teacherName.getFont());
+								}
+								public static void update() {
+									String tempTeacherName = "Mr. Sabo"; //TODO: get teacher name from file
+									String message = "<html>" + "<h1><strong>" + tempTeacherName + "</strong></h1>" + "</html>";
+									teacherName.setText(message);
+								}
+							}
+							public static class otherInfo {
+								static JLabel otherInfo = new JLabel();
+								public static void create() {
+									update("Welcome to the Restroom Log Program");
+									information.add(otherInfo);
+								}
+								public static void update(String info) {
+									otherInfo.setText(info);
+								}
 							}
 						}
 					}
@@ -462,6 +483,9 @@ public class FrontEnd extends BackEnd{
 									public static void create() {
 										message.setText("Welcome to the Restroom Logs Program!");
 										message.setHorizontalAlignment(SwingConstants.CENTER);
+										message.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
+										
+										
 										GridBagConstraints c = new GridBagConstraints();
 										c.gridx = 0;
 										c.gridy = 0;
@@ -544,6 +568,7 @@ public class FrontEnd extends BackEnd{
 							static JLabel title = new JLabel();
 							public static void create() {
 								title.setText("Student Signed Out");
+								title.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 								titleBar.add(title, BorderLayout.LINE_START);
 							}
 						}

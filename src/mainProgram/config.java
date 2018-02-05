@@ -53,9 +53,10 @@ public class config{
 		public final static String ErrorPriority = "*****"; //Out of 5
 		public final static String StartUpPriority = "**   "; //Out of 5
 		public final static String updateLogsPriority = "     "; //Out of 5
-	//Fonts
+	//Fonts file path
 		public final static String AnticSlabFilePath = "assets/fonts/AnticSlab-Regular.ttf";
 		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
+		public final static String RubikFilePath = "assets/fonts/Rubik-Regular.ttf";
 	//Icons
 		public final static ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
 		public final static ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
@@ -66,11 +67,6 @@ public class config{
 		public static double screenWidth = screenSize.getWidth();
 		public static double screenHeight = screenSize.getHeight();
 		
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	}
-	
-	
 	/**
 	 * 
 	 * @param configName name of config with out '='<br><strong>Example:</strong> ranBefore

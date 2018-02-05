@@ -44,8 +44,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import oldStuff.logs;
 
-
-
 public class BackEnd extends config{
 	public static class logs{
 		//CREATE LOGS FOR INIT
