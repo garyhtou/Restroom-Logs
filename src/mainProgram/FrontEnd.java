@@ -93,7 +93,8 @@ public class FrontEnd extends BackEnd{
         //WINDOW SETTINGS
     	frame.setTitle("Restroom Logs");
     	frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    	frame.setResizable(false);
+
+
     	frame.setUndecorated(true);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
