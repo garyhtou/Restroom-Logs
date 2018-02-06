@@ -3,7 +3,6 @@ package oldStuff;
 import java.util.*;
 import javax.swing.*;
 
-import interfaces.RL_Fonts;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -128,7 +127,7 @@ public class Preferences {
 	public static void addTitle(JComponent addToComp, String title) {
 		JTextArea textArea = new JTextArea();
 		//textArea Settings
-		textArea.setFont(RL_Fonts.preferencesTitle);
+//		textArea.setFont(RL_Fonts.preferencesTitle);
 		textArea.setOpaque(false);
 		textArea.setEditable(false);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));

@@ -9,7 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
-import interfaces.RL_Fonts;
 
 public class newPreferencesTab extends JComponent{
 	/**

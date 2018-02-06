@@ -11,7 +11,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import interfaces.IDebug;
 
 
 /*
@@ -31,7 +30,7 @@ Maybe trying converting secret key into a String byte[] with commas instead of S
 
 
 
-public class Encryption2 implements IDebug{
+public class Encryption2  {
 	protected static String PasswordToEncrypt = "oh hi #RestroomLogs";
 	
 	private static String SecretKey = "MeSQkwFHsvJdvnWcUh3w7A=="; //for testing

@@ -17,12 +17,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.Thread;
 import java.text.SimpleDateFormat;
-
-import interfaces.RL_Colors;
+//
+//import interfaces.RL_Colors;
 
 //http://zetcode.com/tutorials/javaswingtutorial/firstprograms/
 
-public class Window extends JFrame implements RL_Colors{
+public class Window extends JFrame  {
 	
     public static void main(String[] args) {
     	//do not call method here. only use for testing

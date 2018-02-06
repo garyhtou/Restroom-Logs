@@ -25,13 +25,15 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import interfaces.*;
-import interfaces.RL_Colors;
-import interfaces.RL_Fonts;
-import interfaces.RL_General;
 import mainProgram.config;
+
+//import interfaces.*;
+//import interfaces.RL_Colors;
+//import interfaces.RL_Fonts;
+//import interfaces.RL_General;
+//import mainProgram.config;
  
-public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
+public class Window_Content {
 	static String WebisteBaseUrl = config.WebsiteHomeURL;
 	static String DoNotTouchFilePath = config.DoNotTouchFilePath;
 	static JEditorPane messageContent = new JEditorPane();
@@ -95,7 +97,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	    
 	    //TEST------
 	    banner.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
-	    TitleBar.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
+//	    TitleBar.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
 	    
     	//STATS
 	    JPanel stats = new JPanel(new BorderLayout());
@@ -133,7 +135,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 	    teacherName.setText(teacherNameData);
 	    teacherName.setFont(new Font("Verdana", Font.BOLD, teacherName.getFont().getSize()+20));
 	    //teacherName.setFont(RL_Fonts.statsTeacherNameDynamic(teacherName));
-	    teacherName.setForeground(RL_Colors.color("DARK_GUNMETAL"));
+//	    teacherName.setForeground(RL_Colors.color("DARK_GUNMETAL"));
 	    stats.add(teacherName, BorderLayout.PAGE_START);
 	    
     	//TIME AND DATE
@@ -156,7 +158,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 		    };
 		Timer timer = new Timer(1000, actionListener);
 		timer.start();
-		timeAndDate.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
+//		timeAndDate.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
 		stats.add(timeAndDate, BorderLayout.CENTER);
 		
 		//STATS
@@ -182,7 +184,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	//-----------
     	JPanel scan = new JPanel(new BorderLayout());
     	scan.setOpaque(true);
-    	scan.setBackground(RL_Colors.color(3));
+//    	scan.setBackground(RL_Colors.color(3));
     	/*//SCAN TITLE
     	JLabel scanTitle = new JLabel();
     	scanTitle.setText("Scan your Student ID card below using the barcode scanner");
@@ -197,11 +199,11 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	scanField.setOpaque(true);
     	
     	//border
-    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, RL_Fonts.AnticSlab, Color.BLACK);
+    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, Color.BLACK);
     	scanField.setBorder(scanFieldBorder);
     	
     	//scan font
-    	scanField.setFont(RL_Fonts.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
+//    	scanField.setFont(RL_Fonts.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
     	
 	    	System.out.println("");
 	    	System.out.println(scanField.getFont());
@@ -289,7 +291,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	messageTitle.setContentType("text/html");
     	messageTitle.setText("<html><center><h1>MESSAGES</h1></center></html>");
     	messageTitle.setEditable(false);
-    	messageTitle.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
+//    	messageTitle.setBorder(BorderFactory.createLineBorder(RL_Colors.color(4)));
     	GridBagConstraints messageTitleConstraints = new GridBagConstraints();
     	messageTitleConstraints.gridx = 1;
     	messageTitleConstraints.gridy = 1;
@@ -308,7 +310,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
 		}*/
     	messageContent.setEditable(false);
     	//messageContent.setFont(new Font("Verdana", Font.CENTER_BASELINE, teacherName.getFont().getSize()));
-    	messageContent.setFont(RL_Fonts.AnticSlab.deriveFont(50f));
+ //   	messageContent.setFont(RL_Fonts.AnticSlab.deriveFont(50f));
     	//messageContent.setAlignmentY(messageContent.CENTER_ALIGNMENT);
     	messageContent.setAlignmentX(Component.CENTER_ALIGNMENT);
     	//messageContent
@@ -330,7 +332,7 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	//TITLE AND BUTTON
     	JPanel TableTitleAndTableClearButton = new JPanel(new GridBagLayout());
     	GridBagConstraints TableTitleAndTableClearButtonConstraints = new GridBagConstraints();
-    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL_Colors.color(4)));
+//    	TableTitleAndTableClearButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, RL_Colors.color(4)));
     	TableTitleAndTableClearButtonConstraints.gridx = 1;
     	TableTitleAndTableClearButtonConstraints.gridy = 1;
     	TableTitleAndTableClearButtonConstraints.weightx = 1.0;
@@ -388,8 +390,8 @@ public class Window_Content implements RL_Colors, RL_Fonts, RL_General{
     	TableTitleAndTableClearButton.add(TableClearButton, TableClearButtonConstraints);
     	
     	//DIVIDER LOCATIONS
-    	RL_General.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
-    	RL_General.JSplitPaneDividerLocation(frame, ScanAndMessage, 0.15);
+ //   	RL_General.JSplitPaneDividerLocation(frame, MajorLeftAndRight, 0.80);
+ //   	RL_General.JSplitPaneDividerLocation(frame, ScanAndMessage, 0.15);
     	
     	ActionListener focusActionListener = new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {

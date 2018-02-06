@@ -1,4 +1,4 @@
-package mainProgram;
+package oldStuff;
 
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
@@ -58,7 +58,10 @@ import org.apache.commons.lang.time.StopWatch;
 
 import com.teamdev.jxdocument.SinglePagePresentation;
 
+import mainProgram.BackEnd;
 import mainProgram.BackEnd.database.Student.pullStudentName;
+import mainProgram.RL;
+import mainProgram.config;
 
 public class OLDFrontEnd {
 
@@ -388,11 +391,11 @@ public class OLDFrontEnd {
 	    	scanField.setOpaque(true);
 	    	
 	    	//border
-	    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, RL.AnticSlab, Color.BLACK);
+	    	Border scanFieldBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Scan your Student ID card below using the barcode scanner", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, Color.BLACK);
 	    	scanField.setBorder(scanFieldBorder);
 	    	
 	    	//scan font
-	    	scanField.setFont(RL.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
+	    	//scanField.setFont(RL.AnticSlab.deriveFont(150f)); //MAKE SURE IT'S A FLOAT!!!
 	    	
 		    	System.out.println("");
 		    	System.out.println(scanField.getFont());
@@ -432,7 +435,7 @@ public class OLDFrontEnd {
 	            		if(pullStudentName.containsOnlyNumbers(input)) {
 	            			int intInput = Integer.parseInt(input);
 	            			
-	            			pullStudentName names = new pullStudentName(intInput);
+	            			/*pullStudentName names = new pullStudentName(intInput);
 							
 							String FirstName = names.getFirstName();
 	                    	String LastName = names.getLastName();
@@ -456,7 +459,7 @@ public class OLDFrontEnd {
 	                        		updateMessagesSuccessfulSignIn(FirstLastName);
 	                        		BackEnd.logs.update.Logs(data);
 	                        	}
-	                    	}
+	                    	}*/
 						
 	            		}
 	            		else {
@@ -499,7 +502,7 @@ public class OLDFrontEnd {
 			}*/
 	    	messageContent.setEditable(false);
 	    	//messageContent.setFont(new Font("Verdana", Font.CENTER_BASELINE, teacherName.getFont().getSize()));
-	    	messageContent.setFont(RL.AnticSlab.deriveFont(50f));
+//	    	messageContent.setFont(RL.AnticSlab.deriveFont(50f));
 	    	//messageContent.setAlignmentY(messageContent.CENTER_ALIGNMENT);
 	    	messageContent.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    	//messageContent
@@ -676,7 +679,7 @@ public class OLDFrontEnd {
 	        fileExit.setToolTipText("Exit application");
 	        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
 	        	BackEnd.logs.update.System("EXIT");
-	        	BackEnd.logs.write("----------");
+	        	//BackEnd.logs.write("----------");
 	            System.exit(0);
 	        });
 	        //view entries
