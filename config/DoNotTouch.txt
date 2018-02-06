@@ -1,9 +1,10 @@
 Restroom Logs Config - DO NOT TOUCH THIS FILE
 ----------
-ranBefore = true
+ranBefore = false
 mailDecrypt = aksdfjla3f94834yf9384n
-teacherTitle = 
-teacherName = 
-studentDBPath = data/TestDB.accdb
-studentDBTableName = TestDB
-Release Version: 0.1.0
+teacherTitle = Mr.
+teacherName = Sabo
+teacherEmail = msabo@rentonschools.us
+studentDBPath = 
+studentDBTableName = Students
+Release Version: 1.1.1.1HEY

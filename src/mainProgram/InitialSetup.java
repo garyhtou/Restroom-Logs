@@ -84,10 +84,8 @@ JFrame frame = new JFrame();
         frame.setLayout(null);
     	frame.setResizable(true);
     	frame.setUndecorated(true);
-    	frame.setLocationRelativeTo(null); //DON'T KNOW WHAT THIS DOES
-        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        //setAlwaysOnTop(true); //DO NOT USE THIS, THIS WILL PREVENT DIALOG FROM TOPPING THIS
-    	
+    	frame.setLocationRelativeTo(null); 
+            	
     	//MENU BAR
     	//frame.setJMenuBar(MenuBar.createMenuBar());
     	
@@ -118,7 +116,7 @@ JFrame frame = new JFrame();
 			    		if(lineSub.equalsIgnoreCase("false")){
 			    			
 			    			JPanel panel1  = new JPanel(new GridLayout(0,1));
-			    			addTitle(panel1, "            Welcome");
+			    			addTitle(panel1, "        Welcome");
 			    	        panel1.add(Box.createHorizontalStrut(5)); // a spacer
 			    			JTextArea preferencesLogsClearText = new JTextArea();
 			    	    	preferencesLogsClearText.setOpaque(false);
@@ -238,7 +236,6 @@ JFrame frame = new JFrame();
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
-						        //TODO: add input for table name
 						        JPanel panelT = new JPanel((LayoutManager) new FlowLayout(FlowLayout.LEFT));
 						        panel3.add(new JLabel("Enter the name of your Students' Database Table:"));
 						        Field.setColumns(0);
@@ -256,10 +253,10 @@ JFrame frame = new JFrame();
 				    			    
 				    			     lineCounter2 = 1;
 				    			    while ((currentLine = br3.readLine()) != null) {
-				    			    	if(lineCounter2 == 7){
+				    			    	if(lineCounter2 == 8){
 				    			    		currentLine = "studentDBPath = "+path;
 				    			    	}
-				    			    	if(lineCounter2 == 8){
+				    			    	if(lineCounter2 == 9){
 				    			    		currentLine = "studentDBTableName = "+DbName;
 				    			    	}
 				    			    	TotalLine += currentLine + "\n";
@@ -270,122 +267,159 @@ JFrame frame = new JFrame();
 				    			    fw1.close();
 				    			    br3.close();
 				    			    
-				    									        }
-			    		        }
-			    		        JPanel finalPanel = new JPanel(new GridLayout(0,1));
-			    		        finalPanel.add(new JLabel("Setup Complete"));
-			    		        finalPanel.add(new JLabel("Restroom Logs Program will now open"));
-			    			    frame.dispose();
-			    			    JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
-			    	    	
-			    	    	//  OTA UPDATES
-			    	        final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
-			    	        JProgressBar progressBar = new JProgressBar();
-			    	        progressBar.setIndeterminate(true);
-			    	        progressBar.setMinimum(0);
-			    	        dialog.setIconImage(webIcon.getImage());
-			    	        dialog.setLocationRelativeTo(null);
-							dialog.setResizable(false);
-							dialog.setPreferredSize(new Dimension(200, 65));
-			    	        
-			    	        JPanel panel = new JPanel(new BorderLayout());
-			    	        panel.add(progressBar, BorderLayout.CENTER);
-			    	        panel.add(new JLabel("Please wait......."), BorderLayout.PAGE_START);
-			    	        
-			    	        dialog.add(panel);
-			    	        dialog.pack();
-			    	        dialog.setVisible(true);
-			    	        
-			    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
-			    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-			    	    	String filePath = "RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
-			    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
+				    			    JTextField Field2 = new JTextField(5);
+					    	        //JTextField yField = new JTextField(5);
+					    	       
+					    	        JPanel emailPanel = new JPanel(new GridLayout(0,1));
+					    	        emailPanel.add(new JLabel("Please enter the teacher's email address:"));
+					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
+					    	        emailPanel.add(Field2);
 
-			    	    	HttpClient client = HttpClientBuilder.create().build();
-			    	    	HttpGet request = new HttpGet(urlT);
-
-			    	    	// add request header
-			    	    	request.addHeader("User-Agent", USER_AGENT);
-			    	    	HttpResponse response = client.execute(request);
-			    	        HttpEntity entity = response.getEntity();
-			    	            
-			    	            String inputLine ;
-			    	            boolean updated = false;
-			    	            
-			    	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			    	            String webLine = null,versLine = null;
-			    	                  while ((inputLine = br1.readLine()) != null) {
-			    	                         System.out.println(inputLine);//debugging
-			    	                         webLine=inputLine;
-			    	                  }
-			    	                  
-			    	                  br1.close();
-			    	                  BufferedReader br2 = new BufferedReader(new FileReader(file));
-			    	      			 line = null;
-			    	      			 lineCounter =0;
-			    	      			while ((line = br2.readLine()) != null) {  
-			    	      			   // process the line.  
-			    	      			   lineCounter++;
-			    	      	
-			    	      			   switch(lineCounter){  
-			    	      			    case 9: //on 9th line
-			    	                         System.out.println(line); //debugging
-			    	      			    	versLine = line;
-			    	      			   }
-			    	      			}
-			    	      			br2.close();
-			    	      			if(versLine.equals(webLine)) {
-			    	      				System.out.println("They're the same");
-			    	      				updated = true;
-			    	      			}
-			    	      			if(!versLine.equals(webLine)) {
-			    	      				updated = false;
-			    	      				System.out.println("They're NOT the same");
-			    	      			}
-			    	            if (entity != null && !updated) {
-			    	            	HttpClient client1 = HttpClientBuilder.create().build();
-					    	    	HttpGet request1 = new HttpGet(urlT);
-
-					    	    	// add request header
-					    	    	request1.addHeader("User-Agent", USER_AGENT);
-					    	    	HttpResponse response1 = client1.execute(request);
-					    	        HttpEntity entity1 = response1.getEntity();
-					    	        
-			    	                long len = entity1.getContentLength();
-			    	                progressBar.setMaximum((int)len);
-			    	                InputStream is = entity1.getContent();
-			    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
-			    	                int inByte;
-			    	               
-			    	                while((inByte = is.read()) != -1) {
-			    	                	 fos.write(inByte);
-			    	                    
-			    	                }
-			    	                dialog.dispose();
-			    	                fos.close();
-			    	                is.close();
-			    	                
-			    	                //Update DoNotTouch.txt with new release number
-			    	                FileReader fr = new FileReader(DoNotTouchFilePath);
-				    				 String TotalLine = "";
-					    			 String currentLine;
-				    			    BufferedReader br3 = new BufferedReader(fr);
-				    			      lineCounter = 1;
-				    			    while ((currentLine = br3.readLine()) != null) {
-				    			    	if(lineCounter== 9){
-				    			    		currentLine = webLine;
-				    			    	}
-				    			    	TotalLine += currentLine + "\n";
-				    			    	lineCounter++;
-				    			    }
-				    			    FileWriter fw1 = new FileWriter(DoNotTouchFilePath);
-				    			    fw1.write(TotalLine);
-				    			    fw1.close();
-				    			    br3.close();
-			    	            } 
-			    	            else {
+					    
+					    			  int result3 = JOptionPane.showConfirmDialog(null, emailPanel, 
+					    		                 "Restroom Logs | Initial Setup Step 3", JOptionPane.DEFAULT_OPTION);
+					    			  
+					    			  if (result3 == JOptionPane.OK_OPTION) {
+					    				  FileReader fr2 = new FileReader(DoNotTouchFilePath);
+						    				 String tEmail = Field2.getText();
+						    				 TotalLine = "";
+						    			    BufferedReader br31 = new BufferedReader(fr2);
+						    			    
+						    			     lineCounter2 = 1;
+						    			    while ((currentLine = br31.readLine()) != null) {
+						    			    	if(lineCounter2 == 7){
+						    			    		currentLine = "teacherEmail = "+tEmail;
+						    			    	}
+						    			    	TotalLine += currentLine + "\n";
+						    			    	lineCounter2++;
+						    			    }
+						    			    FileWriter fw2 = new FileWriter(DoNotTouchFilePath);
+						    			    fw2.write(TotalLine);
+						    			    fw2.close();
+						    			    br31.close();
+					    				  
+					    				  
+					    			    JPanel finalPanel = new JPanel(new GridLayout(0,1));
+				    		        finalPanel.add(new JLabel("Setup Complete"));
+				    		        finalPanel.add(new JLabel("The most updated version of Restroom Logs will be downloaded"));
+				    		        finalPanel.add(Box.createHorizontalStrut(15)); // a spacer
+				    		        finalPanel.add(new JLabel("Please make sure you're connected to the internet the entire time"));
+				    			    frame.dispose();
+				    			    JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
+				    	    	
+				    	    	//  OTA UPDATES
+				    	        final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
+				    	        JProgressBar progressBar = new JProgressBar();
+				    	        progressBar.setIndeterminate(true);
+				    	        progressBar.setMinimum(0);
+				    	        dialog.setIconImage(webIcon.getImage());
+				    	        dialog.setLocationRelativeTo(null);
+								dialog.setResizable(false);
+								dialog.setPreferredSize(new Dimension(200, 65));
+				    	        
+				    	        JPanel panel = new JPanel(new BorderLayout());
+				    	        panel.add(progressBar, BorderLayout.CENTER);
+				    	        panel.add(new JLabel("Please wait......."), BorderLayout.PAGE_START);
+				    	        
+				    	        dialog.add(panel);
+				    	        dialog.pack();
+				    	        dialog.setVisible(true);
+				    	        
+				    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
+				    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
+				    	    	String filePath = "RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
+				    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
+	
+				    	    	HttpClient client = HttpClientBuilder.create().build();
+				    	    	HttpGet request = new HttpGet(urlT);
+	
+				    	    	// add request header
+				    	    	request.addHeader("User-Agent", USER_AGENT);
+				    	    	HttpResponse response = client.execute(request);
+				    	        HttpEntity entity = response.getEntity();
+				    	            
+				    	            String inputLine ;
+				    	            boolean updated = false;
+				    	            
+				    	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+				    	            String webLine = null,versLine = null;
+				    	                  while ((inputLine = br1.readLine()) != null) {
+				    	                         System.out.println(inputLine);//debugging
+				    	                         webLine=inputLine;
+				    	                  }
+				    	                  
+				    	                  br1.close();
+				    	                  BufferedReader br21 = new BufferedReader(new FileReader(file));
+				    	      			 line = null;
+				    	      			 lineCounter =0;
+				    	      			while ((line = br21.readLine()) != null) {  
+				    	      			   // process the line.  
+				    	      			   lineCounter++;
+				    	      	
+				    	      			   switch(lineCounter){  
+				    	      			    case 10: //on 9th line
+				    	                         System.out.println(line); //debugging
+				    	      			    	versLine = line;
+				    	      			   }
+				    	      			}
+				    	      			br21.close();
+				    	      			if(versLine.equals(webLine)) {
+				    	      				System.out.println("They're the same");
+				    	      				updated = true;
+				    	      			}
+				    	      			if(!versLine.equals(webLine)) {
+				    	      				updated = false;
+				    	      				System.out.println("They're NOT the same");
+				    	      			}
+				    	            if (entity != null && !updated) {
+				    	            	HttpClient client1 = HttpClientBuilder.create().build();
+						    	    	HttpGet request1 = new HttpGet(urlT);
+	
+						    	    	// add request header
+						    	    	request1.addHeader("User-Agent", USER_AGENT);
+						    	    	HttpResponse response1 = client1.execute(request);
+						    	        HttpEntity entity1 = response1.getEntity();
+						    	        
+				    	                long len = entity1.getContentLength();
+				    	                progressBar.setMaximum((int)len);
+				    	                InputStream is = entity1.getContent();
+				    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
+				    	                int inByte;
+				    	               
+				    	                while((inByte = is.read()) != -1) {
+				    	                	 fos.write(inByte);
+				    	                    
+				    	                }
+				    	                dialog.dispose();
+				    	                fos.close();
+				    	                is.close();
+				    	                
+				    	                //Update DoNotTouch.txt with new release number
+				    	                FileReader fr3 = new FileReader(DoNotTouchFilePath);
+					    				  TotalLine = "";
+						    			  currentLine = "";
+					    			    BufferedReader br4 = new BufferedReader(fr3);
+					    			      lineCounter = 1;
+					    			    while ((currentLine = br4.readLine()) != null) {
+					    			    	if(lineCounter== 10){
+					    			    		currentLine = webLine;
+					    			    	}
+					    			    	TotalLine += currentLine + "\n";
+					    			    	lineCounter++;
+					    			    }
+					    			    FileWriter fw3 = new FileWriter(DoNotTouchFilePath);
+					    			    fw3.write(TotalLine);
+					    			    fw3.close();
+					    			    br4.close();
+				    	            }else {
 			    	            	dialog.dispose();
 			    	            }
+				    			    
+				    	 }
+				    }
+			    		        
+			  } 
+			    	            
 			    	            
 		    			   // Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 

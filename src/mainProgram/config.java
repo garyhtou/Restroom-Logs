@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 
@@ -40,7 +42,7 @@ public class config{
 		//.txt
 		public final static String LogsPath  = "data/Logs.txt";
 		//PDF
-		public final static String PdfLogPath  = "data/LogsPDF.pdf";
+		public final static String PdfLogPath  = getPdfPath();
 		//View PDF
 		public final static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	//Config files
@@ -391,4 +393,12 @@ public class config{
 		}
 		
 	}
+	public static String getPdfPath() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+		LocalDateTime now = LocalDateTime.now();
+		
+		String date = dtf.format(now);
+		return "data/Logs-"+date+".pdf";
+	}
+	
 }
