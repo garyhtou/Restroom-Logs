@@ -1367,4 +1367,6 @@
       2018/02/05 14:01:38  |  renton area code was manually signed out
       2018/02/05 14:01:38  |  Gary Tou was manually signed out
 ****  2018/02/05 14:01:41  |  System  |  EXIT
+----------      2018/02/06 13:24:03  |  Preferences Opened
+****  2018/02/06 13:24:05  |  System  |  EXIT
 ----------
