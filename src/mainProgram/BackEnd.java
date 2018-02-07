@@ -45,6 +45,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import oldStuff.logs;
 
 public class BackEnd extends config{
+	public static void main(String[] args) {
+//		database.Log.table.delete("LogsC");
+		database.clear.LogsDB("Logs07022018");
+	}
 	public static class logs{
 		//CREATE LOGS FOR INIT
 		public static void create() {
@@ -664,6 +668,42 @@ public class BackEnd extends config{
 			        
 			        return successful;
 				}
+				public static void create() {
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+				
+					
+					Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+					
+					Statement s;
+					s = conn.createStatement();
+
+					ResultSet rs;
+					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
+					LocalDateTime now = LocalDateTime.now();
+					
+					String date = dtf.format(now);
+					String q = "CREATE TABLE Logs"+date+" (ID AUTOINCREMENT PRIMARY KEY , StudentID int, FirstName varchar(255), LastName varchar(255), TimeOut varchar(255), TimeIn varchar(255) )";
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				public static void delete(String tableName) {
+					try {
+						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+						Statement s= conn.createStatement();
+						ResultSet rs;
+						
+						String q = "DROP TABLE "+tableName;
+						PreparedStatement st = conn.prepareStatement (q);
+						st.executeUpdate();
+					} catch (SQLException | ClassNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 			/**
 			 * Checks if a student is currently signed in or out
@@ -796,6 +836,20 @@ public class BackEnd extends config{
 					ResultSet rs;
 					
 					String q = "DELETE FROM "+LogsDBTableName;
+					PreparedStatement st = conn.prepareStatement (q);
+					st.executeUpdate();
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+			public static void LogsDB(String name) {
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn = DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+					Statement s= conn.createStatement();
+					ResultSet rs;
+					
+					String q = "DELETE FROM "+name;
 					PreparedStatement st = conn.prepareStatement (q);
 					st.executeUpdate();
 				} catch (SQLException | ClassNotFoundException e) {
