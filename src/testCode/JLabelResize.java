@@ -47,7 +47,7 @@ public class JLabelResize {
 		
 		field.setSize(new Dimension(15, 15));
 	}
-	public static void changeBySplit() { //reize field to fit font
+	public static void changeBySplit() { //resize field to fit font
 		//set font size
 		
 		System.out.println(field.getSize());
