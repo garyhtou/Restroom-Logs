@@ -668,6 +668,12 @@ public class BackEnd extends config{
 			        
 			        return successful;
 				}
+				
+				/**
+				 * Creates new table at 
+				 * {@value config#LogsDBPath} 
+				 * 
+				 */
 				public static void create() {
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -690,6 +696,10 @@ public class BackEnd extends config{
 						e.printStackTrace();
 					}
 				}
+				/**
+				 * Deletes Table with name parameter tableName
+				 * @param tableName
+				 */
 				public static void delete(String tableName) {
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -842,6 +852,12 @@ public class BackEnd extends config{
 					e.printStackTrace();
 				}
 			}
+			/**
+			 * Clears the log Database with parameter name<br>Caution, this removes all student entry and exits.
+			 * @param name
+			 * @throws ClassNotFoundException
+			 * @throws SQLException
+			 */
 			public static void LogsDB(String name) {
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
