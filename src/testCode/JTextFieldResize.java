@@ -12,6 +12,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.FontMetrics;
@@ -37,21 +39,26 @@ public class JTextFieldResize {
 	static Font defaultFont = mainProgram.RL.scan;
 	static Font currentFont = defaultFont;
 	static float fontSize = 20f;
+	
+	static double prevFieldHeight = field.getSize().getHeight();
+	static double currFieldHeight = field.getSize().getHeight();
 
 	public static void changeByButton(int difference) { //resize field to fit font
 		field.setFont(currentFont);
 		field.setSize(new Dimension(field.getWidth(), field.getHeight() + difference));
+		split.setDividerLocation(-1);
 		//change majorLR
 		
 	}
-	public static void changeBySplit() { //resize font to fit field
-		
-		
-		//split.getDividerLocation();
+	public static void changeBySplit(double clicks) { //resize font to fit field
+		double change = clicks*2.5;
+		fontSize += change;
+		fontSize = Math.min(fontSize, mainProgram.config.maxFontSize);
+		fontSize = Math.max(fontSize, mainProgram.config.minFontSize);
+		currentFont = defaultFont.deriveFont(fontSize);
+		field.setFont(currentFont);
+		field.setSize(field.getPreferredSize());
 		split.setDividerLocation(-1);
-		
-		
-		
 	}
 	
 	
@@ -64,7 +71,9 @@ public class JTextFieldResize {
 
 		split.setTopComponent(field);
 		split.setBottomComponent(fontPane);
-
+		split.setDividerSize(0);
+		
+		
 		fontPane.setLayout(new BorderLayout());
 		fontPane.add(small, BorderLayout.LINE_START);
 		fontPane.add(slider, BorderLayout.CENTER);
@@ -106,7 +115,7 @@ public class JTextFieldResize {
 				fontSize = slider.getValue();
 				currentFont = defaultFont.deriveFont(fontSize);
 				field.setFont(currentFont);
-				changeBySplit();
+				split.setDividerLocation(-1);
 			}
 		});
 		field.addKeyListener(new KeyListener() {
@@ -120,18 +129,29 @@ public class JTextFieldResize {
 
 			}
 		});
-		split.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent arg0) {
-				System.out.println("mouseDragged");
-				
+		/*split.addMouseListener(new MouseListener() { //mouse press
+			public void mouseClicked(MouseEvent arg0) {}
+			public void mouseEntered(MouseEvent arg0) {}
+			public void mouseExited(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {
+				prevFieldHeight = field.getSize().getHeight();
 			}
+			
+		});
+		split.addPropertyChangeListener(JSplitPane.DIVIDER_LOCATION_PROPERTY, new PropertyChangeListener() { //mouse release
+			public void propertyChange(PropertyChangeEvent evt) {
+				currFieldHeight = field.getSize().getHeight();
+				changeBySplit();
+			}
+		});*/
+		
+		split.addMouseWheelListener(new MouseWheelListener() {
 
 			@Override
-			public void mouseMoved(MouseEvent arg0) {
-				System.out.println("mouseMoved");
-				
+			public void mouseWheelMoved(MouseWheelEvent mwe) {
+				changeBySplit(mwe.getPreciseWheelRotation());
+				System.out.println(mwe.getPreciseWheelRotation());
 			}
 			
 		});
