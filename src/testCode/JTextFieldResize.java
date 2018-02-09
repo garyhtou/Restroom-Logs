@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.FontMetrics;
@@ -19,7 +20,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class JLabelResize {
+public class JTextFieldResize {
 	public static void main(String[] args) {
 		create();
 		interaction();
@@ -37,26 +38,25 @@ public class JLabelResize {
 	static Font currentFont = defaultFont;
 	static float fontSize = 20f;
 
-	public static void changeByButton() { //reize font to fill field
-		//set font size
-		//change field size
-		
-		slider.setValue((int) fontSize);
-		currentFont = defaultFont.deriveFont(fontSize);
+	public static void changeByButton(int difference) { //resize field to fit font
 		field.setFont(currentFont);
+		field.setSize(new Dimension(field.getWidth(), field.getHeight() + difference));
+		//change majorLR
 		
-		field.setSize(new Dimension(15, 15));
 	}
-	public static void changeBySplit() { //resize field to fit font
-		//set font size
+	public static void changeBySplit() { //resize font to fit field
 		
-		System.out.println(field.getSize());
+		
+		//split.getDividerLocation();
+		split.setDividerLocation(-1);
+		
+		
+		
 	}
 	
 	
 	
 	// no need to touch these methods
-
 	public static void create() {
 		split.setOrientation(JSplitPane.VERTICAL_SPLIT);
 
@@ -86,13 +86,17 @@ public class JLabelResize {
 		small.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fontSize--;
-				changeByButton();
+				currentFont = defaultFont.deriveFont(fontSize);
+				slider.setValue((int) fontSize);
+				changeByButton(-1);
 			}
 		});
 		big.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fontSize++;
-				changeByButton();
+				currentFont = defaultFont.deriveFont(fontSize);
+				slider.setValue((int) fontSize);
+				changeByButton(1);
 			}
 		});
 		slider.addChangeListener(new ChangeListener() {
@@ -100,6 +104,8 @@ public class JLabelResize {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				fontSize = slider.getValue();
+				currentFont = defaultFont.deriveFont(fontSize);
+				field.setFont(currentFont);
 				changeBySplit();
 			}
 		});
@@ -114,14 +120,20 @@ public class JLabelResize {
 
 			}
 		});
-		split.addMouseListener(new MouseListener() {
-			public void mouseClicked(MouseEvent arg0) {}
-			public void mouseEntered(MouseEvent arg0) {}
-			public void mouseExited(MouseEvent arg0) {}
-			public void mousePressed(MouseEvent arg0) {}
-			public void mouseReleased(MouseEvent arg0) {
-				changeByButton();
+		split.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				System.out.println("mouseDragged");
+				
 			}
+
+			@Override
+			public void mouseMoved(MouseEvent arg0) {
+				System.out.println("mouseMoved");
+				
+			}
+			
 		});
 	}
 }
