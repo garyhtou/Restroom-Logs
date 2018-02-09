@@ -17,6 +17,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -685,17 +687,35 @@ public class FrontEnd extends BackEnd{
 									        }
 									        System.out.println(fontSize);
 									        RL.userScan = RL.userScan.deriveFont((float) fontSize);
-									        content.majorRL.left.statsScan.scanAndMessages.scan.field.updateFontSize();
+									        content.majorRL.left.statsScan.scanAndMessages.scan.field.updateFontSize(0);
 									        //field.repaint(); //prob not needed
 										}
 									});
+							    	scanAndMessages.addMouseWheelListener(new MouseWheelListener() {
+
+										@Override
+										public void mouseWheelMoved(MouseWheelEvent mwe) {
+											changeBySplit(mwe.getPreciseWheelRotation());
+											System.out.println(mwe.getPreciseWheelRotation());
+										}
+										
+									});
 							    
 								}
-								public static void updateFontSize() {
+								public static void updateFontSize(int difference) {
 									field.setFont(RL.userScan);
+									field.setSize(new Dimension(field.getWidth(), field.getHeight() + difference));
+									scanAndMessages.setDividerLocation(-1);
 								}
-								public static void resizeFIeld() {
-									//TODO: resize field based off font size
+								public static void changeBySplit(double clicks) { //resize font to fit field
+									double change = clicks*2.5;
+									RL.scanFontSize += change;
+									RL.scanFontSize = Math.min(RL.scanFontSize, mainProgram.config.maxFontSize);
+									RL.scanFontSize = Math.max(RL.scanFontSize, mainProgram.config.minFontSize);
+									RL.userScan = RL.scan.deriveFont(RL.scanFontSize);
+									field.setFont(RL.userScan);
+									field.setSize(field.getPreferredSize());
+									scanAndMessages.setDividerLocation(-1);
 								}
 							}
 							public static class messageCenter {
