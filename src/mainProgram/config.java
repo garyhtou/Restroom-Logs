@@ -319,7 +319,7 @@ public class config{
 			   lineCounter++;
 	
 			   switch(lineCounter){  
-			    case 9: 
+			    case 10: 
 			    	versLine = line.substring(line.lastIndexOf(" ")+1);
 			   }
 			}
@@ -347,7 +347,7 @@ public class config{
 				lineCounter++;
 				
 				switch(lineCounter){  
-				case 7: 
+				case 8: 
 					pathLine = line.substring(line.lastIndexOf(" ")+1);
 				}
 			}
@@ -375,7 +375,7 @@ public class config{
 				lineCounter++;
 				
 				switch(lineCounter){  
-				case 8: 
+				case 9: 
 					pathLine = line.substring(line.lastIndexOf(" ")+1);
 				}
 			}
