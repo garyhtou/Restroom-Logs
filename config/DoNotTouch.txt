@@ -5,6 +5,6 @@ mailDecrypt = aksdfjla3f94834yf9384n
 teacherTitle = Mr.
 teacherName = Sabo
 teacherEmail = msabo@rentonschools.us
-studentDBPath = 
-studentDBTableName = Students
+studentDBPath = data\TestDB.accdb
+studentDBTableName = TestDB
 Release Version: 1.1.1.1HEY
