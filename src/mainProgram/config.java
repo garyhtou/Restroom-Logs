@@ -31,49 +31,53 @@ public class config{
 		public static String StudentDBPath  = getStudentDBPath();
 		public static String StudentDBTableName  = getStudentDBTableName();
 		//Logs DB
-		public final static String LogsDBPath  = "data/LogsDB.accdb";
-		public final static String LogsDBTableName  = "Logs";
-		public final static String stillSignedOut = "Still Signed Out";
+		public static final String LogsDBPath  = "data/LogsDB.accdb";
+		public static final String LogsDBTableName  = "Logs";
+		public static final String stillSignedOut = "Still Signed Out";
 		//remote DB Credentials (DB contains SecretKey)
-		public final static String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
-		public final static String remoteDB_User = "username to remote DB";
-		public final static String remoteDB_Pass = "password to remove DB";
+		public static final String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
+		public static final String remoteDB_User = "username to remote DB";
+		public static final String remoteDB_Pass = "password to remove DB";
 	//Logs
 		//.txt
-		public final static String LogsPath  = "data/Logs.txt";
+		public static final String LogsPath  = "data/Logs.txt";
 		//PDF
-		public final static String PdfLogPath  = getPdfPath();
+		public static final String PdfLogPath  = getPdfPath();
 		//View PDF
-		public final static String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
+		public static final String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	//Config files
-		public final static String DoNotTouchFilePath  = "config/DoNotTouch.txt";
-		public final static String GeneralConfigFilePath = "config/config.txt";
-		public final static String mailFromFilePath = "config/mailFrom.txt";
-		public final static String mailTemplateFilePath = "config/mailTemplate.html";
-		public final static String mailToFilePath = "config/mailTo.txt";
+		public static final String DoNotTouchFilePath  = "config/DoNotTouch.txt";
+		public static final String GeneralConfigFilePath = "config/config.txt";
+		public static final String mailFromFilePath = "config/mailFrom.txt";
+		public static final String mailTemplateFilePath = "config/mailTemplate.html";
+		public static final String mailToFilePath = "config/mailTo.txt";
 	//Website URLs
-		public final static String WebsiteHomeURL  = "http://rl.coding2kids.com/";
-		public final static String WebsiteRemoteDBURL = "http://rl.coding2kids.com/";
+		public static final String WebsiteHomeURL  = "http://rl.coding2kids.com/";
+		public static final String WebsiteRemoteDBURL = "http://rl.coding2kids.com/";
 	//Log .txt Priorities
-		public final static String SystemPriority = "**** "; //Out of 5
-		public final static String ErrorPriority = "*****"; //Out of 5
-		public final static String StartUpPriority = "**   "; //Out of 5
-		public final static String updateLogsPriority = "     "; //Out of 5
-	//Fonts file path
-		public final static String CairoFilePath = "assets/fonts/Cairo-Regular.ttf";
-		public final static String KollektifFilePath = "assets/fonts/Kollektif.ttf";
-		public final static String RubikFilePath = "assets/fonts/Rubik-Regular.ttf";
-		public final static int minFontSize = 8;
-		public final static int maxFontSize = 72;
-		public final static double minFontSizeDivider = (screenWidth + screenHeight) / minFontSize;		
-		public final static double maxFontSizeDivider = (screenWidth + screenHeight) / maxFontSize;
+		public static final String SystemPriority = "**** "; //Out of 5
+		public static final String ErrorPriority = "*****"; //Out of 5
+		public static final String StartUpPriority = "**   "; //Out of 5
+		public static final String updateLogsPriority = "     "; //Out of 5
+	//Font
+		public static final String CairoFilePath = "assets/fonts/Cairo-Regular.ttf";
+		public static final String KollektifFilePath = "assets/fonts/Kollektif.ttf";
+		public static final String RubikFilePath = "assets/fonts/Rubik-Regular.ttf";
+		public static final int minFontSize = 8;
+		public static final int maxFontSize = 72;
+		public static final double minFontSizeDivider = (screenWidth + screenHeight) / minFontSize;		
+		public static final double maxFontSizeDivider = (screenWidth + screenHeight) / maxFontSize;
+		public static float scanFontSize = RL.scan.getSize();
+		public static final double SCAN_FONT_SIZE_SCROLL_SPEED = 3;
 	//Icons
-		public final static ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
-		public final static ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
-		public final static ImageIcon dataViewIcon = new ImageIcon("assets/images/view.png");
-		public final static ImageIcon dataLogsIcon = new ImageIcon("assets/images/logs.png");
+		public static final ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
+		public static final ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
+		public static final ImageIcon logsTxtIcon = new ImageIcon("assets/images/logs.png");
 	//message center
-		public static String defaultOtherInfoMessage = "Welcome To The Restroom Logs Program";
+		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program";
+	//stats other info
+		public static String defaultOtherInfo = "Insert your Student ID above";
+		
 		
 	/**
 	 * 
@@ -347,7 +351,7 @@ public class config{
 				lineCounter++;
 				
 				switch(lineCounter){  
-				case 7: 
+				case 8: 
 					pathLine = line.substring(line.lastIndexOf(" ")+1);
 				}
 			}
@@ -375,7 +379,7 @@ public class config{
 				lineCounter++;
 				
 				switch(lineCounter){  
-				case 8: 
+				case 9: 
 					pathLine = line.substring(line.lastIndexOf(" ")+1);
 				}
 			}

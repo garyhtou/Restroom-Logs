@@ -15,16 +15,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * I am planning to completely rebuild front end by using
@@ -52,6 +57,8 @@ public class FrontEnd extends BackEnd{
 		window.menuBar.file.create();
 		window.menuBar.file.exit.create();
 		window.menuBar.file.preferences.create();
+		window.menuBar.log.create();
+		window.menuBar.log.logsTxt.create();
 		
 		content.majorRL.create();
 	//Major Left
@@ -82,7 +89,6 @@ public class FrontEnd extends BackEnd{
 	//final changes
 		frame.setVisible(true);
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXE: NOT WORKING
-		content.majorRL.left.statsScan.scanAndMessages.setDivLoc();
 		
 		
 	}
@@ -232,8 +238,8 @@ public class FrontEnd extends BackEnd{
 			        fileMenu.setMnemonic(KeyEvent.VK_F);
 				}
 				public static class exit {
+					static JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
 					public static void create() {
-						JMenuItem fileExit = new JMenuItem("Exit", fileExitIcon); //creates dropdown item "Exit" and it's icon to hte File dropdown
 						fileMenu.add(fileExit);
 				        fileExit.setMnemonic(KeyEvent.VK_E); //short cut for exit
 				        fileExit.setToolTipText("Exit application");
@@ -251,7 +257,7 @@ public class FrontEnd extends BackEnd{
 						fileMenu.add(filePreferences);
 						filePreferences.setMnemonic(KeyEvent.VK_P);
 					    filePreferences.setToolTipText("Preferences");
-						filePreferences.addActionListener((ActionEvent exitButtonEvent) -> {
+						filePreferences.addActionListener((ActionEvent preferencesButtonEvent) -> {
 							BackEnd.logs.update.Logs("Preferences Opened");
 							content();
 				        });
@@ -266,10 +272,12 @@ public class FrontEnd extends BackEnd{
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
 							general.addWithFont(new JLabel("Message Center"));
 								JTextField otherInfoField = new JTextField();
-								otherInfoField.setText(config.defaultOtherInfoMessage);
+								otherInfoField.setText(config.defaultOtherMessage);
 								otherInfoField.setEditable(true);
-								otherInfoField.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent e) {
+								otherInfoField.addKeyListener(new KeyListener() {
+									public void keyPressed(KeyEvent arg0) {}
+									public void keyTyped(KeyEvent arg0) {}
+									public void keyReleased(KeyEvent arg0) {
 										content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.update(otherInfoField.getText());;
 									}
 								});
@@ -299,6 +307,27 @@ public class FrontEnd extends BackEnd{
 						
 					//Font
 						preferences font = new preferences(tabbedPane, "Font", null, "Change Font Sizes");
+						//SCAN
+							scanFontSize scan = new scanFontSize(font, content.majorRL.left.statsScan.scanAndMessages.scan.field.field, 
+								"Scan", content.majorRL.left.statsScan.scanAndMessages.scanAndMessages, RL.scan) {};
+								JCheckBox scanScrollCheckBox = new JCheckBox("Enable scrolling to change Scan text size. May be glitchy at times");
+								scanScrollCheckBox.setSelected(false);
+								font.add(scanScrollCheckBox);
+								scanScrollCheckBox.addItemListener(new ItemListener() {
+									public void itemStateChanged(ItemEvent arg0) {
+										preferences.scanFontSize.enableScroll = scanScrollCheckBox.isSelected();
+									}
+								});
+						//OTHER MESSAGES (Message Center)
+							fontSize otherMessage = new fontSize(font, "Other Messages", RL.otherMessage, RL.userOtherMessage) {
+								public void updateUserFont(Font refFont) {
+									RL.userOtherMessage = refFont;
+								}
+								public void updateJComponent() {
+									content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.updateFontSize();
+								}
+							};
+						//TEAHCER NAME
 							fontSize teacherName = new fontSize(font, "Teacher Name", RL.TeacherName, RL.userTeacherName) {
 								public void updateUserFont(Font refFont) {
 									RL.userTeacherName = refFont;
@@ -307,6 +336,7 @@ public class FrontEnd extends BackEnd{
 									content.majorRL.left.statsScan.stats.information.teacherName.updateFontSize();
 								}
 							};
+						//OTHER INFO
 							fontSize otherInfo = new fontSize(font, "Other Info", RL.otherInfo, RL.userOtherInfo) {
 								public void updateUserFont(Font refFont) {
 									RL.userOtherInfo = refFont;
@@ -315,15 +345,11 @@ public class FrontEnd extends BackEnd{
 									content.majorRL.left.statsScan.stats.information.otherInfo.updateFontSize();
 								}
 							};
-								//DUMMY FONTS!
-										for(int i = 1; i <= 200; i++) {
-											String name = "Dummy Font: " + i;
-											fontSize test = new fontSize(font,name, RL.tableText, RL.tableText) {
-												public void updateUserFont(Font refFont) {}
-												public void updateJComponent() {}
-											};
-										}
+						//
 							
+							
+							
+						
 							
 					//Wifi
 						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
@@ -379,6 +405,78 @@ public class FrontEnd extends BackEnd{
 						comp.setFont(RL.preferencesText);
 						this.add(comp);
 					}
+					public static abstract class scanFontSize extends JPanel {
+						static boolean enableScroll = false;
+						
+						/**
+						 * outdated params
+						 * user changed font sizes<br><br>
+						 * Note: all JComponent that have user changed sizes must have a <strong>updateFontSize()</strong> method.
+						 * <br>
+						 * Ex.<br><code>
+						 * public static void updateFontSize() {<br>
+							    teacherName.setFont(RL.userTeacherName);<Br>
+							}</code>
+						 * @param pane wich this JPanel to the parent JPael
+						 * @param name name of font (Teacher Name)
+						 * @param defaultFont orginal font
+						 */
+						public scanFontSize(JComponent pane, JTextField field, String name, JSplitPane parentSplitPane, Font defaultFont) {
+							int defaultSize = defaultFont.getSize();
+							int minDivider = (int) ((config.screenWidth + config.screenHeight) / config.minFontSizeDivider);
+							int maxDivider = (int) ((config.screenWidth + config.screenHeight) / config.maxFontSizeDivider);
+							
+							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);
+							JLabel title = new JLabel(name + ": " + slider.getValue());
+							title.setFont(defaultFont);
+							JButton reset = new JButton("Reset");
+							
+							reset.addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									title.setText(name + ": " + defaultFont.getSize());
+									RL.userScan = defaultFont;
+									RL.userScan = defaultFont;
+									RL.userScan = RL.scan; //used to be updateUserFont(Font)
+									slider.setValue(defaultFont.getSize());
+									field.setFont(RL.userScan); //used to be updateTextSize();
+									parentSplitPane.setDividerLocation(-1);
+								}
+							});
+							slider.addChangeListener(new ChangeListener() {
+								public void stateChanged(ChangeEvent arg0) {
+									config.scanFontSize = slider.getValue();
+									title.setText(name + ": " + (int) config.scanFontSize);
+									RL.userScan = defaultFont.deriveFont(config.scanFontSize);
+									title.setFont(RL.userScan);
+									parentSplitPane.setDividerLocation(-1);
+									field.setFont(RL.userScan); //used to be updateTextSize();
+									}
+							});						
+							
+							
+							title.setBorder(BorderFactory.createEmptyBorder(5, 10, 0, 0));
+							slider.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 15));
+							
+							this.setLayout(new GridBagLayout());
+							GridBagConstraints titleC = new GridBagConstraints();
+								titleC.gridx = 0;
+								titleC.fill = GridBagConstraints.HORIZONTAL;
+								titleC.weightx = (double) 1.0;
+							GridBagConstraints sliderPaneC = new GridBagConstraints();
+								sliderPaneC.gridx = 1;
+							
+							JPanel sliderPane = new JPanel(new BorderLayout());
+								sliderPane.add(slider, BorderLayout.LINE_START);
+								sliderPane.add(reset, BorderLayout.LINE_END);
+								sliderPane.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 15));
+								
+							this.add(title, titleC);
+							this.add(sliderPane, sliderPaneC);
+							
+							pane.add(this);
+						}
+					}
 					public static abstract class fontSize extends JPanel{
 						Font refFont;
 						/**
@@ -399,7 +497,7 @@ public class FrontEnd extends BackEnd{
 							int minDivider = (int) ((config.screenWidth + config.screenHeight) / config.minFontSizeDivider);
 							int maxDivider = (int) ((config.screenWidth + config.screenHeight) / config.maxFontSizeDivider);
 							
-							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);;
+							JSlider slider = new JSlider(minDivider, maxDivider, defaultSize);
 							JLabel title = new JLabel(name + ": " + slider.getValue());
 							title.setFont(defaultFont);
 							slider.addChangeListener(new ChangeListener() {
@@ -421,6 +519,11 @@ public class FrontEnd extends BackEnd{
 									title.setFont(defaultFont);
 									slider.setValue(defaultFont.getSize());
 									updateJComponent();
+								}
+							});
+							content.majorRL.left.statsScan.scanAndMessages.scan.field.field.addMouseWheelListener(new MouseWheelListener() {
+								public void mouseWheelMoved(MouseWheelEvent mwe) {
+									slider.setValue((int) config.scanFontSize);
 								}
 							});
 							
@@ -459,7 +562,72 @@ public class FrontEnd extends BackEnd{
 					}
 				}
 			}
+			public static class log {
+				static JMenu logMenu = new JMenu("Log");
+				public static void create() {
+					menuBar.add(logMenu);
+					logMenu.setMnemonic(KeyEvent.VK_L);
+				}
+				public static class logsTxt {
+					static JMenuItem logTxt = new JMenuItem("Logs.txt", logsTxtIcon);
+					public static void create() {
+						logMenu.add(logTxt);
+						logTxt.setMnemonic(KeyEvent.VK_T);
+						logTxt.addActionListener((ActionEvent logButtonEvent) -> {
+							BackEnd.logs.update.Logs("LogTxt Opened");
+							content();
+						});
+					}
+					public static void content() {
+						String fileContent;
+						JPanel pane = new JPanel(new BorderLayout());
+						JScrollPane scrollPane = new JScrollPane();
+						JTextArea logTextArea = new JTextArea();
+						try {
+							fileContent = new Scanner(new File(LogsPath)).useDelimiter("\\Z").next();
 
+							Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+							double screenWidth = screenSize.getWidth();
+							double screenHeight = screenSize.getHeight();
+							
+						    logTextArea.setText(fileContent);
+						    logTextArea.setEditable(false);
+						    logTextArea.setLineWrap(true);
+						    logTextArea.setWrapStyleWord(true);
+						    logTextArea.setMargin(new Insets(10,10,10,10));
+						    logTextArea.setCaretPosition(0);
+						    
+						    JButton email = new JButton("Email");
+						    	email.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+						    			//TODO: call something
+						    			//temp:
+						    			JDialog temp = new JDialog(frame, "call something there to email");
+									}
+						    	});
+						    
+						    scrollPane.setViewportView(logTextArea);
+						    pane.add(scrollPane, BorderLayout.CENTER);
+						    pane.add(email, BorderLayout.PAGE_END);
+						    
+							int displayWidth = (int) (screenWidth/5);
+							int displayHeight = (int) (screenHeight/20);
+							
+						    JOptionPane optionPane = new JOptionPane();
+						    	optionPane.setSize(displayWidth, displayHeight);
+						    	optionPane.showMessageDialog(logTxt, pane);
+						    
+						} catch (FileNotFoundException e) {
+							BackEnd.logs.update.Logs("Logs.txt Closed");
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(logTxt,
+								    "Can not open Log file.", //message
+								    "Log File Error", //title
+								    JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				}
+			}
 			
 		}
 		
@@ -566,6 +734,7 @@ public class FrontEnd extends BackEnd{
 					public static class scanAndMessages {
 						static JSplitPane scanAndMessages = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 						public static void create() {
+							scanAndMessages.setDividerSize(0);
 							GridBagConstraints scanAndMessagesC = new GridBagConstraints();
 								scanAndMessagesC.gridx = 0;
 								scanAndMessagesC.gridy = 1;
@@ -573,9 +742,6 @@ public class FrontEnd extends BackEnd{
 								scanAndMessagesC.weighty = 1.0;
 								scanAndMessagesC.fill = GridBagConstraints.BOTH;
 							statsScan.add(scanAndMessages, scanAndMessagesC);
-						}
-						public static void setDivLoc() {
-							scanAndMessages.setDividerLocation((double)0.5);
 						}
 						public static class scan {
 							static JPanel scan = new JPanel(new GridBagLayout());
@@ -613,7 +779,7 @@ public class FrontEnd extends BackEnd{
 							            		EventQueue.invokeLater(() -> {
 							            			field.setText("");
 							                    });
-							            		if(mainProgram.BackEnd.database.Student.pullStudentName.containsOnlyNumbers(input)) {
+							            		if(mainProgram.BackEnd.database.Student.pullStudentName.containsOnlyNumbers(input) && !input.isEmpty()) {
 							            			int intInput = Integer.parseInt(input);
 							            			
 							            			String FirstName = BackEnd.database.Student.pullStudentName.firstName(intInput);
@@ -638,7 +804,7 @@ public class FrontEnd extends BackEnd{
 							                    	}
 												
 							            		}
-							            		else {
+							            		else if(!input.isEmpty()){
 							            			messageCenter.scanEntryMessage.integer(input);
 							            		}
 							            	}
@@ -646,76 +812,21 @@ public class FrontEnd extends BackEnd{
 							            }
 							        });
 							    	
-							    	//TEXT SIZE
-							    	field.addComponentListener(new ComponentListener() {
-										public void componentHidden(ComponentEvent e) {}
-										public void componentMoved(ComponentEvent e) {}
-										public void componentShown(ComponentEvent e) {}
-										
-										public void componentResized(ComponentEvent e) {
-											//http://java-sl.com/tip_adapt_label_font_size.html
-											Rectangle rect = field.getBounds();
-											int fontSize = config.minFontSize;
-									        Font f = RL.userScan;
-											
-											Rectangle small = new Rectangle();
-									        Rectangle big = new Rectangle();
-									        									        
-									        while (fontSize < 15) {
-									        	Dimension size=new Dimension();
-									        		FontMetrics fm = field.getFontMetrics(f);
-										            size.width = 1;
-										            size.height = fm.getHeight();
-									            Dimension size1=new Dimension();
-									            	Font f1 = f.deriveFont(f.getStyle(), f.getSize() + 1);
-										            FontMetrics fm2 = field.getFontMetrics(f1);
-										            size1.width = 1;
-										            size1.height = fm2.getHeight();
-									            									        	
-									            small.setSize(size);
-									            big.setSize(size1);
-									            System.out.println("small: " +small);
-									            System.out.println("big: " +big);
-									            if (rect.contains(small) && ! rect.contains(big)) {
-									                break;
-									            }
-									            fontSize++;
-									            System.out.println(fontSize);
-									            System.out.println(f.getSize());
-									            f = f.deriveFont(f.getSize() + 1); //font size not changing
-									            System.out.println(f.getSize());
-									        }
-									        System.out.println(fontSize);
-									        RL.userScan = RL.userScan.deriveFont((float) fontSize);
-									        content.majorRL.left.statsScan.scanAndMessages.scan.field.updateFontSize(0);
-									        //field.repaint(); //prob not needed
-										}
-									});
-							    	scanAndMessages.addMouseWheelListener(new MouseWheelListener() {
-
-										@Override
+							    	field.addMouseWheelListener(new MouseWheelListener() {
 										public void mouseWheelMoved(MouseWheelEvent mwe) {
-											changeBySplit(mwe.getPreciseWheelRotation());
-											System.out.println(mwe.getPreciseWheelRotation());
+											if(window.menuBar.file.preferences.scanFontSize.enableScroll){
+												double clicks = mwe.getPreciseWheelRotation();
+												double change = clicks * config.SCAN_FONT_SIZE_SCROLL_SPEED;
+												double tempSize = config.scanFontSize + change;
+												tempSize = Math.min(tempSize, config.maxFontSize);
+												config.scanFontSize = (float) Math.max(tempSize, config.minFontSize);
+												RL.userScan = RL.scan.deriveFont(config.scanFontSize);
+												field.setFont(RL.userScan);
+												field.setSize(field.getPreferredSize());
+												scanAndMessages.setDividerLocation(-1);
+							    			}
 										}
-										
 									});
-							    
-								}
-								public static void updateFontSize(int difference) {
-									field.setFont(RL.userScan);
-									field.setSize(new Dimension(field.getWidth(), field.getHeight() + difference));
-									scanAndMessages.setDividerLocation(-1);
-								}
-								public static void changeBySplit(double clicks) { //resize font to fit field
-									double change = clicks*2.5;
-									RL.scanFontSize += change;
-									RL.scanFontSize = Math.min(RL.scanFontSize, mainProgram.config.maxFontSize);
-									RL.scanFontSize = Math.max(RL.scanFontSize, mainProgram.config.minFontSize);
-									RL.userScan = RL.scan.deriveFont(RL.scanFontSize);
-									field.setFont(RL.userScan);
-									field.setSize(field.getPreferredSize());
-									scanAndMessages.setDividerLocation(-1);
 								}
 							}
 							public static class messageCenter {
@@ -726,7 +837,7 @@ public class FrontEnd extends BackEnd{
 								public static class scanEntryMessage {
 									static JLabel message = new JLabel();
 									public static void create() {
-										message.setText(config.defaultOtherInfoMessage);
+										message.setText(config.defaultOtherMessage);
 										message.setHorizontalAlignment(SwingConstants.CENTER);
 										message.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
 										message.setFont(RL.scanMessage);
@@ -776,7 +887,8 @@ public class FrontEnd extends BackEnd{
 								public static class otherMessages {
 									static JTextArea otherMessages = new JTextArea();
 									public static void create() {
-										otherMessages.setText("OTHER MESSAGES HERE!!!");
+										otherMessages.setText(config.defaultOtherMessage);
+										otherMessages.setEditable(false);
 										otherMessages.setFont(RL.otherMessage);
 										otherMessages.setOpaque(false);
 										otherMessages.setBorder(BorderFactory.createEmptyBorder(0, 10, 5, 10));
@@ -790,6 +902,9 @@ public class FrontEnd extends BackEnd{
 									}
 									public static void update(String message) {
 										otherMessages.setText(message);
+									}
+									public static void updateFontSize() {
+										otherMessages.setFont(RL.userOtherMessage);
 									}
 								}
 							}
