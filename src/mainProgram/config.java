@@ -323,7 +323,7 @@ public class config{
 			   lineCounter++;
 	
 			   switch(lineCounter){  
-			    case 9: 
+			    case 10: 
 			    	versLine = line.substring(line.lastIndexOf(" ")+1);
 			   }
 			}
