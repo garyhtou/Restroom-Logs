@@ -7,4 +7,4 @@ teacherName = Sabo
 teacherEmail = msabo@rentonschools.us
 studentDBPath = data\TestDB.accdb
 studentDBTableName = TestDB
-Release Version: 1.1.1.1HEY
+Release Version: 0.1.0
