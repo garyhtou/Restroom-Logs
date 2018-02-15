@@ -1,5 +1,7 @@
 package mainProgram;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,11 +16,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.Timer;
 
 import org.apache.commons.io.FileUtils;
 
@@ -47,7 +64,9 @@ import oldStuff.logs;
 public class BackEnd extends config{
 	public static void main(String[] args) {
 //		database.Log.table.delete("LogsC");
-		database.clear.LogsDB("Logs07022018");
+		//database.clear.LogsDB("Logs07022018");
+		//email.TimeListener.time();
+		email.send("mikems@live.com");
 	}
 	public static class logs{
 		//CREATE LOGS FOR INIT
@@ -460,7 +479,94 @@ public class BackEnd extends config{
 		}
 			
 	}
+		
+		public static class TimeListener implements Runnable{
+			public static void time(){
+			 /*Date date = new Date();
+			    SimpleDateFormat dateFormat = new SimpleDateFormat ("hh:mm:ss a");
+			    String timeStamp = "Current Date: " + dateFormat.format(date);
+				    ActionListener actionListener = new ActionListener() {
+				        public void actionPerformed(ActionEvent actionEvent) {
+				        	Date date = new Date();
+				            SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
+				            String timeStamp = "Current Date: " + dateFormat.format(date);
+				            //System.out.println(timeStamp);
+				        }
+				    };
+				Timer t = new Timer(1000, actionListener);
+				t.start();*/
+				LocalDateTime localNow = LocalDateTime.now();
+		        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
+		        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
+		        ZonedDateTime zonedNext5 ;
+		        zonedNext5 = zonedNow.withHour(22).withMinute(29).withSecond(0);
+		        if(zonedNow.compareTo(zonedNext5) > 0)
+		            zonedNext5 = zonedNext5.plusDays(1);
 
+		        Duration duration = Duration.between(zonedNow, zonedNext5);
+		        long initalDelay = duration.getSeconds();
+
+		        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);            
+		        scheduler.scheduleAtFixedRate(new TimeListener(), initalDelay,
+		                                      24*60*60, TimeUnit.SECONDS);
+			}
+
+			@Override
+			public void run() {
+				System.out.println("TIME");
+				//TODO:MOVE TO FRONT END SAME LVL AS WINDOW AND CONTENT
+				//TODO:CLEAR FROM LOG DB
+				//TODO:SIGN IN ALL STUDENTS
+				//TODO:MAKE SURE TO UPDATE TABLE
+				
+			}
+			
+		}
+		public static void send(String recipiant) {
+			 // Recipient's email ID needs to be mentioned.
+		      String to = recipiant;
+
+		      // Sender's email ID needs to be mentioned
+		      String from = "restroomlogs@gmail.com";
+
+		      // Assuming you are sending email from localhost
+		      String host = "localhost";
+
+		      // Get system properties
+		      Properties properties = System.getProperties();
+
+		      // Setup mail server
+		      properties.setProperty("mail.smtp.host", host);
+		      properties.setProperty("mail.user", "restroomlogs@gmail.com");
+		      properties.setProperty("mail.password", "restroomlogsprogrambygaryandmichael");
+
+		      // Get the default Session object.
+		      Session session = Session.getDefaultInstance(properties);
+
+		      try {
+		         // Create a default MimeMessage object.
+		         MimeMessage message = new MimeMessage(session);
+
+		         // Set From: header field of the header.
+		         message.setFrom(new InternetAddress(from));
+
+		         // Set To: header field of the header.
+		         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+		         // Set Subject: header field
+		         message.setSubject("This is the Subject Line!");
+
+		         // Now set the actual message
+		         message.setText("This is actual message");
+
+		         // Send message
+		         Transport.send(message);
+		         System.out.println("Sent message successfully....");
+		      } catch (MessagingException mex) {
+		         mex.printStackTrace();
+		      }
+			
+		}
 	}
 
 	public static class database{
