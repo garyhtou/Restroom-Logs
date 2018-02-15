@@ -27,5 +27,11 @@
 	<classpathentry kind="lib" path="libraries/httpclient/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="libraries/httpclient/httpclient-4.5.5.jar"/>
 	<classpathentry kind="lib" path="libraries/httpclient/httpcore-4.4.9.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/gimap.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/imap.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/smtp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
