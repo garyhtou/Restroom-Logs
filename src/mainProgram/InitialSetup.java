@@ -15,8 +15,10 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -56,9 +58,11 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-public class InitialSetup implements ActionListener{
+public  class InitialSetup implements ActionListener{
     String prefix = "";
     String path = "";
+	private static Font Title = loadFont(config.RubikFilePath); //Title Font
+	public static  Font preferencesTitle = Title.deriveFont(Font.BOLD, 35);
     static private final String newline = "\n";
     JButton openButton, saveButton;
     JTextArea log;
@@ -66,7 +70,7 @@ public class InitialSetup implements ActionListener{
 	
 	public InitialSetup()  {
 		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
-
+			
    
 
 		ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
@@ -471,10 +475,10 @@ JFrame frame = new JFrame();
 	 * @param comp JTextArea
 	 * @param title String
 	 */
-	public static void addTitle(JComponent addToComp, String title) {
+	public  void addTitle(JComponent addToComp, String title) {
 		JTextArea textArea = new JTextArea();
 		//textArea Settings
-		textArea.setFont(RL.preferencesTitle);
+		textArea.setFont(preferencesTitle);
 		textArea.setOpaque(false);
 		textArea.setEditable(false);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
@@ -509,7 +513,21 @@ JFrame frame = new JFrame();
           } catch (IOException e) { /* TODO: error handling */ }
         } else { /* TODO: error handling */ }
 	}
-        
+	public static Font loadFont(String path) {
+		Font ttfBase = null;
+  		Font ttfReal = null;
+		try {
+			InputStream myStream = new BufferedInputStream(new FileInputStream(path));
+			ttfBase = Font.createFont(Font.TRUETYPE_FONT, myStream);
+			ttfReal = ttfBase.deriveFont(Font.PLAIN, 24);
+			return ttfReal;
+		} catch (Exception ex) {
+	        ex.printStackTrace();
+	        BackEnd.logs.update.ERROR("Font could not be loaded from  " + path);
+	        System.err.println("Font could not be loaded from  " + path);
+	        return null;
+	    }
+    }
 	class OpenUrlAction implements ActionListener {
         @Override public void actionPerformed(ActionEvent e) {
     		URI uri;
