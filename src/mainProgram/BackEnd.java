@@ -1,7 +1,5 @@
 package mainProgram;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,15 +27,21 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Authenticator;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.swing.Timer;
-
-import org.apache.commons.io.FileUtils;
+import javax.mail.internet.MimeMultipart;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -59,14 +63,13 @@ import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import oldStuff.logs;
-
 public class BackEnd extends config{
 	public static void main(String[] args) {
 //		database.Log.table.delete("LogsC");
 		//database.clear.LogsDB("Logs07022018");
-		//email.TimeListener.time();
-		email.send("mikems@live.com");
+		email.TimeListener.time();
+		System.out.print("asghkdjhdgas");
+		//email.send("gtcowboybob@gmail.com");
 	}
 	public static class logs{
 		//CREATE LOGS FOR INIT
@@ -499,7 +502,7 @@ public class BackEnd extends config{
 		        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
 		        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
 		        ZonedDateTime zonedNext5 ;
-		        zonedNext5 = zonedNow.withHour(22).withMinute(29).withSecond(0);
+		        zonedNext5 = zonedNow.withHour(16).withMinute(29).withSecond(0);
 		        if(zonedNow.compareTo(zonedNext5) > 0)
 		            zonedNext5 = zonedNext5.plusDays(1);
 
@@ -526,8 +529,7 @@ public class BackEnd extends config{
 			 // Recipient's email ID needs to be mentioned.
 		      String to = recipiant;
 
-		      // Sender's email ID needs to be mentioned
-		      String from = "restroomlogs@gmail.com";
+		      String from = "Restroom Logs Program<restroomlogs@gmail.com>";
 
 		      // Assuming you are sending email from localhost
 		      String host = "localhost";
@@ -536,12 +538,20 @@ public class BackEnd extends config{
 		      Properties properties = System.getProperties();
 
 		      // Setup mail server
-		      properties.setProperty("mail.smtp.host", host);
-		      properties.setProperty("mail.user", "restroomlogs@gmail.com");
-		      properties.setProperty("mail.password", "restroomlogsprogrambygaryandmichael");
-
+		      properties.put("mail.smtp.host", "smtp.gmail.com");
+		      properties.put("mail.smtp.socketFactory.port", "465");
+		      properties.put("mail.smtp.socketFactory.class",
+						"javax.net.ssl.SSLSocketFactory");
+		      properties.put("mail.smtp.auth", "true");
+		      properties.put("mail.smtp.port", "465");
 		      // Get the default Session object.
-		      Session session = Session.getDefaultInstance(properties);
+		      //Session session = Session.getDefaultInstance(properties);
+		      Session session = Session.getDefaultInstance(properties,
+		  			new javax.mail.Authenticator() {
+		  				protected PasswordAuthentication getPasswordAuthentication() {
+		  					return new PasswordAuthentication("restroomlogs@gmail.com","restroomlogsprogrambygaryandmichael");
+		  				}
+		  			});
 
 		      try {
 		         // Create a default MimeMessage object.
@@ -554,10 +564,30 @@ public class BackEnd extends config{
 		         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 		         // Set Subject: header field
-		         message.setSubject("This is the Subject Line!");
+		         message.setSubject(config.emailSubject);
 
-		         // Now set the actual message
-		         message.setText("This is actual message");
+		         // Create the message part 
+		         BodyPart messageBodyPart = new MimeBodyPart();
+
+		         // Fill the message
+		         messageBodyPart.setText(config.emailBody);
+		         
+		         // Create a multipar message
+		         Multipart multipart = new MimeMultipart();
+
+		         // Set text message part
+		         multipart.addBodyPart(messageBodyPart);
+
+		         // Part two is attachment
+		         messageBodyPart = new MimeBodyPart();
+		         String filename = config.PdfLogPath;
+		         DataSource source = new FileDataSource(filename);
+		         messageBodyPart.setDataHandler(new DataHandler(source));
+		         messageBodyPart.setFileName(config.PdfLogPath);
+		         multipart.addBodyPart(messageBodyPart);
+
+		         // Send the complete message parts
+		         message.setContent(multipart );
 
 		         // Send message
 		         Transport.send(message);

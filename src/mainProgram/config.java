@@ -42,7 +42,8 @@ public class config{
 		//.txt
 		public static final String LogsPath  = "data/Logs.txt";
 		//PDF
-		public static final String PdfLogPath  = getPdfPath();
+		public static final String PdfLogPath  = "data/"+getPdfName()+".pdf";
+		public static final String PdfLogName  = getPdfName();
 		//View PDF
 		public static final String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	//Config files
@@ -77,6 +78,9 @@ public class config{
 		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program";
 	//stats other info
 		public static String defaultOtherInfo = "Insert your Student ID above";
+	//Email
+		public static  String emailSubject = "Restroom "+getPdfName();
+		public static  String emailBody = "Your PDF logs is attached";
 		
 		
 	/**
@@ -397,12 +401,12 @@ public class config{
 		}
 		
 	}
-	public static String getPdfPath() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+	public static String getPdfName() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM.dd.yyyy");
 		LocalDateTime now = LocalDateTime.now();
 		
 		String date = dtf.format(now);
-		return "data/Logs-"+date+".pdf";
+		return "Logs-"+date;
 	}
 	
 }
