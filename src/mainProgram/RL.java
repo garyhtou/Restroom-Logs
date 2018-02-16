@@ -2,7 +2,6 @@ package mainProgram;
 
 import java.awt.*;
 import java.io.*;
-import javax.swing.*;
 
 /**
  * Helper methods go here!
@@ -40,6 +39,8 @@ public class RL {
 	//for dynamic font size
 	private static double width = config.screenWidth;
 	private static double height = config.screenWidth;
+	//private static double width = 0;
+	//private static double height = 0;
 	private static float both = (float) (width + height);
 	
 	//Color

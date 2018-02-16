@@ -1,10 +1,7 @@
 package mainProgram;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -13,8 +10,6 @@ import org.apache.commons.lang.time.StopWatch;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
@@ -28,8 +23,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * I am planning to completely rebuild front end by using
@@ -51,6 +53,9 @@ public class FrontEnd extends BackEnd{
 	public static void create() {
 	//Window
 		frame(); //set up main settings of the frame
+		
+	//TimeCheck
+		TimeListener.time();
 		
 	//Menu Bar
 		window.menuBar.create();
@@ -88,7 +93,7 @@ public class FrontEnd extends BackEnd{
 		
 	//final changes
 		frame.setVisible(true);
-		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXE: NOT WORKING
+		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		
 		
 	}
@@ -284,7 +289,6 @@ public class FrontEnd extends BackEnd{
 								general.add(otherInfoField);
 							
 							general.add(new JSeparator());
-							general.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn"));
 						
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
@@ -359,6 +363,8 @@ public class FrontEnd extends BackEnd{
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
 							JLabel verNum = new JLabel("<html><strong>Version Number: </strong>" + config.VersionNumber + "</html>");
 							about.addWithFont(verNum);
+							about.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn \u00a9 2018"));
+
 					
 						
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
@@ -710,7 +716,7 @@ public class FrontEnd extends BackEnd{
 									teacherName.setFont(RL.userTeacherName);
 								}
 								public static void update() {
-									String tempTeacherName = "Mr. Sabo"; //TODO: get teacher name from file
+									String tempTeacherName = config.getTeacherName();
 									String message = tempTeacherName;
 									teacherName.setText(message);
 								}
@@ -1035,4 +1041,39 @@ public class FrontEnd extends BackEnd{
 		
 	}
 	
+	public static class TimeListener implements Runnable{
+		public static void time(){
+			LocalDateTime localNow = LocalDateTime.now();
+	        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
+	        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
+	        ZonedDateTime zonedNext5 ;
+	        zonedNext5 = zonedNow.withHour(15).withMinute(0).withSecond(0);
+	        if(zonedNow.compareTo(zonedNext5) > 0)
+	            zonedNext5 = zonedNext5.plusDays(1);
+
+	        Duration duration = Duration.between(zonedNow, zonedNext5);
+	        long initalDelay = duration.getSeconds();
+
+	        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);            
+	        scheduler.scheduleAtFixedRate(new TimeListener(), initalDelay,
+	                                      24*60*60, TimeUnit.SECONDS);
+		}
+
+		@Override
+		public void run() {
+			BackEnd.email.PDF.updatePDF();
+			if(config.dailyEmails)
+				BackEnd.email.send();
+			if(BackEnd.database.Log.table.signAllIn()) {
+				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
+				JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
+			}
+			content.majorRL.right.table.tablePane.tableContent.update();
+			//TODO:CLEAR FROM LOG DB
+			
+		}
+		
+	}
 }

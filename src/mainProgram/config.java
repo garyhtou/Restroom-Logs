@@ -79,8 +79,14 @@ public class config{
 	//stats other info
 		public static String defaultOtherInfo = "Insert your Student ID above";
 	//Email
-		public static  String emailSubject = "Restroom "+getPdfName();
-		public static  String emailBody = "Your PDF logs is attached";
+		public static String emailSubject = "Restroom "+getPdfName();
+		public static String emailBody = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
+		public static final String emailSender = "restroomlogs@gmail.com";
+		public static boolean dailyEmails = getDailyEmails();
+	//Teacher
+		public static String teacherName = getTeacherName();
+		public static String teacherEmail = getTeacherEmail();
 		
 		
 	/**
@@ -408,5 +414,103 @@ public class config{
 		String date = dtf.format(now);
 		return "Logs-"+date;
 	}
+	public static String getTeacherName() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			 String line = null, versLine = null;
+			 int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
 	
+			   switch(lineCounter){  
+			    case 5: 
+			    	versLine = line.substring(line.lastIndexOf("=")+2);
+			   
+				case 6: 
+					versLine += line.substring(line.lastIndexOf("=")+2);
+			   }
+			}
+			
+				br.close();
+			
+		    	return versLine;
+
+		
+		
+		} catch (IOException e) {
+				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+				return "Error";
+			}
+	}
+	public static String getTeacherEmail() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			 String line = null, versLine = null;
+			 int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
+	
+			   switch(lineCounter){  
+			    case 7: 
+			    	versLine = line.substring(line.lastIndexOf("=")+2);
+			   
+				}
+			}
+			
+				br.close();
+			
+		    	return versLine;
+
+		
+		
+		} catch (IOException e) {
+				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+				return "Error";
+			}
+		
+	}
+	public static String getDate() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM.dd.yyyy");
+		LocalDateTime now = LocalDateTime.now();
+		
+		String date = dtf.format(now);
+		return date;
+	}
+	public static boolean getDailyEmails() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			 String line = null, versLine = null;
+			 boolean daily;
+			 int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+			   // process the line.  
+			   lineCounter++;
+	
+			   switch(lineCounter){  
+			    case 2: 
+			    	versLine = line.substring(line.lastIndexOf("=")+2);
+			   
+				}
+			}
+			
+				br.close();
+				
+				if(versLine.equals("true"))
+					daily = true;
+				else
+					daily  = false;
+				
+		    	return daily;
+
+		} catch (IOException e) {
+				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+				return true;
+			}
+	}
 }
+

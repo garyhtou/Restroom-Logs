@@ -14,23 +14,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -42,7 +34,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -67,8 +58,7 @@ public class BackEnd extends config{
 	public static void main(String[] args) {
 //		database.Log.table.delete("LogsC");
 		//database.clear.LogsDB("Logs07022018");
-		email.TimeListener.time();
-		System.out.print("asghkdjhdgas");
+		//email.TimeListener.time();
 		//email.send("gtcowboybob@gmail.com");
 	}
 	public static class logs{
@@ -483,26 +473,13 @@ public class BackEnd extends config{
 			
 	}
 		
-		public static class TimeListener implements Runnable{
+		/*public static class TimeListener implements Runnable{
 			public static void time(){
-			 /*Date date = new Date();
-			    SimpleDateFormat dateFormat = new SimpleDateFormat ("hh:mm:ss a");
-			    String timeStamp = "Current Date: " + dateFormat.format(date);
-				    ActionListener actionListener = new ActionListener() {
-				        public void actionPerformed(ActionEvent actionEvent) {
-				        	Date date = new Date();
-				            SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM/dd/yyyy hh:mm:ss a");
-				            String timeStamp = "Current Date: " + dateFormat.format(date);
-				            //System.out.println(timeStamp);
-				        }
-				    };
-				Timer t = new Timer(1000, actionListener);
-				t.start();*/
 				LocalDateTime localNow = LocalDateTime.now();
 		        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
 		        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
 		        ZonedDateTime zonedNext5 ;
-		        zonedNext5 = zonedNow.withHour(16).withMinute(29).withSecond(0);
+		        zonedNext5 = zonedNow.withHour(15).withMinute(0).withSecond(0);
 		        if(zonedNow.compareTo(zonedNext5) > 0)
 		            zonedNext5 = zonedNext5.plusDays(1);
 
@@ -517,6 +494,15 @@ public class BackEnd extends config{
 			@Override
 			public void run() {
 				System.out.println("TIME");
+				if(config.dailyEmails)
+					send();
+				if(BackEnd.database.Log.table.signAllIn()) {
+					content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
+					JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
+				}
+				content.majorRL.right.table.tablePane.tableContent.update();
 				//TODO:MOVE TO FRONT END SAME LVL AS WINDOW AND CONTENT
 				//TODO:CLEAR FROM LOG DB
 				//TODO:SIGN IN ALL STUDENTS
@@ -524,19 +510,14 @@ public class BackEnd extends config{
 				
 			}
 			
-		}
-		public static void send(String recipiant) {
+		}*/
+		public static void send( ) {
 			 // Recipient's email ID needs to be mentioned.
-		      String to = recipiant;
-
-		      String from = "Restroom Logs Program<restroomlogs@gmail.com>";
-
-		      // Assuming you are sending email from localhost
+		      String to = config.teacherEmail;
+		      String from =config.emailSenderName;
 		      String host = "localhost";
-
 		      // Get system properties
 		      Properties properties = System.getProperties();
-
 		      // Setup mail server
 		      properties.put("mail.smtp.host", "smtp.gmail.com");
 		      properties.put("mail.smtp.socketFactory.port", "465");
@@ -545,14 +526,12 @@ public class BackEnd extends config{
 		      properties.put("mail.smtp.auth", "true");
 		      properties.put("mail.smtp.port", "465");
 		      // Get the default Session object.
-		      //Session session = Session.getDefaultInstance(properties);
 		      Session session = Session.getDefaultInstance(properties,
 		  			new javax.mail.Authenticator() {
 		  				protected PasswordAuthentication getPasswordAuthentication() {
-		  					return new PasswordAuthentication("restroomlogs@gmail.com","restroomlogsprogrambygaryandmichael");
+		  					return new PasswordAuthentication(config.emailSender,"");
 		  				}
 		  			});
-
 		      try {
 		         // Create a default MimeMessage object.
 		         MimeMessage message = new MimeMessage(session);
@@ -572,7 +551,7 @@ public class BackEnd extends config{
 		         // Fill the message
 		         messageBodyPart.setText(config.emailBody);
 		         
-		         // Create a multipar message
+		         // Create a multipart message
 		         Multipart multipart = new MimeMultipart();
 
 		         // Set text message part
@@ -587,7 +566,7 @@ public class BackEnd extends config{
 		         multipart.addBodyPart(messageBodyPart);
 
 		         // Send the complete message parts
-		         message.setContent(multipart );
+		         message.setContent(multipart);
 
 		         // Send message
 		         Transport.send(message);
@@ -692,10 +671,6 @@ public class BackEnd extends config{
 								}
 								
 								String updateInTime = "UPDATE [" + config.LogsDBTableName + "] SET [TimeIn] = ? WHERE " + "[ID] = '" + row + "'";
-								/*String q2 = "UPDATE "+config.LogsDBTableName+" ([TimeIn]) VALUES (?) WHERE ID = " + entryRowNum;
-								
-								String ex = "UPDATE ["+config.LogsDBTableName+"] SET ([TimeIn]) = "+"'test'" +"  WHERE id = "+entryRowNum; // The correct way to format an UPDATE query; the 'test' field is what you want to put into the column, so in our case the In Time. - Michael
-								*/
 								//creating statement
 								PreparedStatement st = null;
 								try {
@@ -706,7 +681,7 @@ public class BackEnd extends config{
 									e.printStackTrace();
 								}
 								
-								String currentTime = (new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(new Date()));
+								String currentTime = (new SimpleDateFormat("hh:mm:ss").format(new Date()));
 								
 								try {
 									st.setString(1, currentTime);
