@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/pop3.jar"/>
 	<classpathentry kind="lib" path="libraries/javamail-1.4.7/lib/smtp.jar"/>
 	<classpathentry kind="lib" path="libraries/jaf-1_1_1/jaf-1.1.1/activation.jar"/>
+	<classpathentry kind="lib" path="libraries/LGoodDatePicker-10.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

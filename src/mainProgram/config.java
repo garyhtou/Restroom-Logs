@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -16,6 +17,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import com.github.lgooddatepicker.components.TimePicker;
 
 public class config{
 //The following are universal constants
@@ -30,6 +39,7 @@ public class config{
 		//Student DB (Not final because file path should be customizable
 		public static String StudentDBPath  = getStudentDBPath();
 		public static String StudentDBTableName  = getStudentDBTableName();
+		public static String rlGPFO = getRlGPFO();
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
 		public static final String LogsDBTableName  = "Logs";
@@ -87,6 +97,7 @@ public class config{
 	//Teacher
 		public static String teacherName = getTeacherName();
 		public static String teacherEmail = getTeacherEmail();
+		public static String endOfActiveHours  = getActiveHours();
 		
 		
 	/**
@@ -427,13 +438,25 @@ public class config{
 			    case 5: 
 			    	versLine = line.substring(line.lastIndexOf("=")+2);
 			   
-				case 6: 
-					versLine += line.substring(line.lastIndexOf("=")+2);
 			   }
 			}
 			
 				br.close();
-			
+				BufferedReader br1 = new BufferedReader(new FileReader(DoNotTouchFilePath));
+				 
+				  lineCounter =0;
+				while ((line = br1.readLine()) != null) {  
+				   // process the line.  
+				   lineCounter++;
+		
+				   switch(lineCounter){  
+				    
+					case 6: 
+						versLine += line.substring(line.lastIndexOf("=")+2);
+				   }
+				}
+				
+					br1.close();
 		    	return versLine;
 
 		
@@ -443,6 +466,63 @@ public class config{
 				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 				return "Error";
 			}
+	}
+	public static void setTeachername(String name) {
+		try {
+			FileReader fr = new FileReader(DoNotTouchFilePath);
+		 String TotalLine = "";
+		 String currentLine = "";
+	     BufferedReader br2 = new BufferedReader(fr);
+	    
+	     int lineCounter2 = 1;
+	    while ((currentLine = br2.readLine()) != null) {
+	    	if(lineCounter2 == 5){
+	    		currentLine = "teacherTitle = "+name.substring(0,name.indexOf(".")+1);
+	    	}
+	    	if(lineCounter2 == 6){
+	    		currentLine = "teacherName = "+name.substring(name.indexOf(".")+1);
+	    	}
+	    	TotalLine += currentLine + "\n";
+	    	lineCounter2++;
+	    }
+	    FileWriter fw;
+		
+			fw = new FileWriter(DoNotTouchFilePath);
+		
+	    fw.write(TotalLine);
+	    fw.close();
+	    br2.close();
+	    } catch (IOException e) {
+			e.printStackTrace();
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+		}
+	}
+	public static void setTeacherEmail(String email) {
+		try {
+		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
+		 String TotalLine = "";
+		 String currentLine ="";
+	    BufferedReader br31 = new BufferedReader(fr2);
+	    
+	    int lineCounter2 = 1;
+	    while ((currentLine = br31.readLine()) != null) {
+	    	if(lineCounter2 == 7){
+	    		currentLine = "teacherEmail = "+email;
+	    	}
+	    	TotalLine += currentLine + "\n";
+	    	lineCounter2++;
+	    }
+	    FileWriter fw2;
+		
+			fw2 = new FileWriter(DoNotTouchFilePath);
+		
+	    fw2.write(TotalLine);
+	    fw2.close();
+	    br31.close();
+	    } catch (IOException e) {
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+			e.printStackTrace();
+		}
 	}
 	public static String getTeacherEmail() {
 		try {
@@ -491,7 +571,7 @@ public class config{
 			   lineCounter++;
 	
 			   switch(lineCounter){  
-			    case 2: 
+			    case 4: 
 			    	versLine = line.substring(line.lastIndexOf("=")+2);
 			   
 				}
@@ -511,6 +591,107 @@ public class config{
 				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 				return true;
 			}
+	}
+	public static String getActiveHours() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
+			String line = null, pathLine = null;
+			int lineCounter =0;
+			while ((line = br.readLine()) != null) {  
+				// process the line.  
+				lineCounter++;
+				switch(lineCounter){  
+				case 11: 
+					pathLine = line.substring(line.indexOf(" ")+3);
+				}
+			}
+			
+			br.close();
+			return pathLine;
+		} catch (IOException e) {
+			e.printStackTrace();
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+			return "Error";
+		}
+	}
+	public static void setActiveHours(TimePicker time) {
+		 String active = time.getText().substring(0, time.getText().lastIndexOf("0")+1)+" "+(time.getText().substring(time.getText().lastIndexOf("0")+1)).toUpperCase();
+		 try {
+				FileReader fr = new FileReader(DoNotTouchFilePath);
+				 String TotalLine = "";
+				 String currentLine = "";
+				 BufferedReader br = new BufferedReader(fr);
+				 int lineCounter = 1;
+			    while ((currentLine = br.readLine()) != null) {
+			    	if(lineCounter == 11){
+			    		currentLine = "activeHours = "+active;
+			    	}
+			    	TotalLine += currentLine + "\n";
+			    	lineCounter++;
+			    }
+			    FileWriter fw;
+				fw = new FileWriter(DoNotTouchFilePath);
+			    fw.write(TotalLine);
+			    fw.close();
+			    br.close();
+				} catch (IOException e) {
+					BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+					e.printStackTrace();
+				}
+	}
+	public static void setDailyEmails(boolean set) {
+		try {
+			FileReader fr = new FileReader(DoNotTouchFilePath);
+			 String TotalLine = "";
+			 String currentLine = "";
+			 BufferedReader br = new BufferedReader(fr);
+			 int lineCounter = 1;
+		    while ((currentLine = br.readLine()) != null) {
+		    	if(lineCounter == 4){
+		    		currentLine = "dailyEmails = "+set;
+		    	}
+		    	TotalLine += currentLine + "\n";
+		    	lineCounter++;
+		    }
+		    FileWriter fw;
+			fw = new FileWriter(DoNotTouchFilePath);
+		    fw.write(TotalLine);
+		    fw.close();
+		    br.close();
+			} catch (IOException e) {
+				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+				e.printStackTrace();
+			}
+	}
+	public static String getRlGPFO() {
+		try {	
+			String urlT = "https://rl.coding2kids.com/logs/secure.rlsecure";
+	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
+	    	HttpClient client = HttpClientBuilder.create().build();
+	    	HttpGet request = new HttpGet(urlT);
+	
+	    	// add request header
+	    	request.addHeader("User-Agent", USER_AGENT);
+	    	HttpResponse r;
+			
+				r = client.execute(request);
+			
+	        HttpEntity entity = r.getEntity();
+	            
+	            String il ;
+	            
+	            BufferedReader br1 = new BufferedReader(new InputStreamReader(r.getEntity().getContent()));
+	            
+	                  while ((il = br1.readLine()) != null) {
+	                         return il;
+	                  }
+	                  
+	                  br1.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			BackEnd.logs.update.ERROR("Could not fetch RlGPFO");
+		}
+		return "Error";
 	}
 }
 

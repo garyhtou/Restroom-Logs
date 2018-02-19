@@ -7,6 +7,9 @@ import javax.swing.event.ChangeListener;
 
 import org.apache.commons.lang.time.StopWatch;
 
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +19,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,6 +35,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -258,12 +266,16 @@ public class FrontEnd extends BackEnd{
 				}
 				public static class preferences extends JPanel{
 					static JMenuItem filePreferences = new JMenuItem("Preferences", filePreferencesIcon);
+					  static boolean daily;
+					  static String activeHours = "";
 					public static void create() {
 						fileMenu.add(filePreferences);
 						filePreferences.setMnemonic(KeyEvent.VK_P);
 					    filePreferences.setToolTipText("Preferences");
 						filePreferences.addActionListener((ActionEvent preferencesButtonEvent) -> {
 							BackEnd.logs.update.Logs("Preferences Opened");
+							   daily  =config.getDailyEmails();
+							   activeHours = config.getActiveHours();
 							content();
 				        });
 					}
@@ -352,7 +364,84 @@ public class FrontEnd extends BackEnd{
 						//
 							
 							
-							
+							preferences teacher = new preferences(tabbedPane, "Teacher", null, "Teacher Settings");
+								JPanel teacherPref = new JPanel(new GridLayout(0,1));//TODO: Need to make the space between each grid closer together
+								
+								JPanel teacherPrefP1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JTextField teacherNamePref = new JTextField();
+								teacherPrefP1.add(new JLabel("Name: ",SwingConstants.LEFT));
+								teacherNamePref.setPreferredSize(new Dimension(100,30));
+								teacherNamePref.setText(config.getTeacherName());
+								teacherNamePref.setEditable(true);
+								teacherPrefP1.add(teacherNamePref);
+								
+								teacherPref.add(teacherPrefP1);
+								
+								JPanel teacherPrefP2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JTextField teacherEmailPref = new JTextField();
+								teacherPrefP2.add(new JLabel("Email: ",SwingConstants.LEFT));
+								teacherEmailPref.setPreferredSize(new Dimension(175,30));
+								teacherEmailPref.setText(config.getTeacherEmail());
+								teacherEmailPref.setEditable(true);
+								teacherPrefP2.add(teacherEmailPref);
+								
+								teacherPref.add(teacherPrefP2);
+								
+								JPanel teacherPrefP3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JCheckBox teacherDailyEmailPref = new JCheckBox();
+								teacherPrefP3.add(new JLabel("Daily Log Emails: ",SwingConstants.LEFT));
+								teacherDailyEmailPref.setSelected(daily);
+								teacherDailyEmailPref.addActionListener(new ActionListener() {
+								    public void actionPerformed(ActionEvent e) {
+								    	if(teacherDailyEmailPref.isSelected()) {
+								    		config.setDailyEmails(true);
+										}
+										if(!teacherDailyEmailPref.isSelected()) {
+											 config.setDailyEmails(false);
+										}								   
+									}
+								}); 
+								
+								teacherPrefP3.add(teacherDailyEmailPref);
+								
+								teacherPref.add(teacherPrefP3);
+								
+								JPanel timeSpin = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JLabel timeLabel = new JLabel("End of Active Hours: ");
+								TimePickerSettings timeSettings = new TimePickerSettings();
+				    	        timeSettings.setAllowKeyboardEditing(false);
+				    	         TimePicker timePicker = new TimePicker(timeSettings);
+				    	         timePicker.setText(activeHours);
+								timeSpin.add(timeLabel);
+								timeSpin.add(timePicker);
+								teacherPref.add(timeSpin);
+								
+								JPanel applyPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+								JButton applyButton = new JButton();
+								JLabel confirm  = new JLabel();
+								confirm.setForeground(Color.GREEN);
+								applyButton.setText("Apply Changes");
+								//applyButton.setVisible(true);
+								applyButton.addActionListener(new ActionListener() {
+								    public void actionPerformed(ActionEvent e) {
+								    	config.setTeachername(teacherNamePref.getText());
+								    	config.setTeacherEmail(teacherEmailPref.getText());
+								    	config.setActiveHours(timePicker);
+								    	content.majorRL.left.statsScan.stats.information.teacherName.update();
+								    	confirm.setText("Changes Applied");
+								    	 Timer timer = new Timer(2000, new  ActionListener() {
+								    		    public void actionPerformed(ActionEvent e) {
+											    	confirm.setText("");
+								    			}
+								    		}); 
+								    	    timer.start();
+									}
+								}); 
+								
+								applyPanel.add(confirm);
+								applyPanel.add(applyButton);
+								teacherPref.add(applyPanel);
+								teacher.add(teacherPref);
 						
 							
 					//Wifi
@@ -363,6 +452,7 @@ public class FrontEnd extends BackEnd{
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
 							JLabel verNum = new JLabel("<html><strong>Version Number: </strong>" + config.VersionNumber + "</html>");
 							about.addWithFont(verNum);
+							about.add(new JSeparator());
 							about.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn \u00a9 2018"));
 
 					
@@ -945,7 +1035,7 @@ public class FrontEnd extends BackEnd{
 						public static class clearButton {
 							static JButton clear = new JButton();
 							public static void create() {
-								clear.setText("clear");
+								clear.setText("Clear");
 								clear.setFont(RL.tableClearButton);
 								clear.setToolTipText("Signed all students back in");
 								
@@ -1072,6 +1162,7 @@ public class FrontEnd extends BackEnd{
 			}
 			content.majorRL.right.table.tablePane.tableContent.update();
 			//TODO:CLEAR FROM LOG DB
+			//FIXME: have it be connected to activeHours
 			
 		}
 		

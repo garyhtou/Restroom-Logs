@@ -16,6 +16,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -30,6 +31,7 @@ import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -43,11 +45,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
 
 public  class InitialSetup implements ActionListener{
     String prefix = "";
@@ -58,9 +65,18 @@ public  class InitialSetup implements ActionListener{
     JButton openButton, saveButton;
     JTextArea log;
     JFileChooser fc;
-	
+    JPanel myPanel,emailPanel;
+    JTextField Field, Field2;
+    int result1, result2,lineCounter2,result3;
+    FileReader fr;
+	String currentLine;
+	String TotalLine ;
+    BufferedReader br2;
+    TimePicker timePicker;
+    JCheckBox dailyEmail;
+    String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
 	public InitialSetup()  {
-		String DoNotTouchFilePath = mainProgram.config.DoNotTouchFilePath;
+		
 			
    
 
@@ -140,12 +156,13 @@ JFrame frame = new JFrame();
 			    	    	int result = JOptionPane.showOptionDialog(null, panel1 , "Restroom Logs | Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Icon, null,null );
 			    	    	if (result == JOptionPane.OK_OPTION)	
 			    	    	{
-			    	    		
+			    	    		boolean pass1  =false;
+			    	    		while(!pass1) {
 
-			    			JTextField Field = new JTextField(5);
+			    			 Field = new JTextField(5);
 			    	        //JTextField yField = new JTextField(5);
 			    	       
-			    	        JPanel myPanel = new JPanel(new GridLayout(0,1));
+			    	         myPanel = new JPanel(new GridLayout(0,1));
 			    	       JRadioButton mr = new JRadioButton("Mr.");
 			    	        JRadioButton mrs = new JRadioButton("Mrs.");
 			    	     myPanel.add(new JLabel("Please enter the teacher's last name:"));
@@ -160,20 +177,25 @@ JFrame frame = new JFrame();
 			    	     	 mrs.addActionListener(this);
 			    	        myPanel.add(Field);
 			    	        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-			    	       
-			    			
-			    
-			    			  int result1 = JOptionPane.showConfirmDialog(null, myPanel, 
+			    	        System.out.println(prefix);
+			    	        System.out.println(Field.getText());
+			    	         result1 = JOptionPane.showConfirmDialog(null, myPanel, 
 			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.DEFAULT_OPTION);
-			    		        if (result1 == JOptionPane.OK_OPTION) {
+			    	        if(!prefix.equals("")&&!Field.getText().equals(""))
+			    	        	pass1 = true;
+			    	        else
+			    	        	pass1=false;
+			    	       
+			    			  
+			    		       }  if (result1 == JOptionPane.OK_OPTION) {
 			    		        	//frame.dispose();
-			    		           System.out.println("value: " + Field.getText());
-			    		   		FileReader fr = new FileReader(DoNotTouchFilePath);
-			    				String currentLine;
-			    				String TotalLine = "";
-			    			    BufferedReader br2 = new BufferedReader(fr);
+			    		    	   boolean pass2 = false;
+			    		    	   
+			    		   		 fr = new FileReader(DoNotTouchFilePath);
+			    				 TotalLine = "";
+			    			     br2 = new BufferedReader(fr);
 			    			    
-			    			    int lineCounter2 = 1;
+			    			     lineCounter2 = 1;
 			    			    while ((currentLine = br2.readLine()) != null) {
 			    			    	if(lineCounter2 == 5){
 			    			    	//	currentLine = "teacherTitle = "+prefix.substring(0,prefix.indexOf(".")); //Without period at the end
@@ -189,7 +211,7 @@ JFrame frame = new JFrame();
 			    			    fw.write(TotalLine);
 			    			    fw.close();
 			    			    br2.close();
-			    		       
+			    		      while(!pass2) {
 			    		        JPanel panel3  =new JPanel(new GridLayout(0,1));
 			    		        
 			    		        log = new JTextArea(5,20);
@@ -216,6 +238,8 @@ JFrame frame = new JFrame();
 			    		        openButton = new JButton("Open a File...",
 		                                 null);
 						        openButton.addActionListener(this);
+						        FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft Access Database", "accdb");
+						        fc.setFileFilter(filter);
 				
 						        //Create the save button.  We use the image from the JLF
 						        //Graphics Repository (but we extracted it from the jar).
@@ -238,9 +262,13 @@ JFrame frame = new JFrame();
 						        panelT.add(Field);
 						        Field.setText(null);
 						        panel3.add(panelT);
-						        int result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
-						        
-						        if(result2==JOptionPane.OK_OPTION) {
+						         result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
+						         if(!path.equals("")&&!Field.getText().equals(""))
+					    	        	pass2 = true;
+					    	        else
+					    	        	pass2=false;
+			    		    	   } 
+			    		      if(result2==JOptionPane.OK_OPTION) {
 						        	FileReader fr1 = new FileReader(DoNotTouchFilePath);
 				    				 String DbName = Field.getText();
 				    				 TotalLine = "";
@@ -261,22 +289,38 @@ JFrame frame = new JFrame();
 				    			    fw1.write(TotalLine);
 				    			    fw1.close();
 				    			    br3.close();
+				    			    boolean pass3 = false;
+				    			    while(!pass3){
 				    			    
-				    			    JTextField Field2 = new JTextField(5);
+				    			     Field2 = new JTextField(5);
 					    	        //JTextField yField = new JTextField(5);
 					    	       
-					    	        JPanel emailPanel = new JPanel(new GridLayout(0,1));
+					    	         emailPanel = new JPanel(new GridLayout(0,1));
 					    	        emailPanel.add(new JLabel("Please enter the teacher's email address:"));
 					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
 					    	        emailPanel.add(Field2);
-
+					    	         dailyEmail = new JCheckBox("Daily PDF Log Emails");
+					    	        emailPanel.add(dailyEmail);
+					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
+					    	        emailPanel.add(new JLabel("Select when Active Hours end:"));
+					    	        TimePickerSettings timeSettings = new TimePickerSettings();
+					    	        timeSettings.setAllowKeyboardEditing(false);
+					    	         timePicker = new TimePicker(timeSettings);
+					    	        emailPanel.add(timePicker);
+					    	        
+					    	        dailyEmail.addActionListener(this);
 					    
-					    			  int result3 = JOptionPane.showConfirmDialog(null, emailPanel, 
+					    			   result3 = JOptionPane.showConfirmDialog(null, emailPanel, 
 					    		                 "Restroom Logs | Initial Setup Step 3", JOptionPane.DEFAULT_OPTION);
+					    			   if(!Field2.getText().equals("")&&!timePicker.getText().equals(""))
+					    				   pass3 = true;
+					    			   else
+					    				   pass3 = false;
 					    			  
-					    			  if (result3 == JOptionPane.OK_OPTION) {
+				    			    } if (result3 == JOptionPane.OK_OPTION) {
 					    				  FileReader fr2 = new FileReader(DoNotTouchFilePath);
 						    				 String tEmail = Field2.getText();
+						    				 String active = timePicker.getText().substring(0, timePicker.getText().lastIndexOf("0")+1)+" "+(timePicker.getText().substring(timePicker.getText().lastIndexOf("0")+1)).toUpperCase();
 						    				 TotalLine = "";
 						    			    BufferedReader br31 = new BufferedReader(fr2);
 						    			    
@@ -284,6 +328,9 @@ JFrame frame = new JFrame();
 						    			    while ((currentLine = br31.readLine()) != null) {
 						    			    	if(lineCounter2 == 7){
 						    			    		currentLine = "teacherEmail = "+tEmail;
+						    			    	}
+						    			    	if(lineCounter2 == 11){
+						    			    		currentLine = "activeHours = "+active;
 						    			    	}
 						    			    	TotalLine += currentLine + "\n";
 						    			    	lineCounter2++;
@@ -495,6 +542,50 @@ JFrame frame = new JFrame();
             log.setCaretPosition(log.getDocument().getLength());
 		}
 		
+		if(dailyEmail.isSelected()) {
+			 FileReader fr2;
+			try {
+				fr2 = new FileReader(DoNotTouchFilePath);
+			 TotalLine = "";
+		    BufferedReader br31 = new BufferedReader(fr2);
+		     lineCounter2 = 1;
+		    while ((currentLine = br31.readLine()) != null) {
+		    	if(lineCounter2 == 4){
+		    		currentLine = "dailyEmails = true";
+		    	}
+		    	TotalLine += currentLine + "\n";
+		    	lineCounter2++;
+		    }
+		    FileWriter fw2 = new FileWriter(DoNotTouchFilePath);
+		    fw2.write(TotalLine);
+		    fw2.close();
+		    br31.close();
+		    } catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		if(!dailyEmail.isSelected()) {
+			 FileReader fr2;
+			try {
+				fr2 = new FileReader(DoNotTouchFilePath);
+			 TotalLine = "";
+		    BufferedReader br31 = new BufferedReader(fr2);
+		     lineCounter2 = 1;
+		    while ((currentLine = br31.readLine()) != null) {
+		    	if(lineCounter2 == 4){
+		    		currentLine = "dailyEmails = false";
+		    	}
+		    	TotalLine += currentLine + "\n";
+		    	lineCounter2++;
+		    }
+		    FileWriter fw2 = new FileWriter(DoNotTouchFilePath);
+		    fw2.write(TotalLine);
+		    fw2.close();
+		    br31.close();
+		    } catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		
 	}
 	private static void open(URI uri) {

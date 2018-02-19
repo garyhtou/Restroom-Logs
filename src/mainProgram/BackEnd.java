@@ -60,6 +60,7 @@ public class BackEnd extends config{
 		//database.clear.LogsDB("Logs07022018");
 		//email.TimeListener.time();
 		//email.send("gtcowboybob@gmail.com");
+		System.out.println(config.rlGPFO);
 	}
 	public static class logs{
 		//CREATE LOGS FOR INIT
@@ -529,7 +530,7 @@ public class BackEnd extends config{
 		      Session session = Session.getDefaultInstance(properties,
 		  			new javax.mail.Authenticator() {
 		  				protected PasswordAuthentication getPasswordAuthentication() {
-		  					return new PasswordAuthentication(config.emailSender,"");
+		  					return new PasswordAuthentication(config.emailSender,config.rlGPFO);
 		  				}
 		  			});
 		      try {
