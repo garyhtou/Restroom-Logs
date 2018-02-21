@@ -537,7 +537,7 @@ JFrame frame = new JFrame();
                 log.append("Path: " + file.getAbsolutePath() + newline);
                 path = file.getAbsolutePath();
             } else {
-                log.append("Open command cancelled by user." + newline);
+                log.append("Cancelled by user." + newline);
             }
             log.setCaretPosition(log.getDocument().getLength());
 		}

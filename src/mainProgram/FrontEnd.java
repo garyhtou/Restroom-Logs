@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.commons.lang.time.StopWatch;
 
@@ -266,8 +267,10 @@ public class FrontEnd extends BackEnd{
 				}
 				public static class preferences extends JPanel{
 					static JMenuItem filePreferences = new JMenuItem("Preferences", filePreferencesIcon);
-					  static boolean daily;
-					  static String activeHours = "";
+				    static boolean daily;
+					static JTextArea log;
+					static String path;
+					static String activeHours = "";
 					public static void create() {
 						fileMenu.add(filePreferences);
 						filePreferences.setMnemonic(KeyEvent.VK_P);
@@ -364,8 +367,87 @@ public class FrontEnd extends BackEnd{
 						//
 							
 							
+							preferences database = new preferences(tabbedPane,"Database",null,"Database Settings");
+								JPanel dbPanel = new JPanel(new GridLayout(0,1));
+								
+								JPanel dbPref1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								log = new JTextArea(5,40);
+			    		        log.setMargin(new Insets(5,5,0,5));
+			    		        log.setEditable(false);
+			    		         path = config.getStudentDBPath();
+			    		        log.setText("Current Path: "+config.getStudentDBPath());
+			    		        JScrollPane logScrollPane = new JScrollPane(log);
+								JFileChooser fc = new JFileChooser();
+			    		        JButton openButton = new JButton("Open a File...",
+		                                 null);
+						        openButton.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										int returnVal = fc.showOpenDialog(null);
+
+							            if (returnVal == JFileChooser.APPROVE_OPTION) {
+							            	log.setText("");
+							                File file = fc.getSelectedFile();
+							                //This is where a real application would open the file.
+							                log.append("Selected New: " + file.getName() + "." + "\n");
+							                //log.append("Path: " + file.getPath() + newline);
+							                log.append("Path New: " + file.getAbsolutePath() + "\n");
+							                path = file.getAbsolutePath();
+							            } else {
+							            	log.setText("");
+							                log.append("Cancelled by user." + "\n");
+						    		        log.append("Current Path: "+config.getStudentDBPath());
+
+							            }
+							            log.setCaretPosition(log.getDocument().getLength());
+									}
+						        });
+						        FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft Access Database", "accdb");
+						        fc.setFileFilter(filter);
+						        dbPref1.add(new JLabel("Student Database Path: "));
+						        dbPref1.add(openButton);
+						        dbPref1.add(logScrollPane, BorderLayout.CENTER);
+						        
+						        dbPanel.add(dbPref1);
+						        
+						        JPanel dbPref2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JTextField dbTableName = new JTextField();
+								dbPref2.add(new JLabel("Student Database Table Name: ",SwingConstants.LEFT));
+								dbTableName.setPreferredSize(new Dimension(100,30));
+								dbTableName.setText(config.getStudentDBTableName());
+								dbTableName.setEditable(true);
+								dbPref2.add(dbTableName);
+								
+								dbPanel.add(dbPref2);
+								
+								JPanel applyPanelD = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+								JButton applyButtonD = new JButton();
+								JLabel confirmD  = new JLabel();
+								confirmD.setForeground(Color.GREEN);
+								applyButtonD.setText("Apply Changes");
+								//applyButton.setVisible(true);
+								applyButtonD.addActionListener(new ActionListener() {
+								    public void actionPerformed(ActionEvent e) {
+								    	config.setStudentDBPath(path);
+								    	config.setStudentDBTableName(dbTableName.getText());
+								    	confirmD.setText("Changes Applied");
+								    	 Timer timer = new Timer(2000, new  ActionListener() {
+								    		    public void actionPerformed(ActionEvent e) {
+								    		    	confirmD.setText("");
+								    			}
+								    		}); 
+								    	    timer.start();
+									}
+								}); 
+								
+								applyPanelD.add(confirmD);
+								applyPanelD.add(applyButtonD);
+								dbPanel.add(applyPanelD);
+						        
+						        database.add(dbPanel);
+							
 							preferences teacher = new preferences(tabbedPane, "Teacher", null, "Teacher Settings");
-								JPanel teacherPref = new JPanel(new GridLayout(0,1));//TODO: Need to make the space between each grid closer together
+								JPanel teacherPref = new JPanel(new GridLayout(0,1));
 								
 								JPanel teacherPrefP1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 								JTextField teacherNamePref = new JTextField();
@@ -416,31 +498,31 @@ public class FrontEnd extends BackEnd{
 								timeSpin.add(timePicker);
 								teacherPref.add(timeSpin);
 								
-								JPanel applyPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-								JButton applyButton = new JButton();
-								JLabel confirm  = new JLabel();
-								confirm.setForeground(Color.GREEN);
-								applyButton.setText("Apply Changes");
+								JPanel applyPanelT = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+								JButton applyButtonT = new JButton();
+								JLabel confirmT  = new JLabel();
+								confirmT.setForeground(Color.GREEN);
+								applyButtonT.setText("Apply Changes");
 								//applyButton.setVisible(true);
-								applyButton.addActionListener(new ActionListener() {
+								applyButtonT.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
 								    	config.setTeachername(teacherNamePref.getText());
 								    	config.setTeacherEmail(teacherEmailPref.getText());
 								    	config.setActiveHours(timePicker);
 								    	content.majorRL.left.statsScan.stats.information.teacherName.update();
-								    	confirm.setText("Changes Applied");
+								    	confirmT.setText("Changes Applied");
 								    	 Timer timer = new Timer(2000, new  ActionListener() {
 								    		    public void actionPerformed(ActionEvent e) {
-											    	confirm.setText("");
+								    		    	confirmT.setText("");
 								    			}
 								    		}); 
 								    	    timer.start();
 									}
 								}); 
 								
-								applyPanel.add(confirm);
-								applyPanel.add(applyButton);
-								teacherPref.add(applyPanel);
+								applyPanelT.add(confirmT);
+								applyPanelT.add(applyButtonT);
+								teacherPref.add(applyPanelT);
 								teacher.add(teacherPref);
 						
 							
@@ -686,12 +768,16 @@ public class FrontEnd extends BackEnd{
 							double screenWidth = screenSize.getWidth();
 							double screenHeight = screenSize.getHeight();
 							
+							int displayWidth = (int) (screenWidth/2);
+							int displayHeight = (int) (screenHeight/1.5);
+							
 						    logTextArea.setText(fileContent);
 						    logTextArea.setEditable(false);
 						    logTextArea.setLineWrap(true);
 						    logTextArea.setWrapStyleWord(true);
 						    logTextArea.setMargin(new Insets(10,10,10,10));
 						    logTextArea.setCaretPosition(0);
+						   // logTextArea.setPreferredSize(new Dimension(displayWidth,displayHeight)); //fixes the size issue but turns off the scroll function
 						    
 						    JButton email = new JButton("Email");
 						    	email.addActionListener(new ActionListener() {
@@ -699,6 +785,8 @@ public class FrontEnd extends BackEnd{
 						    			//TODO: call something
 						    			//temp:
 						    			JDialog temp = new JDialog(frame, "call something there to email");
+						    			
+						    			//TODO: Uncomment this to make the button email    BackEnd.email.send();
 									}
 						    	});
 						    
@@ -706,8 +794,7 @@ public class FrontEnd extends BackEnd{
 						    pane.add(scrollPane, BorderLayout.CENTER);
 						    pane.add(email, BorderLayout.PAGE_END);
 						    
-							int displayWidth = (int) (screenWidth/5);
-							int displayHeight = (int) (screenHeight/20);
+							
 							
 						    JOptionPane optionPane = new JOptionPane();
 						    	optionPane.setSize(displayWidth, displayHeight);

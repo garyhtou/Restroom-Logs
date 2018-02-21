@@ -333,7 +333,7 @@ public class config{
 	    
 	    
 	}
-
+//ACCESSOR AND MUTATOR METHODS
 	public static String getVersionNumber() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -390,6 +390,33 @@ public class config{
 		}
 		
 	}
+	public static void setStudentDBPath(String name) {
+		try {
+		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
+		 String TotalLine = "";
+		 String currentLine ="";
+	    BufferedReader br31 = new BufferedReader(fr2);
+	    
+	    int lineCounter2 = 1;
+	    while ((currentLine = br31.readLine()) != null) {
+	    	if(lineCounter2 == 8){
+	    		currentLine = "studentDBPath = "+name;
+	    	}
+	    	TotalLine += currentLine + "\n";
+	    	lineCounter2++;
+	    }
+	    FileWriter fw2;
+		
+			fw2 = new FileWriter(DoNotTouchFilePath);
+		
+	    fw2.write(TotalLine);
+	    fw2.close();
+	    br31.close();
+	    } catch (IOException e) {
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+			e.printStackTrace();
+		}
+	}
 	public static String getStudentDBTableName() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -424,6 +451,33 @@ public class config{
 		
 		String date = dtf.format(now);
 		return "Logs-"+date;
+	}
+	public static void setStudentDBTableName(String name) {
+		try {
+		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
+		 String TotalLine = "";
+		 String currentLine ="";
+	    BufferedReader br31 = new BufferedReader(fr2);
+	    
+	    int lineCounter2 = 1;
+	    while ((currentLine = br31.readLine()) != null) {
+	    	if(lineCounter2 == 9){
+	    		currentLine = "studentDBTableName = "+name;
+	    	}
+	    	TotalLine += currentLine + "\n";
+	    	lineCounter2++;
+	    }
+	    FileWriter fw2;
+		
+			fw2 = new FileWriter(DoNotTouchFilePath);
+		
+	    fw2.write(TotalLine);
+	    fw2.close();
+	    br31.close();
+	    } catch (IOException e) {
+			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
+			e.printStackTrace();
+		}
 	}
 	public static String getTeacherName() {
 		try {
