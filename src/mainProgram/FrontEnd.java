@@ -534,6 +534,22 @@ public class FrontEnd extends BackEnd{
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
 							JLabel verNum = new JLabel("<html><strong>Version Number: </strong>" + config.VersionNumber + "</html>");
 							about.addWithFont(verNum);
+							JButton update = new JButton("Check for Updates");
+							update.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+					    			   try {
+										Process proc = Runtime.getRuntime().exec("java -jar Updater.jar");
+					    				   System.exit(0);
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
+
+								}
+								
+							});
+							about.add(update);
 							about.add(new JSeparator());
 							about.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn \u00a9 2018"));
 

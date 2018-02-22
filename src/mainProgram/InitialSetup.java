@@ -177,8 +177,6 @@ JFrame frame = new JFrame();
 			    	     	 mrs.addActionListener(this);
 			    	        myPanel.add(Field);
 			    	        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-			    	        System.out.println(prefix);
-			    	        System.out.println(Field.getText());
 			    	         result1 = JOptionPane.showConfirmDialog(null, myPanel, 
 			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.DEFAULT_OPTION);
 			    	        if(!prefix.equals("")&&!Field.getText().equals(""))
@@ -386,7 +384,6 @@ JFrame frame = new JFrame();
 				    	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 				    	            String webLine = null,versLine = null;
 				    	                  while ((inputLine = br1.readLine()) != null) {
-				    	                         System.out.println(inputLine);//debugging
 				    	                         webLine=inputLine;
 				    	                  }
 				    	                  
@@ -400,18 +397,15 @@ JFrame frame = new JFrame();
 				    	      	
 				    	      			   switch(lineCounter){  
 				    	      			    case 10: //on 9th line
-				    	                         System.out.println(line); //debugging
 				    	      			    	versLine = line;
 				    	      			   }
 				    	      			}
 				    	      			br21.close();
 				    	      			if(versLine.equals(webLine)) {
-				    	      				System.out.println("They're the same");
 				    	      				updated = true;
 				    	      			}
 				    	      			if(!versLine.equals(webLine)) {
 				    	      				updated = false;
-				    	      				System.out.println("They're NOT the same");
 				    	      			}
 				    	            if (entity != null && !updated) {
 				    	            	HttpClient client1 = HttpClientBuilder.create().build();
@@ -465,10 +459,6 @@ JFrame frame = new JFrame();
 			    	            
 		    			   // Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 
-			    	    	//String s = (String)JOptionPane.showInputDialog( null, "Complete the sentence:\n"+ "\"Green eggs and...\"","Customized Dialog",JOptionPane.PLAIN_MESSAGE,null,null, null);
-			    	    	//JOptionPane.showOptionDialog(null, "This is a test of the inital setup" , "Initial Setup", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,null );
-			    			
-			    	    	
 			    	    	
 			    		}
 			    		else if(lineSub.equalsIgnoreCase("true")) {
