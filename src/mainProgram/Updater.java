@@ -48,8 +48,8 @@ public class Updater {
 		JFrame frame = new JFrame();
 		int resultU = 0;
 		File file = new File(config.DoNotTouchFilePath);
-    	final String urlT = "https://rl.coding2kids.com/admin/info.txt";
-		final String  filePath = "RestroomLogsProgram.txt";
+    	final String urlT = "https://rl.coding2kids.com/admin/versions/RestroomlogsProgram.jar";
+		final String  filePath = "RestroomLogsProgram.jar";
     	final String USER_AGENT = "Chrome/63.0.3239.132 ";
 
 		       try {	
