@@ -539,13 +539,19 @@ public class FrontEnd extends BackEnd{
 
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
+									
+									JPanel confirm = new JPanel();
+									confirm.add(new JLabel("Are you sure you want to exit the program and open the Updater?"));
+									int result = JOptionPane.showConfirmDialog(null, confirm, "Are you sure?", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+									if(result==JOptionPane.YES_OPTION) {
 					    			   try {
 										Process proc = Runtime.getRuntime().exec("java -jar Updater.jar");
 					    				   System.exit(0);
-									} catch (IOException e) {
-										e.printStackTrace();
-									}
+					    			   } catch (IOException e) {
+					    				   e.printStackTrace();
+					    			   }
 
+									}
 								}
 								
 							});
