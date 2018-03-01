@@ -4,8 +4,23 @@ import java.awt.*;
 import java.io.*;
 
 /**
- * Helper methods go here!
- * @author gar.tou000
+ * Helper Methods' class
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * 
  *
  */
 public class RL {

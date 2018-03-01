@@ -49,6 +49,22 @@ package mainProgram;
  * To learn how to run the program with this argument, please visit <a href="rl.coding2kids.com/BLAH">rl.coding2kdis.com/BLAH</a><br>
  * <br>
  * <h3>Please view the Read Me file for more information<h3><br>
+ * 
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * @version BETA 0.1.0
  * @author Gary Tou
  * @author Michael Schwamborn

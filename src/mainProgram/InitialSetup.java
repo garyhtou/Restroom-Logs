@@ -55,7 +55,26 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
-
+/**
+ * Inital Setup Program that initializes everything for the Restroom Logs Program
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * 
+ *
+ */
 public  class InitialSetup implements ActionListener{
     String prefix = "";
     String path = "";
@@ -218,7 +237,7 @@ JFrame frame = new JFrame();
 			    		        
 			    		        JScrollPane logScrollPane = new JScrollPane(log);
 			    		        
-			    		        panel3.add(new JLabel("Please select your students' Access Database file:"));
+			    		        panel3.add(new JLabel("Please select your Student Access Database file:"));
 			    		        button.setText("<HTML>Click <FONT color=\"#000099\"><U>here</U></FONT>"
 					    	            + " for info on how to make an Access Database.</HTML>");
 					    	        //button.setHorizontalAlignment(SwingConstants.LEFT);
@@ -367,11 +386,11 @@ JFrame frame = new JFrame();
 				    	        
 				    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
 				    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-				    	    	String filePath = "RestroomLogsProgram.txt"; //FIXME: make this realative instead of abs.
+				    	    	String filePath = "RestroomLogsProgram.jar"; //FIXME: make this realative instead of abs.
 				    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
 	
 				    	    	HttpClient client = HttpClientBuilder.create().build();
-				    	    	HttpGet request = new HttpGet(urlT);
+				    	    	HttpGet request = new HttpGet(url);
 	
 				    	    	// add request header
 				    	    	request.addHeader("User-Agent", USER_AGENT);
@@ -409,7 +428,7 @@ JFrame frame = new JFrame();
 				    	      			}
 				    	            if (entity != null && !updated) {
 				    	            	HttpClient client1 = HttpClientBuilder.create().build();
-						    	    	HttpGet request1 = new HttpGet(urlT);
+						    	    	HttpGet request1 = new HttpGet(url);
 	
 						    	    	// add request header
 						    	    	request1.addHeader("User-Agent", USER_AGENT);

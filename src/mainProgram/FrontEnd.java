@@ -26,6 +26,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -43,12 +45,23 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * I am planning to completely rebuild front end by using
- * <ul>
- * <li>subclasses
- * <li>better naming
- * <li>redo wireframing
- * @author Gary Tou
+ * Front End part of the Restroom Logs Program (i.e GUI)
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see https://www.gnu.org/licenses/.
+ * 
  *
  */
 public class FrontEnd extends BackEnd{
@@ -71,6 +84,7 @@ public class FrontEnd extends BackEnd{
 		window.menuBar.file.create();
 		window.menuBar.file.exit.create();
 		window.menuBar.file.preferences.create();
+		window.menuBar.file.help.create();
 		window.menuBar.log.create();
 		window.menuBar.log.logsTxt.create();
 		
@@ -527,8 +541,8 @@ public class FrontEnd extends BackEnd{
 						
 							
 					//Wifi
-						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
-								
+						//preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
+							//Commented out for lack of use	
 								
 					//About
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
@@ -759,6 +773,29 @@ public class FrontEnd extends BackEnd{
 						 * Ex. content.majorRL.left.statsScan.stats.information.teacherName.updateFontSize();
 						 */
 						public abstract void updateJComponent();
+					}
+				}
+				public static class help {
+					static JMenuItem fileExit = new JMenuItem("Help", helpIcon); 
+					public static void create() {
+						fileMenu.add(fileExit);
+				        fileExit.setMnemonic(KeyEvent.VK_H); //short cut for exit
+				        fileExit.setToolTipText("Open Online Documentation");
+				        
+				        fileExit.addActionListener((ActionEvent exitButtonEvent) -> { //When clicked, exit
+				        	BackEnd.logs.update.System("Opened Online Documentaion");
+				        	URI uri;
+							try {
+								uri = new URI("https://www.rl.coding2kids.com/docs");
+								 if (Desktop.isDesktopSupported()) {
+							          try {
+							            Desktop.getDesktop().browse(uri);
+							          } catch (IOException e) { /* TODO: error handling */ }
+							        } else { /* TODO: error handling */ }
+							} catch (URISyntaxException e1) {
+								e1.printStackTrace();
+							}
+				        });
 					}
 				}
 			}

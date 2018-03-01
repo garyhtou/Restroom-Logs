@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,14 +54,34 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
-
+/**
+ * The Back End of the Restroom Logs Program
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * 
+ *
+ */
 public class BackEnd extends config{
 	public static void main(String[] args) {
 //		database.Log.table.delete("LogsC");
 		//database.clear.LogsDB("Logs07022018");
 		//email.TimeListener.time();
 		//email.send("gtcowboybob@gmail.com");
-		System.out.println(config.rlGPFO);
+		//System.out.println(config.rlGPFO);
+		
 	}
 	public static class logs{
 		//CREATE LOGS FOR INIT
@@ -513,6 +534,8 @@ public class BackEnd extends config{
 			
 		}*/
 		public static void send( ) {
+			
+			
 			 // Recipient's email ID needs to be mentioned.
 		      String to = config.teacherEmail;
 		      String from =config.emailSenderName;

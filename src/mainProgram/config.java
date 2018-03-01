@@ -25,7 +25,26 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.lgooddatepicker.components.TimePicker;
-
+/**
+ * Configuration of the Restroom Logs Program
+ * <div></div>
+ *  Copyright (C) 2018  Gary Tou and Michael Schwamborn
+ *  <div></div>
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ * <div></div>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ * <div></div>
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * 
+ *
+ */
 public class config{
 //The following are universal constants
 	//Critical Vars
@@ -82,6 +101,7 @@ public class config{
 		public static final double SCAN_FONT_SIZE_SCROLL_SPEED = 3;
 	//Icons
 		public static final ImageIcon fileExitIcon = new ImageIcon("assets/images/exit.png");
+		public static final ImageIcon helpIcon = new ImageIcon("assets/images/help.png");
 		public static final ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public static final ImageIcon logsTxtIcon = new ImageIcon("assets/images/logs.png");
 	//message center
