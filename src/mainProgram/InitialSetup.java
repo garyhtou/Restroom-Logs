@@ -190,10 +190,20 @@ JFrame frame = new JFrame();
 			    	     		group.add(mrs);
 			    	     	myPanel.add(mr);
 			    	     	 mr.setActionCommand("Mr.");
-			    	     	 mr.addActionListener(this);
+			    	     	 mr.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										prefix = e.getActionCommand();
+									}
+						        });
 			    	     	myPanel.add(mrs);
 			    	     	 mrs.setActionCommand("Mrs.");
-			    	     	 mrs.addActionListener(this);
+			    	     	 mrs.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										prefix = e.getActionCommand();
+									}
+						        });
 			    	        myPanel.add(Field);
 			    	        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 			    	         result1 = JOptionPane.showConfirmDialog(null, myPanel, 
@@ -236,7 +246,6 @@ JFrame frame = new JFrame();
 			    		        log.setEditable(false);
 			    		        
 			    		        JScrollPane logScrollPane = new JScrollPane(log);
-			    		        
 			    		        panel3.add(new JLabel("Please select your Student Access Database file:"));
 			    		        button.setText("<HTML>Click <FONT color=\"#000099\"><U>here</U></FONT>"
 					    	            + " for info on how to make an Access Database.</HTML>");
@@ -254,7 +263,26 @@ JFrame frame = new JFrame();
 			    		        fc = new JFileChooser();
 			    		        openButton = new JButton("Open a File...",
 		                                 null);
-						        openButton.addActionListener(this);
+						        openButton.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										if (e.getSource() == openButton) {
+								            int returnVal = fc.showOpenDialog(null);
+
+								            if (returnVal == JFileChooser.APPROVE_OPTION) {
+								                File file = fc.getSelectedFile();
+								                //This is where a real application would open the file.
+								                log.append("Selected: " + file.getName() + "." + newline);
+								                //log.append("Path: " + file.getPath() + newline);
+								                log.append("Path: " + file.getAbsolutePath() + newline);
+								                path = file.getAbsolutePath();
+								            } else {
+								                log.append("Cancelled by user." + newline);
+								            }
+								            log.setCaretPosition(log.getDocument().getLength());
+										}
+									}
+						        });
 						        FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft Access Database", "accdb");
 						        fc.setFileFilter(filter);
 				
@@ -272,6 +300,7 @@ JFrame frame = new JFrame();
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
 						        buttonPanel.add(button);
 						        panel3.add(buttonPanel, BorderLayout.CENTER);
+						        
 						        JPanel panelT = new JPanel((LayoutManager) new FlowLayout(FlowLayout.LEFT));
 						        panel3.add(new JLabel("Enter the name of your Students' Database Table:"));
 						        Field.setColumns(0);
@@ -360,115 +389,10 @@ JFrame frame = new JFrame();
 					    				  
 					    			    JPanel finalPanel = new JPanel(new GridLayout(0,1));
 				    		        finalPanel.add(new JLabel("Setup Complete"));
-				    		        finalPanel.add(new JLabel("The most updated version of Restroom Logs will be downloaded"));
-				    		        finalPanel.add(Box.createHorizontalStrut(15)); // a spacer
-				    		        finalPanel.add(new JLabel("Please make sure you're connected to the internet the entire time"));
+				    		        finalPanel.add(new JLabel("The Restroom Logs Program will now open"));
 				    			    frame.dispose();
 				    			    JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
-				    	    	
-				    	    	//  OTA UPDATES
-				    	        final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
-				    	        JProgressBar progressBar = new JProgressBar();
-				    	        progressBar.setIndeterminate(true);
-				    	        progressBar.setMinimum(0);
-				    	        dialog.setIconImage(webIcon.getImage());
-				    	        dialog.setLocationRelativeTo(null);
-								dialog.setResizable(false);
-								dialog.setPreferredSize(new Dimension(200, 65));
-				    	        
-				    	        JPanel panel = new JPanel(new BorderLayout());
-				    	        panel.add(progressBar, BorderLayout.CENTER);
-				    	        panel.add(new JLabel("Please wait......."), BorderLayout.PAGE_START);
-				    	        
-				    	        dialog.add(panel);
-				    	        dialog.pack();
-				    	        dialog.setVisible(true);
-				    	        
-				    	    	String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
-				    	    	String urlT = "https://rl.coding2kids.com/admin/info.txt";
-				    	    	String filePath = "RestroomLogsProgram.jar"; //FIXME: make this realative instead of abs.
-				    	    	String USER_AGENT = "Chrome/63.0.3239.132 ";
-	
-				    	    	HttpClient client = HttpClientBuilder.create().build();
-				    	    	HttpGet request = new HttpGet(url);
-	
-				    	    	// add request header
-				    	    	request.addHeader("User-Agent", USER_AGENT);
-				    	    	HttpResponse response = client.execute(request);
-				    	        HttpEntity entity = response.getEntity();
-				    	            
-				    	            String inputLine ;
-				    	            boolean updated = false;
-				    	            
-				    	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-				    	            String webLine = null,versLine = null;
-				    	                  while ((inputLine = br1.readLine()) != null) {
-				    	                         webLine=inputLine;
-				    	                  }
-				    	                  
-				    	                  br1.close();
-				    	                  BufferedReader br21 = new BufferedReader(new FileReader(file));
-				    	      			 line = null;
-				    	      			 lineCounter =0;
-				    	      			while ((line = br21.readLine()) != null) {  
-				    	      			   // process the line.  
-				    	      			   lineCounter++;
-				    	      	
-				    	      			   switch(lineCounter){  
-				    	      			    case 10: //on 9th line
-				    	      			    	versLine = line;
-				    	      			   }
-				    	      			}
-				    	      			br21.close();
-				    	      			if(versLine.equals(webLine)) {
-				    	      				updated = true;
-				    	      			}
-				    	      			if(!versLine.equals(webLine)) {
-				    	      				updated = false;
-				    	      			}
-				    	            if (entity != null && !updated) {
-				    	            	HttpClient client1 = HttpClientBuilder.create().build();
-						    	    	HttpGet request1 = new HttpGet(url);
-	
-						    	    	// add request header
-						    	    	request1.addHeader("User-Agent", USER_AGENT);
-						    	    	HttpResponse response1 = client1.execute(request);
-						    	        HttpEntity entity1 = response1.getEntity();
-						    	        
-				    	                long len = entity1.getContentLength();
-				    	                progressBar.setMaximum((int)len);
-				    	                InputStream is = entity1.getContent();
-				    	                FileOutputStream fos = new FileOutputStream(new File(filePath));
-				    	                int inByte;
-				    	               
-				    	                while((inByte = is.read()) != -1) {
-				    	                	 fos.write(inByte);
-				    	                    
-				    	                }
-				    	                dialog.dispose();
-				    	                fos.close();
-				    	                is.close();
-				    	                
-				    	                //Update DoNotTouch.txt with new release number
-				    	                FileReader fr3 = new FileReader(DoNotTouchFilePath);
-					    				  TotalLine = "";
-						    			  currentLine = "";
-					    			    BufferedReader br4 = new BufferedReader(fr3);
-					    			      lineCounter = 1;
-					    			    while ((currentLine = br4.readLine()) != null) {
-					    			    	if(lineCounter== 10){
-					    			    		currentLine = webLine;
-					    			    	}
-					    			    	TotalLine += currentLine + "\n";
-					    			    	lineCounter++;
-					    			    }
-					    			    FileWriter fw3 = new FileWriter(DoNotTouchFilePath);
-					    			    fw3.write(TotalLine);
-					    			    fw3.close();
-					    			    br4.close();
-				    	            }else {
-			    	            	dialog.dispose();
-			    	            }
+				    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 				    			    
 				    	 }
 				    }
@@ -476,11 +400,12 @@ JFrame frame = new JFrame();
 			  } 
 			    	            
 			    	            
-		    			   // Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 
 			    	    	
 			    		}
-			    		else if(lineSub.equalsIgnoreCase("true")) {
+			    		
+			    		
+			    	}else if(lineSub.equalsIgnoreCase("true")) {
 		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
 			    		}
 			    		else {
@@ -488,8 +413,6 @@ JFrame frame = new JFrame();
 			    			BackEnd.logs.update.ERROR("ranBefore non-valid boolean ("+ line + ") at " + DoNotTouchFilePath);
 			    			BackEnd.logs.update.ERROR("Assuming that program has ran before (ranBefore = true");
 			    						    		}
-			    		
-			    	}
 			    	break;
 			   }
 			}   
@@ -534,23 +457,6 @@ JFrame frame = new JFrame();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		prefix = e.getActionCommand();
-		if (e.getSource() == openButton) {
-            int returnVal = fc.showOpenDialog(null);
-
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                //This is where a real application would open the file.
-                log.append("Selected: " + file.getName() + "." + newline);
-                //log.append("Path: " + file.getPath() + newline);
-                log.append("Path: " + file.getAbsolutePath() + newline);
-                path = file.getAbsolutePath();
-            } else {
-                log.append("Cancelled by user." + newline);
-            }
-            log.setCaretPosition(log.getDocument().getLength());
-		}
-		
 		if(dailyEmail.isSelected()) {
 			 FileReader fr2;
 			try {

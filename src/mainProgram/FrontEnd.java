@@ -819,7 +819,7 @@ public class FrontEnd extends BackEnd{
 						String fileContent;
 						JPanel pane = new JPanel(new BorderLayout());
 						JScrollPane scrollPane = new JScrollPane();
-						JTextArea logTextArea = new JTextArea();
+						JTextArea logTextArea = new JTextArea(25,35);
 						try {
 							fileContent = new Scanner(new File(LogsPath)).useDelimiter("\\Z").next();
 
@@ -836,7 +836,6 @@ public class FrontEnd extends BackEnd{
 						    logTextArea.setWrapStyleWord(true);
 						    logTextArea.setMargin(new Insets(10,10,10,10));
 						    logTextArea.setCaretPosition(0);
-						   // logTextArea.setPreferredSize(new Dimension(displayWidth,displayHeight)); //fixes the size issue but turns off the scroll function
 						    
 						    JButton email = new JButton("Email");
 						    	email.addActionListener(new ActionListener() {
@@ -844,6 +843,7 @@ public class FrontEnd extends BackEnd{
 						    			//TODO: call something
 						    			//temp:
 						    			JDialog temp = new JDialog(frame, "call something there to email");
+						    			temp.setVisible(true);
 						    			
 						    			//TODO: Uncomment this to make the button email    BackEnd.email.send();
 									}
