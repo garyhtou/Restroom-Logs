@@ -13,8 +13,16 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Timer;
 
 import javax.swing.ImageIcon;
 
@@ -25,6 +33,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.lgooddatepicker.components.TimePicker;
+
+import javafx.scene.layout.Background;
 /**
  * Configuration of the Restroom Logs Program
  * <div></div>
@@ -46,6 +56,31 @@ import com.github.lgooddatepicker.components.TimePicker;
  *
  */
 public class config{
+	public static void main(String[] args) {		
+		long start = 0;
+		long stop = 0;
+		
+		try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
+		System.out.println("START");
+		
+		start = System.nanoTime();
+		checkDatabaseForDuplicatesOLD();
+		stop = System.nanoTime();
+		System.out.println(start + ":" + stop + "  -  " + (stop-start));
+		
+		//----------------------
+		
+		start = 0;
+		stop = 0;
+		
+		try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
+		System.out.println("START");
+		
+		start = System.nanoTime();
+		checkDatabaseForDuplicates();
+		stop = System.nanoTime();
+		System.out.println(start + ":" + stop + "  -  " + (stop-start));
+	}
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore = true;
@@ -736,6 +771,106 @@ public class config{
 				BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 				e.printStackTrace();
 			}
+	}
+	/**
+	 * @deprecated THIS IS REALLY INEFFICENT, USE THE OTHER ONE!
+	 * Checks database to see if there any repeat student IDs
+	 * @return Integer arrays lists within the ArrayList shows if and where there are duplicates of student IDs
+	 */
+	public static ArrayList<ArrayList<Integer>> checkDatabaseForDuplicatesOLD() {
+		ArrayList<int[]> ids = new ArrayList<int[]>(); //List of student ids that have been seen so far. [studentID, index]
+		ArrayList<ArrayList<Integer>> duplicates = new ArrayList<ArrayList<Integer>>(); // { {studentID, index}, {studentId, index, index, index, index}, studentId, index, index} }
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.StudentDBPath);
+			Statement s;
+			s = conn.createStatement();
+			
+			ResultSet rs;
+			rs = s.executeQuery("SELECT [StudentID] FROM ["+StudentDBTableName+"]");
+			
+			int index = 1; //Access DB is 1 index, not 0 index
+			while(rs.next()) {
+				int currentID = rs.getInt("StudentId");
+				
+				//runs through previously seen ids to find match
+				for(int i = 0; i < ids.size(); i++) {
+					if(ids.get(i)[0] == currentID) { //if matching (duplicate)
+						int findIndex = -1; //for index of original index
+						for(int k = 0; k < duplicates.size(); k++) { //find the index of the original duplicated id
+							if(duplicates.get(k).get(0) == currentID) {
+								findIndex = k;
+							}
+						}
+						if(findIndex != -1) { //if there was already a duplicate, add the current index to the list of duplicates
+							duplicates.get(findIndex).add(new Integer(index));
+						} if(findIndex == 1){ //this should never happen (if .contains, it should be able to find the index)
+							BackEnd.logs.update.ERROR("Error while checking database for duplicates");
+							//System.err.println("error");
+						} else { //if this is the first duplicate for the studentID that it has found
+							duplicates.add(new ArrayList<Integer> (Arrays.asList(new Integer(currentID), new Integer(ids.get(i)[1]), new Integer(index))));
+						}
+						break; //break to ensure there is no duplicates that are added more than once
+					}
+				}
+				
+				ids.add(new int[] {currentID, index}); //adds the current studentID and index to the ids ArrayList for checking in the future 
+				index++;
+			}
+		} catch (ClassNotFoundException e) {
+			BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+			return null;
+		} catch (SQLException e) {
+			BackEnd.logs.update.ERROR("Error while checking database for duplicates");
+			e.printStackTrace();
+		}
+		return duplicates;
+	}
+	/**
+	 * Checks database to see if there any repeat student IDs
+	 * @return Integer arrays lists within the ArrayList shows if and where there are duplicates of student IDs
+	 */
+	public static ArrayList<ArrayList<Integer>> checkDatabaseForDuplicates() {
+		ArrayList<ArrayList<Integer>> duplicates = new ArrayList<ArrayList<Integer>>(); // { {studentID, index}, {studentId, index, index, index, index}, studentId, index, index} }
+		try {
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.StudentDBPath);
+			Statement s;
+			s = conn.createStatement();
+			
+			ResultSet rs;
+			rs = s.executeQuery("SELECT [StudentID] FROM ["+StudentDBTableName+"]");
+			
+			//adds all indexes to duplicates. { {studentId, index}, studentID, index, index, index, index}, {studentID, index, index} }
+			int index = 1; //Access DB is 1 index, not 0 index
+			while(rs.next()) {
+				int currentID = rs.getInt("StudentId");
+				
+				for(int i = 0; i < duplicates.size(); i++) {
+					if(duplicates.get(i).get(0) == currentID) { //if matching (duplicate)
+						duplicates.get(i).add(new Integer(index));
+						break; //break to ensure there is no duplicates that are added more than once
+					}
+				}
+				index++;
+			}
+			//removes no duplicates
+			for(int i = duplicates.size() - 1; i >= 0; i--) {
+				if(duplicates.get(i).size() < 2) {
+					duplicates.remove(i);
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+			return null;
+		} catch (SQLException e) {
+			BackEnd.logs.update.ERROR("Error while checking database for duplicates");
+			e.printStackTrace();
+		}
+		
+		return duplicates;
 	}
 	public static String getRlGPFO() {
 		try {	

@@ -110,7 +110,7 @@ JFrame frame = new JFrame();
         //WINDOW SETTINGS
     	frame.setTitle("Restroom Logs");
     	//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
     	frame.setResizable(true);
     	frame.setUndecorated(true);
