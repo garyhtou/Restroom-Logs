@@ -60,24 +60,12 @@ public class config{
 		long start = 0;
 		long stop = 0;
 		
-		try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
-		System.out.println("START");
-		
-		start = System.nanoTime();
-		checkDatabaseForDuplicatesOLD();
-		stop = System.nanoTime();
-		System.out.println(start + ":" + stop + "  -  " + (stop-start));
-		
-		//----------------------
-		
-		start = 0;
-		stop = 0;
 		
 		try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
 		System.out.println("START");
 		
 		start = System.nanoTime();
-		checkDatabaseForDuplicates();
+		System.out.println(checkDatabaseForDuplicates().toString());
 		stop = System.nanoTime();
 		System.out.println(start + ":" + stop + "  -  " + (stop-start));
 	}
@@ -773,22 +761,22 @@ public class config{
 			}
 	}
 	/**
-	 * @deprecated THIS IS REALLY INEFFICENT, USE THE OTHER ONE!
+	 * 
 	 * Checks database to see if there any repeat student IDs
 	 * @return Integer arrays lists within the ArrayList shows if and where there are duplicates of student IDs
 	 */
-	public static ArrayList<ArrayList<Integer>> checkDatabaseForDuplicatesOLD() {
+	public static ArrayList<ArrayList<Integer>> checkDatabaseForDuplicates() {
 		ArrayList<int[]> ids = new ArrayList<int[]>(); //List of student ids that have been seen so far. [studentID, index]
 		ArrayList<ArrayList<Integer>> duplicates = new ArrayList<ArrayList<Integer>>(); // { {studentID, index}, {studentId, index, index, index, index}, studentId, index, index} }
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
-			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.StudentDBPath);
+			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.getStudentDBPath());
 			Statement s;
 			s = conn.createStatement();
 			
 			ResultSet rs;
-			rs = s.executeQuery("SELECT [StudentID] FROM ["+StudentDBTableName+"]");
+			rs = s.executeQuery("SELECT [StudentID] FROM ["+config.getStudentDBTableName()+"]");
 			
 			int index = 1; //Access DB is 1 index, not 0 index
 			while(rs.next()) {
@@ -827,51 +815,7 @@ public class config{
 		}
 		return duplicates;
 	}
-	/**
-	 * Checks database to see if there any repeat student IDs
-	 * @return Integer arrays lists within the ArrayList shows if and where there are duplicates of student IDs
-	 */
-	public static ArrayList<ArrayList<Integer>> checkDatabaseForDuplicates() {
-		ArrayList<ArrayList<Integer>> duplicates = new ArrayList<ArrayList<Integer>>(); // { {studentID, index}, {studentId, index, index, index, index}, studentId, index, index} }
-		try {
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
-			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.StudentDBPath);
-			Statement s;
-			s = conn.createStatement();
-			
-			ResultSet rs;
-			rs = s.executeQuery("SELECT [StudentID] FROM ["+StudentDBTableName+"]");
-			
-			//adds all indexes to duplicates. { {studentId, index}, studentID, index, index, index, index}, {studentID, index, index} }
-			int index = 1; //Access DB is 1 index, not 0 index
-			while(rs.next()) {
-				int currentID = rs.getInt("StudentId");
-				
-				for(int i = 0; i < duplicates.size(); i++) {
-					if(duplicates.get(i).get(0) == currentID) { //if matching (duplicate)
-						duplicates.get(i).add(new Integer(index));
-						break; //break to ensure there is no duplicates that are added more than once
-					}
-				}
-				index++;
-			}
-			//removes no duplicates
-			for(int i = duplicates.size() - 1; i >= 0; i--) {
-				if(duplicates.get(i).size() < 2) {
-					duplicates.remove(i);
-				}
-			}
-		} catch (ClassNotFoundException e) {
-			BackEnd.logs.update.ERROR("Can't find jdbc Driver");
-			return null;
-		} catch (SQLException e) {
-			BackEnd.logs.update.ERROR("Error while checking database for duplicates");
-			e.printStackTrace();
-		}
-		
-		return duplicates;
-	}
+	
 	public static String getRlGPFO() {
 		try {	
 			String urlT = "https://rl.coding2kids.com/logs/secure.rlsecure";
@@ -901,6 +845,19 @@ public class config{
 			BackEnd.logs.update.ERROR("Could not fetch RlGPFO");
 		}
 		return "Error";
+	}
+	public static int getActiveHoursHOUR() {
+		int hour;
+		if(getActiveHours().contains("AM"))
+			hour = Integer.parseInt(getActiveHours().substring(0, getActiveHours().indexOf(":")));
+		else if(getActiveHours().contains("PM"))
+			hour = Integer.parseInt(getActiveHours().substring(0, getActiveHours().indexOf(":"))) + 12;
+		else
+			hour = 00;
+		return hour;
+	}
+	public static int getActiveHoursMINUTE() {
+		return Integer.parseInt(getActiveHours().substring(getActiveHours().indexOf(":")+1, getActiveHours().lastIndexOf(" ")-1));
 	}
 }
 

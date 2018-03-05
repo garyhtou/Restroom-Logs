@@ -12,6 +12,7 @@ import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,6 +27,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -45,6 +47,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.http.HttpEntity;
@@ -128,6 +131,7 @@ JFrame frame = new JFrame();
       
 		try {
 			URI uri = new URI("https://www.rl.coding2kids.com/docs");
+			BufferedImage buttonIcon = ImageIO.read(new File("assets/images/help.png"));
 			//Might want to make a new variable for the link  to creating the student database (when that page is up)
 
 			int lineCounter = 0;
@@ -180,7 +184,15 @@ JFrame frame = new JFrame();
 
 			    			 Field = new JTextField(5);
 			    	        //JTextField yField = new JTextField(5);
-			    	       
+			    			 JButton h1  =new JButton(new ImageIcon(buttonIcon));
+						        JPanel panelWhole1 = new JPanel(new BorderLayout());
+						        JPanel panelHB1 = new JPanel();
+						        panelHB1.setPreferredSize(new Dimension(45,45));
+						        h1.setPreferredSize(new Dimension(30,30));
+						        h1.addActionListener(new OpenUrlAction());
+						        h1.setContentAreaFilled(false);
+						        panelHB1.add(h1);
+						        panelWhole1.add(panelHB1, BorderLayout.EAST);
 			    	         myPanel = new JPanel(new GridLayout(0,1));
 			    	       JRadioButton mr = new JRadioButton("Mr.");
 			    	        JRadioButton mrs = new JRadioButton("Mrs.");
@@ -206,7 +218,8 @@ JFrame frame = new JFrame();
 						        });
 			    	        myPanel.add(Field);
 			    	        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-			    	         result1 = JOptionPane.showConfirmDialog(null, myPanel, 
+			    	        panelWhole1.add(myPanel);
+			    	         result1 = JOptionPane.showConfirmDialog(null, panelWhole1, 
 			    		                 "Restroom Logs | Initial Setup Step 1", JOptionPane.DEFAULT_OPTION);
 			    	        if(!prefix.equals("")&&!Field.getText().equals(""))
 			    	        	pass1 = true;
@@ -217,6 +230,15 @@ JFrame frame = new JFrame();
 			    		       }  if (result1 == JOptionPane.OK_OPTION) {
 			    		        	//frame.dispose();
 			    		    	   boolean pass2 = false;
+			    		    	   JButton h1  =new JButton(new ImageIcon(buttonIcon));
+							        JPanel panelWhole1 = new JPanel(new BorderLayout());
+							        JPanel panelHB1 = new JPanel();
+							        panelHB1.setPreferredSize(new Dimension(45,45));
+							        h1.setPreferredSize(new Dimension(30,30));
+							        h1.addActionListener(new OpenUrlAction());
+							        h1.setContentAreaFilled(false);
+							        panelHB1.add(h1);
+							        panelWhole1.add(panelHB1, BorderLayout.EAST);
 			    		    	   
 			    		   		 fr = new FileReader(DoNotTouchFilePath);
 			    				 TotalLine = "";
@@ -238,7 +260,9 @@ JFrame frame = new JFrame();
 			    			    fw.write(TotalLine);
 			    			    fw.close();
 			    			    br2.close();
+			    			    
 			    		      while(!pass2) {
+
 			    		        JPanel panel3  =new JPanel(new GridLayout(0,1));
 			    		        
 			    		        log = new JTextArea(5,20);
@@ -308,7 +332,8 @@ JFrame frame = new JFrame();
 						        panelT.add(Field);
 						        Field.setText(null);
 						        panel3.add(panelT);
-						         result2 =JOptionPane.showConfirmDialog(null, panel3, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
+						        panelWhole1.add(panel3);
+						         result2 =JOptionPane.showConfirmDialog(null, panelWhole1, "Restroom Logs | Initial Setup Step 2" , JOptionPane.DEFAULT_OPTION);
 						         if(!path.equals("")&&!Field.getText().equals(""))
 					    	        	pass2 = true;
 					    	        else
@@ -331,11 +356,31 @@ JFrame frame = new JFrame();
 				    			    	TotalLine += currentLine + "\n";
 				    			    	lineCounter2++;
 				    			    }
+				    			    if(!config.checkDatabaseForDuplicates().isEmpty()) {
+				    			    	System.out.print(config.checkDatabaseForDuplicates().toString());
+				    			    	JPanel warning = new JPanel();
+				    			    	warning.add(new JLabel("Warning! There are duplicate Student IDs in the Student Database!"));
+				    			    	warning.add(new JLabel("Please close the Initial Setup and fix the issue"));
+				    			    	Object[] options = {"OK", "Exit Program"};
+				    			    	int res = JOptionPane.showOptionDialog(null, warning, "Duplicate Student ID Detected", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, UIManager.getIcon("OptionPane.warningIcon"),options, options[1]);
+					    			    
+					    			    if(res == JOptionPane.NO_OPTION)
+					    			    	System.exit(0);
+				    			    }
 				    			    FileWriter fw1 = new FileWriter(DoNotTouchFilePath);
 				    			    fw1.write(TotalLine);
 				    			    fw1.close();
 				    			    br3.close();
 				    			    boolean pass3 = false;
+				    			    JButton h2  =new JButton(new ImageIcon(buttonIcon));
+							        JPanel panelWhole2 = new JPanel(new BorderLayout());
+							        JPanel panelHB2 = new JPanel();
+							        panelHB2.setPreferredSize(new Dimension(45,45));
+							        h2.setPreferredSize(new Dimension(30,30));
+							        h2.addActionListener(new OpenUrlAction());
+							        h2.setContentAreaFilled(false);
+							        panelHB2.add(h2);
+							        panelWhole2.add(panelHB2, BorderLayout.EAST);
 				    			    while(!pass3){
 				    			    
 				    			     Field2 = new JTextField(5);
@@ -343,8 +388,8 @@ JFrame frame = new JFrame();
 					    	       
 					    	         emailPanel = new JPanel(new GridLayout(0,1));
 					    	        emailPanel.add(new JLabel("Please enter the teacher's email address:"));
-					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
 					    	        emailPanel.add(Field2);
+					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
 					    	         dailyEmail = new JCheckBox("Daily PDF Log Emails");
 					    	        emailPanel.add(dailyEmail);
 					    	        emailPanel.add(Box.createHorizontalStrut(15)); // a spacer
@@ -355,8 +400,8 @@ JFrame frame = new JFrame();
 					    	        emailPanel.add(timePicker);
 					    	        
 					    	        dailyEmail.addActionListener(this);
-					    
-					    			   result3 = JOptionPane.showConfirmDialog(null, emailPanel, 
+					    	        panelWhole2.add(emailPanel);
+					    			   result3 = JOptionPane.showConfirmDialog(null, panelWhole2, 
 					    		                 "Restroom Logs | Initial Setup Step 3", JOptionPane.DEFAULT_OPTION);
 					    			   if(!Field2.getText().equals("")&&!timePicker.getText().equals(""))
 					    				   pass3 = true;

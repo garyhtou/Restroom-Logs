@@ -1,4 +1,13 @@
 Manifest-Version: 1.0
-SplashScreen-Image: assets/RestroomLogsSplashscreen.png
-Main-Class: mainProject.MAIN
+Class-Path: libraries/commons-io-2.6.jar libraries/commons-lang-2.6.jar libraries/commons-lo
+ gging-1.1.1.jar libraries/hsqldb.jar libraries/jackcess-2.1.6.jar libraries/ucanaccess-4.0.2.jar libraries/jx
+ document-1.2.jar batik-awt-util.jar batik-dom.jar batik-svg-dom.jar b
+ atik-svggen.jar libraries/icepdf/batik-util.jar libraries/icepdf/batik-xml.jar libraries/icepdf/bcpkix-jdk15on.jar libraries/icepdf/bcpro
+ v-ext-jdk15on.jar libraries/icepdf/bcprov-jdk15on.jar libraries/itext5-5.5.12/itext5-itext-pdfa-5.5.12.jar libraries/itext5-5.5.12/ite
+ xt5-itext-xtra-5.5.12.jar libraries/itext5-5.5.12/itext5-itextpdf-5.5.12.jar libraries/itext5-5.5.12/itext5-xmlworker
+ -5.5.12.jar libraries/httpclient/commons-codec-1.10.jar libraries/httpclient/commons-logging-1.2.jar libraries/httpclient/httpclient
+ -4.5.5.jar libraries/httpclient/httpcore-4.4.9.jar libraries/javamail-1.4.7/lib/dsn.jar libraries/javamail-1.4.7/lib/gimap.jar libraries/javamail-1.4.7/lib/imap.jar libraries/javamail-1.4.7/lib/mailapi.jar 
+ libraries/javamail-1.4.7/lib/pop3.jar libraries/javamail-1.4.7/lib/smtp.jar libraries/jaf-1_1_1/jaf-1.1.1/activation.jar libraries/LGoodDatePicker-10.3.1.jar
+Main-Class: mainProgram.MAIN
+SplashScreen-Image: logos/RestroomLogsSplashscreen.png
 X-COMMENT: must leave a new line at the very end

@@ -1282,8 +1282,10 @@ public class FrontEnd extends BackEnd{
 			LocalDateTime localNow = LocalDateTime.now();
 	        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
 	        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
-	        ZonedDateTime zonedNext5 ;
-	        zonedNext5 = zonedNow.withHour(15).withMinute(0).withSecond(0);
+	        ZonedDateTime zonedNext5;
+	        int hour = config.getActiveHoursHOUR();
+	        int minute = config.getActiveHoursMINUTE();
+	        zonedNext5 = zonedNow.withHour(hour).withMinute(minute).withSecond(0);
 	        if(zonedNow.compareTo(zonedNext5) > 0)
 	            zonedNext5 = zonedNext5.plusDays(1);
 
@@ -1297,9 +1299,6 @@ public class FrontEnd extends BackEnd{
 
 		@Override
 		public void run() {
-			BackEnd.email.PDF.updatePDF();
-			if(config.dailyEmails)
-				BackEnd.email.send();
 			if(BackEnd.database.Log.table.signAllIn()) {
 				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
 				JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
@@ -1308,8 +1307,9 @@ public class FrontEnd extends BackEnd{
 			}
 			content.majorRL.right.table.tablePane.tableContent.update();
 			//TODO:CLEAR FROM LOG DB
-			//FIXME: have it be connected to activeHours
-			
+			BackEnd.email.PDF.updatePDF();
+			if(config.dailyEmails)
+				BackEnd.email.send();
 		}
 		
 	}

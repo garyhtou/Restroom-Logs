@@ -67,7 +67,8 @@ public class Updater {
 		JFrame frame = new JFrame();
 		int resultU = 0;
 		File file = new File(config.DoNotTouchFilePath);
-    	final String urlT = "https://rl.coding2kids.com/admin/versions/RestroomlogsProgram.jar";
+    	final String url = "https://rl.coding2kids.com/admin/versions/RestroomlogsProgram.jar";
+    	final String urlT = "https://rl.coding2kids.com/admin/info.txt";
 		final String  filePath = "RestroomLogsProgram.jar";
     	final String USER_AGENT = "Chrome/63.0.3239.132 ";
 
@@ -199,7 +200,7 @@ public class Updater {
 						    	        dialog2.pack();
 						    	        dialog2.setVisible(true);
 			 		    	    	  HttpClient client1 = HttpClientBuilder.create().build();
-						    	    	HttpGet request1 = new HttpGet(urlT);
+						    	    	HttpGet request1 = new HttpGet(url);
 	
 						    	    	// add request header
 						    	    	request1.addHeader("User-Agent", USER_AGENT);
