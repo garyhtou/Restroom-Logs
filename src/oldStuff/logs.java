@@ -35,11 +35,11 @@ import oldStuff.HeaderFooter;
 
 public class logs {
 
-	static String StudentDBPath = config.StudentDBPath; 
+	static String StudentDBPath = config.StudentDBPath.toString(); 
 	static String LogsDBPath = config.LogsDBPath;
 	static String PdfLogPath = config.PdfLogPath; 
 	static String PdfLogViewPath = config.PdfLogViewPath; 
-	static String DBTableName = config.StudentDBTableName; 
+	static String DBTableName = config.StudentDBTableName.toString(); 
 	static String LogsTableName = config.LogsDBTableName; 
 	static String LogsPath = config.LogsPath; 
 	
