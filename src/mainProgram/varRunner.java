@@ -18,7 +18,7 @@ public class varRunner {
 		var teacherName = new var("config/DoNotTouch.txt", "teacherName");
 		System.out.println(teacherName);
 		
-			//Manually change the file
+		//Manually change the file
 		
 		hitEnterToContinue();
 		
@@ -40,7 +40,8 @@ public class varRunner {
 		var wifi = new var("config/config.txt", "wifi");
 		System.out.println(wifi);
 		
-			//Manually change the file!!!!!!!!!!!!!!
+		
+		//Manually change the file!!!!!!!!!!!!!!
 		
 		hitEnterToContinue();
 		
@@ -62,7 +63,7 @@ public class varRunner {
 		
 		System.out.println("After: " + teacherName);
 		
-		teacherName.setValue("Sabo"); //sets it back to normal
+		//teacherName.setValue("Sabo"); //sets it back to normal
 	}
 	
 	

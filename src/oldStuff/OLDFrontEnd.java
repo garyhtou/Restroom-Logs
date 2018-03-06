@@ -803,7 +803,7 @@ public class OLDFrontEnd {
 			ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 			ImageIcon Icon = new ImageIcon("assets/images/RestroomLogsLogo.png");
 
-			String versNum = config.VersionNumber;
+			String versNum = config.VersionNumber.toString();
 			
 			
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
