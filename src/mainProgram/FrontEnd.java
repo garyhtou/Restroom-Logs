@@ -292,7 +292,7 @@ public class FrontEnd extends BackEnd{
 						filePreferences.addActionListener((ActionEvent preferencesButtonEvent) -> {
 							BackEnd.logs.update.Logs("Preferences Opened");
 							   daily  =config.getDailyEmails();
-							   activeHours = config.getActiveHours();
+							   activeHours = config.endOfActiveHours.toString();
 							content();
 				        });
 					}
@@ -388,8 +388,8 @@ public class FrontEnd extends BackEnd{
 								log = new JTextArea(5,40);
 			    		        log.setMargin(new Insets(5,5,0,5));
 			    		        log.setEditable(false);
-			    		         path = config.getStudentDBPath();
-			    		        log.setText("Current Path: "+config.getStudentDBPath());
+			    		         path = config.StudentDBPath.toString();
+			    		        log.setText("Current Path: "+config.StudentDBPath.toString());
 			    		        JScrollPane logScrollPane = new JScrollPane(log);
 								JFileChooser fc = new JFileChooser();
 			    		        JButton openButton = new JButton("Open a File...",
@@ -410,7 +410,7 @@ public class FrontEnd extends BackEnd{
 							            } else {
 							            	log.setText("");
 							                log.append("Cancelled by user." + "\n");
-						    		        log.append("Current Path: "+config.getStudentDBPath());
+						    		        log.append("Current Path: "+config.StudentDBPath.toString());
 
 							            }
 							            log.setCaretPosition(log.getDocument().getLength());
@@ -428,7 +428,7 @@ public class FrontEnd extends BackEnd{
 								JTextField dbTableName = new JTextField();
 								dbPref2.add(new JLabel("Student Database Table Name: ",SwingConstants.LEFT));
 								dbTableName.setPreferredSize(new Dimension(100,30));
-								dbTableName.setText(config.getStudentDBTableName());
+								dbTableName.setText(config.StudentDBTableName.toString());
 								dbTableName.setEditable(true);
 								dbPref2.add(dbTableName);
 								
@@ -442,7 +442,7 @@ public class FrontEnd extends BackEnd{
 								//applyButton.setVisible(true);
 								applyButtonD.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
-								    	config.setStudentDBPath(path);
+								    	config.StudentDBPath.setValue(path);
 								    	config.setStudentDBTableName(dbTableName.getText());
 								    	confirmD.setText("Changes Applied");
 								    	 Timer timer = new Timer(2000, new  ActionListener() {
