@@ -140,7 +140,7 @@ public class config{
 		public static boolean dailyEmails = getDailyEmails();
 	//Teacher
 		public static String teacherName = getTeacherName();
-		public static var teacherEmail = new car("config/DoNotTouch.txt","teacherEmail";
+		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
 		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","endOfActiveHours");
 		
 		
