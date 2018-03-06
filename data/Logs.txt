@@ -174,4 +174,5 @@
 ****  2018/02/09 23:30:10  |  System  |  EXIT
 ----------      2018/02/10 00:12:10  |  Gary Tou has signed in
 ****  2018/02/10 00:12:12  |  System  |  EXIT
-----------
+----------***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
+***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
