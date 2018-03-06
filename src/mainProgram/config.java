@@ -73,7 +73,7 @@ public class config{
 	//Critical Vars
 		public static boolean ranBefore = true;
 		public static var VersionNumber = new var("config/DoNotTouch.txt", "Release Version");
-	//Scren dimensions
+	//Screen dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		public static double screenWidth = screenSize.getWidth();
 		public static double screenHeight = screenSize.getHeight();

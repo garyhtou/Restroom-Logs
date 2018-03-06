@@ -537,7 +537,7 @@ public class BackEnd extends config{
 			
 			
 			 // Recipient's email ID needs to be mentioned.
-		      String to = config.teacherEmail;
+		      String to = config.teacherEmail.toString();
 		      String from =config.emailSenderName;
 		      String host = "localhost";
 		      // Get system properties
