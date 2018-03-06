@@ -140,8 +140,8 @@ public class config{
 		public static boolean dailyEmails = getDailyEmails();
 	//Teacher
 		public static String teacherName = getTeacherName();
-		public static String teacherEmail = getTeacherEmail();
-		public static String endOfActiveHours  = getActiveHours();
+		public static var teacherEmail = new car("config/DoNotTouch.txt","teacherEmail";
+		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","endOfActiveHours");
 		
 		
 	/**
@@ -378,6 +378,11 @@ public class config{
 	    
 	}
 //ACCESSOR AND MUTATOR METHODS
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * @return Version Number as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static String getVersionNumber() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -439,7 +444,12 @@ public class config{
 		}
 		
 	}
-	public static void setStudentDBPath(String name) {
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 *  Sets the Student Database Table Path to @param path as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
+	public static void setStudentDBPath(String path) {
 		try {
 		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
 		 String TotalLine = "";
@@ -449,7 +459,7 @@ public class config{
 	    int lineCounter2 = 1;
 	    while ((currentLine = br31.readLine()) != null) {
 	    	if(lineCounter2 == 8){
-	    		currentLine = "studentDBPath = "+name;
+	    		currentLine = "studentDBPath = "+path;
 	    	}
 	    	TotalLine += currentLine + "\n";
 	    	lineCounter2++;
@@ -505,7 +515,11 @@ public class config{
 		
 		String date = dtf.format(now);
 		return "Logs-"+date;
-	}
+	}/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * Sets the Student Database Table Name to @param as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static void setStudentDBTableName(String name) {
 		try {
 		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
@@ -605,6 +619,11 @@ public class config{
 			BackEnd.logs.update.ERROR("Unable to open/read:"+DoNotTouchFilePath);
 		}
 	}
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * Sets Teacher Email to @param email as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static void setTeacherEmail(String email) {
 		try {
 		 FileReader fr2 = new FileReader(DoNotTouchFilePath);
@@ -632,6 +651,11 @@ public class config{
 			e.printStackTrace();
 		}
 	}
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * @return Teacher Email as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static String getTeacherEmail() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -700,6 +724,11 @@ public class config{
 				return true;
 			}
 	}
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * @return End of Active Hours as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static String getActiveHours() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -722,6 +751,11 @@ public class config{
 			return "Error";
 		}
 	}
+/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * Sets End of Active Hours to @param time as specified in {@link #DoNotTouchFilePath}
+	 * @see var#Var(int) Var Constructor
+	 */
 	public static void setActiveHours(TimePicker time) {
 		 String active = time.getText().substring(0, time.getText().lastIndexOf("0")+1)+" "+(time.getText().substring(time.getText().lastIndexOf("0")+1)).toUpperCase();
 		 try {
