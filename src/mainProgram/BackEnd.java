@@ -891,7 +891,7 @@ public class BackEnd extends config{
 					s = conn.createStatement();
 
 					ResultSet rs;
-					String q = "INSERT INTO "+StudentDBTableName+" ([StudentID], [FirstName], [LastName]) VALUES (?, ?, ?)";
+					String q = "INSERT INTO "+StudentDBTableName.toString()+" ([StudentID], [FirstName], [LastName]) VALUES (?, ?, ?)";
 					PreparedStatement st = conn.prepareStatement (q);
 					st.setString(1, "12345");
 					st.setString(2, "Michael");
@@ -914,7 +914,7 @@ public class BackEnd extends config{
 					
 					
 					ResultSet rs;
-					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName+"] WHERE [StudentID] = '"+ studentID+"'");
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName.toString()+"] WHERE [StudentID] = '"+ studentID+"'");
 					
 					rs.next();
 					String firstName = rs.getString(2);
@@ -939,7 +939,7 @@ public class BackEnd extends config{
 					
 					
 					ResultSet rs;
-					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName+"] WHERE [StudentID] = '"+ studentID+"'");
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName] FROM ["+StudentDBTableName.toString()+"] WHERE [StudentID] = '"+ studentID+"'");
 					
 					rs.next();
 					String lastName = rs.getString(3);
@@ -1021,7 +1021,7 @@ public class BackEnd extends config{
 					Statement s = conn.createStatement();
 					ResultSet rs;
 					
-					String q = "DELETE FROM "+StudentDBTableName;
+					String q = "DELETE FROM "+StudentDBTableName.toString();
 					PreparedStatement st = conn.prepareStatement (q);
 					st.executeUpdate();
 				} catch (SQLException | ClassNotFoundException e) {

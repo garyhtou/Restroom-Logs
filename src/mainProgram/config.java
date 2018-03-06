@@ -57,7 +57,7 @@ import javafx.scene.layout.Background;
  */
 public class config{
 	public static void main(String[] args) {		
-		long start = 0;
+	/*	long start = 0;
 		long stop = 0;
 		
 		
@@ -67,21 +67,22 @@ public class config{
 		start = System.nanoTime();
 		System.out.println(checkDatabaseForDuplicates().toString());
 		stop = System.nanoTime();
-		System.out.println(start + ":" + stop + "  -  " + (stop-start));
+		System.out.println(start + ":" + stop + "  -  " + (stop-start));*/
 	}
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore = true;
-		public static String VersionNumber = getVersionNumber();
+		public static Var VersionNumber = new Var(10);
 	//Scren dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		public static double screenWidth = screenSize.getWidth();
 		public static double screenHeight = screenSize.getHeight();
 	//Databases
 		//Student DB (Not final because file path should be customizable
-		public static String StudentDBPath  = getStudentDBPath();
-		public static String StudentDBTableName  = getStudentDBTableName();
+		public static Var StudentDBPath  = new Var(8);
+		public static Var StudentDBTableName  = new Var(9);
 		public static String rlGPFO = getRlGPFO();
+		
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
 		public static final String LogsDBTableName  = "Logs";
@@ -405,6 +406,11 @@ public class config{
 			}
 		
 	}
+	/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * @return Student Database Table Path as specified in {@link #DoNotTouchFilePath}
+	 * @see Var#Var(int) Var Constructor
+	 */
 	public static String getStudentDBPath() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -460,6 +466,11 @@ public class config{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * @deprecated Replaced by Var Variable Constructor
+	 * @return Student Database Table Name as specified in {@link #DoNotTouchFilePath}
+	 * @see Var#Var(int) Var Constructor
+	 */
 	public static String getStudentDBTableName() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
