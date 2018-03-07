@@ -437,7 +437,7 @@ JFrame frame = new JFrame();
 				    		        finalPanel.add(new JLabel("The Restroom Logs Program will now open"));
 				    			    frame.dispose();
 				    			    JOptionPane.showMessageDialog(null, finalPanel, "Restroom Logs | Initial Setup Complete", JOptionPane.INFORMATION_MESSAGE);
-				    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
+				    			    Process proc = Runtime.getRuntime().exec("java -jar RestroomLogsProgram.jar");
 				    			    
 				    	 }
 				    }
@@ -451,7 +451,7 @@ JFrame frame = new JFrame();
 			    		
 			    		
 			    	}else if(lineSub.equalsIgnoreCase("true")) {
-		    			    Process proc = Runtime.getRuntime().exec("java -splash:assets/logos/RestroomLogsSplashscreen.png -jar RestroomLogsProgram.jar");
+		    			    Process proc = Runtime.getRuntime().exec("java -jar RestroomLogsProgram.jar");
 			    		}
 			    		else {
 			    			BackEnd.logs.update.StartUp("\n\n\n----------");

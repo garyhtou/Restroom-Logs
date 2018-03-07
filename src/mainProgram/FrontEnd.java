@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -284,6 +285,7 @@ public class FrontEnd extends BackEnd{
 				    static boolean daily;
 					static JTextArea log;
 					static String path;
+					static String OS = System.getProperty("os.name").toLowerCase();
 					static String activeHours = "";
 					public static void create() {
 						fileMenu.add(filePreferences);
@@ -541,8 +543,61 @@ public class FrontEnd extends BackEnd{
 						
 							
 					//Wifi
-						//preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
-							//Commented out for lack of use	
+						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
+						JTextArea wifiField  =new JTextArea();
+						wifiField.setEditable(false);
+						wifiField.setBackground(null);
+						String content = "";
+						try { 
+						 if (isWindows()) {
+								Runtime rt = Runtime.getRuntime();
+								Process proc;
+								
+									proc = rt.exec("ipconfig");
+								BufferedReader stdInput = new BufferedReader(new 
+								     InputStreamReader(proc.getInputStream()));
+
+								BufferedReader stdError = new BufferedReader(new 
+								     InputStreamReader(proc.getErrorStream()));
+
+								// read the output from the command
+								String s = null;
+								while ((s = stdInput.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								while ((s = stdError.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								wifiField.setText(content);
+							} else if (isMac() || isUnix()) {
+								Runtime rt = Runtime.getRuntime();
+								Process proc;
+								
+									proc = rt.exec("ifconfig");
+								BufferedReader stdInput = new BufferedReader(new 
+								     InputStreamReader(proc.getInputStream()));
+
+								BufferedReader stdError = new BufferedReader(new 
+								     InputStreamReader(proc.getErrorStream()));
+
+								// read the output from the command
+								String s = null;
+								while ((s = stdInput.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								while ((s = stdError.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								wifiField.setText(content);
+							} else {
+								content  = "Your Operating System is not supported for the Wifi Information Feature.";
+								wifiField.setText(content);
+							}
+							} catch (IOException e1) {
+								BackEnd.logs.update.ERROR("Unable to Read from Internal Command Prompt/Terminal");
+								e1.printStackTrace();
+							}
+						wifi.add(wifiField);
 								
 					//About
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
@@ -576,7 +631,32 @@ public class FrontEnd extends BackEnd{
 					
 						
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
+							
 					}
+					public static boolean isWindows() {
+
+						return (OS.indexOf("win") >= 0);
+
+					}
+
+					public static boolean isMac() {
+
+						return (OS.indexOf("mac") >= 0);
+
+					}
+
+					public static boolean isUnix() {
+
+						return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+					}
+
+					public static boolean isSolaris() {
+
+						return (OS.indexOf("sunos") >= 0);
+
+					}
+
 					
 					/**
 					 * Creates a new Tab in Preferences

@@ -150,7 +150,7 @@ public class config{
 		 */
 		public static String teacherName = getTeacherName();
 		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
-		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","endOfActiveHours");
+		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
 		
 		
 	/**
