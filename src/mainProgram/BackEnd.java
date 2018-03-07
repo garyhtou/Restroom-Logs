@@ -537,7 +537,7 @@ public class BackEnd extends config{
 			
 			
 			 // Recipient's email ID needs to be mentioned.
-		      String to = config.teacherEmail;
+		      String to = config.teacherEmail.toString();
 		      String from =config.emailSenderName;
 		      String host = "localhost";
 		      // Get system properties
@@ -553,7 +553,7 @@ public class BackEnd extends config{
 		      Session session = Session.getDefaultInstance(properties,
 		  			new javax.mail.Authenticator() {
 		  				protected PasswordAuthentication getPasswordAuthentication() {
-		  					return new PasswordAuthentication(config.emailSender,config.rlGPFO);
+		  					return new PasswordAuthentication(config.emailSender,config.getRlGPFO());
 		  				}
 		  			});
 		      try {

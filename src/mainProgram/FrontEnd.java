@@ -443,7 +443,7 @@ public class FrontEnd extends BackEnd{
 								applyButtonD.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
 								    	config.StudentDBPath.setValue(path);
-								    	config.setStudentDBTableName(dbTableName.getText());
+								    	config.StudentDBTableName.setValue((dbTableName.getText()));
 								    	confirmD.setText("Changes Applied");
 								    	 Timer timer = new Timer(2000, new  ActionListener() {
 								    		    public void actionPerformed(ActionEvent e) {
@@ -477,7 +477,7 @@ public class FrontEnd extends BackEnd{
 								JTextField teacherEmailPref = new JTextField();
 								teacherPrefP2.add(new JLabel("Email: ",SwingConstants.LEFT));
 								teacherEmailPref.setPreferredSize(new Dimension(175,30));
-								teacherEmailPref.setText(config.getTeacherEmail());
+								teacherEmailPref.setText(config.teacherEmail.toString());
 								teacherEmailPref.setEditable(true);
 								teacherPrefP2.add(teacherEmailPref);
 								
@@ -521,7 +521,7 @@ public class FrontEnd extends BackEnd{
 								applyButtonT.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
 								    	config.setTeachername(teacherNamePref.getText());
-								    	config.setTeacherEmail(teacherEmailPref.getText());
+								    	config.teacherEmail.setValue((teacherEmailPref.getText()));
 								    	config.setActiveHours(timePicker);
 								    	content.majorRL.left.statsScan.stats.information.teacherName.update();
 								    	confirmT.setText("Changes Applied");
@@ -1308,7 +1308,7 @@ public class FrontEnd extends BackEnd{
 			content.majorRL.right.table.tablePane.tableContent.update();
 			//TODO:CLEAR FROM LOG DB
 			BackEnd.email.PDF.updatePDF();
-			if(config.dailyEmails)
+			if(config.getDailyEmails())
 				BackEnd.email.send();
 		}
 		
