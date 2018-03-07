@@ -553,7 +553,7 @@ public class FrontEnd extends BackEnd{
 								Runtime rt = Runtime.getRuntime();
 								Process proc;
 								
-									proc = rt.exec("ipconfig");
+									proc = rt.exec("ipconfig /all");
 								BufferedReader stdInput = new BufferedReader(new 
 								     InputStreamReader(proc.getInputStream()));
 
@@ -573,7 +573,7 @@ public class FrontEnd extends BackEnd{
 								Runtime rt = Runtime.getRuntime();
 								Process proc;
 								
-									proc = rt.exec("ifconfig");
+									proc = rt.exec("ifconfig addr");
 								BufferedReader stdInput = new BufferedReader(new 
 								     InputStreamReader(proc.getInputStream()));
 
@@ -675,6 +675,7 @@ public class FrontEnd extends BackEnd{
 							scrollPane.setViewportView(mainPane);
 							scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 							scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+							scrollPane.getVerticalScrollBar().setUnitIncrement(12);
 							newTab.add(scrollPane, BorderLayout.CENTER);
 												
 						JTextArea Title = new JTextArea();
@@ -1379,6 +1380,7 @@ public class FrontEnd extends BackEnd{
 
 		@Override
 		public void run() {
+			config.teacherEmail.updateAll();
 			if(BackEnd.database.Log.table.signAllIn()) {
 				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
 				JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
