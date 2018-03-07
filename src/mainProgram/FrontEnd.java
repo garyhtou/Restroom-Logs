@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -284,6 +285,7 @@ public class FrontEnd extends BackEnd{
 				    static boolean daily;
 					static JTextArea log;
 					static String path;
+					static String OS = System.getProperty("os.name").toLowerCase();
 					static String activeHours = "";
 					public static void create() {
 						fileMenu.add(filePreferences);
@@ -292,7 +294,7 @@ public class FrontEnd extends BackEnd{
 						filePreferences.addActionListener((ActionEvent preferencesButtonEvent) -> {
 							BackEnd.logs.update.Logs("Preferences Opened");
 							   daily  =config.getDailyEmails();
-							   activeHours = config.getActiveHours();
+							   activeHours = config.endOfActiveHours.toString();
 							content();
 				        });
 					}
@@ -388,8 +390,8 @@ public class FrontEnd extends BackEnd{
 								log = new JTextArea(5,40);
 			    		        log.setMargin(new Insets(5,5,0,5));
 			    		        log.setEditable(false);
-			    		         path = config.getStudentDBPath();
-			    		        log.setText("Current Path: "+config.getStudentDBPath());
+			    		         path = config.StudentDBPath.toString();
+			    		        log.setText("Current Path: "+config.StudentDBPath.toString());
 			    		        JScrollPane logScrollPane = new JScrollPane(log);
 								JFileChooser fc = new JFileChooser();
 			    		        JButton openButton = new JButton("Open a File...",
@@ -410,7 +412,7 @@ public class FrontEnd extends BackEnd{
 							            } else {
 							            	log.setText("");
 							                log.append("Cancelled by user." + "\n");
-						    		        log.append("Current Path: "+config.getStudentDBPath());
+						    		        log.append("Current Path: "+config.StudentDBPath.toString());
 
 							            }
 							            log.setCaretPosition(log.getDocument().getLength());
@@ -428,7 +430,7 @@ public class FrontEnd extends BackEnd{
 								JTextField dbTableName = new JTextField();
 								dbPref2.add(new JLabel("Student Database Table Name: ",SwingConstants.LEFT));
 								dbTableName.setPreferredSize(new Dimension(100,30));
-								dbTableName.setText(config.getStudentDBTableName());
+								dbTableName.setText(config.StudentDBTableName.toString());
 								dbTableName.setEditable(true);
 								dbPref2.add(dbTableName);
 								
@@ -442,8 +444,8 @@ public class FrontEnd extends BackEnd{
 								//applyButton.setVisible(true);
 								applyButtonD.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
-								    	config.setStudentDBPath(path);
-								    	config.setStudentDBTableName(dbTableName.getText());
+								    	config.StudentDBPath.setValue(path);
+								    	config.StudentDBTableName.setValue((dbTableName.getText()));
 								    	confirmD.setText("Changes Applied");
 								    	 Timer timer = new Timer(2000, new  ActionListener() {
 								    		    public void actionPerformed(ActionEvent e) {
@@ -477,7 +479,7 @@ public class FrontEnd extends BackEnd{
 								JTextField teacherEmailPref = new JTextField();
 								teacherPrefP2.add(new JLabel("Email: ",SwingConstants.LEFT));
 								teacherEmailPref.setPreferredSize(new Dimension(175,30));
-								teacherEmailPref.setText(config.getTeacherEmail());
+								teacherEmailPref.setText(config.teacherEmail.toString());
 								teacherEmailPref.setEditable(true);
 								teacherPrefP2.add(teacherEmailPref);
 								
@@ -521,7 +523,7 @@ public class FrontEnd extends BackEnd{
 								applyButtonT.addActionListener(new ActionListener() {
 								    public void actionPerformed(ActionEvent e) {
 								    	config.setTeachername(teacherNamePref.getText());
-								    	config.setTeacherEmail(teacherEmailPref.getText());
+								    	config.teacherEmail.setValue((teacherEmailPref.getText()));
 								    	config.setActiveHours(timePicker);
 								    	content.majorRL.left.statsScan.stats.information.teacherName.update();
 								    	confirmT.setText("Changes Applied");
@@ -541,8 +543,61 @@ public class FrontEnd extends BackEnd{
 						
 							
 					//Wifi
-						//preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
-							//Commented out for lack of use	
+						preferences wifi = new preferences(tabbedPane, "Wifi", null, "Wifi information");
+						JTextArea wifiField  =new JTextArea();
+						wifiField.setEditable(false);
+						wifiField.setBackground(null);
+						String content = "";
+						try { 
+						 if (isWindows()) {
+								Runtime rt = Runtime.getRuntime();
+								Process proc;
+								
+									proc = rt.exec("ipconfig");
+								BufferedReader stdInput = new BufferedReader(new 
+								     InputStreamReader(proc.getInputStream()));
+
+								BufferedReader stdError = new BufferedReader(new 
+								     InputStreamReader(proc.getErrorStream()));
+
+								// read the output from the command
+								String s = null;
+								while ((s = stdInput.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								while ((s = stdError.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								wifiField.setText(content);
+							} else if (isMac() || isUnix()) {
+								Runtime rt = Runtime.getRuntime();
+								Process proc;
+								
+									proc = rt.exec("ifconfig");
+								BufferedReader stdInput = new BufferedReader(new 
+								     InputStreamReader(proc.getInputStream()));
+
+								BufferedReader stdError = new BufferedReader(new 
+								     InputStreamReader(proc.getErrorStream()));
+
+								// read the output from the command
+								String s = null;
+								while ((s = stdInput.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								while ((s = stdError.readLine()) != null) {
+								    content+=s+"\n";
+								}
+								wifiField.setText(content);
+							} else {
+								content  = "Your Operating System is not supported for the Wifi Information Feature.";
+								wifiField.setText(content);
+							}
+							} catch (IOException e1) {
+								BackEnd.logs.update.ERROR("Unable to Read from Internal Command Prompt/Terminal");
+								e1.printStackTrace();
+							}
+						wifi.add(wifiField);
 								
 					//About
 						preferences about = new preferences(tabbedPane, "About", null, "About this program");
@@ -576,7 +631,32 @@ public class FrontEnd extends BackEnd{
 					
 						
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
+							
 					}
+					public static boolean isWindows() {
+
+						return (OS.indexOf("win") >= 0);
+
+					}
+
+					public static boolean isMac() {
+
+						return (OS.indexOf("mac") >= 0);
+
+					}
+
+					public static boolean isUnix() {
+
+						return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+					}
+
+					public static boolean isSolaris() {
+
+						return (OS.indexOf("sunos") >= 0);
+
+					}
+
 					
 					/**
 					 * Creates a new Tab in Preferences
@@ -1308,7 +1388,7 @@ public class FrontEnd extends BackEnd{
 			content.majorRL.right.table.tablePane.tableContent.update();
 			//TODO:CLEAR FROM LOG DB
 			BackEnd.email.PDF.updatePDF();
-			if(config.dailyEmails)
+			if(config.getDailyEmails())
 				BackEnd.email.send();
 		}
 		

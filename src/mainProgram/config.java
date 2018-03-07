@@ -81,6 +81,9 @@ public class config{
 		//Student DB (Not final because file path should be customizable
 		public static var StudentDBPath  = new var("config/DoNotTouch.txt", "studentDBPath");
 		public static var StudentDBTableName  = new var("config/DoNotTouch.txt", "studentDBTableName");
+		/**
+		 * @deprecated Should call the Accessor Method, {@link #getRlGPFO()}
+		 */
 		public static String rlGPFO = getRlGPFO();
 		
 		//Logs DB
@@ -96,7 +99,7 @@ public class config{
 		public static final String LogsPath  = "data/Logs.txt";
 		//PDF
 		public static final String PdfLogPath  = "data/"+getPdfName()+".pdf";
-		public static final String PdfLogName  = getPdfName();
+		//public static final String PdfLogName  = getPdfName();
 		//View PDF
 		public static final String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	//Config files
@@ -137,11 +140,17 @@ public class config{
 		public static String emailBody = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
 		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
 		public static final String emailSender = "restroomlogs@gmail.com";
+		/**
+		 * @deprecated Should call the Accessor Method, {@link #getDailyEmails()}
+		 */
 		public static boolean dailyEmails = getDailyEmails();
 	//Teacher
+		/**
+		 * @deprecated Should call the Accessor Method, {@link #getTeacherName()}
+		 */
 		public static String teacherName = getTeacherName();
 		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
-		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","endOfActiveHours");
+		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
 		
 		
 	/**
@@ -547,6 +556,10 @@ public class config{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Accessor Method to get Teacher name in {@link #DoNotTouchFilePath}
+	 * @return Teacher Name as specified in {@link #DoNotTouchFilePath} Including Prefix, i.e. Mr.
+	 */
 	public static String getTeacherName() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -589,6 +602,10 @@ public class config{
 				return "Error";
 			}
 	}
+	/**
+	 * Mutator Method to set Teacher Name to parameter in {@link #DoNotTouchFilePath}
+	 * @param  name New Teacher Name, including Prefix
+	 */
 	public static void setTeachername(String name) {
 		try {
 			FileReader fr = new FileReader(DoNotTouchFilePath);
@@ -685,6 +702,10 @@ public class config{
 			}
 		
 	}
+	/**
+	 * Returns Current Date
+	 * @return Current System Date with Format MM.DD.YYY
+	 */
 	public static String getDate() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM.dd.yyyy");
 		LocalDateTime now = LocalDateTime.now();
@@ -692,6 +713,10 @@ public class config{
 		String date = dtf.format(now);
 		return date;
 	}
+	/**
+	 * Accessor Method to get whether or not the User wants daily emails in {@link #DoNotTouchFilePath}
+	 * @return boolean true or false whether the User has selected to haave daily emails or not
+	 */
 	public static boolean getDailyEmails() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(DoNotTouchFilePath));
@@ -752,9 +777,9 @@ public class config{
 		}
 	}
 /**
-	 * @deprecated Replaced by Var Variable Constructor
+	 * 
 	 * Sets End of Active Hours to @param time as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * 
 	 */
 	public static void setActiveHours(TimePicker time) {
 		 String active = time.getText().substring(0, time.getText().lastIndexOf("0")+1)+" "+(time.getText().substring(time.getText().lastIndexOf("0")+1)).toUpperCase();
@@ -781,6 +806,11 @@ public class config{
 					e.printStackTrace();
 				}
 	}
+	/**
+	 * 
+	 * Sets the boolean to daily emails  to @param set as specified in {@link #DoNotTouchFilePath}
+	 * 
+	 */
 	public static void setDailyEmails(boolean set) {
 		try {
 			FileReader fr = new FileReader(DoNotTouchFilePath);
@@ -816,12 +846,12 @@ public class config{
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
-			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.getStudentDBPath());
+			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.StudentDBPath.toString());
 			Statement s;
 			s = conn.createStatement();
 			
 			ResultSet rs;
-			rs = s.executeQuery("SELECT [StudentID] FROM ["+config.getStudentDBTableName()+"]");
+			rs = s.executeQuery("SELECT [StudentID] FROM ["+config.StudentDBTableName.toString()+"]");
 			
 			int index = 1; //Access DB is 1 index, not 0 index
 			while(rs.next()) {
@@ -860,7 +890,9 @@ public class config{
 		}
 		return duplicates;
 	}
-	
+	/**
+	 * @return RLGFO from Secure Entity 
+	 */
 	public static String getRlGPFO() {
 		try {	
 			String urlT = "https://rl.coding2kids.com/logs/secure.rlsecure";
@@ -893,16 +925,16 @@ public class config{
 	}
 	public static int getActiveHoursHOUR() {
 		int hour;
-		if(getActiveHours().contains("AM"))
-			hour = Integer.parseInt(getActiveHours().substring(0, getActiveHours().indexOf(":")));
-		else if(getActiveHours().contains("PM"))
-			hour = Integer.parseInt(getActiveHours().substring(0, getActiveHours().indexOf(":"))) + 12;
+		if(endOfActiveHours.toString().contains("AM"))
+			hour = Integer.parseInt(endOfActiveHours.toString().substring(0, endOfActiveHours.toString().indexOf(":")));
+		else if(endOfActiveHours.toString().contains("PM"))
+			hour = Integer.parseInt(endOfActiveHours.toString().substring(0, endOfActiveHours.toString().indexOf(":"))) + 12;
 		else
 			hour = 00;
 		return hour;
 	}
 	public static int getActiveHoursMINUTE() {
-		return Integer.parseInt(getActiveHours().substring(getActiveHours().indexOf(":")+1, getActiveHours().lastIndexOf(" ")-1));
+		return Integer.parseInt(endOfActiveHours.toString().substring(endOfActiveHours.toString().indexOf(":")+1, endOfActiveHours.toString().lastIndexOf(" ")-1));
 	}
 }
 
