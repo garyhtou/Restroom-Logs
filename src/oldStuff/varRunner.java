@@ -1,6 +1,8 @@
-package mainProgram;
+package oldStuff;
 
 import java.util.Scanner;
+
+import mainProgram.var;
 
 public class varRunner {
 
