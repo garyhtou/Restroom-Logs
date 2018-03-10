@@ -1253,7 +1253,7 @@ public class FrontEnd extends BackEnd{
 						public static class title {
 							static JLabel title = new JLabel();
 							public static void create() {
-								title.setText("Student Signed Out");
+								title.setText("Students Signed Out");
 								title.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 								title.setFont(RL.tableTitle);
 								titleBar.add(title, BorderLayout.LINE_START);
