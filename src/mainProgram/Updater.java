@@ -103,7 +103,7 @@ public class Updater {
     	    	int result = JOptionPane.showOptionDialog(null, panel1 , "Restroom Logs | Updater", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Icon, null,null );
     	    	if (result == JOptionPane.OK_OPTION)	
     	    	{
-    	    		 final JDialog dialog = new JDialog(null, "Downloading Update", ModalityType.MODELESS);
+    	    		 final JDialog dialog = new JDialog(null, "Restroom Logs | Updater", ModalityType.MODELESS);
 		    	        JProgressBar progressBar = new JProgressBar();
 		    	        progressBar.setIndeterminate(true);
 		    	        progressBar.setMinimum(0);
