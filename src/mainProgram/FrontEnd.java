@@ -119,6 +119,20 @@ public class FrontEnd extends BackEnd{
 		frame.setVisible(true);
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		
+	//OTA	
+			if(config.checkForUpdates()) {
+				int i = JOptionPane.showConfirmDialog(null, "There is an available update. Would you wish to open the Updater?", "Available Update", JOptionPane.YES_NO_OPTION);
+				if(i == JOptionPane.YES_OPTION) {
+    			    try {
+						Process proc = Runtime.getRuntime().exec("java -jar Updater.jar");
+						System.exit(0);
+					} catch (IOException e) {
+						BackEnd.logs.update.ERROR("Unable to run Updater");
+						e.printStackTrace();
+					}
+				}
+
+			}
 		
 	}
 	

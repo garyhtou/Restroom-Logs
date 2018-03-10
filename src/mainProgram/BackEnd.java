@@ -8,12 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -76,11 +78,7 @@ import com.itextpdf.text.pdf.PdfWriter;
  */
 public class BackEnd extends config{
 	public static void main(String[] args) {
-//		database.Log.table.delete("LogsC");
-		//database.clear.LogsDB("Logs07022018");
-		//email.TimeListener.time();
-		//email.send("gtcowboybob@gmail.com");
-		//System.out.println(config.rlGPFO);
+
 		
 	}
 	public static class logs{
@@ -492,7 +490,17 @@ public class BackEnd extends config{
 				}
 				
 		}
-			
+			/**
+			 * Deletes the previous day's PDF 
+			 */
+			public static void DeleteYesterdayPDF() {
+				final Calendar cal = Calendar.getInstance();
+			    cal.add(Calendar.DATE, -1);
+			    DateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
+			    File file = new File("data/Logs-"+dateFormat.format(cal.getTime())+".pdf");
+			    System.out.print(file.toString());
+		        file.delete(); 
+			}
 	}
 		
 		/*public static class TimeListener implements Runnable{
@@ -601,7 +609,6 @@ public class BackEnd extends config{
 			
 		}
 	}
-	
 	public static class database{
 		/**
 		 * Adds information into databases

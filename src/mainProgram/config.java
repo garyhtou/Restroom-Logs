@@ -1,6 +1,7 @@
 package mainProgram;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,6 +26,9 @@ import java.util.Arrays;
 import java.util.Timer;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -111,6 +115,9 @@ public class config{
 	//Website URLs
 		public static final String WebsiteHomeURL  = "http://rl.coding2kids.com/";
 		public static final String WebsiteRemoteDBURL = "http://rl.coding2kids.com/";
+    	public static final String urlT = "https://rl.coding2kids.com/admin/info.txt";
+    	public static final String USER_AGENT = "Chrome/63.0.3239.132 ";
+
 	//Log .txt Priorities
 		public static final String SystemPriority = "**** "; //Out of 5
 		public static final String ErrorPriority = "*****"; //Out of 5
@@ -923,6 +930,10 @@ public class config{
 		}
 		return "Error";
 	}
+	/**
+	 * Gets Hour from {@link #endOfActiveHours} in {@link #DoNotTouchFilePath}
+	 * @return The Hour part of the End Of Active Hours, converting it from a String to an Integer
+	 */
 	public static int getActiveHoursHOUR() {
 		int hour;
 		if(endOfActiveHours.toString().contains("AM"))
@@ -933,8 +944,49 @@ public class config{
 			hour = 00;
 		return hour;
 	}
+	/**
+	 * Gets Minute from {@link #endOfActiveHours} in {@link #DoNotTouchFilePath}
+	 * @return The Minute part of the End Of Active Hours, converting it from a String to an Integer
+	 */
 	public static int getActiveHoursMINUTE() {
 		return Integer.parseInt(endOfActiveHours.toString().substring(endOfActiveHours.toString().indexOf(":")+1, endOfActiveHours.toString().lastIndexOf(" ")-1));
+	}
+	/**
+	 * Checks if there is an update from the online servers
+	 * @return true/false depending if there is an update from online
+	 */
+	public static boolean checkForUpdates() {
+        boolean update = false;
+		try {
+			HttpClient client = HttpClientBuilder.create().build();
+	    	HttpGet request = new HttpGet(urlT);
+	
+	    	// add request header
+	    	request.addHeader("User-Agent", USER_AGENT);
+	    	HttpResponse response = client.execute(request);
+	            String inputLine ;
+	            BufferedReader br1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+	            String webLine = null;
+	                  while ((inputLine = br1.readLine()) != null) {
+	                         webLine=inputLine;
+	                  }
+						
+							br1.close();
+						
+						
+	      			if(VersionNumber.toString().equals(webLine)) {
+	      				update = false;
+	      			}
+	      			if(!VersionNumber.toString().equals(webLine)) {
+	      				update = true;
+	      			}
+	    	    
+			} catch (IOException e) {
+				BackEnd.logs.update.ERROR("Unable to check for online version number.");
+				e.printStackTrace();
+			}
+    	return update;       
+
 	}
 }
 
