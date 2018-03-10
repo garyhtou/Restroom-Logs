@@ -1173,7 +1173,7 @@ public class FrontEnd extends BackEnd{
 								public static class scanEntryMessage {
 									static JLabel message = new JLabel();
 									public static void create() {
-										message.setText(config.defaultOtherMessage);
+										message.setText(config.defaultOtherInfo);
 										message.setHorizontalAlignment(SwingConstants.CENTER);
 										message.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
 										message.setFont(RL.scanMessage);
@@ -1188,6 +1188,12 @@ public class FrontEnd extends BackEnd{
 										String outputMessage = firstLastName + " has signed in";
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
+										Timer timer = new Timer(5000, new  ActionListener() {
+							    		    public void actionPerformed(ActionEvent e) {
+							    		    	message.setText(defaultOtherInfo);
+							    			}
+							    		}); 
+							    	    timer.start();
 										BackEnd.logs.update.Logs(outputMessage);
 									}
 									public static void successfulSignOut(String firstLastName) {
@@ -1195,20 +1201,44 @@ public class FrontEnd extends BackEnd{
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
 										BackEnd.logs.update.Logs(outputMessage);
+										Timer timer = new Timer(5000, new  ActionListener() {
+							    		    public void actionPerformed(ActionEvent e) {
+							    		    	message.setText(defaultOtherInfo);
+							    			}
+							    		}); 
+							    	    timer.start();
 									}
 									public static void unsuccessful(int studentID) {
 										message.setForeground(Color.RED);
 										message.setText("Invalid Student ID number: " + studentID);
 										BackEnd.logs.update.Logs("Could not find " + studentID + " in Student Data Base");
+										Timer timer = new Timer(5000, new  ActionListener() {
+							    		    public void actionPerformed(ActionEvent e) {
+							    		    	message.setText(defaultOtherInfo);
+							    			}
+							    		}); 
+							    	    timer.start();
 									}
 									public static void integer(String input) {
 										message.setForeground(Color.RED);
 										message.setText("Please only enter numbers");
 										BackEnd.logs.update.Logs(input + " is not an integer");
+										Timer timer = new Timer(5000, new  ActionListener() {
+							    		    public void actionPerformed(ActionEvent e) {
+							    		    	message.setText(defaultOtherInfo);
+							    			}
+							    		}); 
+							    	    timer.start();
 									}
 									public static void manualSignIn() {
 										message.setForeground(Color.BLACK);
 										message.setText("All student have been manually signed in");
+										Timer timer = new Timer(5000, new  ActionListener() {
+							    		    public void actionPerformed(ActionEvent e) {
+							    		    	message.setText(defaultOtherInfo);
+							    			}
+							    		}); 
+							    	    timer.start();
 									}
 								}
 								public static class separator {

@@ -132,9 +132,9 @@ public class config{
 		public static final ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public static final ImageIcon logsTxtIcon = new ImageIcon("assets/images/logs.png");
 	//message center
-		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program";
+		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program.";
 	//stats other info
-		public static String defaultOtherInfo = "Insert your Student ID above";
+		public static String defaultOtherInfo = "Scan or Type your Student ID above";
 	//Email
 		public static String emailSubject = "Restroom "+getPdfName();
 		public static String emailBody = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
