@@ -200,7 +200,20 @@ public class FrontEnd extends BackEnd{
         	BackEnd.logs.update.StartUp("NOTICE: Program hasn't ran before!");
         	splash.update();
         	//no need to call anything, this is a notice to use that this program has not ran before 
-        	//STEP 2
+        	JPanel warn = new JPanel();
+        	warn.add(new JLabel("Inital Setup has NOT ran before!"));
+        	warn.add(new JLabel("Program will close and open Inital Setup"));
+        	JOptionPane.showMessageDialog(null, warn,"Warning! Inital Setup Has Not Ran", JOptionPane.ERROR_MESSAGE);
+        	
+		    try {
+				Process proc = Runtime.getRuntime().exec("java -jar InitialSetup.jar");
+				System.exit(0);
+			} catch (IOException e) {
+				BackEnd.logs.update.ERROR("Unable to Run/Open Initial Setup");
+				e.printStackTrace();
+			}
+        	
+        	/*//STEP 2
         	renderSplashFrame(graphic, "Checking database");
         	BackEnd.logs.update.StartUp("Checking database");
         	splash.update();
@@ -219,7 +232,7 @@ public class FrontEnd extends BackEnd{
         	//START PROGRAM
         	BackEnd.logs.update.StartUp("Opening Window");
         	waitThreeStart(splash, graphic);
-        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");
+        	BackEnd.logs.update.StartUp("Start Up Complete\n-----");*/
 	     }
 	    
 	    

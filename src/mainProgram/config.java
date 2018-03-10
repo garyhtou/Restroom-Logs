@@ -71,7 +71,7 @@ public class config{
 	}
 //The following are universal constants
 	//Critical Vars
-		public static boolean ranBefore = true;
+		public static boolean ranBefore;
 		public static var VersionNumber = new var("config/DoNotTouch.txt", "Release Version");
 	//Screen dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

@@ -1,6 +1,6 @@
 Restroom Logs Config - DO NOT TOUCH THIS FILE
 ----------
-ranBefore = true
+ranBefore = false
 dailyEmails = true
 teacherTitle = Mr.
 teacherName = Sabo
