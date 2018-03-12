@@ -2,10 +2,10 @@ Restroom Logs Config - DO NOT TOUCH THIS FILE
 ----------
 ranBefore = false
 dailyEmails = true
-teacherTitle = Mr.
-teacherName = Sabo
-teacherEmail = msabo@rentonschools.us
-studentDBPath = data\TestDB.accdb
-studentDBTableName = TestDB
+teacherTitle = 
+teacherName = 
+teacherEmail = 
+studentDBPath = 
+studentDBTableName = 
 Release Version = 0.1.0
 activeHours = 3:00  AM

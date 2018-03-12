@@ -1,5 +1,0 @@
-Restroom Logs Email Settings - DO NOT TOUCH THIS FILE
-----------
-recentMailToAdresses1 = email@gmail.com
-recentMailToAdresses2 = hotdogs@outlook.com
-recentMailToAdresses3 = multithreading@intelvsamd.gov

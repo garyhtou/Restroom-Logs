@@ -972,12 +972,13 @@ public class config{
 	                  }
 						
 							br1.close();
+						System.out.println("Web: "+webLine.substring(webLine.lastIndexOf(" ")+1));
+						System.out.println("Local: "+VersionNumber);
 						
-						
-	      			if(VersionNumber.toString().equals(webLine)) {
+	      			if(VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
 	      				update = false;
 	      			}
-	      			if(!VersionNumber.toString().equals(webLine)) {
+	      			if(!VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
 	      				update = true;
 	      			}
 	    	    
