@@ -18,6 +18,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.io.BufferedReader;
@@ -67,7 +69,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class FrontEnd extends BackEnd{
 	
-	public static JFrame frame = new JFrame();
+	public static JFrame frame = new JFrame() {
+		public void paintComponent(Graphics g) {
+	        screenSaver.draw();
+	    }
+	};
 	
 	public static void main(String[] args) {
 		create();
@@ -114,6 +120,9 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.tablePane.create();
 		content.majorRL.right.table.tablePane.tableContent.create();
 		content.majorRL.right.table.tablePane.tableContent.update();
+		
+	//Screen saver
+		screenSaver.create();
 		
 	//final changes
 		frame.setVisible(true);
@@ -1451,5 +1460,45 @@ public class FrontEnd extends BackEnd{
 				BackEnd.email.send();
 		}
 		
+	}
+	public static class screenSaver{
+		private static int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		private static int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		public static boolean saverOn = false;
+		public static void create() {
+					
+			JButton b = new JButton("Screen Saver");
+			b.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					saverOn = true;
+					draw();
+					System.out.println("draw");
+				}
+			});
+			content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.messageCenter.add(b);
+			
+			frame.addMouseMotionListener(new MouseMotionListener() {
+				public void mouseDragged(MouseEvent e) {}
+				public void mouseMoved(MouseEvent e) {
+					saverOn = false;
+					System.out.println("remove");
+				}
+			});
+		}
+		public static void draw() {
+			if(/*TIMER HERE*/true) {
+				saverOn = true;
+			} else {
+				saverOn = false;
+			}
+			paint();
+		}
+		public static void paint() {
+			Graphics g = frame.getGraphics();
+			if(saverOn) {
+				g.fillRect(0, 0, width, height);
+			}
+			frame.paint(g);
+		}
 	}
 }
