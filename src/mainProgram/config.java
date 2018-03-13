@@ -159,6 +159,8 @@ public class config{
 		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
 		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
 		
+		public static final String licensePath = "LICENSE";
+		
 		
 	/**
 	 * 

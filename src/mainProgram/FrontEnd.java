@@ -663,9 +663,61 @@ public class FrontEnd extends BackEnd{
 							about.add(update);
 							about.add(new JSeparator());
 							about.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn \u00a9 2018"));
+							JButton licenceView = new JButton("View License");
+							licenceView.addActionListener(new ActionListener() {
 
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									license();
+									
+								}
+								public void license() {
+									String fileContent;
+									JPanel pane = new JPanel(new BorderLayout());
+									JScrollPane scrollPane = new JScrollPane();
+									JTextArea logTextArea = new JTextArea(25,35);
+									try {
+										fileContent = new Scanner(new File(licensePath)).useDelimiter("\\Z").next();
+
+										Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+										double screenWidth = screenSize.getWidth();
+										double screenHeight = screenSize.getHeight();
+										
+										int displayWidth = (int) (screenWidth/2);
+										int displayHeight = (int) (screenHeight/1.5);
+										
+									    logTextArea.setText(fileContent);
+									    logTextArea.setEditable(false);
+									    logTextArea.setLineWrap(true);
+									    logTextArea.setWrapStyleWord(true);
+									    logTextArea.setMargin(new Insets(10,10,10,10));
+									    logTextArea.setCaretPosition(0);
+									    
+									    
+									    
+									    scrollPane.setViewportView(logTextArea);
+									    pane.add(scrollPane, BorderLayout.CENTER);
+									    
+										
+										
+									    JOptionPane optionPane = new JOptionPane();
+									    	optionPane.setSize(displayWidth, displayHeight);
+									    	optionPane.showMessageDialog(null, pane, "License", JOptionPane.INFORMATION_MESSAGE);
+									    
+									} catch (FileNotFoundException e) {
+										BackEnd.logs.update.Logs("License Closed");
+										e.printStackTrace();
+										JOptionPane.showMessageDialog(null,
+											    "Can not open License file.", //message
+											    "License File Error", //title
+											    JOptionPane.ERROR_MESSAGE);
+									}
+								}
+								
+							});
 					
-						
+							about.add(licenceView);
+							
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
 							
 					}
