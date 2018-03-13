@@ -974,12 +974,12 @@ public class config{
 							br1.close();
 						
 						
-	      			if(VersionNumber.toString().equals(webLine)) {
-	      				update = false;
-	      			}
-	      			if(!VersionNumber.toString().equals(webLine)) {
-	      				update = true;
-	      			}
+							if(VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
+			      				update = false;
+			      			}
+			      			if(!VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
+			      				update = true;
+			      			}
 	    	    
 			} catch (IOException e) {
 				BackEnd.logs.update.ERROR("Unable to check for online version number.");
