@@ -7,5 +7,5 @@ teacherName =
 teacherEmail = 
 studentDBPath = 
 studentDBTableName = 
-Release Version = 0.1.0
+Release Version = 0.1.1
 activeHours = 3:00  AM
