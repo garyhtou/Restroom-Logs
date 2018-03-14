@@ -417,6 +417,22 @@ JFrame frame = new JFrame();
 						    			    
 						    			     lineCounter2 = 1;
 						    			    while ((currentLine = br31.readLine()) != null) {
+						    			    	if(lineCounter2 == 3){
+						    			    		currentLine = "ranBefore = true";
+						    			    	}
+						    			    	TotalLine += currentLine + "\n";
+						    			    	lineCounter2++;
+						    			    }
+						    			    FileWriter fw2 = new FileWriter(DoNotTouchFilePath);
+						    			    fw2.write(TotalLine);
+						    			    fw2.close();
+						    			    br31.close();
+						    			    FileReader fr = new FileReader(DoNotTouchFilePath);
+						    			    TotalLine = "";
+						    			    BufferedReader br4 = new BufferedReader(fr);
+						    			    
+						    			    lineCounter2 = 1;
+						    			    while ((currentLine = br4.readLine()) != null) {
 						    			    	if(lineCounter2 == 7){
 						    			    		currentLine = "teacherEmail = "+tEmail;
 						    			    	}
@@ -426,10 +442,10 @@ JFrame frame = new JFrame();
 						    			    	TotalLine += currentLine + "\n";
 						    			    	lineCounter2++;
 						    			    }
-						    			    FileWriter fw2 = new FileWriter(DoNotTouchFilePath);
-						    			    fw2.write(TotalLine);
-						    			    fw2.close();
-						    			    br31.close();
+						    			    FileWriter fw3 = new FileWriter(DoNotTouchFilePath);
+						    			    fw3.write(TotalLine);
+						    			    fw3.close();
+						    			    br4.close();
 					    				  
 					    				  
 					    			    JPanel finalPanel = new JPanel(new GridLayout(0,1));
