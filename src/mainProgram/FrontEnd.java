@@ -122,7 +122,7 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.tablePane.tableContent.update();
 		
 	//Screen saver
-		screenSaver.create();
+		//screenSaver.create();
 		
 	//final changes
 		frame.setVisible(true);
