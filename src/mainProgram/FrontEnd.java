@@ -1265,6 +1265,7 @@ public class FrontEnd extends BackEnd{
 										message.setText(outputMessage);
 										Timer timer = new Timer(5000, new  ActionListener() {
 							    		    public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
 							    			}
 							    		}); 
@@ -1278,6 +1279,7 @@ public class FrontEnd extends BackEnd{
 										BackEnd.logs.update.Logs(outputMessage);
 										Timer timer = new Timer(5000, new  ActionListener() {
 							    		    public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
 							    			}
 							    		}); 
@@ -1289,6 +1291,7 @@ public class FrontEnd extends BackEnd{
 										BackEnd.logs.update.Logs("Could not find " + studentID + " in Student Data Base");
 										Timer timer = new Timer(5000, new  ActionListener() {
 							    		    public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
 							    			}
 							    		}); 
@@ -1300,6 +1303,7 @@ public class FrontEnd extends BackEnd{
 										BackEnd.logs.update.Logs(input + " is not an integer");
 										Timer timer = new Timer(5000, new  ActionListener() {
 							    		    public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
 							    			}
 							    		}); 
@@ -1310,6 +1314,7 @@ public class FrontEnd extends BackEnd{
 										message.setText("All student have been manually signed in");
 										Timer timer = new Timer(5000, new  ActionListener() {
 							    		    public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
 							    			}
 							    		}); 
