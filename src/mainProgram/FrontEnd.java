@@ -1011,10 +1011,10 @@ public class FrontEnd extends BackEnd{
 									public void actionPerformed(ActionEvent arg0) {
 						    			//TODO: call something
 						    			//temp:
-						    			JDialog temp = new JDialog(frame, "call something there to email");
-						    			temp.setVisible(true);
-						    			
-						    			//TODO: Uncomment this to make the button email    BackEnd.email.send();
+						    			//JDialog temp = new JDialog(frame, "call something there to email");
+						    			//temp.setVisible(true);
+						    			System.out.print("BUTTON");
+						    			 BackEnd.email.send();
 									}
 						    	});
 						    
@@ -1529,7 +1529,7 @@ public class FrontEnd extends BackEnd{
 				public void actionPerformed(ActionEvent e) {
 					saverOn = true;
 					draw();
-					System.out.println("draw");
+					//System.out.println("draw");
 				}
 			});
 			content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.messageCenter.add(b);
@@ -1538,7 +1538,7 @@ public class FrontEnd extends BackEnd{
 				public void mouseDragged(MouseEvent e) {}
 				public void mouseMoved(MouseEvent e) {
 					saverOn = false;
-					System.out.println("remove");
+					//System.out.println("remove");
 				}
 			});
 		}
