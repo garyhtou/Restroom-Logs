@@ -989,5 +989,11 @@ public class config{
     	return update;       
 
 	}
+	public static String getLogTableName() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
+		LocalDateTime now = LocalDateTime.now();
+		String date = dtf.format(now);
+		return "Logs - "+date;
+	}
 }
 

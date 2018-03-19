@@ -1445,10 +1445,11 @@ public class FrontEnd extends BackEnd{
 				JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
 			}
 			content.majorRL.right.table.tablePane.tableContent.update();
-			//TODO:CLEAR FROM LOG DB
+			//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
 			BackEnd.email.PDF.updatePDF();
 			if(config.getDailyEmails())
 				BackEnd.email.send();
+			BackEnd.database.clear.LogsDB();
 		}
 		
 	}
