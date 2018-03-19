@@ -1017,7 +1017,7 @@ public class FrontEnd extends BackEnd{
 						public static class banner {
 							static JLabel banner = new JLabel();
 							public static void create() {
-								ImageIcon RestroomLogsLogoWideBanner = new ImageIcon("assets/logos/RestroomLogsWideBanner.png");
+								ImageIcon RestroomLogsLogoWideBanner = new ImageIcon("assets/logos/RestroomLogsWideBanner.svg");
 							    //find aspect ratios
 							    double orginalHeight = RestroomLogsLogoWideBanner.getIconHeight();
 							    double orginalWidth = RestroomLogsLogoWideBanner.getIconWidth();
