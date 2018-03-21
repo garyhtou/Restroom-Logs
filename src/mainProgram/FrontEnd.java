@@ -82,7 +82,7 @@ public class FrontEnd extends BackEnd{
 	public static void create() {
 	//Window
 		frame(); //set up main settings of the frame
-		
+		frame.setVisible(true);
 	//TimeCheck
 		TimeListener.time();
 		
@@ -104,13 +104,13 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.left.statsScan.scanAndMessages.scan.field.create();	
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.create();
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.create();
+		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.timerCreate();
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.create();
 		content.majorRL.left.statsScan.stats.create();
 		content.majorRL.left.statsScan.stats.banner.create();
 		content.majorRL.left.statsScan.stats.information.create();
 		content.majorRL.left.statsScan.stats.information.teacherName.create();
 		content.majorRL.left.statsScan.stats.information.otherInfo.create();
-		
 	//Major Right
 		content.majorRL.right.create();
 		content.majorRL.right.table.create();
@@ -126,6 +126,7 @@ public class FrontEnd extends BackEnd{
 		
 	//final changes
 		frame.setVisible(true);
+		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		
 	//OTA	
@@ -1051,7 +1052,7 @@ public class FrontEnd extends BackEnd{
 				frame.add(majorRL);
 			}
 			public static void setDivLoc() {
-				majorRL.setDividerLocation((double) 0.9);
+				majorRL.setDividerLocation((double) 0.6);
 			}
 			public static class left {
 				static JPanel left = new JPanel(new BorderLayout());
@@ -1263,62 +1264,46 @@ public class FrontEnd extends BackEnd{
 										String outputMessage = firstLastName + " has signed in";
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-												message.setForeground(Color.BLACK);
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
 										BackEnd.logs.update.Logs(outputMessage);
+										defaultAfter5();
 									}
 									public static void successfulSignOut(String firstLastName) {
 										String outputMessage = firstLastName + " has signed out";
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
 										BackEnd.logs.update.Logs(outputMessage);
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-												message.setForeground(Color.BLACK);
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void unsuccessful(int studentID) {
 										message.setForeground(Color.RED);
 										message.setText("Invalid Student ID number: " + studentID);
 										BackEnd.logs.update.Logs("Could not find " + studentID + " in Student Data Base");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-												message.setForeground(Color.BLACK);
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void integer(String input) {
 										message.setForeground(Color.RED);
 										message.setText("Please only enter numbers");
 										BackEnd.logs.update.Logs(input + " is not an integer");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-												message.setForeground(Color.BLACK);
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void manualSignIn() {
 										message.setForeground(Color.BLACK);
 										message.setText("All student have been manually signed in");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
+										
+									}
+									private static Timer timer;
+									public static void timerCreate() {
+										timer = new Timer(5000, null);
+										timer.setInitialDelay(5000);
+										timer.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
 												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+											}
+							    	    });
+									}
+									public static void defaultAfter5() {
+										timer.restart();
 									}
 								}
 								public static class separator {
