@@ -948,12 +948,21 @@ public class FrontEnd extends BackEnd{
 						    JButton email = new JButton("Email");
 						    	email.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent arg0) {
-						    			//TODO: call something
-						    			//temp:
-						    			JDialog temp = new JDialog(frame, "call something there to email");
-						    			temp.setVisible(true);
-						    			
-						    			//TODO: Uncomment this to make the button email    BackEnd.email.send();
+										config.teacherEmail.updateAll();
+										if(BackEnd.database.Log.table.signAllIn()) {
+											content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
+											//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+										} else {
+											JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
+										}
+										content.majorRL.right.table.tablePane.tableContent.update();
+										//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
+										BackEnd.email.PDF.updatePDF();
+										if(config.getDailyEmails()) {
+											BackEnd.email.send();
+										BackEnd.database.clear.LogsDB();
+										BackEnd.email.PDF.CreateBlankPDF();
+										}
 									}
 						    	});
 						    
@@ -1440,7 +1449,7 @@ public class FrontEnd extends BackEnd{
 			config.teacherEmail.updateAll();
 			if(BackEnd.database.Log.table.signAllIn()) {
 				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
-				JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
 			}
