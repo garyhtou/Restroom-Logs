@@ -1039,6 +1039,53 @@ public class FrontEnd extends BackEnd{
 						}
 					}
 				}
+				
+				/**
+				 * send and delete tables (PDFs)
+				 */
+				public static class customPDF {
+					static JMenuItem custPDF = new JMenuItem("Send Custom PDFs", null /*FIXME: make icon*/);
+					public static void create() {
+						logMenu.add(custPDF);
+						custPDF.setMnemonic(KeyEvent.VK_P);
+						custPDF.addActionListener((ActionEvent logButtonEvent) -> {
+							BackEnd.logs.update.Logs("Send Custom PDFs Opened");
+							content();
+						});
+					}
+					public static void content() {
+						
+					}
+				}
+				
+				public static class Reports {
+					static JMenuItem reports = new JMenuItem("Reports", null /*FIXME: make icon*/);
+					public static void create() {
+						logMenu.add(reports);
+						reports.setMnemonic(KeyEvent.VK_R);
+						reports.addActionListener((ActionEvent logButtonEvent) -> {
+							BackEnd.logs.update.Logs("Reports Opened");
+							content();
+						});
+					}
+					public static void content() {
+						JPanel panel = new JPanel();
+						
+						
+						
+						
+						Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+						double screenWidth = screenSize.getWidth();
+						double screenHeight = screenSize.getHeight();
+						
+						int displayWidth = (int) (screenWidth/2);
+						int displayHeight = (int) (screenHeight/1.5);
+						
+						JOptionPane optionPane = new JOptionPane();
+				    	optionPane.setSize(displayWidth, displayHeight);
+				    	optionPane.showMessageDialog(reports, panel);
+					}
+				}
 			}
 			
 		}
