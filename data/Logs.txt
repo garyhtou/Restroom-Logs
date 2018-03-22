@@ -1,0 +1,209 @@
+-ï=ï=ï=ï  LOGS  ï=ï=ï=ï-
+	File created on 2018/02/09 22:12:22
+
+**    2018/02/09 22:12:22  |  Start Up  |  
+
+
+----------
+**    2018/02/09 22:12:22  |  Start Up  |  ranBefore found
+**    2018/02/09 22:12:22  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/02/09 22:12:23  |  Start Up  |  ranBefore is now set to: false
+**    2018/02/09 22:12:23  |  Start Up  |  Starting Program
+**    2018/02/09 22:12:23  |  Start Up  |  Starting Splash Screen
+**    2018/02/09 22:12:23  |  Start Up  |  NOTICE: Program hasn't ran before!
+**    2018/02/09 22:12:23  |  Start Up  |  Checking database
+**    2018/02/09 22:12:23  |  Start Up  |  Creating PDF Logs
+**    2018/02/09 22:12:24  |  Start Up  |  Opening Window
+**    2018/02/09 22:12:27  |  Start Up  |  Start Up Complete
+-----
+***** 2018/02/09 22:12:29  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:12:29  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:12:29  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:12:29  |  ERROR  |  Student ID "12345" does not exist
+      2018/02/09 22:12:29  |  Could not find 12345 in Student Data Base
+***** 2018/02/09 22:12:31  |  ERROR  |  Student ID "11111" does not exist
+***** 2018/02/09 22:12:31  |  ERROR  |  Student ID "11111" does not exist
+***** 2018/02/09 22:12:31  |  ERROR  |  Student ID "11111" does not exist
+***** 2018/02/09 22:12:31  |  ERROR  |  Student ID "11111" does not exist
+      2018/02/09 22:12:31  |  Could not find 11111 in Student Data Base
+***** 2018/02/09 22:12:32  |  ERROR  |  Student ID "22222" does not exist
+***** 2018/02/09 22:12:32  |  ERROR  |  Student ID "22222" does not exist
+***** 2018/02/09 22:12:32  |  ERROR  |  Student ID "22222" does not exist
+***** 2018/02/09 22:12:32  |  ERROR  |  Student ID "22222" does not exist
+      2018/02/09 22:12:32  |  Could not find 22222 in Student Data Base
+***** 2018/02/09 22:12:33  |  ERROR  |  Student ID "3333" does not exist
+***** 2018/02/09 22:12:33  |  ERROR  |  Student ID "3333" does not exist
+***** 2018/02/09 22:12:33  |  ERROR  |  Student ID "3333" does not exist
+***** 2018/02/09 22:12:33  |  ERROR  |  Student ID "3333" does not exist
+      2018/02/09 22:12:33  |  Could not find 3333 in Student Data Base
+****  2018/02/09 22:12:34  |  System  |  EXIT
+----------**    2018/02/09 22:14:21  |  Start Up  |  
+
+
+----------
+**    2018/02/09 22:14:21  |  Start Up  |  ranBefore found
+**    2018/02/09 22:14:21  |  Start Up  |  Config.txt:  ranBefore = true
+**    2018/02/09 22:14:21  |  Start Up  |  ranBefore is now set to: true
+**    2018/02/09 22:14:21  |  Start Up  |  Starting Program
+**    2018/02/09 22:14:21  |  Start Up  |  Starting Splash Screen
+**    2018/02/09 22:14:21  |  Start Up  |  Checking for updates
+**    2018/02/09 22:14:21  |  Start Up  |  Opening Window
+***** 2018/02/09 22:14:32  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:14:32  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:14:32  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:14:32  |  ERROR  |  Student ID "12345" does not exist
+      2018/02/09 22:14:32  |  Could not find 12345 in Student Data Base
+****  2018/02/09 22:14:35  |  System  |  EXIT
+----------****  2018/02/09 22:25:46  |  System  |  EXIT
+----------***** 2018/02/09 22:26:36  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/09 22:26:36  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/09 22:26:36  |  ERROR  |  Student ID "123" does not exist
+***** 2018/02/09 22:26:36  |  ERROR  |  Student ID "123" does not exist
+      2018/02/09 22:26:36  |  Could not find 123 in Student Data Base
+***** 2018/02/09 22:26:40  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:26:40  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:26:40  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:26:40  |  ERROR  |  Student ID "12345" does not exist
+      2018/02/09 22:26:40  |  Could not find 12345 in Student Data Base
+***** 2018/02/09 22:27:12  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:27:12  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:27:12  |  ERROR  |  Student ID "12345" does not exist
+***** 2018/02/09 22:27:12  |  ERROR  |  Student ID "12345" does not exist
+      2018/02/09 22:27:12  |  Could not find 12345 in Student Data Base
+****  2018/02/09 22:27:16  |  System  |  EXIT
+----------      2018/02/09 22:29:24  |  Gary Tou has signed out
+      2018/02/09 22:29:27  |  Bob Stern has signed out
+      2018/02/09 22:29:28  |  Jess Potesrt has signed out
+      2018/02/09 22:29:29  |  ‡¡ aA has signed out
+      2018/02/09 22:29:30  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/02/09 22:29:31  |  temp2 LAST NAME SOMETHING 2 has signed out
+      2018/02/09 22:29:31  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:29:31  |  temp4 LAST NAME SOMETHING 4 has signed out
+      2018/02/09 22:29:32  |  temp5 LAST NAME SOMETHING 5 has signed out
+      2018/02/09 22:29:32  |  temp6 LAST NAME SOMETHING 6 has signed out
+      2018/02/09 22:29:32  |  temp7 LAST NAME SOMETHING 7 has signed out
+      2018/02/09 22:29:33  |  temp8 LAST NAME SOMETHING 8 has signed out
+      2018/02/09 22:29:33  |  temp9 LAST NAME SOMETHING 9 has signed out
+      2018/02/09 22:29:34  |  temp10 LAST NAME SOMETHING 10 has signed out
+***** 2018/02/09 22:29:36  |  ERROR  |  Student ID "405" does not exist
+***** 2018/02/09 22:29:36  |  ERROR  |  Student ID "405" does not exist
+***** 2018/02/09 22:29:36  |  ERROR  |  Student ID "405" does not exist
+***** 2018/02/09 22:29:36  |  ERROR  |  Student ID "405" does not exist
+      2018/02/09 22:29:36  |  Could not find 405 in Student Data Base
+***** 2018/02/09 22:29:37  |  ERROR  |  Student ID "602" does not exist
+***** 2018/02/09 22:29:37  |  ERROR  |  Student ID "602" does not exist
+***** 2018/02/09 22:29:37  |  ERROR  |  Student ID "602" does not exist
+***** 2018/02/09 22:29:37  |  ERROR  |  Student ID "602" does not exist
+      2018/02/09 22:29:37  |  Could not find 602 in Student Data Base
+      2018/02/09 22:29:38  |  Seattle area code has signed out
+      2018/02/09 22:29:49  |  Preferences Opened
+      2018/02/09 22:29:59  |  Preferences Opened
+****  2018/02/09 22:30:05  |  System  |  EXIT
+----------      2018/02/09 22:32:18  |  Preferences Opened
+****  2018/02/09 22:32:30  |  System  |  EXIT
+----------****  2018/02/09 22:34:18  |  System  |  EXIT
+----------      2018/02/09 22:39:28  |  Preferences Opened
+****  2018/02/09 22:40:03  |  System  |  EXIT
+----------      2018/02/09 22:40:36  |  Preferences Opened
+****  2018/02/09 22:40:55  |  System  |  EXIT
+----------      2018/02/09 22:42:29  |  Preferences Opened
+      2018/02/09 22:42:36  |  Preferences Opened
+      2018/02/09 22:43:01  |  Preferences Opened
+      2018/02/09 22:47:09  |  Gary Tou has signed in
+      2018/02/09 22:47:51  |  \ is not an integer
+      2018/02/09 22:47:54  |  Gary Tou has signed out
+****  2018/02/09 22:47:57  |  System  |  EXIT
+----------      2018/02/09 22:48:25  |   is not an integer
+      2018/02/09 22:48:29  |   is not an integer
+****  2018/02/09 22:48:30  |  System  |  EXIT
+----------      2018/02/09 22:49:03  |  sfd is not an integer
+***** 2018/02/09 22:49:04  |  ERROR  |  Student ID "12" does not exist
+***** 2018/02/09 22:49:04  |  ERROR  |  Student ID "12" does not exist
+***** 2018/02/09 22:49:04  |  ERROR  |  Student ID "12" does not exist
+***** 2018/02/09 22:49:05  |  ERROR  |  Student ID "12" does not exist
+      2018/02/09 22:49:05  |  Could not find 12 in Student Data Base
+      2018/02/09 22:49:06  |  temp2 LAST NAME SOMETHING 2 has signed in
+      2018/02/09 22:49:06  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:06  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:49:07  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:07  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:49:07  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:08  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:49:08  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:08  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:49:08  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:08  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/02/09 22:49:09  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/02/09 22:49:09  |  temp3 LAST NAME SOMETHING 3 has signed out
+****  2018/02/09 22:49:10  |  System  |  EXIT
+----------****  2018/02/09 23:08:20  |  System  |  EXIT
+----------      2018/02/09 23:09:42  |  LogTxt Opened
+****  2018/02/09 23:09:58  |  System  |  EXIT
+----------      2018/02/09 23:17:51  |  LogTxt Opened
+      2018/02/09 23:18:32  |  LogTxt Opened
+      2018/02/09 23:18:36  |  LogTxt Opened
+****  2018/02/09 23:18:45  |  System  |  EXIT
+----------****  2018/02/09 23:18:50  |  System  |  EXIT
+----------      2018/02/09 23:19:05  |  LogTxt Opened
+****  2018/02/09 23:19:09  |  System  |  EXIT
+----------      2018/02/09 23:20:52  |  LogTxt Opened
+      2018/02/09 23:21:23  |  LogTxt Opened
+****  2018/02/09 23:21:36  |  System  |  EXIT
+----------      2018/02/09 23:21:56  |  LogTxt Opened
+****  2018/02/09 23:22:06  |  System  |  EXIT
+----------****  2018/02/09 23:23:14  |  System  |  EXIT
+----------      2018/02/09 23:24:19  |  LogTxt Opened
+****  2018/02/09 23:24:25  |  System  |  EXIT
+----------      2018/02/09 23:24:42  |  LogTxt Opened
+****  2018/02/09 23:24:44  |  System  |  EXIT
+----------      2018/02/09 23:25:01  |  LogTxt Opened
+      2018/02/09 23:25:17  |  LogTxt Opened
+****  2018/02/09 23:25:27  |  System  |  EXIT
+----------      2018/02/09 23:25:49  |  LogTxt Opened
+****  2018/02/09 23:26:04  |  System  |  EXIT
+----------      2018/02/09 23:26:13  |  LogTxt Opened
+      2018/02/09 23:26:51  |  LogTxt Opened
+****  2018/02/09 23:26:54  |  System  |  EXIT
+----------      2018/02/09 23:27:08  |  LogTxt Opened
+****  2018/02/09 23:27:12  |  System  |  EXIT
+----------      2018/02/09 23:28:06  |  LogTxt Opened
+****  2018/02/09 23:28:10  |  System  |  EXIT
+----------      2018/02/09 23:29:57  |  LogTxt Opened
+****  2018/02/09 23:29:59  |  System  |  EXIT
+----------      2018/02/09 23:30:07  |  LogTxt Opened
+****  2018/02/09 23:30:10  |  System  |  EXIT
+----------      2018/02/10 00:12:10  |  Gary Tou has signed in
+****  2018/02/10 00:12:12  |  System  |  EXIT
+----------***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
+***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
+****  2018/03/12 13:52:36  |  System  |  EXIT
+----------****  2018/03/12 13:58:54  |  System  |  EXIT
+----------****  2018/03/15 13:59:31  |  System  |  EXIT
+----------***** 2018/03/21 11:44:35  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:46  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:51  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:58  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:45:01  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:45:09  |  ERROR  |  Unable to check for online version number.
+***** 2018/03/21 11:45:50  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:46:13  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:46:30  |  Gary Tou has signed out
+      2018/03/21 11:46:32  |  Gary Tou has signed in
+      2018/03/21 11:46:51  |  Gary Tou has signed out
+      2018/03/21 11:47:00  |  temp1 LAST NAME SOMETHING 1 has signed in
+****  2018/03/21 11:47:03  |  System  |  EXIT
+----------***** 2018/03/21 11:48:56  |  ERROR  |  Could not fetch RlGPFO
+      2018/03/21 11:49:18  |  Bob Stern has signed in
+***** 2018/03/21 11:49:19  |  ERROR  |  Unable to check for online version number.
+****  2018/03/21 11:49:27  |  System  |  EXIT
+----------***** 2018/03/21 11:56:20  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:56:43  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:56:52  |  Bob Stern has signed out
+      2018/03/21 11:57:09  |  Gary Tou has signed in
+****  2018/03/21 11:57:28  |  System  |  EXIT
+----------***** 2018/03/21 11:58:01  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:59:11  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:59:34  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:59:34  |  Bob Stern has signed in
+****  2018/03/21 12:00:08  |  System  |  EXIT
+----------

@@ -82,6 +82,6 @@ public class MAIN {
 		//-splash:assets/logos/RestroomLogsSplashscreen.png
 		config.checkRanBefore();
 		//FrontEnd.Splash.init();
-		FrontEnd.splashScreen.create();
+		FrontEnd.create();
 	}
 }

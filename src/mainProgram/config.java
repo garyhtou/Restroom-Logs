@@ -159,6 +159,8 @@ public class config{
 		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
 		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
 		
+		public static final String licensePath = "LICENSE";
+		
 		
 	/**
 	 * 
@@ -972,14 +974,14 @@ public class config{
 	                  }
 						
 							br1.close();
-					
 						
-	      			if(VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
-	      				update = false;
-	      			}
-	      			if(!VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
-	      				update = true;
-	      			}
+						
+							if(VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
+			      				update = false;
+			      			}
+			      			if(!VersionNumber.toString().equals(webLine.substring(webLine.lastIndexOf(" ")+1))) {
+			      				update = true;
+			      			}
 	    	    
 			} catch (IOException e) {
 				BackEnd.logs.update.ERROR("Unable to check for online version number.");
@@ -987,12 +989,6 @@ public class config{
 			}
     	return update;       
 
-	}
-	public static String getLogTableName() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
-		LocalDateTime now = LocalDateTime.now();
-		String date = dtf.format(now);
-		return "Logs - "+date;
 	}
 }
 
