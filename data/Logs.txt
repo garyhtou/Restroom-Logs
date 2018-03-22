@@ -206,4 +206,7 @@
 ***** 2018/03/21 11:59:34  |  ERROR  |  Unable to check for online version number.
       2018/03/21 11:59:34  |  Bob Stern has signed in
 ****  2018/03/21 12:00:08  |  System  |  EXIT
+----------***** 2018/03/22 11:55:25  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/22 11:55:49  |  ERROR  |  Unable to check for online version number.
+****  2018/03/22 11:56:05  |  System  |  EXIT
 ----------
