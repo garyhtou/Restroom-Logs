@@ -23,6 +23,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -90,7 +91,10 @@ import mainProgram.FrontEnd.content;
  */
 public class BackEnd extends config{
 	public static void main(String[] args) {
-
+		System.out.println("start");
+		String[] list = BackEnd.database.Log.getAllTableName();
+		String data = Arrays.toString(list);
+		System.out.println(data);
 		
 	}
 	public static class logs{
@@ -895,6 +899,37 @@ public class BackEnd extends config{
 					return false;
 					
 				}
+			}
+			public static String[] getAllTableName() {
+				System.out.println("in method");
+				ArrayList<String> list = new ArrayList<String>();
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+				
+
+				Connection conn=DriverManager.getConnection(
+			        "jdbc:ucanaccess://"+config.LogsDBPath);
+				Statement s;
+				s = conn.createStatement();
+				
+				
+				ResultSet rs;
+				rs = conn.getMetaData().getTables(null, null, null, null);
+				
+				while(rs.next()) {
+					list.add(rs.getString("TABLE_NAME"));
+				}
+				
+				} catch (ClassNotFoundException e) {
+					BackEnd.logs.update.ERROR("Can't find jdbc Driver");
+					return null;
+				} catch (SQLException e) {
+					BackEnd.logs.update.ERROR("Error while getting all table names");
+					return null;
+				}
+				
+				String[] arrList = list.toArray(new String[0]);
+				return arrList;
 			}
 		}
 
