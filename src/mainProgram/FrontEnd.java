@@ -18,6 +18,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.io.BufferedReader;
@@ -67,7 +69,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class FrontEnd extends BackEnd{
 	
-	public static JFrame frame = new JFrame();
+	public static JFrame frame = new JFrame() {
+		public void paintComponent(Graphics g) {
+	        screenSaver.draw();
+	    }
+	};
 	
 	public static void main(String[] args) {
 		create();
@@ -76,7 +82,7 @@ public class FrontEnd extends BackEnd{
 	public static void create() {
 	//Window
 		frame(); //set up main settings of the frame
-		
+		frame.setVisible(true);
 	//TimeCheck
 		TimeListener.time();
 		
@@ -98,13 +104,13 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.left.statsScan.scanAndMessages.scan.field.create();	
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.create();
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.create();
+		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.timerCreate();
 		content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.create();
 		content.majorRL.left.statsScan.stats.create();
 		content.majorRL.left.statsScan.stats.banner.create();
 		content.majorRL.left.statsScan.stats.information.create();
 		content.majorRL.left.statsScan.stats.information.teacherName.create();
 		content.majorRL.left.statsScan.stats.information.otherInfo.create();
-		
 	//Major Right
 		content.majorRL.right.create();
 		content.majorRL.right.table.create();
@@ -115,8 +121,12 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.tablePane.tableContent.create();
 		content.majorRL.right.table.tablePane.tableContent.update();
 		
+	//Screen saver
+		//screenSaver.create();
+		
 	//final changes
 		frame.setVisible(true);
+		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		
 	//OTA	
@@ -654,9 +664,61 @@ public class FrontEnd extends BackEnd{
 							about.add(update);
 							about.add(new JSeparator());
 							about.addWithFont(new JLabel("Program created by Gary Tou and Michael Schwamborn \u00a9 2018"));
+							JButton licenceView = new JButton("View License");
+							licenceView.addActionListener(new ActionListener() {
 
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									license();
+									
+								}
+								public void license() {
+									String fileContent;
+									JPanel pane = new JPanel(new BorderLayout());
+									JScrollPane scrollPane = new JScrollPane();
+									JTextArea logTextArea = new JTextArea(25,35);
+									try {
+										fileContent = new Scanner(new File(licensePath)).useDelimiter("\\Z").next();
+
+										Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+										double screenWidth = screenSize.getWidth();
+										double screenHeight = screenSize.getHeight();
+										
+										int displayWidth = (int) (screenWidth/2);
+										int displayHeight = (int) (screenHeight/1.5);
+										
+									    logTextArea.setText(fileContent);
+									    logTextArea.setEditable(false);
+									    logTextArea.setLineWrap(true);
+									    logTextArea.setWrapStyleWord(true);
+									    logTextArea.setMargin(new Insets(10,10,10,10));
+									    logTextArea.setCaretPosition(0);
+									    
+									    
+									    
+									    scrollPane.setViewportView(logTextArea);
+									    pane.add(scrollPane, BorderLayout.CENTER);
+									    
+										
+										
+									    JOptionPane optionPane = new JOptionPane();
+									    	optionPane.setSize(displayWidth, displayHeight);
+									    	optionPane.showMessageDialog(null, pane, "License", JOptionPane.INFORMATION_MESSAGE);
+									    
+									} catch (FileNotFoundException e) {
+										BackEnd.logs.update.Logs("License Closed");
+										e.printStackTrace();
+										JOptionPane.showMessageDialog(null,
+											    "Can not open License file.", //message
+											    "License File Error", //title
+											    JOptionPane.ERROR_MESSAGE);
+									}
+								}
+								
+							});
 					
-						
+							about.add(licenceView);
+							
 						JOptionPane.showMessageDialog(null, tabbedPane, "Preferences", JOptionPane.INFORMATION_MESSAGE, filePreferencesIcon);
 							
 					}
@@ -950,10 +1012,10 @@ public class FrontEnd extends BackEnd{
 									public void actionPerformed(ActionEvent arg0) {
 						    			//TODO: call something
 						    			//temp:
-						    			JDialog temp = new JDialog(frame, "call something there to email");
-						    			temp.setVisible(true);
-						    			
-						    			//TODO: Uncomment this to make the button email    BackEnd.email.send();
+						    			//JDialog temp = new JDialog(frame, "call something there to email");
+						    			//temp.setVisible(true);
+						    			System.out.print("BUTTON");
+						    			 BackEnd.email.send();
 									}
 						    	});
 						    
@@ -977,6 +1039,53 @@ public class FrontEnd extends BackEnd{
 						}
 					}
 				}
+				
+				/**
+				 * send and delete tables (PDFs)
+				 */
+				public static class customPDF {
+					static JMenuItem custPDF = new JMenuItem("Send Custom PDFs", null /*FIXME: make icon*/);
+					public static void create() {
+						logMenu.add(custPDF);
+						custPDF.setMnemonic(KeyEvent.VK_P);
+						custPDF.addActionListener((ActionEvent logButtonEvent) -> {
+							BackEnd.logs.update.Logs("Send Custom PDFs Opened");
+							content();
+						});
+					}
+					public static void content() {
+						
+					}
+				}
+				
+				public static class Reports {
+					static JMenuItem reports = new JMenuItem("Reports", null /*FIXME: make icon*/);
+					public static void create() {
+						logMenu.add(reports);
+						reports.setMnemonic(KeyEvent.VK_R);
+						reports.addActionListener((ActionEvent logButtonEvent) -> {
+							BackEnd.logs.update.Logs("Reports Opened");
+							content();
+						});
+					}
+					public static void content() {
+						JPanel panel = new JPanel();
+						
+						
+						
+						
+						Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+						double screenWidth = screenSize.getWidth();
+						double screenHeight = screenSize.getHeight();
+						
+						int displayWidth = (int) (screenWidth/2);
+						int displayHeight = (int) (screenHeight/1.5);
+						
+						JOptionPane optionPane = new JOptionPane();
+				    	optionPane.setSize(displayWidth, displayHeight);
+				    	optionPane.showMessageDialog(reports, panel);
+					}
+				}
 			}
 			
 		}
@@ -990,7 +1099,7 @@ public class FrontEnd extends BackEnd{
 				frame.add(majorRL);
 			}
 			public static void setDivLoc() {
-				majorRL.setDividerLocation((double) 0.9);
+				majorRL.setDividerLocation((double) 0.6);
 			}
 			public static class left {
 				static JPanel left = new JPanel(new BorderLayout());
@@ -1202,57 +1311,46 @@ public class FrontEnd extends BackEnd{
 										String outputMessage = firstLastName + " has signed in";
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
 										BackEnd.logs.update.Logs(outputMessage);
+										defaultAfter5();
 									}
 									public static void successfulSignOut(String firstLastName) {
 										String outputMessage = firstLastName + " has signed out";
 										message.setForeground(RL.ForestGreen);
 										message.setText(outputMessage);
 										BackEnd.logs.update.Logs(outputMessage);
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void unsuccessful(int studentID) {
 										message.setForeground(Color.RED);
 										message.setText("Invalid Student ID number: " + studentID);
 										BackEnd.logs.update.Logs("Could not find " + studentID + " in Student Data Base");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void integer(String input) {
 										message.setForeground(Color.RED);
 										message.setText("Please only enter numbers");
 										BackEnd.logs.update.Logs(input + " is not an integer");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
-							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+										defaultAfter5();
 									}
 									public static void manualSignIn() {
 										message.setForeground(Color.BLACK);
 										message.setText("All student have been manually signed in");
-										Timer timer = new Timer(5000, new  ActionListener() {
-							    		    public void actionPerformed(ActionEvent e) {
+										
+									}
+									private static Timer timer;
+									public static void timerCreate() {
+										timer = new Timer(5000, null);
+										timer.setInitialDelay(5000);
+										timer.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												message.setForeground(Color.BLACK);
 							    		    	message.setText(defaultOtherInfo);
-							    			}
-							    		}); 
-							    	    timer.start();
+											}
+							    	    });
+									}
+									public static void defaultAfter5() {
+										timer.restart();
 									}
 								}
 								public static class separator {
@@ -1451,5 +1549,45 @@ public class FrontEnd extends BackEnd{
 				BackEnd.email.send();
 		}
 		
+	}
+	public static class screenSaver{
+		private static int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		private static int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		public static boolean saverOn = false;
+		public static void create() {
+					
+			JButton b = new JButton("Screen Saver");
+			b.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					saverOn = true;
+					draw();
+					//System.out.println("draw");
+				}
+			});
+			content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.messageCenter.add(b);
+			
+			frame.addMouseMotionListener(new MouseMotionListener() {
+				public void mouseDragged(MouseEvent e) {}
+				public void mouseMoved(MouseEvent e) {
+					saverOn = false;
+					//System.out.println("remove");
+				}
+			});
+		}
+		public static void draw() {
+			if(/*TIMER HERE*/true) {
+				saverOn = true;
+			} else {
+				saverOn = false;
+			}
+			paint();
+		}
+		public static void paint() {
+			Graphics g = frame.getGraphics();
+			if(saverOn) {
+				g.fillRect(0, 0, width, height);
+			}
+			frame.paint(g);
+		}
 	}
 }

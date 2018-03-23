@@ -176,3 +176,34 @@
 ****  2018/02/10 00:12:12  |  System  |  EXIT
 ----------***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
 ***** 2018/03/05 22:09:33  |  ERROR  |  Error while pulling for information from config
+****  2018/03/12 13:52:36  |  System  |  EXIT
+----------****  2018/03/12 13:58:54  |  System  |  EXIT
+----------****  2018/03/15 13:59:31  |  System  |  EXIT
+----------***** 2018/03/21 11:44:35  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:46  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:51  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:44:58  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:45:01  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:45:09  |  ERROR  |  Unable to check for online version number.
+***** 2018/03/21 11:45:50  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:46:13  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:46:30  |  Gary Tou has signed out
+      2018/03/21 11:46:32  |  Gary Tou has signed in
+      2018/03/21 11:46:51  |  Gary Tou has signed out
+      2018/03/21 11:47:00  |  temp1 LAST NAME SOMETHING 1 has signed in
+****  2018/03/21 11:47:03  |  System  |  EXIT
+----------***** 2018/03/21 11:48:56  |  ERROR  |  Could not fetch RlGPFO
+      2018/03/21 11:49:18  |  Bob Stern has signed in
+***** 2018/03/21 11:49:19  |  ERROR  |  Unable to check for online version number.
+****  2018/03/21 11:49:27  |  System  |  EXIT
+----------***** 2018/03/21 11:56:20  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:56:43  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:56:52  |  Bob Stern has signed out
+      2018/03/21 11:57:09  |  Gary Tou has signed in
+****  2018/03/21 11:57:28  |  System  |  EXIT
+----------***** 2018/03/21 11:58:01  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:59:11  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/21 11:59:34  |  ERROR  |  Unable to check for online version number.
+      2018/03/21 11:59:34  |  Bob Stern has signed in
+****  2018/03/21 12:00:08  |  System  |  EXIT
+----------
