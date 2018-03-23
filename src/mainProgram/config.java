@@ -114,7 +114,6 @@ public class config{
 		public static final String mailToFilePath = "config/mailTo.txt";
 	//Website URLs
 		public static final String WebsiteHomeURL  = "http://rl.coding2kids.com/";
-		public static final String WebsiteRemoteDBURL = "http://rl.coding2kids.com/"; //TODO: que?
     	public static final String urlT = "https://rl.coding2kids.com/admin/info.txt";
     	public static final String USER_AGENT = "Chrome/63.0.3239.132 ";
 
@@ -143,8 +142,10 @@ public class config{
 	//stats other info
 		public static String defaultOtherInfo = "Scan or Type your Student ID above";
 	//Email
-		public static String emailSubject = "Restroom "+getPdfName();
-		public static String emailBody = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static String emailSubjectPDF = "Restroom "+getPdfName();
+		public static String emailBodyPDF = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static String emailSubjectTXT = "Restroom "+getPdfName();
+		public static String emailBodyTXT = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";//TODO:Write
 		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
 		public static final String emailSender = "restroomlogs@gmail.com";
 		/**
@@ -232,45 +233,6 @@ public class config{
 		return true;
 	}
 	
-	//TODO: pull info from website
-	public static String pullWebsite(String url) {
-		URL remoteDBURL = null;
-		try {
-			remoteDBURL = new URL(WebsiteRemoteDBURL);
-		} catch (MalformedURLException e) {
-			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
-			e.printStackTrace();
-		}
-		
-		StringBuilder result = new StringBuilder();
-
-	    URLConnection connection = null;
-	    try {
-	    	connection = remoteDBURL.openConnection();
-	    }
-	    catch (IOException ex) {
-	    	BackEnd.logs.update.ERROR("Cannot open connection to URL: " + remoteDBURL);
-	    }
-
-	    //not all headers come in key-value pairs - sometimes the key is
-	    //null or an empty String
-	    int headerIdx = 0;
-	    String headerKey = null;
-	    String headerValue = null;
-	    while ( (headerValue = connection.getHeaderField(headerIdx)) != null ) {
-	      headerKey = connection.getHeaderFieldKey(headerIdx);
-	      if (headerKey != null && headerKey.length()>0) {
-	        result.append(headerKey);
-	        result.append(" : ");
-	      }
-	      result.append(headerValue);
-	      result.append("n");
-	      headerIdx++;
-	    }
-	    return result.toString();
-	}
-	
-	
 	/**
 	 * Checks if program has ranBefore
 	 */
@@ -357,44 +319,6 @@ public class config{
 		}
 	}
 	
-	/**
-	 * This will update all Var values from .txt files
-	 */
-	public static void checkAllVars() {
-		//TODO: CHECK ALL VARS FROM .TXT FILES and CHECK IF WEBSITES EXIST!
-		
-		//WebsiteHomeURL
-		URL URL_WebsiteHomeURL = null;
-		try {
-			URL_WebsiteHomeURL = new URL(WebsiteHomeURL);
-		} catch (MalformedURLException e) {
-			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteHomeURL + "\")");
-			e.printStackTrace();
-		}
-	    try {
-	    	URLConnection connection = URL_WebsiteHomeURL.openConnection();
-	    }
-	    catch (IOException ex) {
-	    	BackEnd.logs.update.ERROR("Webpage URL: \"" + URL_WebsiteHomeURL + "\" does not exist");
-	    }
-	    
-	    //WebsiteRemoteDBURL
-	    URL URL_WebsiteRemoteDBURL = null;
-		try {
-			URL_WebsiteRemoteDBURL = new URL(WebsiteRemoteDBURL);
-		} catch (MalformedURLException e) {
-			BackEnd.logs.update.ERROR("Could not create a URL from WebsiteRemoteDBURL (\"" + WebsiteRemoteDBURL + "\")");
-			e.printStackTrace();
-		}
-	    try {
-	    	URLConnection connection = URL_WebsiteRemoteDBURL.openConnection();
-	    }
-	    catch (IOException ex) {
-	    	BackEnd.logs.update.ERROR("Webpage URL: \"" + URL_WebsiteRemoteDBURL + "\" does not exist.  Will not be able to send emails");
-	    }
-	    
-	    
-	}
 //ACCESSOR AND MUTATOR METHODS
 /**
 	 * @deprecated Replaced by Var Variable Constructor
