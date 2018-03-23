@@ -553,7 +553,7 @@ public class BackEnd extends config{
 			}
 			
 		}*/
-		public static void send( ) {
+		public static void sendPDF() {
 			
 			
 			 // Recipient's email ID needs to be mentioned.

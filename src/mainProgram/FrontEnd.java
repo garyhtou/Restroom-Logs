@@ -1011,7 +1011,7 @@ public class FrontEnd extends BackEnd{
 						    			//JDialog temp = new JDialog(frame, "call something there to email");
 						    			//temp.setVisible(true);
 						    			System.out.print("BUTTON");
-						    			 BackEnd.email.send();
+						    			 BackEnd.email.sendPDF();
 									}
 						    	});
 						    
@@ -1542,7 +1542,7 @@ public class FrontEnd extends BackEnd{
 			//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
 			BackEnd.email.PDF.updatePDF();
 			if(config.getDailyEmails()) {
-				BackEnd.email.send();
+				BackEnd.email.sendPDF();
 			BackEnd.database.clear.LogsDB();
 			BackEnd.email.PDF.CreateBlankPDF();
 			}
