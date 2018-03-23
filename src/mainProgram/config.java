@@ -114,7 +114,7 @@ public class config{
 		public static final String mailToFilePath = "config/mailTo.txt";
 	//Website URLs
 		public static final String WebsiteHomeURL  = "http://rl.coding2kids.com/";
-		public static final String WebsiteRemoteDBURL = "http://rl.coding2kids.com/";
+		public static final String WebsiteRemoteDBURL = "http://rl.coding2kids.com/"; //TODO: que?
     	public static final String urlT = "https://rl.coding2kids.com/admin/info.txt";
     	public static final String USER_AGENT = "Chrome/63.0.3239.132 ";
 
