@@ -142,8 +142,10 @@ public class config{
 	//stats other info
 		public static String defaultOtherInfo = "Scan or Type your Student ID above";
 	//Email
-		public static String emailSubject = "Restroom "+getPdfName();
-		public static String emailBody = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static String emailSubjectPDF = "Restroom "+getPdfName();
+		public static String emailBodyPDF = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static String emailSubjectTXT = "Restroom "+getPdfName();
+		public static String emailBodyTXT = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";//TODO:Write
 		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
 		public static final String emailSender = "restroomlogs@gmail.com";
 		/**

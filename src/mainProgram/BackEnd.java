@@ -587,13 +587,13 @@ public class BackEnd extends config{
 		         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 		         // Set Subject: header field
-		         message.setSubject(config.emailSubject);
+		         message.setSubject(config.emailSubjectPDF);
 
 		         // Create the message part 
 		         BodyPart messageBodyPart = new MimeBodyPart();
 
 		         // Fill the message
-		         messageBodyPart.setText(config.emailBody);
+		         messageBodyPart.setText(config.emailBodyPDF);
 		         
 		         // Create a multipart message
 		         Multipart multipart = new MimeMultipart();
@@ -618,6 +618,73 @@ public class BackEnd extends config{
 		      } catch (MessagingException mex) {
 		         mex.printStackTrace();
 		      }
+			
+		}
+		public static void sendTXT() {
+			
+			
+			// Recipient's email ID needs to be mentioned.
+			String to = config.teacherEmail.toString();
+			String from =config.emailSenderName;
+			String host = "localhost";
+			// Get system properties
+			Properties properties = System.getProperties();
+			// Setup mail server
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.socketFactory.port", "465");
+			properties.put("mail.smtp.socketFactory.class",
+					"javax.net.ssl.SSLSocketFactory");
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.port", "465");
+			// Get the default Session object.
+			Session session = Session.getDefaultInstance(properties,
+					new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(config.emailSender,config.getRlGPFO());
+				}
+			});
+			try {
+				// Create a default MimeMessage object.
+				MimeMessage message = new MimeMessage(session);
+				
+				// Set From: header field of the header.
+				message.setFrom(new InternetAddress(from));
+				
+				// Set To: header field of the header.
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				
+				// Set Subject: header field
+				message.setSubject(config.emailSubjectTXT);
+				
+				// Create the message part 
+				BodyPart messageBodyPart = new MimeBodyPart();
+				
+				// Fill the message
+				messageBodyPart.setText(config.emailBodyTXT);
+				
+				// Create a multipart message
+				Multipart multipart = new MimeMultipart();
+				
+				// Set text message part
+				multipart.addBodyPart(messageBodyPart);
+				
+				// Part two is attachment
+				messageBodyPart = new MimeBodyPart();
+				String filename = config.LogsPath;
+				DataSource source = new FileDataSource(filename);
+				messageBodyPart.setDataHandler(new DataHandler(source));
+				messageBodyPart.setFileName("Restroom Logs Program System Logs: " + config.getDate());
+				multipart.addBodyPart(messageBodyPart);
+				
+				// Send the complete message parts
+				message.setContent(multipart);
+				
+				// Send message
+				Transport.send(message);
+				System.out.println("Sent message successfully....");
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
+			}
 			
 		}
 	}
