@@ -92,7 +92,7 @@ public class config{
 		
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
-		public static final String LogsDBTableName  = "Logs";
+		public static String LogsDBTableName  = "Logs";
 		public static final String stillSignedOut = "Still Signed Out";
 		//remote DB Credentials (DB contains SecretKey)
 		public static final String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
@@ -716,9 +716,8 @@ public class config{
 	 * @return Current System Date with Format MM.DD.YYY
 	 */
 	public static String getDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM.dd.yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
 		LocalDateTime now = LocalDateTime.now();
-		
 		String date = dtf.format(now);
 		return date;
 	}

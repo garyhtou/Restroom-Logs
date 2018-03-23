@@ -69,11 +69,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class FrontEnd extends BackEnd{
 	
-	public static JFrame frame = new JFrame() {
-		public void paintComponent(Graphics g) {
-	        screenSaver.draw();
-	    }
-	};
+	public static JFrame frame = new JFrame();
 	
 	public static void main(String[] args) {
 		create();
@@ -130,19 +126,19 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		
 	//OTA	
-			if(config.checkForUpdates()) {
-				int i = JOptionPane.showConfirmDialog(null, "There is an available update. Would you wish to open the Updater?", "Available Update", JOptionPane.YES_NO_OPTION);
-				if(i == JOptionPane.YES_OPTION) {
-    			    try {
-						Process proc = Runtime.getRuntime().exec("java -jar Updater.jar");
-						System.exit(0);
-					} catch (IOException e) {
-						BackEnd.logs.update.ERROR("Unable to run Updater");
-						e.printStackTrace();
-					}
+		if(config.checkForUpdates()) {
+			int i = JOptionPane.showConfirmDialog(null, "There is an available update. Would you wish to open the Updater?", "Available Update", JOptionPane.YES_NO_OPTION);
+			if(i == JOptionPane.YES_OPTION) {
+			    try {
+					Process proc = Runtime.getRuntime().exec("java -jar Updater.jar");
+					System.exit(0);
+				} catch (IOException e) {
+					BackEnd.logs.update.ERROR("Unable to run Updater");
+					e.printStackTrace();
 				}
-
 			}
+
+		}
 		
 	}
 	
@@ -1538,56 +1534,20 @@ public class FrontEnd extends BackEnd{
 			config.teacherEmail.updateAll();
 			if(BackEnd.database.Log.table.signAllIn()) {
 				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
-				JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
 			}
 			content.majorRL.right.table.tablePane.tableContent.update();
-			//TODO:CLEAR FROM LOG DB
+			//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
 			BackEnd.email.PDF.updatePDF();
-			if(config.getDailyEmails())
+			if(config.getDailyEmails()) {
 				BackEnd.email.send();
+			BackEnd.database.clear.LogsDB();
+			BackEnd.email.PDF.CreateBlankPDF();
+			}
 		}
 		
 	}
-	public static class screenSaver{
-		private static int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-		private static int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-		public static boolean saverOn = false;
-		public static void create() {
-					
-			JButton b = new JButton("Screen Saver");
-			b.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					saverOn = true;
-					draw();
-					//System.out.println("draw");
-				}
-			});
-			content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.messageCenter.add(b);
-			
-			frame.addMouseMotionListener(new MouseMotionListener() {
-				public void mouseDragged(MouseEvent e) {}
-				public void mouseMoved(MouseEvent e) {
-					saverOn = false;
-					//System.out.println("remove");
-				}
-			});
-		}
-		public static void draw() {
-			if(/*TIMER HERE*/true) {
-				saverOn = true;
-			} else {
-				saverOn = false;
-			}
-			paint();
-		}
-		public static void paint() {
-			Graphics g = frame.getGraphics();
-			if(saverOn) {
-				g.fillRect(0, 0, width, height);
-			}
-			frame.paint(g);
-		}
-	}
+	
 }

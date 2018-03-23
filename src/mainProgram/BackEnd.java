@@ -17,12 +17,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -37,6 +44,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.swing.JOptionPane;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -56,6 +65,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import mainProgram.FrontEnd.TimeListener;
+import mainProgram.FrontEnd.content;
 /**
  * The Back End of the Restroom Logs Program
  * <div></div>
@@ -594,7 +606,7 @@ public class BackEnd extends config{
 		         String filename = config.PdfLogPath;
 		         DataSource source = new FileDataSource(filename);
 		         messageBodyPart.setDataHandler(new DataHandler(source));
-		         messageBodyPart.setFileName(config.PdfLogPath);
+		         messageBodyPart.setFileName("Restroom Logs Program Logs: " + config.getDate());
 		         multipart.addBodyPart(messageBodyPart);
 
 		         // Send the complete message parts
@@ -1038,4 +1050,36 @@ public class BackEnd extends config{
 		}
 	}
 	
+	public static class TimeListener implements Runnable{
+		public static void time(){
+			LocalDateTime localNow = LocalDateTime.now();
+	        ZoneId currentZone = ZoneId.of("America/Los_Angeles");
+	        ZonedDateTime zonedNow = ZonedDateTime.of(localNow, currentZone);
+	        ZonedDateTime zonedNext5;
+	        int hour = 0;
+	        int minute = 1;
+	        zonedNext5 = zonedNow.withHour(hour).withMinute(minute).withSecond(0);
+	        if(zonedNow.compareTo(zonedNext5) > 0)
+	            zonedNext5 = zonedNext5.plusDays(1);
+
+	        Duration duration = Duration.between(zonedNow, zonedNext5);
+	        long initalDelay = duration.getSeconds();
+
+	        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);            
+	        scheduler.scheduleAtFixedRate(new TimeListener(), initalDelay,
+	                                      24*60*60, TimeUnit.SECONDS);
+		}
+
+		@Override
+		public void run() {
+			BackEnd.database.Log.table.create();
+			config.LogsDBTableName = "Logs" + config.getDate();
+			
+		}
+	}
+	public static void create() {
+		BackEnd.TimeListener.time();
+		config.LogsDBTableName = "Logs" + config.getDate();
+	}
 }
+
