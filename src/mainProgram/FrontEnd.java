@@ -140,6 +140,8 @@ public class FrontEnd extends BackEnd{
 
 		}
 		
+		BackEnd.create();
+		
 	}
 	
 	public static void frame() {		

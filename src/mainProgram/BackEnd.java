@@ -968,7 +968,6 @@ public class BackEnd extends config{
 				}
 			}
 			public static String[] getAllTableName() {
-				System.out.println("in method");
 				ArrayList<String> list = new ArrayList<String>();
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -991,7 +990,7 @@ public class BackEnd extends config{
 					BackEnd.logs.update.ERROR("Can't find jdbc Driver");
 					return null;
 				} catch (SQLException e) {
-					BackEnd.logs.update.ERROR("Error while getting all table names");
+					BackEnd.logs.update.ERROR("Error while getting all table names from Logs database");
 					return null;
 				}
 				
@@ -1180,8 +1179,17 @@ public class BackEnd extends config{
 		}
 	}
 	public static void create() {
-		BackEnd.TimeListener.time();
+		BackEnd.TimeListener.time(); //start 12am timer
 		config.LogsDBTableName = "Logs" + config.getDate();
+		boolean alreadyCreatedTable = false;
+		for(int i = 0; i < BackEnd.database.Log.getAllTableName().length; i++) {
+			if(BackEnd.database.Log.getAllTableName()[i].equals(config.LogsDBTableName)) {
+				alreadyCreatedTable = true;
+			}
+		}
+		if(!alreadyCreatedTable) {
+			BackEnd.database.Log.table.create();
+		}
 	}
 }
 
