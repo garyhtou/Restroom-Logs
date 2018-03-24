@@ -37,4 +37,178 @@
       2018/03/24 13:36:18  |  LogTxt Opened
       2018/03/24 13:36:30  |  Preferences Opened
 ****  2018/03/24 13:40:09  |  System  |  EXIT
+----------***** 2018/03/24 15:49:24  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:49:24  |  ERROR  |  Could not access Database
+****  2018/03/24 15:49:27  |  System  |  EXIT
+----------***** 2018/03/24 15:51:25  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:51:25  |  ERROR  |  Could not access Database
+      2018/03/24 15:51:35  |  Send Custom PDFs Opened
+****  2018/03/24 15:51:52  |  System  |  EXIT
+----------***** 2018/03/24 15:54:04  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:54:04  |  ERROR  |  Could not access Database
+      2018/03/24 15:54:06  |  Send Custom PDFs Opened
+      2018/03/24 15:54:12  |  Preferences Opened
+      2018/03/24 15:54:37  |  Send Custom PDFs Opened
+      2018/03/24 15:54:41  |  Preferences Opened
+      2018/03/24 15:54:48  |  Send Custom PDFs Opened
+****  2018/03/24 15:54:53  |  System  |  EXIT
+----------***** 2018/03/24 15:57:02  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:57:02  |  ERROR  |  Could not access Database
+      2018/03/24 15:57:08  |  Gary Tou has signed in
+      2018/03/24 15:57:13  |  Gary Tou has signed out
+      2018/03/24 15:57:16  |  Preferences Opened
+      2018/03/24 15:57:24  |  Send Custom PDFs Opened
+      2018/03/24 15:57:28  |  Send Custom PDFs Opened
+      2018/03/24 15:57:31  |  Send Custom PDFs Opened
+****  2018/03/24 15:57:33  |  System  |  EXIT
+----------***** 2018/03/24 15:58:37  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:58:37  |  ERROR  |  Could not access Database
+***** 2018/03/24 15:58:41  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 15:58:41  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 15:58:41  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 15:58:41  |  ERROR  |  Student ID "111" does not exist
+      2018/03/24 15:58:41  |  Could not find 111 in Student Data Base
+      2018/03/24 15:58:44  |  Send Custom PDFs Opened
+      2018/03/24 15:58:47  |  Send Custom PDFs Opened
+      2018/03/24 15:59:04  |  Send Custom PDFs Opened
+****  2018/03/24 15:59:12  |  System  |  EXIT
+----------***** 2018/03/24 16:01:36  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:01:36  |  ERROR  |  Could not access Database
+      2018/03/24 16:01:44  |  Send Custom PDFs Opened
+****  2018/03/24 16:01:55  |  System  |  EXIT
+----------***** 2018/03/24 16:05:19  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:05:19  |  ERROR  |  Could not access Database
+      2018/03/24 16:05:21  |  Send Custom PDFs Opened
+****  2018/03/24 16:05:25  |  System  |  EXIT
+----------***** 2018/03/24 16:06:25  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:06:25  |  ERROR  |  Could not access Database
+      2018/03/24 16:06:28  |  Send Custom PDFs Opened
+****  2018/03/24 16:06:46  |  System  |  EXIT
+----------***** 2018/03/24 16:11:15  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:11:15  |  ERROR  |  Could not access Database
+      2018/03/24 16:11:26  |  Gary Tou has signed in
+      2018/03/24 16:11:27  |  Gary Tou has signed out
+      2018/03/24 16:11:29  |  Bob Stern has signed out
+      2018/03/24 16:11:32  |  Send Custom PDFs Opened
+      2018/03/24 16:11:43  |  Send Custom PDFs Opened
+***** 2018/03/24 16:11:47  |  ERROR  |  Student ID "1245" does not exist
+***** 2018/03/24 16:11:47  |  ERROR  |  Student ID "1245" does not exist
+***** 2018/03/24 16:11:47  |  ERROR  |  Student ID "1245" does not exist
+***** 2018/03/24 16:11:47  |  ERROR  |  Student ID "1245" does not exist
+      2018/03/24 16:11:47  |  Could not find 1245 in Student Data Base
+      2018/03/24 16:11:49  |  Gary Tou has signed out
+      2018/03/24 16:11:50  |  Gary Tou has signed in
+****  2018/03/24 16:11:51  |  System  |  EXIT
+----------***** 2018/03/24 16:13:37  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:13:37  |  ERROR  |  Could not access Database
+      2018/03/24 16:13:44  |  Gary Tou has signed out
+***** 2018/03/24 16:13:47  |  ERROR  |  Student ID "21" does not exist
+***** 2018/03/24 16:13:47  |  ERROR  |  Student ID "21" does not exist
+***** 2018/03/24 16:13:47  |  ERROR  |  Student ID "21" does not exist
+***** 2018/03/24 16:13:47  |  ERROR  |  Student ID "21" does not exist
+      2018/03/24 16:13:47  |  Could not find 21 in Student Data Base
+      2018/03/24 16:13:47  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/03/24 16:13:47  |  temp2 LAST NAME SOMETHING 2 has signed out
+      2018/03/24 16:13:48  |  temp3 LAST NAME SOMETHING 3 has signed out
+***** 2018/03/24 16:13:49  |  ERROR  |  Student ID "411" does not exist
+***** 2018/03/24 16:13:49  |  ERROR  |  Student ID "411" does not exist
+***** 2018/03/24 16:13:49  |  ERROR  |  Student ID "411" does not exist
+***** 2018/03/24 16:13:49  |  ERROR  |  Student ID "411" does not exist
+      2018/03/24 16:13:49  |  Could not find 411 in Student Data Base
+***** 2018/03/24 16:13:50  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 16:13:50  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 16:13:50  |  ERROR  |  Student ID "111" does not exist
+***** 2018/03/24 16:13:50  |  ERROR  |  Student ID "111" does not exist
+      2018/03/24 16:13:50  |  Could not find 111 in Student Data Base
+      2018/03/24 16:13:51  |  Mr. Sabo has signed out
+      2018/03/24 16:13:52  |  Mr. Sabo has signed in
+      2018/03/24 16:13:54  |  Mr. Sabo has signed out
+      2018/03/24 16:13:55  |  Seattle area code has signed out
+      2018/03/24 16:13:59  |  renton area code has signed out
+      2018/03/24 16:14:01  |  Send Custom PDFs Opened
+****  2018/03/24 16:14:42  |  System  |  EXIT
+----------***** 2018/03/24 16:15:59  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:15:59  |  ERROR  |  Could not access Database
+      2018/03/24 16:16:02  |  Send Custom PDFs Opened
+      2018/03/24 16:16:20  |  Send Custom PDFs Opened
+      2018/03/24 16:16:30  |  Send Custom PDFs Opened
+****  2018/03/24 16:16:39  |  System  |  EXIT
+----------***** 2018/03/24 16:16:52  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:16:52  |  ERROR  |  Could not access Database
+      2018/03/24 16:16:53  |  Send Custom PDFs Opened
+****  2018/03/24 16:17:01  |  System  |  EXIT
+----------***** 2018/03/24 16:21:28  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:21:28  |  ERROR  |  Could not access Database
+      2018/03/24 16:21:31  |  Send Custom PDFs Opened
+****  2018/03/24 16:21:38  |  System  |  EXIT
+----------***** 2018/03/24 16:25:19  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:25:19  |  ERROR  |  Could not access Database
+      2018/03/24 16:25:21  |  Send Custom PDFs Opened
+****  2018/03/24 16:25:31  |  System  |  EXIT
+----------***** 2018/03/24 16:27:39  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:27:39  |  ERROR  |  Could not access Database
+      2018/03/24 16:27:41  |  Send Custom PDFs Opened
+****  2018/03/24 16:27:56  |  System  |  EXIT
+----------***** 2018/03/24 16:32:44  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:32:44  |  ERROR  |  Could not access Database
+      2018/03/24 16:32:46  |  Send Custom PDFs Opened
+****  2018/03/24 16:32:53  |  System  |  EXIT
+----------***** 2018/03/24 16:33:57  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:33:57  |  ERROR  |  Could not access Database
+      2018/03/24 16:33:58  |  Send Custom PDFs Opened
+****  2018/03/24 16:34:03  |  System  |  EXIT
+----------***** 2018/03/24 16:34:12  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:34:12  |  ERROR  |  Could not access Database
+      2018/03/24 16:34:14  |  Send Custom PDFs Opened
+****  2018/03/24 16:34:21  |  System  |  EXIT
+----------***** 2018/03/24 16:34:30  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:34:30  |  ERROR  |  Could not access Database
+      2018/03/24 16:34:31  |  Send Custom PDFs Opened
+      2018/03/24 16:34:39  |  Preferences Opened
+****  2018/03/24 16:34:46  |  System  |  EXIT
+----------***** 2018/03/24 16:37:07  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:37:07  |  ERROR  |  Could not access Database
+      2018/03/24 16:37:08  |  Send Custom PDFs Opened
+****  2018/03/24 16:37:13  |  System  |  EXIT
+----------***** 2018/03/24 16:37:41  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:37:41  |  ERROR  |  Could not access Database
+      2018/03/24 16:37:43  |  Send Custom PDFs Opened
+****  2018/03/24 16:37:52  |  System  |  EXIT
+----------***** 2018/03/24 16:38:18  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:38:18  |  ERROR  |  Could not access Database
+      2018/03/24 16:38:21  |  Send Custom PDFs Opened
+****  2018/03/24 16:38:27  |  System  |  EXIT
+----------***** 2018/03/24 16:39:46  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:39:46  |  ERROR  |  Could not access Database
+      2018/03/24 16:39:48  |  Send Custom PDFs Opened
+****  2018/03/24 16:39:56  |  System  |  EXIT
+----------***** 2018/03/24 16:43:02  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:43:02  |  ERROR  |  Could not access Database
+      2018/03/24 16:43:03  |  Send Custom PDFs Opened
+****  2018/03/24 16:43:11  |  System  |  EXIT
+----------***** 2018/03/24 16:43:26  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:43:26  |  ERROR  |  Could not access Database
+      2018/03/24 16:43:28  |  Preferences Opened
+      2018/03/24 16:43:32  |  Send Custom PDFs Opened
+****  2018/03/24 16:43:38  |  System  |  EXIT
+----------***** 2018/03/24 16:44:45  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:44:45  |  ERROR  |  Could not access Database
+      2018/03/24 16:44:46  |  Send Custom PDFs Opened
+****  2018/03/24 16:44:53  |  System  |  EXIT
+----------***** 2018/03/24 16:45:01  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:45:01  |  ERROR  |  Could not access Database
+      2018/03/24 16:45:02  |  Send Custom PDFs Opened
+****  2018/03/24 16:45:07  |  System  |  EXIT
+----------***** 2018/03/24 16:45:13  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:45:13  |  ERROR  |  Could not access Database
+      2018/03/24 16:45:14  |  Send Custom PDFs Opened
+****  2018/03/24 16:45:18  |  System  |  EXIT
+----------***** 2018/03/24 16:45:23  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:45:23  |  ERROR  |  Could not access Database
+      2018/03/24 16:45:24  |  Send Custom PDFs Opened
+****  2018/03/24 16:45:29  |  System  |  EXIT
+----------***** 2018/03/24 16:45:41  |  ERROR  |  Could not access Database
+***** 2018/03/24 16:45:41  |  ERROR  |  Could not access Database
+      2018/03/24 16:45:41  |  Send Custom PDFs Opened
+****  2018/03/24 16:45:49  |  System  |  EXIT
 ----------

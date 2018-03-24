@@ -90,6 +90,8 @@ public class FrontEnd extends BackEnd{
 		window.menuBar.file.help.create();
 		window.menuBar.log.create();
 		window.menuBar.log.logsTxt.create();
+		window.menuBar.log.customPDF.create();
+		window.menuBar.log.reports.create();
 		
 		content.majorRL.create();
 	//Major Left
@@ -1051,12 +1053,118 @@ public class FrontEnd extends BackEnd{
 							content();
 						});
 					}
+					//these are here so that the delete listener can access and update;
+					static ArrayList<table> tables = new ArrayList<table>(); //tables and buttonTables are parallel arrayLists
+					static ArrayList<JCheckBox> tableCheckBoxes = new ArrayList<JCheckBox>();
+					static JPanel checkBoxPane = new JPanel();
+					static JOptionPane dialog = new JOptionPane();
 					public static void content() {
+						JPanel pane = new JPanel(new BorderLayout());
 						
+						JLabel title = new JLabel("Select days to Email or Delete");
+						pane.add(title, BorderLayout.PAGE_START);
+						
+						checkBoxPane.setLayout(new BoxLayout(checkBoxPane, BoxLayout.Y_AXIS));
+						
+						updateCheckBoxes();
+						
+						pane.add(checkBoxPane, BorderLayout.CENTER);
+						
+						JPanel buttonPane = new JPanel();
+						buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.Y_AXIS));
+						JButton emailButton = new JButton("Email");
+						buttonPane.add(emailButton);
+						JButton deleteButton = new JButton("Delete");
+						buttonPane.add(deleteButton);
+						pane.add(buttonPane, BorderLayout.LINE_END);
+						
+						emailButton.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								ArrayList<String>selectedTables = getSelectedDBTableNames();
+								//TODO:generate PDF with all selected days
+								//send the PDF
+								
+								updateCheckBoxes(); //this will reflect any db table changes (shouldn't be any) and uncheck all checkboxes
+								
+							}
+						});
+						deleteButton.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								ArrayList<String> checkTables = getSelectedDBTableNames();
+								for(int i = 0; i < checkTables.size(); i++) {
+									BackEnd.database.Log.table.delete(checkTables.get(i));
+								}
+								BackEnd.database.Log.createTodayTable(); //this method checks if it already exists
+								updateCheckBoxes();
+								
+								FrontEnd.content.majorRL.right.table.tablePane.tableContent.update();
+								JOptionPane pane = new JOptionPane();
+								JLabel message = new JLabel("Date Deletion Completed");
+								pane.showMessageDialog(frame, message, "Delete Dates", JOptionPane.PLAIN_MESSAGE);
+							}
+						});
+						
+						dialog.showMessageDialog(frame, pane, "Send/Delete Data", JOptionPane.PLAIN_MESSAGE);
+					}
+					private static void updateCheckBoxes() {
+						System.out.println("in method");
+						//clean
+						checkBoxPane.removeAll();
+						
+						tables = new ArrayList<table>(); //tables and tableCheckBoxes are parallel arrayLists
+						tableCheckBoxes = new ArrayList<JCheckBox>();
+						
+						String[] DBTables = BackEnd.database.Log.getAllTableName();
+						for(int i = 0; i < DBTables.length; i++) {
+							tables.add(new table(DBTables[i]));
+							JCheckBox checkBox = new JCheckBox();
+							tableCheckBoxes.add(checkBox);
+							checkBox.setText(tables.get(i).getDate());
+							checkBoxPane.add(checkBox);
+							System.out.println("tables left: " + tables.get(i).getDate());
+						}
+						
+						//update graphics
+						checkBoxPane.validate();
+						checkBoxPane.repaint();
+					}
+					private static ArrayList<String> getSelectedDBTableNames(){
+						ArrayList<String> checkTables = new ArrayList<String>();
+						for(int i = 0; i < tables.size(); i++) {
+							if(tableCheckBoxes.get(i).isSelected()) {
+								checkTables.add(tables.get(i).getDBTableName());
+							}
+						}
+						return checkTables;
+					}
+					public static class table {
+						private int month;
+						private int day;
+						private int year;
+						
+						String DBTableName;
+						public table(String DBTableName) {
+							this.DBTableName = DBTableName;
+							process();
+						}
+						private void process() {
+							String heading = "Logs";
+							String rawDate = this.DBTableName.substring(heading.length()); //from of dd/MM/yy
+							this.day = Integer.parseInt(rawDate.substring(0, 2));
+							this.month = Integer.parseInt(rawDate.substring(2, 4));
+							this.year = Integer.parseInt(rawDate.substring(4, 8));
+						}
+						public String getDate() {
+							final String divider = "/";
+							return this.month + divider + this.day + divider + this.year;
+						}
+						public String getDBTableName() {
+							return this.DBTableName;
+						}
 					}
 				}
 				
-				public static class Reports {
+				public static class reports {
 					static JMenuItem reports = new JMenuItem("Reports", null /*FIXME: make icon*/);
 					public static void create() {
 						logMenu.add(reports);

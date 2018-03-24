@@ -997,6 +997,17 @@ public class BackEnd extends config{
 				String[] arrList = list.toArray(new String[0]);
 				return arrList;
 			}
+			public static void createTodayTable() {
+				boolean alreadyCreatedTable = false;
+				for(int i = 0; i < BackEnd.database.Log.getAllTableName().length; i++) {
+					if(BackEnd.database.Log.getAllTableName()[i].equals(config.LogsDBTableName)) {
+						alreadyCreatedTable = true;
+					}
+				}
+				if(!alreadyCreatedTable) {
+					BackEnd.database.Log.table.create();
+				}
+			}
 		}
 
 		public static class Student{
@@ -1181,15 +1192,7 @@ public class BackEnd extends config{
 	public static void create() {
 		BackEnd.TimeListener.time(); //start 12am timer
 		config.LogsDBTableName = "Logs" + config.getDate();
-		boolean alreadyCreatedTable = false;
-		for(int i = 0; i < BackEnd.database.Log.getAllTableName().length; i++) {
-			if(BackEnd.database.Log.getAllTableName()[i].equals(config.LogsDBTableName)) {
-				alreadyCreatedTable = true;
-			}
-		}
-		if(!alreadyCreatedTable) {
-			BackEnd.database.Log.table.create();
-		}
+		BackEnd.database.Log.createTodayTable();
 	}
 }
 
