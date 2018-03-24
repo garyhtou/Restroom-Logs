@@ -1,16 +1,40 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2018/03/24 13:16:24
+	File created on 2018/03/24 13:35:18
 
-**    2018/03/24 13:16:24  |  Start Up  |  
+**    2018/03/24 13:35:18  |  Start Up  |  
 
 
 ----------
-**    2018/03/24 13:16:24  |  Start Up  |  ranBefore found
-**    2018/03/24 13:16:24  |  Start Up  |  Config.txt: ranBefore = false
-**    2018/03/24 13:16:24  |  Start Up  |  ranBefore is now set to: false
-      2018/03/24 13:16:30  |  Bob Stern has signed out
-      2018/03/24 13:16:31  |  Gary Tou has signed out
-      2018/03/24 13:16:33  |  Bob Stern has signed in
-      2018/03/24 13:16:34  |  Jess Potesrt has signed out
-****  2018/03/24 13:16:35  |  System  |  EXIT
+**    2018/03/24 13:35:18  |  Start Up  |  ranBefore found
+**    2018/03/24 13:35:18  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/03/24 13:35:18  |  Start Up  |  ranBefore is now set to: false
+***** 2018/03/24 13:35:19  |  ERROR  |  Could not access Database
+***** 2018/03/24 13:35:19  |  ERROR  |  Could not access Database
+      2018/03/24 13:35:27  |  Gary Tou has signed out
+      2018/03/24 13:35:28  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/03/24 13:35:29  |  temp2 LAST NAME SOMETHING 2 has signed out
+      2018/03/24 13:35:30  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/03/24 13:35:30  |  temp4 LAST NAME SOMETHING 4 has signed out
+      2018/03/24 13:35:31  |  temp5 LAST NAME SOMETHING 5 has signed out
+      2018/03/24 13:35:31  |  temp6 LAST NAME SOMETHING 6 has signed out
+      2018/03/24 13:35:32  |  temp7 LAST NAME SOMETHING 7 has signed out
+      2018/03/24 13:35:32  |  temp8 LAST NAME SOMETHING 8 has signed out
+      2018/03/24 13:35:33  |  temp9 LAST NAME SOMETHING 9 has signed out
+      2018/03/24 13:35:35  |  temp7 LAST NAME SOMETHING 7 has signed in
+      2018/03/24 13:35:35  |  temp8 LAST NAME SOMETHING 8 has signed in
+      2018/03/24 13:35:36  |  temp7 LAST NAME SOMETHING 7 has signed out
+      2018/03/24 13:35:37  |  temp8 LAST NAME SOMETHING 8 has signed out
+      2018/03/24 13:35:37  |  temp9 LAST NAME SOMETHING 9 has signed in
+      2018/03/24 13:35:38  |  temp10 LAST NAME SOMETHING 10 has signed out
+***** 2018/03/24 13:35:40  |  ERROR  |  Student ID "11" does not exist
+***** 2018/03/24 13:35:40  |  ERROR  |  Student ID "11" does not exist
+***** 2018/03/24 13:35:40  |  ERROR  |  Student ID "11" does not exist
+***** 2018/03/24 13:35:40  |  ERROR  |  Student ID "11" does not exist
+      2018/03/24 13:35:40  |  Could not find 11 in Student Data Base
+      2018/03/24 13:35:43  |  renton area code has signed out
+      2018/03/24 13:35:45  |  Seattle area code has signed out
+      2018/03/24 13:35:48  |  Mr. Sabo has signed out
+      2018/03/24 13:36:18  |  LogTxt Opened
+      2018/03/24 13:36:30  |  Preferences Opened
+****  2018/03/24 13:40:09  |  System  |  EXIT
 ----------

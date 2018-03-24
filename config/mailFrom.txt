@@ -1,3 +1,0 @@
-Restroom Logs Email Settings - DO NOT TOUCH THIS FILE
-----------
-mailFromAdress = something@gmail.com
