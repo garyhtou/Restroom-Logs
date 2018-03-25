@@ -94,18 +94,12 @@ public class config{
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
 		public static String LogsDBTableName  = "Logs";
 		public static final String stillSignedOut = "Still Signed Out";
-		//remote DB Credentials (DB contains SecretKey)
-		public static final String remoteDBCredFilePath = "data/remoteDB_Cred.txt";
-		public static final String remoteDB_User = "username to remote DB";
-		public static final String remoteDB_Pass = "password to remove DB";
 	//Logs
 		//.txt
 		public static final String LogsPath  = "data/Logs.txt";
 		//PDF
 		public static final String PdfLogPath  = "data/"+getPdfName()+".pdf";
 		//public static final String PdfLogName  = getPdfName();
-		//View PDF
-		public static final String PdfLogViewPath  = "data/ViewLogsPDF.pdf";
 	//Config files
 		public static final String DoNotTouchFilePath  = "config/DoNotTouch.txt";
 		public static final String GeneralConfigFilePath = "config/config.txt";
@@ -115,7 +109,7 @@ public class config{
 	//Website URLs
 		public static final String WebsiteHomeURL  = "http://rl.coding2kids.com/";
     	public static final String urlT = "https://rl.coding2kids.com/admin/info.txt";
-    	public static final String USER_AGENT = "Chrome/63.0.3239.132 ";
+    	public static final String USER_AGENT = "Chrome/63.0.3239.132 "; //TODO: do more research to see if this is what we want
 
 	//Log .txt Priorities
 		public static final String SystemPriority = "**** "; //Out of 5
