@@ -506,17 +506,6 @@ public class BackEnd extends config{
 				}
 				
 		}
-			/**
-			 * Deletes the previous day's PDF 
-			 */
-			public static void DeleteYesterdayPDF() {
-				final Calendar cal = Calendar.getInstance();
-			    cal.add(Calendar.DATE, -1);
-			    DateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
-			    File file = new File("data/Logs-"+dateFormat.format(cal.getTime())+".pdf");
-			    System.out.print(file.toString());
-		        file.delete(); 
-			}
 	}
 		
 		/*public static class TimeListener implements Runnable{
@@ -557,7 +546,7 @@ public class BackEnd extends config{
 			}
 			
 		}*/
-		public static void sendPDF() {
+		public static void sendPDF(String filePath, String emailedFileName) {
 			
 			
 			 // Recipient's email ID needs to be mentioned.
@@ -607,10 +596,10 @@ public class BackEnd extends config{
 
 		         // Part two is attachment
 		         messageBodyPart = new MimeBodyPart();
-		         String filename = config.PdfLogPath;
-		         DataSource source = new FileDataSource(filename);
+
+		         DataSource source = new FileDataSource(filePath);
 		         messageBodyPart.setDataHandler(new DataHandler(source));
-		         messageBodyPart.setFileName("Restroom Logs Program Logs: " + config.getDate());
+		         messageBodyPart.setFileName(emailedFileName);
 		         multipart.addBodyPart(messageBodyPart);
 
 		         // Send the complete message parts
@@ -677,7 +666,7 @@ public class BackEnd extends config{
 				String filename = config.LogsPath;
 				DataSource source = new FileDataSource(filename);
 				messageBodyPart.setDataHandler(new DataHandler(source));
-				messageBodyPart.setFileName("Restroom Logs Program System Logs: " + config.getDate());
+				messageBodyPart.setFileName("Restroom Logs Program System Logs Text: " + config.getDate());
 				multipart.addBodyPart(messageBodyPart);
 				
 				// Send the complete message parts

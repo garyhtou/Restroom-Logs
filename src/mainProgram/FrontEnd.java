@@ -1015,7 +1015,9 @@ public class FrontEnd extends BackEnd{
 						    			//JDialog temp = new JDialog(frame, "call something there to email");
 						    			//temp.setVisible(true);
 						    			System.out.print("BUTTON");
-						    			 BackEnd.email.sendPDF();
+						    			BackEnd.email.sendTXT();
+						    			JOptionPane.showMessageDialog(frame, new JLabel(
+						    					"Email Sent to: " + config.teacherEmail), "Emailed!", JOptionPane.PLAIN_MESSAGE);
 									}
 						    	});
 						    
@@ -1081,8 +1083,11 @@ public class FrontEnd extends BackEnd{
 						emailButton.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								ArrayList<String>selectedTables = getSelectedDBTableNames();
+								
 								//TODO:generate PDF with all selected days
-								//send the PDF
+								
+								
+								//BackEnd.email.sendPDF(filePath, file name when sent in email);
 								
 								updateCheckBoxes(); //this will reflect any db table changes (shouldn't be any) and uncheck all checkboxes
 								
@@ -1095,7 +1100,7 @@ public class FrontEnd extends BackEnd{
 									BackEnd.database.Log.table.delete(checkTables.get(i));
 								}
 								BackEnd.database.Log.createTodayTable(); //this method checks if it already exists
-								updateCheckBoxes();
+								updateCheckBoxes(); 
 								
 								FrontEnd.content.majorRL.right.table.tablePane.tableContent.update();
 								JOptionPane pane = new JOptionPane();
@@ -1641,7 +1646,7 @@ public class FrontEnd extends BackEnd{
 
 		@Override
 		public void run() {
-			config.teacherEmail.updateAll();
+			var.updateAll();
 			if(BackEnd.database.Log.table.signAllIn()) {
 				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
 				//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
@@ -1652,8 +1657,8 @@ public class FrontEnd extends BackEnd{
 			//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
 			BackEnd.email.PDF.updatePDF();
 			if(config.getDailyEmails()) {
-				BackEnd.email.sendPDF();
-			BackEnd.database.clear.LogsDB();
+				BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs Program Logs PDF: " + config.getDate());
+			
 			BackEnd.email.PDF.CreateBlankPDF();
 			}
 		}

@@ -52,7 +52,7 @@ public class var {
 	/**
 	 * updates all pulled values
 	 */
-	public void updateAll() {
+	public static void updateAll() {
 		for(var item : allVars) {
 			item.update();
 		}
