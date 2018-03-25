@@ -608,6 +608,11 @@ public class BackEnd extends config{
 		         // Send message
 		         Transport.send(message);
 		         System.out.println("Sent message successfully....");
+		         
+		         File file = new File(filePath);
+		         if(file.delete()) {
+		        	 System.out.println("PDF Deleted from System");
+		         }
 		      } catch (MessagingException mex) {
 		         mex.printStackTrace();
 		      }
@@ -1000,7 +1005,7 @@ public class BackEnd extends config{
 		}
 
 		public static class Student{
-			public static void add()  {					
+			public static void add(int studentID, String firstName, String lastName)  {					
 					try {
 						Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 				
@@ -1013,9 +1018,9 @@ public class BackEnd extends config{
 					ResultSet rs;
 					String q = "INSERT INTO "+StudentDBTableName.toString()+" ([StudentID], [FirstName], [LastName]) VALUES (?, ?, ?)";
 					PreparedStatement st = conn.prepareStatement (q);
-					st.setString(1, "12345");
-					st.setString(2, "Michael");
-					st.setString(3, "Schwamborn");
+					st.setString(1, Integer.toString(studentID));
+					st.setString(2, firstName);
+					st.setString(3, lastName);
 					st.executeUpdate();
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
@@ -1085,6 +1090,20 @@ public class BackEnd extends config{
 				}
 			}
 
+			public static int findStudentID(String name) {
+				ArrayList<String> names = new ArrayList<String>();
+				
+				String cutName = name;
+				while(cutName.contains(" ")) {
+					String currentName = cutName.substring(0, cutName.indexOf(" "));
+					names.add(currentName);
+					cutName = cutName.substring(cutName.indexOf(" ") + 1);
+				}
+				
+				//pull studentID based on like ArrayList<String> names, maybe use regex
+				
+				return 0;
+			}
 		}
 		public static class clear{
 			/**

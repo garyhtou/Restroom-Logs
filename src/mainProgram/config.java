@@ -139,7 +139,7 @@ public class config{
 		public static String emailSubjectPDF = "Restroom "+getPdfName();
 		public static String emailBodyPDF = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
 		public static String emailSubjectTXT = "Restroom "+getPdfName();
-		public static String emailBodyTXT = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";//TODO:Write
+		public static String emailBodyTXT = "Your system txt logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";//TODO:Write
 		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
 		public static final String emailSender = "restroomlogs@gmail.com";
 		/**

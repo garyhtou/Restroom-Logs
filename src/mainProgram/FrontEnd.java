@@ -5,6 +5,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import org.apache.commons.lang.time.StopWatch;
 
@@ -22,6 +23,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,13 +39,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -117,15 +127,12 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.right.table.titleBar.clearButton.create();
 		content.majorRL.right.table.tablePane.create();
 		content.majorRL.right.table.tablePane.tableContent.create();
-		content.majorRL.right.table.tablePane.tableContent.update();
-		
-	//Screen saver
-		//screenSaver.create();
 		
 	//final changes
 		frame.setVisible(true);
 		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
+		content.majorRL.right.table.tablePane.tableContent.update();
 		
 	//OTA	
 		if(config.checkForUpdates()) {
@@ -143,7 +150,6 @@ public class FrontEnd extends BackEnd{
 		}
 		
 		BackEnd.create();
-		
 	}
 	
 	public static void frame() {		
@@ -1064,6 +1070,7 @@ public class FrontEnd extends BackEnd{
 						JPanel pane = new JPanel(new BorderLayout());
 						
 						JLabel title = new JLabel("Select days to Email or Delete");
+						title.setFont(RL.preferencesTitle);
 						pane.add(title, BorderLayout.PAGE_START);
 						
 						checkBoxPane.setLayout(new BoxLayout(checkBoxPane, BoxLayout.Y_AXIS));
@@ -1075,8 +1082,10 @@ public class FrontEnd extends BackEnd{
 						JPanel buttonPane = new JPanel();
 						buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.Y_AXIS));
 						JButton emailButton = new JButton("Email");
+						emailButton.setFont(RL.preferencesText);
 						buttonPane.add(emailButton);
 						JButton deleteButton = new JButton("Delete");
+						deleteButton.setFont(RL.preferencesText);
 						buttonPane.add(deleteButton);
 						pane.add(buttonPane, BorderLayout.LINE_END);
 						
@@ -1112,7 +1121,6 @@ public class FrontEnd extends BackEnd{
 						dialog.showMessageDialog(frame, pane, "Send/Delete Data", JOptionPane.PLAIN_MESSAGE);
 					}
 					private static void updateCheckBoxes() {
-						System.out.println("in method");
 						//clean
 						checkBoxPane.removeAll();
 						
@@ -1125,8 +1133,8 @@ public class FrontEnd extends BackEnd{
 							JCheckBox checkBox = new JCheckBox();
 							tableCheckBoxes.add(checkBox);
 							checkBox.setText(tables.get(i).getDate());
+							checkBox.setFont(RL.preferencesText);
 							checkBoxPane.add(checkBox);
-							System.out.println("tables left: " + tables.get(i).getDate());
 						}
 						
 						//update graphics
@@ -1180,20 +1188,18 @@ public class FrontEnd extends BackEnd{
 						});
 					}
 					public static void content() {
-						JPanel panel = new JPanel();
+						JPanel panel = new JPanel(new BorderLayout());
+						
+						JLabel title = new JLabel("Reports");
+						title.setFont(RL.preferencesTitle);
+						panel.add(title, BorderLayout.PAGE_START);
 						
 						
 						
 						
-						Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-						double screenWidth = screenSize.getWidth();
-						double screenHeight = screenSize.getHeight();
 						
-						int displayWidth = (int) (screenWidth/2);
-						int displayHeight = (int) (screenHeight/1.5);
 						
 						JOptionPane optionPane = new JOptionPane();
-				    	optionPane.setSize(displayWidth, displayHeight);
 				    	optionPane.showMessageDialog(reports, panel);
 					}
 				}
@@ -1397,6 +1403,17 @@ public class FrontEnd extends BackEnd{
 							    			}
 										}
 									});
+							    	
+							    	java.util.Timer timer = new java.util.Timer(); //field always requests focus
+							    	timer.schedule(new TimerTask() {
+										public void run() {
+											if(!field.isFocusOwner()) {
+												field.requestFocus();
+											}
+										}
+							    		
+							    		
+							    	}, 0, 1);
 								}
 							}
 							public static class messageCenter {
@@ -1554,11 +1571,18 @@ public class FrontEnd extends BackEnd{
 							table.add(tablePane, BorderLayout.CENTER);
 							tablePane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 							tablePane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+							
+							java.util.Timer timer = new java.util.Timer();
+							timer.schedule(new TimerTask() {
+								public void run() {
+									tableContent.update();
+								}
+							}, 0, 15*1000);
 						}
 						public static class tableContent {
 							static JTable tableContent = new JTable();	
 							public static void create() {							
-								String[] columnNames = {"First Name", "Last Name", "Time Out"};
+								String[] columnNames = {"First Name", "Last Name", "Time Out", "Time Since (Min.)"};
 								
 								ArrayList<String[]> manSignedOutNames = new ArrayList<String[]>();
 						        try {
@@ -1571,10 +1595,33 @@ public class FrontEnd extends BackEnd{
 									rs = s.executeQuery("SELECT [FirstName], [LastName], [TimeOut] FROM ["+LogsDBTableName+"] WHERE [TimeIn] = '" + stillSignedOut + "'");
 									
 									while(rs.next()) {
-										String[] tempEntry = new String[3];
+										String[] tempEntry = new String[columnNames.length];
 										tempEntry[0] = rs.getString(1); //first name
 										tempEntry[1] = rs.getString(2); //last name
 										tempEntry[2] = rs.getString(3); //time out
+										
+										Calendar currentCal = Calendar.getInstance();
+										Date currentDate = currentCal.getTime();
+										long currentMill = currentCal.getTimeInMillis();
+										
+										DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
+										Date outTemp = null;
+										try {
+											outTemp = formatter.parse(tempEntry[2]);
+											outTemp.setDate(currentDate.getDate());
+											outTemp.setMonth(currentDate.getMonth());
+											outTemp.setYear(currentDate.getYear());
+										} catch (ParseException e) {
+											e.printStackTrace();
+										}
+										long out = outTemp.getTime();
+										
+										int total = (int) TimeUnit.MILLISECONDS.toMinutes(currentMill - out);
+										tempEntry[3] = Integer.toString(total);
+										
+										//calc totalTimeOut
+										//tempEntry[3] = currentTime - tempEntry[2].toTime();
+										
 										manSignedOutNames.add(tempEntry);
 									}
 						        } catch(ClassNotFoundException e) {
@@ -1586,10 +1633,10 @@ public class FrontEnd extends BackEnd{
 								}
 								
 						        int numOfEntries = manSignedOutNames.size();
-								String[][] data = new String[numOfEntries][3];
+								String[][] data = new String[numOfEntries][columnNames.length];
 								
 								for(int i = 0; i < manSignedOutNames.size(); i++) {
-									for(int k = 0; k < 3; k++) {
+									for(int k = 0; k < columnNames.length; k++) {
 										data[i][k] = manSignedOutNames.get(i)[k];
 									}
 								}

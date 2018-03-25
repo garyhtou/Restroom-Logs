@@ -211,4 +211,131 @@
 ***** 2018/03/24 16:45:41  |  ERROR  |  Could not access Database
       2018/03/24 16:45:41  |  Send Custom PDFs Opened
 ****  2018/03/24 16:45:49  |  System  |  EXIT
+----------***** 2018/03/24 18:18:13  |  ERROR  |  Could not access Database
+***** 2018/03/24 18:18:13  |  ERROR  |  Could not access Database
+      2018/03/24 18:19:52  |  Reports Opened
+****  2018/03/24 18:19:57  |  System  |  EXIT
+----------***** 2018/03/24 19:14:58  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:14:58  |  ERROR  |  Could not access Database
+      2018/03/24 19:15:28  |  Gary Tou has signed out
+***** 2018/03/24 19:24:28  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:24:28  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:28:17  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:28:17  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:30:28  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:30:28  |  ERROR  |  Could not access Database
+****  2018/03/24 19:30:30  |  System  |  EXIT
+----------***** 2018/03/24 19:30:53  |  ERROR  |  Could not access Database
+***** 2018/03/24 19:30:53  |  ERROR  |  Could not access Database
+****  2018/03/24 20:00:03  |  System  |  EXIT
+----------***** 2018/03/24 20:05:17  |  ERROR  |  Could not access Database
+***** 2018/03/24 20:05:17  |  ERROR  |  Could not access Database
+      2018/03/24 20:05:35  |  Gary Tou has signed in
+      2018/03/24 20:05:36  |  Gary Tou has signed out
+***** 2018/03/24 20:09:18  |  ERROR  |  Could not access Database
+***** 2018/03/24 20:09:18  |  ERROR  |  Could not access Database
+      2018/03/24 20:09:23  |  Gary Tou has signed in
+      2018/03/24 20:09:26  |  Gary Tou has signed out
+      2018/03/24 20:09:28  |  Gary Tou was manually signed out
+      2018/03/24 20:09:31  |  Gary Tou has signed out
+      2018/03/24 20:09:34  |  Gary Tou was manually signed out
+****  2018/03/24 20:09:38  |  System  |  EXIT
+----------***** 2018/03/24 20:10:30  |  ERROR  |  Could not access Database
+***** 2018/03/24 20:10:30  |  ERROR  |  Could not access Database
+      2018/03/24 20:10:35  |  Gary Tou has signed out
+      2018/03/24 20:10:37  |  Gary Tou has signed in
+      2018/03/24 20:10:39  |  Gary Tou has signed out
+      2018/03/24 20:10:40  |  Bob Stern has signed out
+      2018/03/24 20:10:41  |  Jess Potesrt has signed out
+      2018/03/24 20:10:43  |  เม aA has signed out
+      2018/03/24 20:10:44  |  Jess Potesrt has signed in
+***** 2018/03/24 20:10:47  |  ERROR  |  Student ID "123" does not exist
+***** 2018/03/24 20:10:47  |  ERROR  |  Student ID "123" does not exist
+***** 2018/03/24 20:10:47  |  ERROR  |  Student ID "123" does not exist
+***** 2018/03/24 20:10:47  |  ERROR  |  Student ID "123" does not exist
+      2018/03/24 20:10:47  |  Could not find 123 in Student Data Base
+      2018/03/24 20:10:48  |  Gary Tou has signed in
+      2018/03/24 20:10:52  |  Bob Stern has signed in
+      2018/03/24 20:10:53  |  Jess Potesrt has signed out
+      2018/03/24 20:10:55  |  Jess Potesrt has signed in
+      2018/03/24 20:10:55  |  temp1 LAST NAME SOMETHING 1 has signed out
+      2018/03/24 20:10:58  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/03/24 20:11:00  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/03/24 20:11:23  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/03/24 20:11:27  |  temp3 LAST NAME SOMETHING 3 has signed in
+      2018/03/24 22:40:16  |  temp2 LAST NAME SOMETHING 2 has signed out
+***** 2018/03/24 22:48:12  |  ERROR  |  Could not access Database
+***** 2018/03/24 22:48:12  |  ERROR  |  Could not access Database
+***** 2018/03/24 22:57:13  |  ERROR  |  Could not access Database
+***** 2018/03/24 22:57:13  |  ERROR  |  Could not access Database
+****  2018/03/24 22:57:23  |  System  |  EXIT
+----------***** 2018/03/24 23:01:09  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:01:09  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:06:59  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:06:59  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:07:52  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:07:52  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:08:19  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:08:19  |  ERROR  |  Could not access Database
+      2018/03/24 23:08:22  |  Send Custom PDFs Opened
+***** 2018/03/24 23:14:50  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:14:50  |  ERROR  |  Could not access Database
+****  2018/03/24 23:15:19  |  System  |  EXIT
+----------***** 2018/03/24 23:15:52  |  ERROR  |  Could not access Database
+***** 2018/03/24 23:15:52  |  ERROR  |  Could not access Database
+      2018/03/24 23:16:17  |  Gary Tou has signed out
+      2018/03/24 23:16:31  |  Gary Tou has signed in
+      2018/03/24 23:16:34  |  Gary Tou has signed out
+      2018/03/24 23:16:50  |  temp3 LAST NAME SOMETHING 3 has signed out
+      2018/03/24 23:19:55  |  temp4 LAST NAME SOMETHING 4 has signed out
+****  2018/03/24 23:20:01  |  System  |  EXIT
+----------***** 2018/03/25 00:19:33  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:19:33  |  ERROR  |  Could not access Database
+      2018/03/25 00:19:47  |  Gary Tou has signed out
+      2018/03/25 00:19:49  |  Gary Tou has signed in
+      2018/03/25 00:19:51  |  Gary Tou has signed out
+      2018/03/25 00:19:52  |  Bob Stern has signed out
+      2018/03/25 00:19:54  |  Jess Potesrt has signed out
+      2018/03/25 00:19:55  |  เม aA has signed out
+****  2018/03/25 00:20:03  |  System  |  EXIT
+----------***** 2018/03/25 00:24:38  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:24:38  |  ERROR  |  Could not access Database
+      2018/03/25 00:24:45  |  Send Custom PDFs Opened
+      2018/03/25 00:24:54  |  Reports Opened
+      2018/03/25 00:24:57  |  LogTxt Opened
+****  2018/03/25 00:25:18  |  System  |  EXIT
+----------***** 2018/03/25 00:35:39  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:35:39  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:42:32  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:42:32  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:51:29  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:51:29  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:51:29  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:52:29  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:52:29  |  ERROR  |  Could not access Database
+      2018/03/25 00:52:44  |  Gary Tou has signed in
+      2018/03/25 00:52:47  |  Gary Tou has signed out
+***** 2018/03/25 00:52:48  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/03/25 00:52:48  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/03/25 00:52:48  |  ERROR  |  Student ID "1111" does not exist
+***** 2018/03/25 00:52:48  |  ERROR  |  Student ID "1111" does not exist
+      2018/03/25 00:52:48  |  Could not find 1111 in Student Data Base
+      2018/03/25 00:52:50  |  Bob Stern has signed in
+      2018/03/25 00:52:53  |  Bob Stern has signed out
+      2018/03/25 00:52:54  |  temp1 LAST NAME SOMETHING 1 has signed out
+***** 2018/03/25 00:58:19  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:58:19  |  ERROR  |  Could not access Database
+***** 2018/03/25 00:58:19  |  ERROR  |  Could not access Database
+      2018/03/25 00:58:26  |  LogTxt Opened
+      2018/03/25 00:58:32  |  Preferences Opened
+****  2018/03/25 00:58:59  |  System  |  EXIT
+----------***** 2018/03/25 01:19:16  |  ERROR  |  Could not access Database
+***** 2018/03/25 01:19:16  |  ERROR  |  Could not access Database
+***** 2018/03/25 01:19:16  |  ERROR  |  Could not access Database
+      2018/03/25 01:19:21  |  Preferences Opened
+      2018/03/25 01:19:25  |  Send Custom PDFs Opened
+      2018/03/25 01:19:37  |  Reports Opened
+      2018/03/25 01:19:41  |  Send Custom PDFs Opened
+      2018/03/25 01:19:47  |  Send Custom PDFs Opened
+****  2018/03/25 01:19:54  |  System  |  EXIT
 ----------
