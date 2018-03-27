@@ -616,7 +616,7 @@ public class FrontEnd extends BackEnd{
 								Runtime rt = Runtime.getRuntime();
 								Process proc;
 								
-									proc = rt.exec("ifconfig addr");
+									proc = rt.exec("ifconfig");
 								BufferedReader stdInput = new BufferedReader(new 
 								     InputStreamReader(proc.getInputStream()));
 
