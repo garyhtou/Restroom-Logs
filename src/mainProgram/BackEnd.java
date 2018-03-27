@@ -45,6 +45,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 import com.itextpdf.text.BaseColor;
@@ -69,6 +70,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import mainProgram.FrontEnd.TimeListener;
 import mainProgram.FrontEnd.content;
+import mainProgram.FrontEnd.window.menuBar.log.customPDF.table;
 /**
  * The Back End of the Restroom Logs Program
  * <div></div>
@@ -323,8 +325,8 @@ public class BackEnd extends config{
 		            text.setBorderColor(BaseColor.LIGHT_GRAY);
 		            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyy");
 		    		LocalDateTime now = LocalDateTime.now();
-		    		String TimeAndData = dtf.format(now) ;
-		            text.addElement(new Phrase("Restroom Logs", new Font(Font.FontFamily.HELVETICA, 12)));
+		    		String TimeAndData = " Generated - "+dtf.format(now) ;
+		            text.addElement(new Phrase("Restroom Logs PDF Log", new Font(Font.FontFamily.HELVETICA, 12)));
 		            text.addElement(new Phrase(TimeAndData, new Font(Font.FontFamily.HELVETICA, 8)));
 		            header.addCell(text);
 
@@ -506,6 +508,94 @@ public class BackEnd extends config{
 				}
 				
 		}
+			/**
+			 * Updates an existing PDF using selected tables from Table Array; information pulled from the Logs database
+			 * @param selectedTables ArrayList of tables to generated the PDF from
+			 */
+			public static void updatePDF(ArrayList<String> selectedTables) {
+				try {
+					Document document = new Document(PageSize.LETTER, 36, 36, 60, 36);
+					//creates a pdf writer with the name "testPDF.pdf" and makes it an outputable file
+					PdfWriter writer =PdfWriter.getInstance(document, new FileOutputStream(PdfLogPath));
+					HeaderFooter event = new HeaderFooter();
+					writer.setPageEvent(event);
+					//needs to open the document
+					document.open();
+					//Adds a new paragraph to the pdf
+					//document.add(new Paragraph(" "));
+					//created a new table with 3 columns to add to the pdf
+					ArrayList<table> tables = new ArrayList<table>(); //tables and tableCheckBoxes are parallel arrayLists
+					
+					String[] DBTables = BackEnd.database.Log.getAllTableName();
+					for(int i = 0; i < DBTables.length; i++) {
+						document.newPage();
+					tables.add(new table(DBTables[i]));
+					document.add(new Paragraph(tables.get(i).getDate()));
+
+					PdfPTable table= new PdfPTable(5);
+					//sets the width percentage
+					table.setWidthPercentage(105);
+					//padding
+					table.setSpacingBefore(1f);
+					table.setSpacingAfter(11f);
+					//width for each column
+					float[] columnWidth= {0.5f,1f,1f,0.5f,0.5f};
+					table.setWidths(columnWidth);
+					//sets variables for each cell
+					PdfPCell c1=new PdfPCell(new Paragraph("Student ID"));
+					c1.setBackgroundColor(BaseColor.GRAY);
+					PdfPCell c2=new PdfPCell(new Paragraph("First name"));
+					c2.setBackgroundColor(BaseColor.GRAY);
+					PdfPCell c3=new PdfPCell(new Paragraph("Last Name"));
+					c3.setBackgroundColor(BaseColor.GRAY);
+					PdfPCell c4=new PdfPCell(new Paragraph("Time Out"));
+					c4.setBackgroundColor(BaseColor.GRAY);
+					PdfPCell c5=new PdfPCell(new Paragraph("Time In"));
+					c5.setBackgroundColor(BaseColor.GRAY);
+					table.addCell(c1);
+					table.addCell(c2);
+					table.addCell(c3);
+					table.addCell(c4);
+					table.addCell(c5);
+					
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					Connection conn=DriverManager.getConnection(
+							"jdbc:ucanaccess://"+LogsDBPath);
+					Statement s;
+					s = conn.createStatement();
+					ResultSet rs;
+					for(String Seltables: selectedTables) {
+					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName], [TimeOut], [TimeIn] FROM ["+Seltables+"]");
+					rs.next();
+					rs.next();
+					table.addCell(rs.getString(1));
+					table.addCell(rs.getString(2));			
+					table.addCell(rs.getString(3));
+					table.addCell(rs.getString(4));			
+					table.addCell(rs.getString(5));			
+						while (rs.next()) {
+							table.addCell(rs.getString(1));
+							table.addCell(rs.getString(2));
+							table.addCell(rs.getString(3));
+							table.addCell(rs.getString(4));
+							table.addCell(rs.getString(5));
+						}
+					}
+					
+					//adds the table on to the document
+					document.add(table);
+					//has to end by closing the document
+					}
+					document.close();
+					
+					writer.close();
+				}
+				catch (ClassNotFoundException | SQLException | DocumentException | FileNotFoundException e) {
+					
+					e.printStackTrace();
+				}
+				
+			}
 	}
 		
 		/*public static class TimeListener implements Runnable{

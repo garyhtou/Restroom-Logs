@@ -1094,7 +1094,7 @@ public class FrontEnd extends BackEnd{
 								ArrayList<String>selectedTables = getSelectedDBTableNames();
 								
 								//TODO:generate PDF with all selected days
-								
+								BackEnd.email.PDF.updatePDF(selectedTables);
 								
 								//BackEnd.email.sendPDF(filePath, file name when sent in email);
 								
