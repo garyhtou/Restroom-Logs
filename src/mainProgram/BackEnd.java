@@ -524,13 +524,14 @@ public class BackEnd extends config{
 					//Adds a new paragraph to the pdf
 					//document.add(new Paragraph(" "));
 					//created a new table with 3 columns to add to the pdf
-					ArrayList<table> tables = new ArrayList<table>(); //tables and tableCheckBoxes are parallel arrayLists
 					
-					String[] DBTables = BackEnd.database.Log.getAllTableName();
-					for(int i = 0; i < DBTables.length; i++) {
+					for(String Seltables: selectedTables) {
 						document.newPage();
-					tables.add(new table(DBTables[i]));
-					document.add(new Paragraph(tables.get(i).getDate()));
+						String date  = Seltables.substring(Seltables.indexOf("s")+1);
+						String date1  = date.substring(0,2)+"/";
+						String date2  = date.substring(2,4)+"/";
+						String date3  = date.substring(4);
+					document.add(new Paragraph(date1+date2+date3));
 
 					PdfPTable table= new PdfPTable(5);
 					//sets the width percentage
@@ -564,9 +565,8 @@ public class BackEnd extends config{
 					Statement s;
 					s = conn.createStatement();
 					ResultSet rs;
-					for(String Seltables: selectedTables) {
+					
 					rs = s.executeQuery("SELECT [StudentID], [FirstName], [LastName], [TimeOut], [TimeIn] FROM ["+Seltables+"]");
-					rs.next();
 					rs.next();
 					table.addCell(rs.getString(1));
 					table.addCell(rs.getString(2));			
@@ -580,10 +580,12 @@ public class BackEnd extends config{
 							table.addCell(rs.getString(4));
 							table.addCell(rs.getString(5));
 						}
-					}
+						document.add(table);
+
+
+					
 					
 					//adds the table on to the document
-					document.add(table);
 					//has to end by closing the document
 					}
 					document.close();
