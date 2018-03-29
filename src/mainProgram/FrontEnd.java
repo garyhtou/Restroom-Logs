@@ -362,7 +362,22 @@ public class FrontEnd extends BackEnd{
 									}
 								});
 								general.add(otherInfoField);
-							
+								
+								JPanel scannerDelayPane = new JPanel(new BorderLayout());
+								JLabel titleScannerDelay = new JLabel("Scanner Re-Read Delay");
+								scannerDelayPane.add(titleScannerDelay, BorderLayout.LINE_START);
+								JTextField scannerDelayField = new JTextField();
+								scannerDelayField.setText(Long.toString(config.ScannerReReadDelay));
+								scannerDelayField.addKeyListener(new KeyListener() {
+									public void keyPressed(KeyEvent arg0) {}
+									public void keyReleased(KeyEvent e) {}
+									public void keyTyped(KeyEvent e) {
+										config.ScannerReReadDelay = Long.parseLong(scannerDelayField.getText());
+									}
+								});
+								scannerDelayPane.add(scannerDelayField, BorderLayout.LINE_END);
+								general.add(scannerDelayPane);
+								
 							general.add(new JSeparator());
 						
 					//Logs
@@ -1340,6 +1355,9 @@ public class FrontEnd extends BackEnd{
 							    	
 							    	scan.add(field, c);
 							    	
+							    	StopWatch delay = new StopWatch();
+							    	delay.start();
+							    	
 							    	//SCANNING
 							    	field.addKeyListener(new KeyListener() {
 							            @Override
@@ -1350,8 +1368,9 @@ public class FrontEnd extends BackEnd{
 	
 							            @Override
 							            public void keyPressed(KeyEvent escan) {
+							            	
 							            	String input = "";
-							            	if(escan.getKeyChar() == KeyEvent.VK_ENTER) {
+							            	if((escan.getKeyChar() == KeyEvent.VK_ENTER) && (delay.getTime() >= config.ScannerReReadDelay)) {
 							            		input = field.getText();
 							            		EventQueue.invokeLater(() -> {
 							            			field.setText("");
@@ -1379,7 +1398,9 @@ public class FrontEnd extends BackEnd{
 							                    	} else {
 							                    		messageCenter.scanEntryMessage.unsuccessful(intInput);
 							                    	}
-												
+							                    	
+							                    	delay.reset();
+							                    	delay.start();
 							            		}
 							            		else if(!input.isEmpty()){
 							            			messageCenter.scanEntryMessage.integer(input);

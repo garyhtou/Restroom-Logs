@@ -338,4 +338,45 @@
       2018/03/25 01:19:41  |  Send Custom PDFs Opened
       2018/03/25 01:19:47  |  Send Custom PDFs Opened
 ****  2018/03/25 01:19:54  |  System  |  EXIT
+----------***** 2018/03/29 13:49:25  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/29 13:49:28  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:49:28  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:49:28  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:49:41  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:49:49  |  ERROR  |  Unable to check for online version number.
+****  2018/03/29 13:49:54  |  System  |  EXIT
+----------***** 2018/03/29 13:50:18  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/29 13:50:20  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:20  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:20  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:26  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:27  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:28  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:29  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:29  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:30  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:30  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:31  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:31  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:31  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:32  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:32  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:32  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:34  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:50:41  |  ERROR  |  Unable to check for online version number.
+****  2018/03/29 13:51:29  |  System  |  EXIT
+----------***** 2018/03/29 13:51:53  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/03/29 13:51:55  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:51:55  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:51:55  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:51:58  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:51:59  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:52:01  |  ERROR  |  Could not access Database
+      2018/03/29 13:52:01  |  temp0 LAST NAME SOMETHING 0 has signed out
+***** 2018/03/29 13:52:01  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:52:01  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:52:03  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:52:04  |  ERROR  |  Could not access Database
+***** 2018/03/29 13:52:04  |  ERROR  |  Could not access Database
+****  2018/03/29 13:52:08  |  System  |  EXIT
 ----------

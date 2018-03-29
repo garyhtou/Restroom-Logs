@@ -77,6 +77,7 @@ public class config{
 	//Critical Vars
 		public static boolean ranBefore;
 		public static var VersionNumber = new var("config/DoNotTouch.txt", "Release Version");
+		public static long ScannerReReadDelay = 333; //this is equivalent to 1/3 of a sec
 	//Screen dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		public static double screenWidth = screenSize.getWidth();
