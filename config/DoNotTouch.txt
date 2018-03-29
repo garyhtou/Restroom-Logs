@@ -7,5 +7,5 @@ teacherName = Sabo
 teacherEmail = gtcowboybob@gmail.com
 studentDBPath = data\StudentDatabase.accdb
 studentDBTableName = Students
-Release Version = 0.1.1
+Release Version = 0.2.0
 activeHours = 3:00 AM

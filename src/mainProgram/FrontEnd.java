@@ -133,6 +133,7 @@ public class FrontEnd extends BackEnd{
 		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		content.majorRL.right.table.tablePane.tableContent.update();
+
 		
 	//OTA	
 		if(config.checkForUpdates()) {
@@ -1052,7 +1053,7 @@ public class FrontEnd extends BackEnd{
 				 * send and delete tables (PDFs)
 				 */
 				public static class customPDF {
-					static JMenuItem custPDF = new JMenuItem("Send Custom PDFs", null /*FIXME: make icon*/);
+					static JMenuItem custPDF = new JMenuItem("Send Custom PDFs", PDFIcon);
 					public static void create() {
 						logMenu.add(custPDF);
 						custPDF.setMnemonic(KeyEvent.VK_P);
@@ -1694,20 +1695,22 @@ public class FrontEnd extends BackEnd{
 		@Override
 		public void run() {
 			var.updateAll();
-			if(BackEnd.database.Log.table.signAllIn()) {
-				content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
-				//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
-			}
-			content.majorRL.right.table.tablePane.tableContent.update();
-			//TODO:CLEAR FROM LOG DB (might just want to add new table instead of clearing but thats WIP so this will do for now
-			BackEnd.email.PDF.updatePDF();
-			if(config.getDailyEmails()) {
-				BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs Program Logs PDF: " + config.getDate());
-			
-			BackEnd.email.PDF.CreateBlankPDF();
-			}
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E");
+    		LocalDateTime now = LocalDateTime.now();
+    		String TimeAndData = dtf.format(now) ;
+    		if(TimeAndData != "Sat" && TimeAndData !="Sun") {
+				if(BackEnd.database.Log.table.signAllIn()) {
+					content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
+					//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(frame, "An Interal Error occured.", "Restroom Logs Error", JOptionPane.ERROR_MESSAGE);
+				}
+				content.majorRL.right.table.tablePane.tableContent.update();
+				BackEnd.email.PDF.updatePDF();
+				if(config.getDailyEmails()) {
+					BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs Program Logs PDF: " + config.getDate());
+				}
+    		}
 		}
 		
 	}

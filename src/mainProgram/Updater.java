@@ -67,7 +67,7 @@ public class Updater {
 		JFrame frame = new JFrame();
 		int resultU = 0;
 		File file = new File(config.DoNotTouchFilePath);
-    	final String url = "https://rl.coding2kids.com/admin/versions/RestroomlogsProgram.jar";
+    	final String url = "https://rl.coding2kids.com/admin/versions/RestroomLogsProgram.jar";
     	final String urlT = "https://rl.coding2kids.com/admin/info.txt";
 		final String  filePath = "RestroomLogsProgram.jar";
     	final String USER_AGENT = "Chrome/63.0.3239.132 ";
@@ -204,7 +204,7 @@ public class Updater {
 	
 						    	    	// add request header
 						    	    	request1.addHeader("User-Agent", USER_AGENT);
-						    	    	HttpResponse response1 = client1.execute(request);
+						    	    	HttpResponse response1 = client1.execute(request1);
 						    	        HttpEntity entity1 = response1.getEntity();
 						    	        
 				    	                long len = entity1.getContentLength();

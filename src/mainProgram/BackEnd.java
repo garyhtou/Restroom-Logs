@@ -362,7 +362,7 @@ public class BackEnd extends config{
 		    		LocalDateTime now = LocalDateTime.now();
 		    		String TimeAndData = dtf.format(now) ;
 		    		
-		            footer.addCell(new Phrase("Restroom Logs "+ TimeAndData , new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+		            footer.addCell(new Phrase("Restroom Logs - Generated "+ TimeAndData , new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
 
 		            // add current page count
 		            footer.getDefaultCell().setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -532,6 +532,7 @@ public class BackEnd extends config{
 						String date2  = date.substring(2,4)+"/";
 						String date3  = date.substring(4);
 					document.add(new Paragraph(date1+date2+date3));
+					document.add(new Paragraph(" "));
 
 					PdfPTable table= new PdfPTable(5);
 					//sets the width percentage
@@ -699,8 +700,7 @@ public class BackEnd extends config{
 
 		         // Send message
 		         Transport.send(message);
-		         System.out.println("Sent message successfully....");
-		         
+		         BackEnd.logs.update.System("PDF Email Sent Successfully");
 		         File file = new File(filePath);
 		         if(file.delete()) {
 		        	 System.out.println("PDF Deleted from System");
@@ -771,7 +771,7 @@ public class BackEnd extends config{
 				
 				// Send message
 				Transport.send(message);
-				System.out.println("Sent message successfully....");
+		         BackEnd.logs.update.System("TXT Email Sent Successfully");
 			} catch (MessagingException mex) {
 				mex.printStackTrace();
 			}

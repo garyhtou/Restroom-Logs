@@ -98,7 +98,7 @@ public class config{
 		//.txt
 		public static final String LogsPath  = "data/Logs.txt";
 		//PDF
-		public static final String PdfLogPath  = "data/"+getPdfName()+".pdf";
+		public static final String PdfLogPath  = "data/"+"Logs"+".pdf";
 		//public static final String PdfLogName  = getPdfName();
 	//Config files
 		public static final String DoNotTouchFilePath  = "config/DoNotTouch.txt";
@@ -131,6 +131,7 @@ public class config{
 		public static final ImageIcon helpIcon = new ImageIcon("assets/images/help.png");
 		public static final ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public static final ImageIcon logsTxtIcon = new ImageIcon("assets/images/logs.png");
+		public static final ImageIcon PDFIcon = new ImageIcon("assets/images/PDF.png");
 	//message center
 		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program.";
 	//stats other info
