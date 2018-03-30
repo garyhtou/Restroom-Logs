@@ -382,14 +382,17 @@ public class FrontEnd extends BackEnd{
 						
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
-							JTextArea clearLogText = new JTextArea();
-								clearLogText.setOpaque(false);
-								clearLogText.setEditable(false);
-								clearLogText.setText("Clear PDF Log file");
-								logs.addWithFont(clearLogText);
-							JButton clearLogTextButton = new JButton("Clear PDF");
-								clearLogTextButton.setToolTipText("Caution, this will clear all student entry and exit logs");
-								clearLogTextButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
+							JPanel logspref = new JPanel(new GridLayout(0,1));
+							JPanel pdfLogs = new JPanel(new FlowLayout(FlowLayout.LEFT));
+							JTextArea clearLogPdfText = new JTextArea();
+								clearLogPdfText.setOpaque(false);
+								clearLogPdfText.setEditable(false);
+								clearLogPdfText.setText("Clear PDF Log file");
+								clearLogPdfText.setFont(RL.preferencesText);
+								pdfLogs.add(clearLogPdfText);
+							JButton clearLogPdfButton = new JButton("Clear PDF");
+								clearLogPdfButton.setToolTipText("Caution, this will clear all student entry and exit logs");
+								clearLogPdfButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
 									int choice = JOptionPane.showConfirmDialog(logs, "Are you sure you want to clear the PDF Log file?\nThis will clear all student entry and exit logs");
 									if(choice == JOptionPane.YES_OPTION) {
 										BackEnd.email.PDF.CreateBlankPDF();
@@ -397,7 +400,28 @@ public class FrontEnd extends BackEnd{
 										JOptionPane.showMessageDialog(logs, "PDF Log has been cleared");
 									}
 								});
-								logs.add(clearLogTextButton);
+								pdfLogs.add(clearLogPdfButton);
+								logspref.add(pdfLogs);
+								JPanel txtLogs = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								JTextArea clearLogTxtText = new JTextArea();
+								clearLogTxtText.setOpaque(false);
+								clearLogTxtText.setEditable(false);
+								clearLogTxtText.setText("Clear TXT Log file");
+								clearLogTxtText.setFont(RL.preferencesText);
+								txtLogs.add(clearLogTxtText);
+								JButton clearLogTxtButton = new JButton("Clear TXT");
+								clearLogTxtButton.setToolTipText("Caution, this will clear all System Text logs");
+								clearLogTxtButton.addActionListener((ActionEvent preferencesLogsClearButtonEvent) -> {
+									int choice = JOptionPane.showConfirmDialog(logs, "Are you sure you want to clear the TXT Log file?\nThis will clear all System Text logs");
+									if(choice == JOptionPane.YES_OPTION) {
+										BackEnd.logs.create();
+										BackEnd.logs.update.StartUp("Logs Txt Cleared");
+										JOptionPane.showMessageDialog(logs, "TXT Log has been cleared");
+									}
+								});
+								txtLogs.add(clearLogTxtButton);
+								logspref.add(txtLogs);
+								logs.add(logspref);
 						
 					//Font
 						preferences font = new preferences(tabbedPane, "Font", null, "Change Font Sizes");
