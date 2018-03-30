@@ -1202,9 +1202,11 @@ public class FrontEnd extends BackEnd{
 						private void process() {
 							String heading = "Logs";
 							String rawDate = this.DBTableName.substring(heading.length()); //from of dd/MM/yy
+							System.out.println("rawDate: " + rawDate);
 							this.day = Integer.parseInt(rawDate.substring(0, 2));
 							this.month = Integer.parseInt(rawDate.substring(2, 4));
 							this.year = Integer.parseInt(rawDate.substring(4, 8));
+							System.out.println(this.getDate());
 						}
 						public String getDate() {
 							final String divider = "/";

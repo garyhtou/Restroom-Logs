@@ -640,7 +640,7 @@ public class config{
 	 * @return Current System Date with Format MM.DD.YYY
 	 */
 	public static String getDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
 		LocalDateTime now = LocalDateTime.now();
 		String date = dtf.format(now);
 		return date;
