@@ -531,7 +531,7 @@ public class BackEnd extends config{
 						String date1  = date.substring(0,2)+"/";
 						String date2  = date.substring(2,4)+"/";
 						String date3  = date.substring(4);
-					document.add(new Paragraph(date1+date2+date3));
+					document.add(new Paragraph(date2+date1+date3));//Switched because Table name is DD/MM/YYY but we read it as MM/DD/YYYY
 					document.add(new Paragraph(" "));
 
 					PdfPTable table= new PdfPTable(5);
@@ -645,7 +645,6 @@ public class BackEnd extends config{
 			 // Recipient's email ID needs to be mentioned.
 		      String to = config.teacherEmail.toString();
 		      String from =config.emailSenderName;
-		      String host = "localhost";
 		      // Get system properties
 		      Properties properties = System.getProperties();
 		      // Setup mail server
@@ -703,11 +702,89 @@ public class BackEnd extends config{
 		         BackEnd.logs.update.System("PDF Email Sent Successfully");
 		         File file = new File(filePath);
 		         if(file.delete()) {
-		        	 System.out.println("PDF Deleted from System");
+					BackEnd.logs.update.System("PDF Deleted from System");
 		         }
 		      } catch (MessagingException mex) {
 		         mex.printStackTrace();
 		      }
+			
+		}
+		public static void sendPDF(String filePath, String emailedFileName, ArrayList<String> tables) {
+			
+			
+			// Recipient's email ID needs to be mentioned.
+			String to = config.teacherEmail.toString();
+			String from =config.emailSenderName;
+			// Get system properties
+			Properties properties = System.getProperties();
+			// Setup mail server
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.socketFactory.port", "465");
+			properties.put("mail.smtp.socketFactory.class",
+					"javax.net.ssl.SSLSocketFactory");
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.port", "465");
+			// Get the default Session object.
+			Session session = Session.getDefaultInstance(properties,
+					new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(config.emailSender,config.getRlGPFO());
+				}
+			});
+			try {
+				// Create a default MimeMessage object.
+				MimeMessage message = new MimeMessage(session);
+				
+				// Set From: header field of the header.
+				message.setFrom(new InternetAddress(from));
+				
+				// Set To: header field of the header.
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				
+				// Set Subject: header field
+				message.setSubject(config.emailSubjectPDFMul);
+				
+				// Create the message part 
+				BodyPart messageBodyPart = new MimeBodyPart();
+				
+				// Fill the message
+				String dates = "";
+				for(String Seltables: tables) {
+					String date  = Seltables.substring(Seltables.indexOf("s")+1);
+					String date1  = date.substring(0,2)+"/";
+					String date2  = date.substring(2,4)+"/";
+					String date3  = date.substring(4);
+					dates += date2+date1+date3+", ";
+					}
+				messageBodyPart.setText(config.emailBodyPDFMul1+dates+config.emailBodyPDFMul2);
+				
+				// Create a multipart message
+				Multipart multipart = new MimeMultipart();
+				
+				// Set text message part
+				multipart.addBodyPart(messageBodyPart);
+				
+				// Part two is attachment
+				messageBodyPart = new MimeBodyPart();
+				
+				DataSource source = new FileDataSource(filePath);
+				messageBodyPart.setDataHandler(new DataHandler(source));
+				messageBodyPart.setFileName(emailedFileName);
+				multipart.addBodyPart(messageBodyPart);
+				
+				// Send the complete message parts
+				message.setContent(multipart);
+				
+				// Send message
+				Transport.send(message);
+				BackEnd.logs.update.System("PDF Email Sent Successfully");
+				File file = new File(filePath);
+				if(file.delete()) {
+					BackEnd.logs.update.System("PDF Deleted from System");
+				}
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
+			}
 			
 		}
 		public static void sendTXT() {

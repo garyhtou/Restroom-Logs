@@ -1112,8 +1112,7 @@ public class FrontEnd extends BackEnd{
 								//TODO:generate PDF with all selected days
 								BackEnd.email.PDF.updatePDF(selectedTables);
 								
-								//BackEnd.email.sendPDF(filePath, file name when sent in email);
-								
+								BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs PDF: Multi-day " + config.getDate()+".pdf", selectedTables);								
 								updateCheckBoxes(); //this will reflect any db table changes (shouldn't be any) and uncheck all checkboxes
 								
 							}
@@ -1729,7 +1728,7 @@ public class FrontEnd extends BackEnd{
 				content.majorRL.right.table.tablePane.tableContent.update();
 				BackEnd.email.PDF.updatePDF();
 				if(config.getDailyEmails()) {
-					BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs Program Logs PDF: " + config.getDate());
+					BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs PDF: " + config.getDate()+".pdf");
 				}
     		}
 		}

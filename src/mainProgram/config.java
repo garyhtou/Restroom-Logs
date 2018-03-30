@@ -139,9 +139,12 @@ public class config{
 		public static String defaultOtherInfo = "Scan or Type your Student ID above";
 	//Email
 		public static String emailSubjectPDF = "Restroom "+getPdfName();
+		public static String emailSubjectPDFMul = "Multi-day Restroom Logs";
 		public static String emailBodyPDF = "Your PDF logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
+		public static String emailBodyPDFMul1 = "Your PDF logs for ";
+		public static String emailBodyPDFMul2 = "in "+getTeacherName()+"'s classroom are attached";
 		public static String emailSubjectTXT = "Restroom Text Logs "+getPdfName();
-		public static String emailBodyTXT = "Your system txt logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";//TODO:Write
+		public static String emailBodyTXT = "Your system txt logs for "+getDate()+" in "+getTeacherName()+"'s classroom is attached";
 		public static final String emailSenderName = "Restroom Logs Program<restroomlogs@gmail.com>";
 		public static final String emailSender = "restroomlogs@gmail.com";
 		/**
@@ -636,7 +639,7 @@ public class config{
 	 * @return Current System Date with Format MM.DD.YYY
 	 */
 	public static String getDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
 		LocalDateTime now = LocalDateTime.now();
 		String date = dtf.format(now);
 		return date;
