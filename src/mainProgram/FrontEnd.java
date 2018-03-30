@@ -1193,7 +1193,7 @@ public class FrontEnd extends BackEnd{
 				}
 				
 				public static class reports {
-					static JMenuItem reports = new JMenuItem("Reports", null /*FIXME: make icon*/);
+					static JMenuItem reports = new JMenuItem("Reports", config.reportsIcon);
 					public static void create() {
 						logMenu.add(reports);
 						reports.setMnemonic(KeyEvent.VK_R);
