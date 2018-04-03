@@ -850,7 +850,7 @@ public class config{
 			e.printStackTrace();
 			BackEnd.logs.update.ERROR("Could not fetch RlGPFO");
 		}
-		return config.RLGPFO;
+		return config.RlGPFO;
 	}
 	/**
 	 * Gets Hour from {@link #endOfActiveHours} in {@link #DoNotTouchFilePath}

@@ -1163,7 +1163,6 @@ public class BackEnd extends config{
 			public static void createTodayTable() {
 				boolean alreadyCreatedTable = false;
 				for(int i = 0; i < BackEnd.database.Log.getAllTableName().length; i++) {
-					System.out.println(BackEnd.database.Log.getAllTableName()[i] + "\n" + (config.LogsDBTableName));
 					if(BackEnd.database.Log.getAllTableName()[i].equals(config.LogsDBTableName)) {
 						alreadyCreatedTable = true;
 					}
