@@ -1744,7 +1744,7 @@ public class FrontEnd extends BackEnd{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E");
     		LocalDateTime now = LocalDateTime.now();
     		String TimeAndData = dtf.format(now) ;
-    		if(TimeAndData != "Sat" && TimeAndData !="Sun") {
+    		if(!TimeAndData.equals("Sat") && !TimeAndData.equals("Sun")) {
 				if(BackEnd.database.Log.table.signAllIn()) {
 					content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.scanEntryMessage.manualSignIn();
 					//JOptionPane.showMessageDialog(frame, "Successfully signed in all students.", "Restroom Logs", JOptionPane.INFORMATION_MESSAGE);
