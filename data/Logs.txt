@@ -379,4 +379,10 @@
 ***** 2018/03/29 13:52:04  |  ERROR  |  Could not access Database
 ***** 2018/03/29 13:52:04  |  ERROR  |  Could not access Database
 ****  2018/03/29 13:52:08  |  System  |  EXIT
-----------
+----------***** 2018/04/03 13:56:44  |  ERROR  |  Could not access Database
+***** 2018/04/03 13:56:44  |  ERROR  |  Could not access Database
+***** 2018/04/03 13:56:44  |  ERROR  |  Could not access Database
+****  2018/04/03 13:56:46  |  System  |  EXIT
+----------***** 2018/04/03 13:57:54  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/04/03 13:59:05  |  ERROR  |  Could not fetch RlGPFO
+***** 2018/04/03 14:00:45  |  ERROR  |  Could not fetch RlGPFO

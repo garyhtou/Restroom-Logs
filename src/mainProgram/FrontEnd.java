@@ -86,9 +86,11 @@ public class FrontEnd extends BackEnd{
 	}
 	
 	public static void create() {
+	//temp splash screen
+		tempSplash.start();
+		
 	//Window
 		frame(); //set up main settings of the frame
-		frame.setVisible(true);
 	//TimeCheck
 		TimeListener.time();
 		
@@ -130,6 +132,7 @@ public class FrontEnd extends BackEnd{
 		
 	//final changes
 		frame.setVisible(true);
+		tempSplash.dispose();
 		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
 		content.majorRL.right.table.tablePane.tableContent.update();
@@ -1759,6 +1762,45 @@ public class FrontEnd extends BackEnd{
     		}
 		}
 		
+	}
+	
+	public static class tempSplash {
+		private static JFrame splashFrame;
+		public static void start() {
+			ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
+			splashFrame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
+	    	
+	        //WINDOW SETTINGS
+			splashFrame.setTitle("Restroom Logs");
+			splashFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+			splashFrame.setUndecorated(true);
+			splashFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    	
+			content();
+			show();
+		}
+		public static void show() {
+			splashFrame.setVisible(true);
+			System.out.println("show");
+		}
+		public static void hide() {
+			splashFrame.setVisible(false);
+		}
+		public static void dispose() {
+			splashFrame.dispose();
+		}
+		private static void content() {
+			splashFrame = new JFrame();
+			JPanel pane = new JPanel(new BorderLayout());
+			splashFrame.getContentPane().add(pane);
+			
+			JLabel img;
+			ImageIcon icon = new ImageIcon("assets/logos/RestroomLogsLogo.png", "Splash Screen");
+			img = new JLabel("", icon, JLabel.CENTER);
+			
+			pane.add(img, BorderLayout.CENTER);
+		}
 	}
 	
 }
