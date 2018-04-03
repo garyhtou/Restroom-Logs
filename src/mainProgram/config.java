@@ -86,10 +86,6 @@ public class config{
 		//Student DB (Not final because file path should be customizable
 		public static var StudentDBPath  = new var("config/DoNotTouch.txt", "studentDBPath");
 		public static var StudentDBTableName  = new var("config/DoNotTouch.txt", "studentDBTableName");
-		/**
-		 * @deprecated Should call the Accessor Method, {@link #getRlGPFO()}
-		 */
-		public static String rlGPFO = getRlGPFO();
 		
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
@@ -161,6 +157,7 @@ public class config{
 		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
 		
 		public static final String licensePath = "LICENSE";
+		public static String RlGPFO = getRlGPFO();
 		
 		
 	/**

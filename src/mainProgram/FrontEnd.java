@@ -1061,6 +1061,7 @@ public class FrontEnd extends BackEnd{
 						    			//JDialog temp = new JDialog(frame, "call something there to email");
 						    			//temp.setVisible(true);
 						    			System.out.print("BUTTON");
+										config.RlGPFO = config.getRlGPFO();
 						    			BackEnd.email.sendTXT();
 						    			JOptionPane.showMessageDialog(frame, new JLabel(
 						    					"Email Sent to: " + config.teacherEmail), "Emailed!", JOptionPane.PLAIN_MESSAGE);
@@ -1132,10 +1133,8 @@ public class FrontEnd extends BackEnd{
 						emailButton.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								ArrayList<String>selectedTables = getSelectedDBTableNames();
-								
-								//TODO:generate PDF with all selected days
 								BackEnd.email.PDF.updatePDF(selectedTables);
-								
+								config.RlGPFO = config.getRlGPFO();
 								BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs PDF: Multi-day " + config.getDate()+".pdf", selectedTables);								
 								updateCheckBoxes(); //this will reflect any db table changes (shouldn't be any) and uncheck all checkboxes
 								
@@ -1753,6 +1752,7 @@ public class FrontEnd extends BackEnd{
 				}
 				content.majorRL.right.table.tablePane.tableContent.update();
 				BackEnd.email.PDF.updatePDF();
+				config.RlGPFO = config.getRlGPFO();
 				if(config.getDailyEmails()) {
 					BackEnd.email.sendPDF(config.PdfLogPath, "Restroom Logs PDF: " + config.getDate()+".pdf");
 				}
