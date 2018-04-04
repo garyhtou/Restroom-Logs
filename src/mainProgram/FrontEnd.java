@@ -1457,7 +1457,7 @@ public class FrontEnd extends BackEnd{
 							    	timer.schedule(new TimerTask() {
 										public void run() {
 											if(!field.isFocusOwner()) {
-												field.requestFocus();
+												field.requestFocusInWindow();
 											}
 										}
 							    		
