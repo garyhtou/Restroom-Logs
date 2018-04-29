@@ -106,6 +106,16 @@ public class FrontEnd extends BackEnd{
 		window.menuBar.log.reports.create();
 		
 		content.majorRL.create();
+		
+	//Major Right
+		content.majorRL.right.create();
+		content.majorRL.right.table.create();
+		content.majorRL.right.table.titleBar.create();
+		content.majorRL.right.table.titleBar.title.create();
+		content.majorRL.right.table.titleBar.clearButton.create();
+		content.majorRL.right.table.tablePane.create();
+		content.majorRL.right.table.tablePane.tableContent.create();
+		
 	//Major Left
 		content.majorRL.left.create();
 		content.majorRL.left.statsScan.create();
@@ -121,21 +131,13 @@ public class FrontEnd extends BackEnd{
 		content.majorRL.left.statsScan.stats.information.create();
 		content.majorRL.left.statsScan.stats.information.teacherName.create();
 		content.majorRL.left.statsScan.stats.information.otherInfo.create();
-	//Major Right
-		content.majorRL.right.create();
-		content.majorRL.right.table.create();
-		content.majorRL.right.table.titleBar.create();
-		content.majorRL.right.table.titleBar.title.create();
-		content.majorRL.right.table.titleBar.clearButton.create();
-		content.majorRL.right.table.tablePane.create();
-		content.majorRL.right.table.tablePane.tableContent.create();
+	
 		
 	//final changes
-		frame.setVisible(true);
-		tempSplash.dispose();
+		
 		
 		content.majorRL.setDivLoc(); //must be done after frame is set visible //FIXME: NOT WORKING
-		content.majorRL.right.table.tablePane.tableContent.update();
+		
 
 		
 	//OTA	
@@ -154,6 +156,10 @@ public class FrontEnd extends BackEnd{
 		}
 		
 		BackEnd.create();
+		
+		content.majorRL.right.table.tablePane.tableContent.update();
+		frame.setVisible(true);
+		tempSplash.dispose();
 	}
 	
 	public static void frame() {		
@@ -1222,6 +1228,7 @@ public class FrontEnd extends BackEnd{
 				
 				public static class reports {
 					static JMenuItem reports = new JMenuItem("Reports", config.reportsIcon);
+					static JOptionPane optionPane;
 					public static void create() {
 						logMenu.add(reports);
 						reports.setMnemonic(KeyEvent.VK_R);
@@ -1230,20 +1237,122 @@ public class FrontEnd extends BackEnd{
 							content();
 						});
 					}
+					public static void paint() {
+						optionPane.setVisible(true);
+					}
+					static JTable table = new JTable();
+					static JTextField searchField;
+					static JLabel fieldMessage;
+					static JTextArea stats;
 					public static void content() {
 						JPanel panel = new JPanel(new BorderLayout());
+						JScrollPane scroll = new JScrollPane();
+						scroll.setViewportView(panel);
+						scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+						scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+				    	scroll.setPreferredSize(
+				    			new Dimension((int)config.screenWidth/3, (int)config.screenHeight/2));
 						
 						JLabel title = new JLabel("Reports");
 						title.setFont(RL.preferencesTitle);
 						panel.add(title, BorderLayout.PAGE_START);
 						
+						JPanel center = new JPanel(new BorderLayout());
+						panel.add(center, BorderLayout.CENTER);
+						JPanel search = new JPanel(new BorderLayout());
+						center.add(search, BorderLayout.PAGE_START);
 						
+						//search field
+						searchField = new JTextField();
+						search.add(searchField, BorderLayout.CENTER);
+						searchField.addKeyListener(new KeyListener() {
+							public void keyTyped(KeyEvent e) {}
+							public void keyReleased(KeyEvent e) {}
+							public void keyPressed(KeyEvent e) {
+								if(e.getKeyChar() == KeyEvent.VK_ENTER) {
+									update();
+								}
+							}
+						});
 						
+						//enter button
+						JButton enter = new JButton("Enter");
+						search.add(enter, BorderLayout.LINE_END);
 						
+						//field message
+						fieldMessage = new JLabel("Enter a Student ID  Ex. " + (int)(Math.random()*1000000));
+						search.add(fieldMessage, BorderLayout.PAGE_END);
 						
+						//table
+						table.setFont(RL.tableText);
+						table.setFillsViewportHeight(true);
+						table.setDefaultEditor(Object.class, null); //make table uneditable
+						table.setIntercellSpacing(new Dimension(5, 0));
+						updateCellSize();
+						center.add(table, BorderLayout.CENTER);
 						
-						JOptionPane optionPane = new JOptionPane();
-				    	optionPane.showMessageDialog(reports, panel);
+						//stats
+						stats = new JTextArea();
+						stats.setEditable(false);
+						stats.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+						center.add(stats, BorderLayout.PAGE_END);
+						
+						enter.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								update();
+							}
+						});
+						
+						optionPane = new JOptionPane(scroll, JOptionPane.PLAIN_MESSAGE);
+				    	optionPane.showOptionDialog(reports, scroll, "Reports", JOptionPane.DEFAULT_OPTION, 
+				    			JOptionPane.INFORMATION_MESSAGE, null, new Object[] {}, null);
+					}
+					public static void update() {
+						int studentID = -1;
+						try {
+							studentID = Integer.parseInt(searchField.getText());
+							
+							if(BackEnd.database.Student.pullStudentName.firstName(studentID) != null) {
+								ArrayList<Object> arr = BackEnd.database.Student.getStudentInfo(studentID);
+								
+								//Name
+								String firstName = ((String[]) arr.get(0))[0];
+								String lastName = ((String[]) arr.get(0))[1];
+								
+								//table
+								JTable newTable = (JTable) arr.get(1);
+								
+								//stats
+								String numOfExits = ((String[]) arr.get(2))[0];
+								String avgDuration = ((String[]) arr.get(2))[1];
+								String realisticAvgDuration = ((String[]) arr.get(2))[2];
+								
+								fieldMessage.setText(firstName + " " + lastName);
+								//table = newTable;
+								stats.setText(
+										"Number of Exits: " + numOfExits + "\n" +
+										"Average Duration: " + avgDuration + "\n" +
+										"Realistic Avg. Duration: " + realisticAvgDuration);
+								
+							} else {
+								fieldMessage.setText("\"" + studentID + "\" not found");
+							}
+							
+							paint();
+						} catch (NumberFormatException e2) {
+							fieldMessage.setText("Please only enter integers");
+						}
+					}
+					public static void updateCellSize() {
+						//can only be ran after data is added
+						for (int row = 0; row < table.getRowCount(); row++) {
+							int rowHeight = table.getRowHeight();
+					        for (int column = 0; column < table.getColumnCount(); column++) {
+					            Component comp = table.prepareRenderer(table.getCellRenderer(row, column), row, column);
+					            rowHeight = Math.max(rowHeight, comp.getPreferredSize().height);
+					        }
+					        table.setRowHeight(row, rowHeight);
+					    }
 					}
 				}
 			}
@@ -1631,10 +1740,11 @@ public class FrontEnd extends BackEnd{
 						public static class tableContent {
 							static JTable tableContent = new JTable();	
 							public static void create() {							
-								String[] columnNames = {"First Name", "Last Name", "Time Out", "Time Since (Min.)"};
+								String[] columnNames = {"First Name", "Last Name", "Time Out", "Duration (Min.)"};
 								
 								ArrayList<String[]> manSignedOutNames = new ArrayList<String[]>();
-						        try {
+						        
+								try {
 							        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 									Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
 									Statement s;
@@ -1767,6 +1877,8 @@ public class FrontEnd extends BackEnd{
 	public static class tempSplash {
 		private static JFrame splashFrame;
 		public static void start() {
+			splashFrame = new JFrame();
+			
 			ImageIcon webIcon = new ImageIcon("assets/logos/RestroomLogsLogo.png"); //create and icon with the image, "web.png" should be in the root of the project
 			splashFrame.setIconImage(webIcon.getImage()); //sets the icon to be displayed,  .getImmage returns the icon image
 	    	
@@ -1775,6 +1887,7 @@ public class FrontEnd extends BackEnd{
 			splashFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 			splashFrame.setUndecorated(true);
+			splashFrame.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 			splashFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    	
 			content();
@@ -1782,7 +1895,6 @@ public class FrontEnd extends BackEnd{
 		}
 		public static void show() {
 			splashFrame.setVisible(true);
-			System.out.println("show");
 		}
 		public static void hide() {
 			splashFrame.setVisible(false);
@@ -1791,12 +1903,13 @@ public class FrontEnd extends BackEnd{
 			splashFrame.dispose();
 		}
 		private static void content() {
-			splashFrame = new JFrame();
 			JPanel pane = new JPanel(new BorderLayout());
+			pane.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 			splashFrame.getContentPane().add(pane);
+			splashFrame.getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 			
 			JLabel img;
-			ImageIcon icon = new ImageIcon("assets/logos/RestroomLogsLogo.png", "Splash Screen");
+			ImageIcon icon = new ImageIcon("assets/logos/RestroomLogsSplashscreen.png", "Splash Screen");
 			img = new JLabel("", icon, JLabel.CENTER);
 			
 			pane.add(img, BorderLayout.CENTER);

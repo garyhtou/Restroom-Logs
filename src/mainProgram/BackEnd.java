@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -47,6 +48,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -93,10 +95,7 @@ import mainProgram.FrontEnd.window.menuBar.log.customPDF.table;
  */
 public class BackEnd extends config{
 	public static void main(String[] args) {
-		System.out.println("start");
-		String[] list = BackEnd.database.Log.getAllTableName();
-		String data = Arrays.toString(list);
-		System.out.println(data);
+		MAIN.startUp();
 		
 	}
 	public static class logs{
@@ -1258,20 +1257,158 @@ public class BackEnd extends config{
 				    return true;
 				}
 			}
-
+			
+			/**
+			 * @deprecated NOT DONE YET
+			 * Return name of student based of Student ID
+			 * @param name Name of student
+			 * @return student ID number
+			 */
 			public static int findStudentID(String name) {
-				ArrayList<String> names = new ArrayList<String>();
 				
-				String cutName = name;
-				while(cutName.contains(" ")) {
-					String currentName = cutName.substring(0, cutName.indexOf(" "));
-					names.add(currentName);
-					cutName = cutName.substring(cutName.indexOf(" ") + 1);
-				}
 				
-				//pull studentID based on like ArrayList<String> names, maybe use regex
 				
 				return 0;
+			}
+			
+			/**
+			 * get information about student's entries 
+			 * @param studentID Student ID
+			 * @return {"first name", "last name"}, {table info}, {num of exits, avg duration, realistic avg dur}
+			 */
+			public static ArrayList<Object> getStudentInfo(int studentID){
+				ArrayList<Object> arr = new ArrayList<Object>();
+				//student name
+				arr.add(new String[] {
+						pullStudentName.firstName(studentID), 
+						pullStudentName.lastName(studentID)});
+				//table
+				String[] columnNames = {"Date", "Time Out", "Time In", "Duration (Min.)"};
+				ArrayList<String[]> dataArr = new ArrayList<String[]>();
+				
+				String[] tableNames = BackEnd.database.Log.getAllTableName();
+				
+				for(String currentTable : tableNames) {
+					try {
+				        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+						Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+LogsDBPath);
+						Statement s;
+						s = conn.createStatement();
+						
+						ResultSet rs;
+						rs = s.executeQuery("SELECT [TimeOut], [TimeIn] FROM ["+currentTable+"] WHERE [StudentID] = '" + studentID + "'");
+						
+						while(rs.next()) {
+							String[] tempEntry = new String[columnNames.length];
+							
+							String date  = currentTable.substring(currentTable.indexOf("s")+1);
+							String date1  = date.substring(0,2)+"/";
+							String date2  = date.substring(2,4)+"/";
+							String date3  = date.substring(4);
+							
+							tempEntry[0] = date1+date2+date3; //date
+							tempEntry[1] = rs.getString(1); //time out
+							tempEntry[2] = rs.getString(2); //time in
+							
+							Calendar currentCal = Calendar.getInstance();
+							Date currentDate = currentCal.getTime();
+							
+							DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
+							Date outTemp = null;
+							try {
+								outTemp = formatter.parse(tempEntry[1]);
+								outTemp.setDate(currentDate.getDate());
+								outTemp.setMonth(currentDate.getMonth());
+								outTemp.setYear(currentDate.getYear());
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+							long out = outTemp.getTime();
+							
+							
+							Date inTemp = null;
+							try {
+								inTemp = formatter.parse(tempEntry[1]);
+								inTemp.setDate(currentDate.getDate());
+								inTemp.setMonth(currentDate.getMonth());
+								inTemp.setYear(currentDate.getYear());
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+							long in = inTemp.getTime();
+							int total = (int) TimeUnit.MILLISECONDS.toMinutes(in - out);
+							tempEntry[3] = Integer.toString(total);
+							dataArr.add(tempEntry);
+						}
+			        } catch(ClassNotFoundException e) {
+						BackEnd.logs.update.ERROR("Can not find JDBC class");
+						e.printStackTrace();
+					}
+					catch(SQLException e){
+						BackEnd.logs.update.ERROR("Could not access Database");
+					}
+				}
+				
+				
+				String[][] data = new String[dataArr.size()][columnNames.length];
+				for(int i = 0; i < dataArr.size(); i++) {
+					for(int k = 0; k < columnNames.length; k++) {
+						data[i][k] = dataArr.get(i)[k];
+					}
+				}
+				
+				JTable table = new JTable(data, columnNames);
+				arr.add(table);
+				
+				ArrayList<String> statsArr = new ArrayList<String>();
+				//num of exits
+				statsArr.add(Integer.toString(data.length));
+				
+				int totalDur = 0;
+				int avgDurMin = 0;
+				int avgDurSec = 0;
+				int realAvgDurMin = 0;
+				int realAvgDurSec = 0;
+				if(data.length > 0) {
+					//average duration
+					for(int i = 0; i <data.length; i++) {
+						totalDur += Integer.parseInt(data[i][3]);
+					}
+					double avgDurRaw = totalDur/data.length;
+					avgDurMin = (int)(avgDurRaw);
+					avgDurSec = (int)((((int)(avgDurRaw*10))%100)/100.0*60);
+					
+					String avgDurStr = avgDurMin + ":" + avgDurSec;
+					statsArr.add(avgDurStr);
+					
+					//realistic average duration
+					int realisticTotalDur = 0;
+					int unrealisticEntry = 0;
+					for(int i = 0; i <data.length; i++) {
+						int entry = Integer.parseInt(data[i][3]);;
+						if(entry <= 20) {
+							realisticTotalDur += entry;
+						} else {
+							unrealisticEntry++;
+						}
+					}
+					double realAvgDurRaw = realisticTotalDur/(data.length-unrealisticEntry);
+					realAvgDurMin = (int)(realAvgDurRaw);
+					realAvgDurSec = (int)((((int)(realAvgDurRaw*10))%100)/100.0*60);
+					
+					String realAvgDurStr = realAvgDurMin + ":" + realAvgDurSec;
+					statsArr.add(realAvgDurStr);
+				} else {
+					statsArr.add("0"); //avg dur
+					statsArr.add("0"); //real avg dur
+				}
+				
+				String[] stats = new String[statsArr.size()];
+				for(int i = 0; i < statsArr.size(); i++) {
+					stats[i] = statsArr.get(i);
+				}
+				arr.add(stats);
+				return arr;
 			}
 		}
 		public static class clear{
