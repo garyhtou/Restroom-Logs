@@ -27,4 +27,8 @@
       2018/04/29 13:57:44  |  Gary Tou has signed in
       2018/04/29 13:57:46  |  Reports Opened
 ****  2018/04/29 13:57:51  |  System  |  EXIT
-----------
+----------***** 2018/04/29 14:04:17  |  ERROR  |  Could not access Database
+***** 2018/04/29 14:04:17  |  ERROR  |  Could not access Database
+      2018/04/29 14:04:22  |  Preferences Opened
+      2018/04/29 14:04:42  |  Preferences Opened
+****  2018/04/29 14:05:11  |  System  |  EXIT

@@ -361,13 +361,14 @@ public class FrontEnd extends BackEnd{
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
 							general.addWithFont(new JLabel("Message Center"));
 								JTextField otherInfoField = new JTextField();
-								otherInfoField.setText(config.defaultOtherMessage);
+								otherInfoField.setText(
+										FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.otherMessages.getText());
 								otherInfoField.setEditable(true);
 								otherInfoField.addKeyListener(new KeyListener() {
 									public void keyPressed(KeyEvent arg0) {}
 									public void keyTyped(KeyEvent arg0) {}
 									public void keyReleased(KeyEvent arg0) {
-										content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.update(otherInfoField.getText());;
+										content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.update(otherInfoField.getText());
 									}
 								});
 								general.add(otherInfoField);
