@@ -1244,7 +1244,7 @@ public class FrontEnd extends BackEnd{
 					static JTable table = new JTable();
 					static JTextField searchField;
 					static JLabel fieldMessage;
-					static JTextArea stats;
+					static JLabel stats;
 					public static void content() {
 						JPanel panel = new JPanel(new BorderLayout());
 						JScrollPane scroll = new JScrollPane();
@@ -1252,7 +1252,7 @@ public class FrontEnd extends BackEnd{
 						scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 						scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 				    	scroll.setPreferredSize(
-				    			new Dimension((int)config.screenWidth/3, (int)config.screenHeight/2));
+				    			new Dimension((int)(config.screenWidth/1.3), (int)(config.screenHeight/1.2)));
 						
 						JLabel title = new JLabel("Reports");
 						title.setFont(RL.preferencesTitle);
@@ -1293,9 +1293,10 @@ public class FrontEnd extends BackEnd{
 						center.add(table, BorderLayout.CENTER);
 						
 						//stats
-						stats = new JTextArea();
-						stats.setEditable(false);
+						stats = new JLabel();
+						stats.setFocusable(false);
 						stats.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+						
 						center.add(stats, BorderLayout.PAGE_END);
 						
 						enter.addActionListener(new ActionListener() {
@@ -1305,7 +1306,7 @@ public class FrontEnd extends BackEnd{
 						});
 						
 						optionPane = new JOptionPane(scroll, JOptionPane.PLAIN_MESSAGE);
-				    	optionPane.showOptionDialog(reports, scroll, "Reports", JOptionPane.DEFAULT_OPTION, 
+				    	JOptionPane.showOptionDialog(reports, scroll, "Reports", JOptionPane.DEFAULT_OPTION, 
 				    			JOptionPane.INFORMATION_MESSAGE, null, new Object[] {}, null);
 					}
 					public static void update() {
@@ -1331,9 +1332,9 @@ public class FrontEnd extends BackEnd{
 								fieldMessage.setText(firstName + " " + lastName);
 								//table = newTable;
 								stats.setText(
-										"Number of Exits: " + numOfExits + "\n" +
-										"Average Duration: " + avgDuration + "\n" +
-										"Realistic Avg. Duration: " + realisticAvgDuration);
+										"<html>Number of Exits: " + numOfExits + "<br>" +
+										"Average Duration: " + avgDuration + "<br>" +
+										"Realistic Avg. Duration: " + realisticAvgDuration+"</html>");
 								
 							} else {
 								fieldMessage.setText("\"" + studentID + "\" not found");
