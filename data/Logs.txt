@@ -1,34 +1,15 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2018/04/29 13:48:43
+	File created on 2018/04/29 19:21:37
 
-**    2018/04/29 13:48:43  |  Start Up  |  
+**    2018/04/29 19:21:37  |  Start Up  |  
 
 
 ----------
-**    2018/04/29 13:48:43  |  Start Up  |  ranBefore found
-**    2018/04/29 13:48:43  |  Start Up  |  Config.txt: ranBefore = false
-**    2018/04/29 13:48:43  |  Start Up  |  ranBefore is now set to: false
-***** 2018/04/29 13:48:44  |  ERROR  |  Could not access Database
-***** 2018/04/29 13:48:44  |  ERROR  |  Could not access Database
-      2018/04/29 13:48:53  |  Reports Opened
-****  2018/04/29 13:49:24  |  System  |  EXIT
-----------***** 2018/04/29 13:53:58  |  ERROR  |  Could not access Database
-***** 2018/04/29 13:53:58  |  ERROR  |  Could not access Database
-      2018/04/29 13:54:01  |  Reports Opened
-      2018/04/29 13:55:06  |  temp1 LAST NAME SOMETHING 1 has signed in
-      2018/04/29 13:55:12  |  Reports Opened
-***** 2018/04/29 13:55:33  |  ERROR  |  Student ID "15" does not exist
-****  2018/04/29 13:55:42  |  System  |  EXIT
-----------***** 2018/04/29 13:57:15  |  ERROR  |  Could not access Database
-***** 2018/04/29 13:57:15  |  ERROR  |  Could not access Database
-      2018/04/29 13:57:18  |  Reports Opened
-      2018/04/29 13:57:33  |  Gary Tou has signed out
-      2018/04/29 13:57:36  |  Reports Opened
-      2018/04/29 13:57:44  |  Gary Tou has signed in
-      2018/04/29 13:57:46  |  Reports Opened
-****  2018/04/29 13:57:51  |  System  |  EXIT
-----------***** 2018/04/29 14:04:17  |  ERROR  |  Could not access Database
-***** 2018/04/29 14:04:17  |  ERROR  |  Could not access Database
-      2018/04/29 14:04:22  |  Preferences Opened
-      2018/04/29 14:04:42  |  Preferences Opened
-****  2018/04/29 14:05:11  |  System  |  EXIT
+**    2018/04/29 19:21:37  |  Start Up  |  ranBefore found
+**    2018/04/29 19:21:37  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/04/29 19:21:37  |  Start Up  |  ranBefore is now set to: false
+***** 2018/04/29 19:21:38  |  ERROR  |  Could not access Database
+***** 2018/04/29 19:21:38  |  ERROR  |  Could not access Database
+      2018/04/29 19:21:41  |  Reports Opened
+****  2018/04/29 19:22:27  |  System  |  EXIT
+----------

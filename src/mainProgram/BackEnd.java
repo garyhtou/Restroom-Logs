@@ -1302,11 +1302,11 @@ public class BackEnd extends config{
 							String[] tempEntry = new String[columnNames.length];
 							
 							String date  = currentTable.substring(currentTable.indexOf("s")+1);
-							String date1  = date.substring(0,2)+"/";
-							String date2  = date.substring(2,4)+"/";
-							String date3  = date.substring(4);
+							String day = date.substring(0,2);
+							String month  = date.substring(2,4);
+							String year = date.substring(4);
 							
-							tempEntry[0] = date1+date2+date3; //date
+							tempEntry[0] = month+"/"+day+"/"+year; //date
 							tempEntry[1] = rs.getString(1); //time out
 							tempEntry[2] = rs.getString(2); //time in
 							
@@ -1317,25 +1317,26 @@ public class BackEnd extends config{
 							Date outTemp = null;
 							try {
 								outTemp = formatter.parse(tempEntry[1]);
-								outTemp.setDate(currentDate.getDate());
-								outTemp.setMonth(currentDate.getMonth());
-								outTemp.setYear(currentDate.getYear());
+								outTemp.setDate(Integer.parseInt(day));
+								outTemp.setMonth(Integer.parseInt(month));
+								outTemp.setYear(Integer.parseInt(year));
 							} catch (ParseException e) {
 								e.printStackTrace();
 							}
 							long out = outTemp.getTime();
 							
-							
+							DateFormat  formatter2 = new SimpleDateFormat("hh:mm:ss");
 							Date inTemp = null;
 							try {
-								inTemp = formatter.parse(tempEntry[1]);
-								inTemp.setDate(currentDate.getDate());
-								inTemp.setMonth(currentDate.getMonth());
-								inTemp.setYear(currentDate.getYear());
+								inTemp = formatter2.parse(tempEntry[1]);
+								inTemp.setDate(Integer.parseInt(day));   
+								inTemp.setMonth(Integer.parseInt(month));
+								inTemp.setYear(Integer.parseInt(year));  
 							} catch (ParseException e) {
 								e.printStackTrace();
 							}
 							long in = inTemp.getTime();
+							System.out.println("out: " + out + "\nin:" + in + "\n\n");
 							int total = (int) TimeUnit.MILLISECONDS.toMinutes(in - out);
 							tempEntry[3] = Integer.toString(total);
 							dataArr.add(tempEntry);
@@ -1349,6 +1350,9 @@ public class BackEnd extends config{
 					}
 				}
 				
+for(String[] str : dataArr) {
+	System.out.println(Arrays.toString(str));
+}
 				
 				String[][] data = new String[dataArr.size()][columnNames.length];
 				for(int i = 0; i < dataArr.size(); i++) {

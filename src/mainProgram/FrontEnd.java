@@ -1295,6 +1295,7 @@ public class FrontEnd extends BackEnd{
 						//stats
 						stats = new JLabel();
 						stats.setFocusable(false);
+						stats.setFont(stats.getFont().deriveFont(stats.getFont().getSize()+10f));
 						stats.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 						
 						center.add(stats, BorderLayout.PAGE_END);
@@ -1313,37 +1314,35 @@ public class FrontEnd extends BackEnd{
 						int studentID = -1;
 						try {
 							studentID = Integer.parseInt(searchField.getText());
-							
-							if(BackEnd.database.Student.pullStudentName.firstName(studentID) != null) {
-								ArrayList<Object> arr = BackEnd.database.Student.getStudentInfo(studentID);
-								
-								//Name
-								String firstName = ((String[]) arr.get(0))[0];
-								String lastName = ((String[]) arr.get(0))[1];
-								
-								//table
-								JTable newTable = (JTable) arr.get(1);
-								
-								//stats
-								String numOfExits = ((String[]) arr.get(2))[0];
-								String avgDuration = ((String[]) arr.get(2))[1];
-								String realisticAvgDuration = ((String[]) arr.get(2))[2];
-								
-								fieldMessage.setText(firstName + " " + lastName);
-								//table = newTable;
-								stats.setText(
-										"<html>Number of Exits: " + numOfExits + "<br>" +
-										"Average Duration: " + avgDuration + "<br>" +
-										"Realistic Avg. Duration: " + realisticAvgDuration+"</html>");
-								
-							} else {
-								fieldMessage.setText("\"" + studentID + "\" not found");
-							}
-							
-							paint();
 						} catch (NumberFormatException e2) {
 							fieldMessage.setText("Please only enter integers");
 						}
+						if(BackEnd.database.Student.pullStudentName.firstName(studentID) != null) {
+							ArrayList<Object> arr = BackEnd.database.Student.getStudentInfo(studentID);
+							
+							//Name
+							String firstName = ((String[]) arr.get(0))[0];
+							String lastName = ((String[]) arr.get(0))[1];
+							
+							//table
+							JTable newTable = (JTable) arr.get(1);
+							
+							//stats
+							String numOfExits = ((String[]) arr.get(2))[0];
+							String avgDuration = ((String[]) arr.get(2))[1];
+							String realisticAvgDuration = ((String[]) arr.get(2))[2];
+							
+							fieldMessage.setText(firstName + " " + lastName);
+							table = newTable;
+							stats.setText(
+									"<html>Number of Exits: " + numOfExits + "<br>" +
+									"Average Duration: " + avgDuration + "<br>" +
+									"Realistic Avg. Duration (Excluding durations > 30 min.): " + realisticAvgDuration+"</html>");
+							
+						} else {
+							fieldMessage.setText("\"" + studentID + "\" not found");
+						}
+						paint();
 					}
 					public static void updateCellSize() {
 						//can only be ran after data is added
