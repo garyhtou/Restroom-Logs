@@ -1310,16 +1310,15 @@ public class BackEnd extends config{
 							tempEntry[1] = rs.getString(1); //time out
 							tempEntry[2] = rs.getString(2); //time in
 							
-							Calendar currentCal = Calendar.getInstance();
-							Date currentDate = currentCal.getTime();
+							
 							
 							DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
 							Date outTemp = null;
 							try {
 								outTemp = formatter.parse(tempEntry[1]);
-								outTemp.setDate(Integer.parseInt(day));
+								/*outTemp.setDate(Integer.parseInt(day));
 								outTemp.setMonth(Integer.parseInt(month));
-								outTemp.setYear(Integer.parseInt(year));
+								outTemp.setYear(Integer.parseInt(year));*/
 							} catch (ParseException e) {
 								e.printStackTrace();
 							}
@@ -1329,9 +1328,9 @@ public class BackEnd extends config{
 							Date inTemp = null;
 							try {
 								inTemp = formatter2.parse(tempEntry[1]);
-								inTemp.setDate(Integer.parseInt(day));   
+								/*inTemp.setDate(Integer.parseInt(day));   
 								inTemp.setMonth(Integer.parseInt(month));
-								inTemp.setYear(Integer.parseInt(year));  
+								inTemp.setYear(Integer.parseInt(year));  */
 							} catch (ParseException e) {
 								e.printStackTrace();
 							}

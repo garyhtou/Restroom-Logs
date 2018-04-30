@@ -1118,7 +1118,9 @@ public class FrontEnd extends BackEnd{
 					static JPanel checkBoxPane = new JPanel();
 					static JOptionPane dialog = new JOptionPane();
 					public static void content() {
+						JScrollPane scroll = new JScrollPane();
 						JPanel pane = new JPanel(new BorderLayout());
+						scroll.setViewportView(pane);
 						
 						JLabel title = new JLabel("Select days to Email or Delete");
 						title.setFont(RL.preferencesTitle);
@@ -1165,8 +1167,9 @@ public class FrontEnd extends BackEnd{
 								pane.showMessageDialog(frame, message, "Delete Dates", JOptionPane.PLAIN_MESSAGE);
 							}
 						});
-						
-						dialog.showMessageDialog(frame, pane, "Send/Delete Data", JOptionPane.PLAIN_MESSAGE);
+						dialog.setPreferredSize(new Dimension((int)config.screenWidth/2, (int)config.screenHeight/3));
+						dialog.showMessageDialog(frame, scroll, "Send/Delete Data", JOptionPane.PLAIN_MESSAGE);
+						dialog.setSize(dialog.getPreferredSize());
 					}
 					private static void updateCheckBoxes() {
 						//clean
@@ -1239,12 +1242,14 @@ public class FrontEnd extends BackEnd{
 						});
 					}
 					public static void paint() {
-						optionPane.setVisible(true);
+						//table.setVisible(true);
+						table.repaint();
 					}
 					static JTable table = new JTable();
 					static JTextField searchField;
 					static JLabel fieldMessage;
 					static JLabel stats;
+					static JPanel center;
 					public static void content() {
 						JPanel panel = new JPanel(new BorderLayout());
 						JScrollPane scroll = new JScrollPane();
@@ -1258,7 +1263,7 @@ public class FrontEnd extends BackEnd{
 						title.setFont(RL.preferencesTitle);
 						panel.add(title, BorderLayout.PAGE_START);
 						
-						JPanel center = new JPanel(new BorderLayout());
+						center = new JPanel(new BorderLayout());
 						panel.add(center, BorderLayout.CENTER);
 						JPanel search = new JPanel(new BorderLayout());
 						center.add(search, BorderLayout.PAGE_START);
@@ -1285,10 +1290,7 @@ public class FrontEnd extends BackEnd{
 						search.add(fieldMessage, BorderLayout.PAGE_END);
 						
 						//table
-						table.setFont(RL.tableText);
-						table.setFillsViewportHeight(true);
-						table.setDefaultEditor(Object.class, null); //make table uneditable
-						table.setIntercellSpacing(new Dimension(5, 0));
+						table = new JTable();
 						updateCellSize();
 						center.add(table, BorderLayout.CENTER);
 						
@@ -1333,7 +1335,14 @@ public class FrontEnd extends BackEnd{
 							String realisticAvgDuration = ((String[]) arr.get(2))[2];
 							
 							fieldMessage.setText(firstName + " " + lastName);
+							center.remove(table);
 							table = newTable;
+							table.setFont(RL.tableText);
+							table.setFillsViewportHeight(true);
+							table.setDefaultEditor(Object.class, null); //make table uneditable
+							table.setIntercellSpacing(new Dimension(5, 0));
+							table.setEnabled(false);
+							center.add(table, BorderLayout.CENTER);
 							stats.setText(
 									"<html>Number of Exits: " + numOfExits + "<br>" +
 									"Average Duration: " + avgDuration + "<br>" +
