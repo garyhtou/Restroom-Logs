@@ -56,7 +56,8 @@ public class BackEnd{
 			for(int i = 1; i < timeInEntries.length; i++){
 				String firstChar = timeInEntries[i].charAt(0) + "";
 				System.out.println(timeInEntries[i]);
-				System.out.println(firstChar);
+				System.out.println(firstChar); 
+        If(!firstChar.equals("M")&&!firstChar.equals("S")){
 				int firstCharInt = Integer.parseInt(firstChar);
 				if(((firstCharInt >= 1) && (firstCharInt <= 5)) && (firstCharInt == 12) ){
 					pm.add(i);
@@ -65,6 +66,7 @@ public class BackEnd{
 					am.add(i);
 					amText.add(timeInEntries[i]);
 				}
+     }
 			}
 
 
