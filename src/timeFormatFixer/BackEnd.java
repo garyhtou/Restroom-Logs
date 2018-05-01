@@ -34,7 +34,7 @@ public class BackEnd{
 
 	public static void main(String[] args) {
 		//Set Databse Location
-		DBLoc = "C:\\Users\\michael\\Restroom-Logs\\data/LogsDB-Copy.accdb";
+		DBLoc = "W:/git/Restroom-Logs/data/LogsDB.accdb";
 
 		change();
 		System.out.println("\n\nDONE!");
@@ -54,12 +54,12 @@ public class BackEnd{
 			String[] timeInEntries = getAllEntries(table);
 
 			for(int i = 1; i < timeInEntries.length; i++){
-				String firstChar = timeInEntries[i].charAt(0) + "";
+				String firstChar = timeInEntries[i].charAt(0) + timeInEntries[i].charAt(1) + "";
 				System.out.println(timeInEntries[i]);
 				System.out.println(firstChar); 
-        If(!firstChar.equals("M")&&!firstChar.equals("S")){
+				if(!firstChar.equals("Ma")&&!firstChar.equals("St")){
 				int firstCharInt = Integer.parseInt(firstChar);
-				if(((firstCharInt >= 1) && (firstCharInt <= 5)) && (firstCharInt == 12) ){
+				if(((firstCharInt >= 1) && (firstCharInt <= 5)) || (firstCharInt == 12)){
 					pm.add(i);
 					pmText.add(timeInEntries[i]);
 				} else{
