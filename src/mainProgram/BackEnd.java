@@ -957,7 +957,7 @@ public class BackEnd extends config{
 									e.printStackTrace();
 								}
 								
-								String currentTime = (new SimpleDateFormat("hh:mm:ss").format(new Date()));
+								String currentTime = (new SimpleDateFormat("hh:mm:ss a").format(new Date()));
 								
 								try {
 									st.setString(1, currentTime);
@@ -1310,35 +1310,36 @@ public class BackEnd extends config{
 							tempEntry[1] = rs.getString(1); //time out
 							tempEntry[2] = rs.getString(2); //time in
 							
-							
-							
-							DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
-							Date outTemp = null;
-							try {
-								outTemp = formatter.parse(tempEntry[1]);
-								/*outTemp.setDate(Integer.parseInt(day));
-								outTemp.setMonth(Integer.parseInt(month));
-								outTemp.setYear(Integer.parseInt(year));*/
-							} catch (ParseException e) {
-								e.printStackTrace();
+							if(tempEntry[2].contains("Man") || tempEntry[2].contains("Still")) {
+								tempEntry[3] = "Unknown";
+							} else {
+								DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
+								Date outTemp = null;
+								try {
+									outTemp = formatter.parse(tempEntry[1]);
+									/*outTemp.setDate(Integer.parseInt(day));
+									outTemp.setMonth(Integer.parseInt(month));
+									outTemp.setYear(Integer.parseInt(year));*/
+								} catch (ParseException e) {
+									e.printStackTrace();
+								}
+								long out = outTemp.getTime();
+	
+								Date inTemp = null;
+								try {
+									inTemp = formatter.parse(tempEntry[2]);
+									/*inTemp.setDate(Integer.parseInt(day));   
+									inTemp.setMonth(Integer.parseInt(month));
+									inTemp.setYear(Integer.parseInt(year));*/
+								} catch (ParseException e) {
+									e.printStackTrace();
+								}
+								long in = inTemp.getTime();
+								System.out.println("out: " + out + "\nin:" + in + "\n\n");
+								double total = TimeUnit.MILLISECONDS.toMinutes(in - out);
+								tempEntry[3] = Double.toString(total);
+								dataArr.add(tempEntry);
 							}
-							long out = outTemp.getTime();
-							
-							DateFormat  formatter2 = new SimpleDateFormat("hh:mm:ss");
-							Date inTemp = null;
-							try {
-								inTemp = formatter2.parse(tempEntry[1]);
-								/*inTemp.setDate(Integer.parseInt(day));   
-								inTemp.setMonth(Integer.parseInt(month));
-								inTemp.setYear(Integer.parseInt(year));  */
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
-							long in = inTemp.getTime();
-							System.out.println("out: " + out + "\nin:" + in + "\n\n");
-							int total = (int) TimeUnit.MILLISECONDS.toMinutes(in - out);
-							tempEntry[3] = Integer.toString(total);
-							dataArr.add(tempEntry);
 						}
 			        } catch(ClassNotFoundException e) {
 						BackEnd.logs.update.ERROR("Can not find JDBC class");
@@ -1367,17 +1368,24 @@ for(String[] str : dataArr) {
 				//num of exits
 				statsArr.add(Integer.toString(data.length));
 				
-				int totalDur = 0;
+				Double totalDur = 0.0;
+				int unknownEntries = 0;
 				int avgDurMin = 0;
 				int avgDurSec = 0;
 				int realAvgDurMin = 0;
 				int realAvgDurSec = 0;
+				double realisticTotalDur = 0;
+				int unrealisticEntry = 0;
 				if(data.length > 0) {
 					//average duration
-					for(int i = 0; i <data.length; i++) {
-						totalDur += Integer.parseInt(data[i][3]);
+					for(int i = 0; i < data.length; i++) {
+						if(!data[i][3].equals("Unknown")) {
+							totalDur += Double.parseDouble(data[i][3]);
+						} else {
+							unknownEntries++;
+						}
 					}
-					double avgDurRaw = totalDur/data.length;
+					double avgDurRaw = totalDur/(data.length-unknownEntries);
 					avgDurMin = (int)(avgDurRaw);
 					avgDurSec = (int)((((int)(avgDurRaw*10))%100)/100.0*60);
 					
@@ -1385,17 +1393,15 @@ for(String[] str : dataArr) {
 					statsArr.add(avgDurStr);
 					
 					//realistic average duration
-					int realisticTotalDur = 0;
-					int unrealisticEntry = 0;
 					for(int i = 0; i <data.length; i++) {
-						int entry = Integer.parseInt(data[i][3]);;
+						double entry = Double.parseDouble(data[i][3]);;
 						if(entry <= 20) {
 							realisticTotalDur += entry;
 						} else {
 							unrealisticEntry++;
 						}
 					}
-					double realAvgDurRaw = realisticTotalDur/(data.length-unrealisticEntry);
+					double realAvgDurRaw = realisticTotalDur/(data.length-unknownEntries-unrealisticEntry);
 					realAvgDurMin = (int)(realAvgDurRaw);
 					realAvgDurSec = (int)((((int)(realAvgDurRaw*10))%100)/100.0*60);
 					

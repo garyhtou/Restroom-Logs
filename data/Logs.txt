@@ -1,51 +1,15 @@
 -•=•=•=•  LOGS  •=•=•=•-
-	File created on 2018/04/30 13:40:11
+	File created on 2018/05/03 17:20:10
 
-**    2018/04/30 13:40:11  |  Start Up  |  
+**    2018/05/03 17:20:10  |  Start Up  |  
 
 
 ----------
-**    2018/04/30 13:40:11  |  Start Up  |  ranBefore found
-**    2018/04/30 13:40:11  |  Start Up  |  Config.txt: ranBefore = false
-**    2018/04/30 13:40:11  |  Start Up  |  ranBefore is now set to: false
-***** 2018/04/30 13:40:15  |  ERROR  |  Could not access Database
-***** 2018/04/30 13:40:15  |  ERROR  |  Could not access Database
-****  2018/04/30 13:40:27  |  System  |  EXIT
-----------***** 2018/05/01 07:10:48  |  ERROR  |  Could not access Database
-***** 2018/05/01 07:10:48  |  ERROR  |  Could not access Database
-      2018/05/01 07:10:53  |  Reports Opened
-***** 2018/05/01 07:10:57  |  ERROR  |  Student ID "238872" does not exist
-***** 2018/05/01 07:11:04  |  ERROR  |  Student ID "238871" does not exist
-***** 2018/05/01 07:11:05  |  ERROR  |  Student ID "238872" does not exist
-***** 2018/05/01 07:11:20  |  ERROR  |  Student ID "8607" does not exist
-***** 2018/05/01 07:11:25  |  ERROR  |  Student ID "78607" does not exist
-***** 2018/05/01 07:11:30  |  ERROR  |  Student ID "78607" does not exist
-***** 2018/05/01 07:11:31  |  ERROR  |  Student ID "78607" does not exist
-***** 2018/05/01 07:11:31  |  ERROR  |  Student ID "78607" does not exist
-***** 2018/05/01 07:11:38  |  ERROR  |  Student ID "110607" does not exist
-***** 2018/05/01 07:12:01  |  ERROR  |  Student ID "98656" does not exist
-****  2018/05/01 07:12:49  |  System  |  EXIT
-----------***** 2018/05/01 07:14:24  |  ERROR  |  Could not access Database
-***** 2018/05/01 07:14:24  |  ERROR  |  Could not access Database
-***** 2018/05/01 07:14:30  |  ERROR  |  Student ID "23872" does not exist
-***** 2018/05/01 07:14:30  |  ERROR  |  Student ID "23872" does not exist
-***** 2018/05/01 07:14:30  |  ERROR  |  Student ID "23872" does not exist
-***** 2018/05/01 07:14:30  |  ERROR  |  Student ID "23872" does not exist
-      2018/05/01 07:14:30  |  Could not find 23872 in Student Data Base
-      2018/05/01 07:14:31  |  temp2 LAST NAME SOMETHING 2 has signed out
-      2018/05/01 07:14:32  |  temp2 LAST NAME SOMETHING 2 has signed in
-      2018/05/01 07:14:33  |  temp2 LAST NAME SOMETHING 2 has signed out
-      2018/05/01 07:14:33  |  temp2 LAST NAME SOMETHING 2 has signed in
-      2018/05/01 07:14:34  |  temp2 LAST NAME SOMETHING 2 has signed out
-      2018/05/01 07:14:34  |  temp2 LAST NAME SOMETHING 2 has signed in
-***** 2018/05/01 07:14:35  |  ERROR  |  Student ID "22" does not exist
-***** 2018/05/01 07:14:35  |  ERROR  |  Student ID "22" does not exist
-***** 2018/05/01 07:14:35  |  ERROR  |  Student ID "22" does not exist
-***** 2018/05/01 07:14:35  |  ERROR  |  Student ID "22" does not exist
-      2018/05/01 07:14:35  |  Could not find 22 in Student Data Base
-      2018/05/01 07:14:35  |  temp2 LAST NAME SOMETHING 2 has signed out
-      2018/05/01 07:14:40  |  temp2 LAST NAME SOMETHING 2 has signed in
-      2018/05/01 07:14:42  |  Reports Opened
-***** 2018/05/01 07:15:21  |  ERROR  |  Student ID "238872" does not exist
-****  2018/05/01 07:15:44  |  System  |  EXIT
+**    2018/05/03 17:20:10  |  Start Up  |  ranBefore found
+**    2018/05/03 17:20:10  |  Start Up  |  Config.txt: ranBefore = false
+**    2018/05/03 17:20:10  |  Start Up  |  ranBefore is now set to: false
+***** 2018/05/03 17:20:11  |  ERROR  |  Could not access Database
+***** 2018/05/03 17:20:11  |  ERROR  |  Could not access Database
+      2018/05/03 17:20:14  |  Reports Opened
+****  2018/05/03 17:22:17  |  System  |  EXIT
 ----------

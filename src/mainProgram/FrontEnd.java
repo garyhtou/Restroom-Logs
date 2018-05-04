@@ -1346,7 +1346,7 @@ public class FrontEnd extends BackEnd{
 							stats.setText(
 									"<html>Number of Exits: " + numOfExits + "<br>" +
 									"Average Duration: " + avgDuration + "<br>" +
-									"Realistic Avg. Duration (Excluding durations > 30 min.): " + realisticAvgDuration+"</html>");
+									"Realistic Avg. Duration (Excluding durations > 20 min.): " + realisticAvgDuration+"</html>");
 							
 						} else {
 							fieldMessage.setText("\"" + studentID + "\" not found");
