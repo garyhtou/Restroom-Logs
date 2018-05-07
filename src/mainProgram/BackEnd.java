@@ -1336,8 +1336,11 @@ public class BackEnd extends config{
 								}
 								long in = inTemp.getTime();
 								System.out.println("out: " + out + "\nin:" + in + "\n\n");
-								double total = TimeUnit.MILLISECONDS.toMinutes(in - out);
-								tempEntry[3] = Double.toString(total);
+								long totalSeconds = TimeUnit.MILLISECONDS.toSeconds(in - out);
+								int minute = (int) totalSeconds/60;
+								int seconds = (int) totalSeconds%60;
+								System.out.println("Min: "+ minute+" Sec: "+seconds);
+								tempEntry[3] = (minute+":"+seconds);
 								dataArr.add(tempEntry);
 							}
 						}
@@ -1364,54 +1367,57 @@ for(String[] str : dataArr) {
 				JTable table = new JTable(data, columnNames);
 				arr.add(table);
 				
-				ArrayList<String> statsArr = new ArrayList<String>();
-				//num of exits
-				statsArr.add(Integer.toString(data.length));
+				ArrayList<String> statsArr = new ArrayList<String>(); //num of exits, avg duration, realistic avg dur
 				
-				Double totalDur = 0.0;
-				int unknownEntries = 0;
-				int avgDurMin = 0;
-				int avgDurSec = 0;
-				int realAvgDurMin = 0;
-				int realAvgDurSec = 0;
-				double realisticTotalDur = 0;
-				int unrealisticEntry = 0;
-				if(data.length > 0) {
-					//average duration
-					for(int i = 0; i < data.length; i++) {
-						if(!data[i][3].equals("Unknown")) {
-							totalDur += Double.parseDouble(data[i][3]);
-						} else {
-							unknownEntries++;
-						}
+//-------------- Num Entries
+				statsArr.add(Integer.toString(data.length)); //num of entries
+				
+//-------------- Avg Dur
+				Long totalDur = (long) 0;
+				for(int i = 0; i < data.length; i++) {
+					DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
+					Date outTemp = null;
+					try {
+						outTemp = formatter.parse(data[i][1]);
+						/*outTemp.setDate(Integer.parseInt(day));
+						outTemp.setMonth(Integer.parseInt(month));
+						outTemp.setYear(Integer.parseInt(year));*/
+					} catch (ParseException e) {
+						e.printStackTrace();
 					}
-					double avgDurRaw = totalDur/(data.length-unknownEntries);
-					avgDurMin = (int)(avgDurRaw);
-					avgDurSec = (int)((((int)(avgDurRaw*10))%100)/100.0*60);
-					
-					String avgDurStr = avgDurMin + ":" + avgDurSec;
-					statsArr.add(avgDurStr);
-					
-					//realistic average duration
-					for(int i = 0; i <data.length; i++) {
-						double entry = Double.parseDouble(data[i][3]);;
-						if(entry <= 20) {
-							realisticTotalDur += entry;
-						} else {
-							unrealisticEntry++;
-						}
+					long out = outTemp.getTime();
+
+					Date inTemp = null;
+					try {
+						inTemp = formatter.parse(data[i][2]);
+						/*inTemp.setDate(Integer.parseInt(day));   
+						inTemp.setMonth(Integer.parseInt(month));
+						inTemp.setYear(Integer.parseInt(year));*/
+					} catch (ParseException e) {
+						e.printStackTrace();
 					}
-					double realAvgDurRaw = realisticTotalDur/(data.length-unknownEntries-unrealisticEntry);
-					realAvgDurMin = (int)(realAvgDurRaw);
-					realAvgDurSec = (int)((((int)(realAvgDurRaw*10))%100)/100.0*60);
-					
-					String realAvgDurStr = realAvgDurMin + ":" + realAvgDurSec;
-					statsArr.add(realAvgDurStr);
-				} else {
-					statsArr.add("0"); //avg dur
-					statsArr.add("0"); //real avg dur
+					long in = inTemp.getTime();
+					long totalMil = (in - out);
+					totalDur += totalMil;
 				}
+				double avgDurMil = (totalDur * 1.0)/data.length;
+				long avgTotalSeconds = TimeUnit.MILLISECONDS.toSeconds((long)avgDurMil);
+				int avgMinute = (int) avgTotalSeconds/60;
+				int avgSeconds = (int) avgTotalSeconds%60;
+				statsArr.add(avgMinute+":"+avgSeconds);
 				
+//-------------- Realstic Avg Dur
+				
+				
+				
+				
+				
+				
+				
+				statsArr.add("place holder");
+				
+				
+//-------------- Calculate
 				String[] stats = new String[statsArr.size()];
 				for(int i = 0; i < statsArr.size(); i++) {
 					stats[i] = statsArr.get(i);
