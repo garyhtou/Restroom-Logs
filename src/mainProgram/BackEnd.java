@@ -1335,11 +1335,9 @@ public class BackEnd extends config{
 									e.printStackTrace();
 								}
 								long in = inTemp.getTime();
-								System.out.println("out: " + out + "\nin:" + in + "\n\n");
 								long totalSeconds = TimeUnit.MILLISECONDS.toSeconds(in - out);
 								int minute = (int) totalSeconds/60;
 								int seconds = (int) totalSeconds%60;
-								System.out.println("Min: "+ minute+" Sec: "+seconds);
 								tempEntry[3] = (minute+":"+seconds);
 								dataArr.add(tempEntry);
 							}
@@ -1353,9 +1351,9 @@ public class BackEnd extends config{
 					}
 				}
 				
-for(String[] str : dataArr) {
+/*for(String[] str : dataArr) {
 	System.out.println(Arrays.toString(str));
-}
+}*/
 				
 				String[][] data = new String[dataArr.size()][columnNames.length];
 				for(int i = 0; i < dataArr.size(); i++) {
@@ -1379,9 +1377,6 @@ for(String[] str : dataArr) {
 					Date outTemp = null;
 					try {
 						outTemp = formatter.parse(data[i][1]);
-						/*outTemp.setDate(Integer.parseInt(day));
-						outTemp.setMonth(Integer.parseInt(month));
-						outTemp.setYear(Integer.parseInt(year));*/
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
@@ -1390,9 +1385,6 @@ for(String[] str : dataArr) {
 					Date inTemp = null;
 					try {
 						inTemp = formatter.parse(data[i][2]);
-						/*inTemp.setDate(Integer.parseInt(day));   
-						inTemp.setMonth(Integer.parseInt(month));
-						inTemp.setYear(Integer.parseInt(year));*/
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
@@ -1407,15 +1399,39 @@ for(String[] str : dataArr) {
 				statsArr.add(avgMinute+":"+avgSeconds);
 				
 //-------------- Realstic Avg Dur
+				Long realTotalDur = (long) 0;
+				int numUnRealistic = 0;
+				for(int i = 0; i < data.length; i++) {
+					DateFormat  formatter = new SimpleDateFormat("hh:mm:ss a");
+					Date outTemp = null;
+					try {
+						outTemp = formatter.parse(data[i][1]);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					long out = outTemp.getTime();
+
+					Date inTemp = null;
+					try {
+						inTemp = formatter.parse(data[i][2]);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					long in = inTemp.getTime();
+					long totalMil = (in - out);
+					if((totalMil<TimeUnit.MINUTES.toMillis(config.realisticTimeMAX)) && (totalMil>TimeUnit.SECONDS.toMillis(config.realisticTimeMIN))) {
+						realTotalDur += totalMil;
+					}
+					else {
+						numUnRealistic++;
+					}
+				}
 				
-				
-				
-				
-				
-				
-				
-				statsArr.add("place holder");
-				
+				double realAvgDurMil = (realTotalDur * 1.0)/(data.length-numUnRealistic);
+				long realAvgTotalSeconds = TimeUnit.MILLISECONDS.toSeconds((long)realAvgDurMil);
+				int realAvgMinute = (int) realAvgTotalSeconds/60;
+				int realAvgSeconds = (int) realAvgTotalSeconds%60;
+				statsArr.add(realAvgMinute+":"+realAvgSeconds);				
 				
 //-------------- Calculate
 				String[] stats = new String[statsArr.size()];

@@ -159,7 +159,8 @@ public class config{
 		public static final String licensePath = "LICENSE";
 		public static String RlGPFO = getRlGPFO();
 	//Report
-		public static int realisticTime = 20;
+		public static long realisticTimeMAX = (long)20;//Minutes
+		public static long realisticTimeMIN = (long)20;//Seconds
 		
 		
 	/**
