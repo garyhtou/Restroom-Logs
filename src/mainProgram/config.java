@@ -158,6 +158,8 @@ public class config{
 		
 		public static final String licensePath = "LICENSE";
 		public static String RlGPFO = getRlGPFO();
+	//Custom PDF
+		public static final int JSCROLLPANE_NORMAL_SCROLL_SPEED = 6;
 	//Report
 		public static long realisticTimeMAX = (long)20;//Minutes
 		public static long realisticTimeMIN = (long)20;//Seconds

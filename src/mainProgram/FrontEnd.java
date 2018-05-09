@@ -1119,6 +1119,9 @@ public class FrontEnd extends BackEnd{
 					static JOptionPane dialog = new JOptionPane();
 					public static void content() {
 						JScrollPane scroll = new JScrollPane();
+						scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+						scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+						scroll.getVerticalScrollBar().setUnitIncrement(config.JSCROLLPANE_NORMAL_SCROLL_SPEED);
 						JPanel pane = new JPanel(new BorderLayout());
 						scroll.setViewportView(pane);
 						
@@ -1168,6 +1171,7 @@ public class FrontEnd extends BackEnd{
 							}
 						});
 						dialog.setPreferredSize(new Dimension((int)config.screenWidth/2, (int)config.screenHeight/3));
+						scroll.setPreferredSize(dialog.getPreferredSize());
 						dialog.showMessageDialog(frame, scroll, "Send/Delete Data", JOptionPane.PLAIN_MESSAGE);
 						dialog.setSize(dialog.getPreferredSize());
 					}
@@ -1188,6 +1192,29 @@ public class FrontEnd extends BackEnd{
 							checkBoxPane.add(checkBox);
 						}
 						
+						//TODO: Sort tableCheckBoxes array of JCheckBox's text by recent
+						//sort by recent
+						/*int n = arr.length;
+				        for (int i=1; i<n; ++i)
+				        {
+				            int key = arr[i];
+				            int j = i-1;
+				 
+				             Move elements of arr[0..i-1], that are
+				               greater than key, to one position ahead
+				               of their current position 
+				            while (j>=0 && arr[j] > key)
+				            {
+				                arr[j+1] = arr[j];
+				                j = j-1;
+				            }
+				            arr[j+1] = key;
+				        }*/
+						
+				        //add to pane
+						for(JCheckBox c : tableCheckBoxes) {
+							checkBoxPane.add(c);
+						}
 						//update graphics
 						checkBoxPane.validate();
 						checkBoxPane.repaint();
@@ -1316,6 +1343,7 @@ public class FrontEnd extends BackEnd{
 						int studentID = -1;
 						try {
 							studentID = Integer.parseInt(searchField.getText());
+							searchField.setText("");
 						} catch (NumberFormatException e2) {
 							fieldMessage.setText("Please only enter integers");
 						}
