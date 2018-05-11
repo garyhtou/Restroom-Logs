@@ -76,7 +76,7 @@ public class config{
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore;
-		public static var VersionNumber = new var("config/DoNotTouch.txt", "Release Version");
+		public static var VersionNumber = new var("config/.DoNotTouch.txt", "Release Version");
 		public static long ScannerReReadDelay = 333; //this is equivalent to 1/3 of a sec
 	//Screen dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -84,8 +84,8 @@ public class config{
 		public static double screenHeight = screenSize.getHeight();
 	//Databases
 		//Student DB (Not final because file path should be customizable
-		public static var StudentDBPath  = new var("config/DoNotTouch.txt", "studentDBPath");
-		public static var StudentDBTableName  = new var("config/DoNotTouch.txt", "studentDBTableName");
+		public static var StudentDBPath  = new var("config/.DoNotTouch.txt", "studentDBPath");
+		public static var StudentDBTableName  = new var("config/.DoNotTouch.txt", "studentDBTableName");
 		
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
@@ -98,8 +98,7 @@ public class config{
 		public static final String PdfLogPath  = "data/"+"Logs"+".pdf";
 		//public static final String PdfLogName  = getPdfName();
 	//Config files
-		public static final String DoNotTouchFilePath  = "config/DoNotTouch.txt";
-		public static final String GeneralConfigFilePath = "config/config.txt";
+		public static final String DoNotTouchFilePath  = "config/.DoNotTouch.txt";
 		public static final String mailFromFilePath = "config/mailFrom.txt";
 		public static final String mailTemplateFilePath = "config/mailTemplate.html";
 		public static final String mailToFilePath = "config/mailTo.txt";
@@ -153,8 +152,8 @@ public class config{
 		 * @deprecated Should call the Accessor Method, {@link #getTeacherName()}
 		 */
 		public static String teacherName = getTeacherName();
-		public static var teacherEmail = new var("config/DoNotTouch.txt","teacherEmail");
-		public static var endOfActiveHours  = new var("config/DoNotTouch.txt","activeHours");
+		public static var teacherEmail = new var("config/.DoNotTouch.txt","teacherEmail");
+		public static var endOfActiveHours  = new var("config/.DoNotTouch.txt","activeHours");
 		
 		public static final String licensePath = "LICENSE";
 		public static String RlGPFO = getRlGPFO();
