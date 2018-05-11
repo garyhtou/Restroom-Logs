@@ -359,7 +359,7 @@ public class FrontEnd extends BackEnd{
 					//TABS
 					//General
 						preferences general = new preferences(tabbedPane, "General", null, "General Settings");
-							general.addWithFont(new JLabel("Message Center"));
+							/*general.addWithFont(new JLabel("Message Center"));
 								JTextField otherInfoField = new JTextField();
 								otherInfoField.setText(
 										FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.otherMessages.getText());
@@ -388,8 +388,19 @@ public class FrontEnd extends BackEnd{
 								scannerDelayPane.add(scannerDelayField, BorderLayout.LINE_END);
 								general.add(scannerDelayPane);
 								
-							general.add(new JSeparator());
-						
+							general.add(new JSeparator());*/
+							JPanel generalPref = new JPanel(new GridLayout(0,1));
+							
+							JPanel messageCenter = new JPanel(new FlowLayout(FlowLayout.LEFT));
+							JTextField infomation = new JTextField();
+							messageCenter.add(new JLabel("Message Center ",SwingConstants.LEFT));
+							infomation.setPreferredSize(new Dimension(750,100));
+							infomation.setText(FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.otherMessages.getText());//TODO:Make it grab from TXT, make new var
+							infomation.setEditable(true);
+							messageCenter.add(infomation);
+							
+							generalPref.add(messageCenter);
+							general.add(generalPref);
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
 							JPanel logspref = new JPanel(new GridLayout(0,1));
