@@ -3,183 +3,92 @@ package timeFormatFixer;
 import java.sql.*;
 import java.util.*;
 
+import mainProgram.BackEnd;
+import mainProgram.config;
+
 public class AddDuration {
 
-		static String DBLoc;
-		final static String AM = "AM";
-		final static String PM = "PM";
+		static String DBLocation;
+		static final String durColName = "Duration";
 
 		public static void main(String[] args) {
 			//Set Databse Location
-			DBLoc = "W:/git/Restroom-Logs/data/LogsDB.accdb";
+			DBLocation = "W:/git/Restroom-Logs/data/LogsDB.accdb";
 
 			change();
 			System.out.println("\n\nDONE!");
 		}
 
 		public static void change() {
-			String[] tableNames = getAllTableNames();
-
-			//goes through all tables
-			for(String table : tableNames){
-				//
-				ArrayList<Integer> am = new ArrayList<Integer>();
-				ArrayList<String> amText = new ArrayList<String>();
-				ArrayList<Integer> pm = new ArrayList<Integer>();
-				ArrayList<String> pmText = new ArrayList<String>();
-
-				String[] timeInEntries = getAllEntries(table);
-
-				for(int i = 1; i < timeInEntries.length; i++){
-					String firstChar = timeInEntries[i].charAt(0) + timeInEntries[i].charAt(1) + "";
-					System.out.println(timeInEntries[i]);
-					System.out.println(firstChar); 
-					if(!firstChar.equals("Ma")&&!firstChar.equals("St")){
-					int firstCharInt = Integer.parseInt(firstChar);
-					if(((firstCharInt >= 1) && (firstCharInt <= 5)) || (firstCharInt == 12)){
-						pm.add(i);
-						pmText.add(timeInEntries[i]);
-					} else{
-						am.add(i);
-						amText.add(timeInEntries[i]);
-					}
-	     }
-				}
-
-
-				int[] amArr = new int[am.size()];
-				for(int i = 0; i < am.size(); i++){
-					amArr[i] = am.get(i);
-				}
-
-				String[] amTextArr = new String[amText.size()];
-				for(int i = 0; i < amText.size(); i++){
-					amTextArr[i] = amText.get(i);
-				}
-
-				int[] pmArr = new int[pm.size()];
-				for(int i = 0; i < pm.size(); i++){
-					pmArr[i] = pm.get(i);
-				}
-
-				String[] pmTextArr = new String[pmText.size()];
-				for(int i = 0; i < pmText.size(); i++){
-					pmTextArr[i] = pmText.get(i);
-				}
-
-
-
-				changeTimeIn(AM, amArr, amTextArr, table);
-				changeTimeIn(PM, pmArr, pmTextArr, table);
+			String[] tableNames = getAllTableName();
+			
+			for(String currentTable : tableNames) {
+				addColumn(currentTable);
+				
+				ArrayList<String> durations = new ArrayList<String>();
+				
+				
+				
+				
 			}
-
-
+			
+			
+			
 		}
-
-		public static void changeTimeIn(String AMorPM, int[] indexes, String[] values, String tableName){
-			String tag;
-			if(AMorPM.equals(AM)){
-				tag = AM;
-			} else if(AMorPM.equals(PM)){
-				tag = PM;
-			} else{
-				tag = "YOU MESSED UP";
-				System.err.println(tag);
-			}
-
-			for(int i = 0; i < indexes.length; i++){
-				int index = indexes[i];
-				String value = values[i];
-				String newVal = value + " " + tag;
-
-				String updateInTime = "UPDATE [" + tableName + "] SET [TimeIn] = \"" + newVal + "\" WHERE [ID] = \"" + index + "\"";
-				//creating statement
-				PreparedStatement st = null;
-
-				try {
-					Connection conn3=DriverManager.getConnection(
-					"jdbc:ucanaccess://"+DBLoc);
-					st = conn3.prepareStatement (updateInTime);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-				try {
-					st.executeUpdate();
-					st.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			}
-		}
-
-
-		public static String[] getAllEntries(String tableName){
-			ArrayList<String> timeIn = new ArrayList<String>();
-			timeIn.add("FILLER");
-
-
-			try {
-				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
-			Connection conn=DriverManager.getConnection(
-				"jdbc:ucanaccess://"+DBLoc);
-				Statement s2;
-				s2 = conn.createStatement();
-				ResultSet rs;
-				rs = s2.executeQuery("SELECT [TimeIn] FROM [" + tableName + "]");
-
-			while(rs.next()) {
-				timeIn.add(rs.getString(1));
-			}
-
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				return null;
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return null;
-			}
-
-
-			String[] returnList = new String[timeIn.size()];
-			for(int i = 0; i < timeIn.size(); i++){
-				returnList[i] = timeIn.get(i);
-			}
-			return returnList;
-		}
-
-
-		public static String[] getAllTableNames(){
+		
+		
+		public static String[] getAllTableName() {
 			ArrayList<String> list = new ArrayList<String>();
 			try {
 				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
+			
 
 			Connection conn=DriverManager.getConnection(
-				"jdbc:ucanaccess://"+DBLoc);
+		        "jdbc:ucanaccess://"+DBLocation);
 			Statement s;
 			s = conn.createStatement();
-
-
+			
+			
 			ResultSet rs;
 			rs = conn.getMetaData().getTables(null, null, null, null);
-
+			
 			while(rs.next()) {
 				list.add(rs.getString("TABLE_NAME"));
 			}
-
+			
 			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Can't find jdbc Driver");
 				return null;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				BackEnd.logs.update.ERROR("Error while getting all table names from Logs database");
 				return null;
 			}
-
+			
 			String[] arrList = list.toArray(new String[0]);
 			return arrList;
+		}
+		/**
+		 * adds a new column to the tableName for duration
+		 * @param tableName
+		 */
+		public static void addColumn(String tableName) {
+			try {
+				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+				Connection conn=DriverManager.getConnection("jdbc:ucanaccess://"+config.LogsDBPath);
+				Statement s2 = conn.createStatement();
+	
+				String q = "ALTER TABLE [" + tableName + "] ADD \""+ durColName + "\" column-definition";
+				PreparedStatement st = conn.prepareStatement (q);
+				
+				st.executeUpdate();
+			} catch (SQLException | ClassNotFoundException e) {
+				System.err.println("ERROR");
+				e.printStackTrace();
+			}
+		}
+		public static String calcDur(String tableName, int rowNum) {
+			
+			return "min:sec";
 		}
 	}
 

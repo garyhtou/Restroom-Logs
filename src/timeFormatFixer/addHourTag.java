@@ -27,7 +27,7 @@ import java.util.ArrayList;
  *
  *
  */
-public class BackEnd{
+public class addHourTag{
 	static String DBLoc;
 	final static String AM = "AM";
 	final static String PM = "PM";
