@@ -127,7 +127,7 @@ public class config{
 		public static final ImageIcon helpIcon = new ImageIcon("assets/images/help.png");
 		public static final ImageIcon filePreferencesIcon = new ImageIcon("assets/images/preferences.png");
 		public static final ImageIcon logsTxtIcon = new ImageIcon("assets/images/logs.png");
-		public static final ImageIcon PDFIcon = new ImageIcon("assets/images/PDF.png");
+		public static final ImageIcon PDFIcon = new ImageIcon("assets/images/pdf.png");
 		public static final ImageIcon reportsIcon = new ImageIcon("assets/images/reports.png");
 	//message center
 		public static String defaultOtherMessage = "Welcome To The Restroom Logs Program.";
