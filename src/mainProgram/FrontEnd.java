@@ -400,6 +400,10 @@ public class FrontEnd extends BackEnd{
 							messageCenter.add(infomation);
 							
 							generalPref.add(messageCenter);
+							
+							JPanel scanDelay = new JPanel(new FlowLayout(FlowLayout.LEFT));
+							JTextField scanDelayField = new JTextField();
+							
 							general.add(generalPref);
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
