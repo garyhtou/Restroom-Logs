@@ -403,7 +403,19 @@ public class FrontEnd extends BackEnd{
 							
 							JPanel scanDelay = new JPanel(new FlowLayout(FlowLayout.LEFT));
 							JTextField scanDelayField = new JTextField();
+							scanDelay.add(new JLabel("Scan Delay:", SwingConstants.LEFT));
+							scanDelayField.setText(Long.toString(config.ScannerReReadDelay));
+							scanDelayField.setPreferredSize(new Dimension(100,20));
+							scanDelayField.addKeyListener(new KeyListener() {
+								public void keyPressed(KeyEvent arg0) {}
+								public void keyReleased(KeyEvent e) {}
+								public void keyTyped(KeyEvent e) {
+									config.ScannerReReadDelay = Long.parseLong(scanDelayField.getText());
+								}
+							});
+							scanDelay.add(scanDelayField);
 							
+							generalPref.add(scanDelay);
 							general.add(generalPref);
 					//Logs
 						preferences logs = new preferences(tabbedPane, "Logs", null, "Logs Settings");
@@ -1389,7 +1401,7 @@ public class FrontEnd extends BackEnd{
 							stats.setText(
 									"<html>Number of Exits: " + numOfExits + "<br>" +
 									"Average Duration: " + avgDuration + "<br>" +
-									"Realistic Avg. Duration (Excluding durations > 20 min.): " + realisticAvgDuration+"</html>");
+									"Realistic Avg. Duration (Excluding durations > " +(int)config.realisticTimeMAX+" min.): " + realisticAvgDuration+"</html>");
 							
 						} else {
 							fieldMessage.setText("\"" + studentID + "\" not found");

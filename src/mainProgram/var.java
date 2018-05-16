@@ -8,13 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class var {
+public class var <T> {
 	private String loc; //file path
 	private int lineNum; //line number
+	private T type; //TODO
 	private String pre;
 	private String pullValue; //value pulled from file
 	private String returnValue; //value to be returned (include substring prefix)
-	
 	private static ArrayList<var> allVars = new ArrayList<var>(); //array list to hold all instantiated vars
 	
 	/**
@@ -89,3 +89,4 @@ public class var {
 		update();
 	}
 }
+
