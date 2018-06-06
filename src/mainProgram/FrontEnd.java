@@ -392,12 +392,20 @@ public class FrontEnd extends BackEnd{
 							JPanel generalPref = new JPanel(new GridLayout(0,1));
 							
 							JPanel messageCenter = new JPanel(new FlowLayout(FlowLayout.LEFT));
-							JTextField infomation = new JTextField();
+							JTextField information = new JTextField();
 							messageCenter.add(new JLabel("Message Center ",SwingConstants.LEFT));
-							infomation.setPreferredSize(new Dimension(750,100));
-							infomation.setText(FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.otherMessages.getText());//TODO:Make it grab from TXT, make new var
-							infomation.setEditable(true);
-							messageCenter.add(infomation);
+							information.setPreferredSize(new Dimension(750,100));
+							information.setText(FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.otherMessages.getText());//TODO:Make it grab from TXT, make new FileConfig
+							information.setEditable(true);
+							messageCenter.add(information);
+							information.addKeyListener(new KeyListener() {
+								public void keyReleased(KeyEvent e) {}
+								public void keyTyped(KeyEvent e) {}
+								public void keyPressed(KeyEvent arg0) {
+									FrontEnd.content.majorRL.left.statsScan.scanAndMessages.scan.messageCenter.otherMessages.update(information.getText());
+								}
+								
+							});
 							
 							generalPref.add(messageCenter);
 							
@@ -1917,7 +1925,7 @@ public class FrontEnd extends BackEnd{
 
 		@Override
 		public void run() {
-			var.updateAll();
+			FileConfig.updateAll();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E");
     		LocalDateTime now = LocalDateTime.now();
     		String TimeAndData = dtf.format(now) ;

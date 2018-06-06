@@ -8,22 +8,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class var <T> {
+public class FileConfig {
 	private String loc; //file path
 	private int lineNum; //line number
-	private T type; //TODO
 	private String pre;
 	private String pullValue; //value pulled from file
 	private String returnValue; //value to be returned (include substring prefix)
-	private static ArrayList<var> allVars = new ArrayList<var>(); //array list to hold all instantiated vars
+	private static ArrayList<FileConfig> allVars = new ArrayList<FileConfig>(); //array list to hold all instantiated vars
 	
 	/**
-	 * constructor for var
+	 * constructor for FileConfig
 	 * @param filePath file path of the file
 	 * @param lineNumber line number of the data
 	 * @param prefix prefix of the value (EX. databaseFilePath = middle of no where;  "databaseFilePath =" is the prefix
 	 */
-	public var(String filePath, String prefix) {
+	public FileConfig(String filePath, String prefix) {
 		loc = filePath;
 		pre = prefix.trim() + " = ";
 		allVars.add(this);
@@ -53,7 +52,7 @@ public class var <T> {
 	 * updates all pulled values
 	 */
 	public static void updateAll() {
-		for(var item : allVars) {
+		for(FileConfig item : allVars) {
 			item.update();
 		}
 	}

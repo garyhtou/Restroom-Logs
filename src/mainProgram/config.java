@@ -76,7 +76,7 @@ public class config{
 //The following are universal constants
 	//Critical Vars
 		public static boolean ranBefore;
-		public static var VersionNumber = new var("config/.DoNotTouch.txt", "Release Version");
+		public static FileConfig VersionNumber = new FileConfig("config/.DoNotTouch.txt", "Release Version");
 		public static long ScannerReReadDelay = 333; //this is equivalent to 1/3 of a sec
 	//Screen dimensions
 		public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -84,8 +84,8 @@ public class config{
 		public static double screenHeight = screenSize.getHeight();
 	//Databases
 		//Student DB (Not final because file path should be customizable
-		public static var StudentDBPath  = new var("config/.DoNotTouch.txt", "studentDBPath");
-		public static var StudentDBTableName  = new var("config/.DoNotTouch.txt", "studentDBTableName");
+		public static FileConfig StudentDBPath  = new FileConfig("config/.DoNotTouch.txt", "studentDBPath");
+		public static FileConfig StudentDBTableName  = new FileConfig("config/.DoNotTouch.txt", "studentDBTableName");
 		
 		//Logs DB
 		public static final String LogsDBPath  = "data/LogsDB.accdb";
@@ -152,8 +152,8 @@ public class config{
 		 * @deprecated Should call the Accessor Method, {@link #getTeacherName()}
 		 */
 		public static String teacherName = getTeacherName();
-		public static var teacherEmail = new var("config/.DoNotTouch.txt","teacherEmail");
-		public static var endOfActiveHours  = new var("config/.DoNotTouch.txt","activeHours");
+		public static FileConfig teacherEmail = new FileConfig("config/.DoNotTouch.txt","teacherEmail");
+		public static FileConfig endOfActiveHours  = new FileConfig("config/.DoNotTouch.txt","activeHours");
 		
 		public static final String licensePath = "LICENSE";
 		public static String RlGPFO = getRlGPFO();
@@ -220,7 +220,7 @@ public class config{
 			   
 			   if(line.contains(configName)) {
 				   String write = configName + " " + value;
-				   //FIXME: replace line with var write
+				   //FIXME: replace line with FileConfig write
 				   return false;
 			   }
 			}
@@ -324,7 +324,7 @@ public class config{
 /**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * @return Version Number as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static String getVersionNumber() {
 		try {
@@ -357,7 +357,7 @@ public class config{
 	/**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * @return Student Database Table Path as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static String getStudentDBPath() {
 		try {
@@ -390,7 +390,7 @@ public class config{
 /**
 	 * @deprecated Replaced by Var Variable Constructor
 	 *  Sets the Student Database Table Path to @param path as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static void setStudentDBPath(String path) {
 		try {
@@ -422,7 +422,7 @@ public class config{
 	/**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * @return Student Database Table Name as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static String getStudentDBTableName() {
 		try {
@@ -461,7 +461,7 @@ public class config{
 	}/**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * Sets the Student Database Table Name to @param as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static void setStudentDBTableName(String name) {
 		try {
@@ -573,7 +573,7 @@ public class config{
 /**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * Sets Teacher Email to @param email as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static void setTeacherEmail(String email) {
 		try {
@@ -605,7 +605,7 @@ public class config{
 /**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * @return Teacher Email as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static String getTeacherEmail() {
 		try {
@@ -685,7 +685,7 @@ public class config{
 /**
 	 * @deprecated Replaced by Var Variable Constructor
 	 * @return End of Active Hours as specified in {@link #DoNotTouchFilePath}
-	 * @see var#Var(int) Var Constructor
+	 * @see FileConfig#Var(int) Var Constructor
 	 */
 	public static String getActiveHours() {
 		try {
