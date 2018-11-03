@@ -1,103 +1,16 @@
-# Restroom-Logs
-School Restroom Logs
-Quick and easy way to log who goes to the bathroom using barcodes on the back of Students' I.D. Cards
+# Restroom Logs
+The Restroom Logs program was created by Gary Tou and Michael Schwamborn who were 9th graders taking AP Computer Science. 
+Restroom Logs is a program which allows teachers to record data on student entry and exits during class time. This data is exported as a daily report which allows schools to analyze the correlation between time spent in class and student learning and grades.
 
-SETUP ---------------------
-Download Raspbian RASPBIAN STRETCH WITH DESKTOP https://www.raspberrypi.org/downloads/raspbian/
-unzip
-flash to micro sd card using win32DiskImager https://sourceforge.net/projects/win32diskimager/
-wait
-wait
-wait!!
-Plug PI into internet (wifi/ethernet)
-plug display into pi
-plug mouse/keyboard into pi
-plug in micro sd card
-plug pi into power
-set up
-open raspi-config
-adjust settings
+### What I have learned
+The process of creating this program has allowed me to learn so much about Java, the process of software development, and computer science. We loved how in order to accomplish this program, we had to self-learn so many new skills such as Java Swing, Databases, working with libraries/API, generating PDFs, Bash, and using Java JDK on Raspbian/Linux).
 
-BOOT SPLASHSCREEN --------
-install putty for ssh
-insert mircro sd into a computer to make these changes easier: vvvvvv
-Disable the Raspberry Pi ‘color test’ by adding the line disable_splash=1 to /boot/config.txt.
-Disable the Raspberry Pi logo in the corner of the screen by adding logo.nologo to /boot/cmdline.txt.
-Disable the various bits of output from the kernel and friends by adding consoleblank=0 loglevel=1 quiet to /boot/cmdline.txt.
-Disable the login prompt by running systemctl disable getty@tty1 as root. (sudo su for root, su pi for pi)
-THEN:
-http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/custom-boot-up-screen.
-image of boot splash screen is at /assets/logos/Restroom Logs Boot Splash Screen.png
+### How we built it
+Restroom Logs was built using Java in Eclipse with numerous libraries such as UCanAccess (Java JDBC Driver), iText (Generating PDF files), and IcePDF (Embeded PDF Viewer). With over 600 hours invested by both of us, we have learned so much and are excited to learn even more.
 
-SSH MOTD ------------------
-delete content of /etc/motd
-added your motd to /home/pi/.profile
+### Challenges we ran into
+While building this program, we had a hard time managing and organizing our code and libraries. As you can see, the repository and Java class are a mess. We have definitly learned so much and have since understood how to improve our code. In addition, we had problems with running our program on a Raspberry Pi, but in the end, we were able to iron out most of the kinks.
 
-		#CUSTOM SSH MOTD
-		let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
-		let secs=$((${upSeconds}%60))
-		let mins=$((${upSeconds}/60%60))
-		let hours=$((${upSeconds}/3600%24))
-		let days=$((${upSeconds}/86400))
-		UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
-
-		echo "$(tput setaf 6)
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		████████████████▒     ░████████████████    ███████████████▓     ░██████████████
-		███████████████░       ░███████████████    ██████████████▒        █████████████
-		███████████████░       ░███████████████    ██████████████▓        █████████████
-		████████████████░     ░████████████████    ████████████████     ░██████████████
-		███████████████████████████████████████    ████████████████████████████████████
-		███████████░               ░███████████    █████████                   ▒███████
-		██████████                   ██████████    ████████                     ░██████
-		█████████░   ░░         ░░   ░█████████    ███████░   ░░           ░░░   ██████
-		█████████   ██░         ░██   ▓████████    ███████░  ░██           ░██   ██████
-		████████░  ░██           ██░   ████████    ███████░  ░██           ░██   ██████
-		███████▒   ██░            ██   ░███████    ███████░  ░██           ░██   ██████
-		███████   ░██             ▒█▓   ███████    ███████░  ░██           ░██   ██████
-		██████░   ██░              ██░  ░██████    ███████░  ░██           ░██   ██████
-		██████░  ██▓               ░██  ░██████    ███████░  ░██           ░██   ██████
-		███████████                 ███████████    ███████▓  ░██           ░██  ░██████
-		██████████░                 ░██████████    █████████████    ░██    ░███████████
-		██████████                   ██████████    █████████████    ░██    ░███████████
-		█████████░░░░░░    ░░   ░░░░░░█████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ░███████████
-		███████████████   ░██   ░██████████████    █████████████    ░██    ▒███████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		███████████████████████████████████████████████████████████████████████████████
-		$(tput bold) $(tput setaf 0)
-						 $(tput setab 6) Developed by Gary Tou and Michael Schwamborn $(tput sgr0)
-		"
-		sleep 0.5
-		echo "$(tput setaf 2)
-		   .~~.   .~~.    `date +"%A, %e %B %Y, %r"`
-		  '. \ ' ' / .'   `uname -srmo`$(tput setaf 1)
-		   .~ .~~~..~.    
-		  : .~.'~'.~. :   Uptime...............: ${UPTIME}
-		 ~ (   ) (   ) ~  Memory...............: `cat /proc/meminfo | grep MemFree | awk {'print $2'}`kB (Free) / `cat /proc/meminfo | grep MemTotal | awk {'print $2'}`kB (Total)
-		( : '~'.~.'~' : ) 
-		 ~ .~ (   ) ~. ~  IP Addresses.........: `hostname -I` and `wget -q -O - http://icanhazip.com/ | tail`
-		  (  : '~' :  )   
-		   '~ .~~~. ~'    Weather in Seattle...: `curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=0&locCode=NAM|US|WA|SEATTLE" | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'`
-			   '~'
-			   
-		$(tput setaf 2)SSH Users:
-		$(tput setaf 1)`who`
-		$(tput sgr0)
-		$(tput bel)"
+---
+**Gary:** Creating this program has not only taught me more Java, it has more importantly allowed me to understand the process to software devlopment. Creating this program has result in my love of programming and I hope to be able to continue working on projects such as these in the future!<br>
+**Michael:** Restroom Logs was a great experience for us to learn more about the field of Computer Science and get us introduced to new ideas farther than Computer Science A.
